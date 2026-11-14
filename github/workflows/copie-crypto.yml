@@ -1,0 +1,185 @@
+name: "Copy trading crypto + Polymarket (sans actions US)"
+on:
+  workflow_dispatch:
+    inputs:
+      duration_minutes:
+        description: "Durée en minutes : 5 à 330, multiple de 5"
+        required: true
+        default: "240"
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: copy-public-crypto
+  cancel-in-progress: false
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Copie virtuelle de portefeuilles publics"
+        env:
+          DURATION: ${{ inputs.duration_minutes }}
+        run: |
+          python3 - <<'PY'
+          import csv, io, json, math, os, re, subprocess, time
+          from datetime import datetime, timezone
+          from urllib.parse import urlencode
+          from urllib.request import Request, urlopen
+          from pathlib import Path
+
+          duration = int(os.environ['DURATION'])
+          if not 5 <= duration <= 330 or duration % 5:
+              raise SystemExit('Durée invalide (5 à 330, multiple de 5)')
+          api_hl = 'https://api.hyperliquid.xyz/info'
+          api_poly = 'https://data-api.polymarket.com'
+          no_us = {'SPY','QQQ','AAPL','MSFT','NVDA','TSLA','AMZN','META','GOOG','GOOGL','NDX','SPX','US500','US100','NASDAQ'}
+          def get(url, payload=None, limit=55_000_000):
+              data = json.dumps(payload).encode() if payload is not None else None
+              headers = {'User-Agent':'Copy50-Paper/1.0','Accept':'application/json'}
+              if data is not None: headers['Content-Type']='application/json'
+              with urlopen(Request(url, data=data, headers=headers), timeout=35) as r:
+                  raw=r.read(limit+1)
+                  if len(raw)>limit: raise ValueError('API trop volumineuse')
+              return json.loads(raw)
+          def hl(payload): return get(api_hl,payload)
+          def perf(row, window):
+              v=row.get('windowPerformances') or []
+              if isinstance(v,dict): return v.get(window) or {}
+              return next((p[1] for p in v if len(p)==2 and p[0]==window),{})
+          def f(x, default=0):
+              try:
+                  n=float(x)
+                  return n if math.isfinite(n) else default
+              except (ValueError,TypeError): return default
+          def fetch_positions(platform,wallet):
+              if platform=='Hyperliquid':
+                  rows=hl({'type':'clearinghouseState','user':wallet,'dex':''}).get('assetPositions',[])
+                  positions={}
+                  for item in rows:
+                      p=item.get('position') or {}
+                      sym=p.get('coin','')
+                      qty=f(p.get('szi'))
+                      if re.fullmatch(r'[A-Za-z0-9._/-]{1,45}',sym) and sym.upper() not in no_us and qty:
+                          positions[sym]=qty
+                  return positions
+              rows=get(api_poly+'/positions?'+urlencode({'user':wallet,'limit':100}))
+              return {str(p['asset']):f(p.get('size')) for p in rows if p.get('asset') and f(p.get('size'))>0}
+          def get_prices(platform, symbols, mids):
+              if platform=='Hyperliquid':
+                  return {s:f(mids.get(s)) for s in symbols if f(mids.get(s))>0}
+              prices={}
+              for s in symbols:
+                  try:
+                      p=get('https://clob.polymarket.com/price?'+urlencode({'token_id':s,'side':'SELL'}),limit=200_000)
+                      px=f(p.get('price'))
+                      if 0<px<=1: prices[s]=px
+                  except Exception as e: incidents.append('Polymarket: cotation indisponible '+s[:16]+' ('+type(e).__name__+')')
+              return prices
+          def iso(): return datetime.now(timezone.utc).isoformat(timespec='seconds')
+          def save():
+              out=Path('docs/data.json');out.parent.mkdir(exist_ok=True)
+              out.write_text(json.dumps(report,indent=2,ensure_ascii=False))
+              subprocess.run(['git','add','docs/data.json'],check=True)
+              if subprocess.run(['git','diff','--cached','--quiet']).returncode:
+                  subprocess.run(['git','commit','-m','Update simulated public-wallet copy'],check=True,stdout=subprocess.DEVNULL)
+                  subprocess.run(['git','push','origin','HEAD:main'],check=True,timeout=90)
+          subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+          subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],check=True)
+          report={'status':'INITIALISATION','mode':'PAPER_COPY_PUBLIC_WALLETS','us_equities_enabled':False,
+                  'started_at_utc':iso(),'duration_minutes':duration,'interval_minutes':5,
+                  'capital_initial_eur':'50.00','sources':[],'samples':[],'trades':[],'incidents':[],
+                  'disclosure':'Copie fictive de positions publiques observées, non copie des exécutions. Aucun ordre réel.'}
+          incidents=report['incidents']; sources=[]
+          try:
+              req=Request('https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?lastNObservations=1&format=csvdata',headers={'Accept':'text/csv'})
+              with urlopen(req,timeout=25) as r: fxrows=list(csv.DictReader(io.StringIO(r.read(250000).decode('utf-8-sig'))))
+              fxrow=next(x for x in reversed(fxrows) if f(x.get('OBS_VALUE'))>0)
+              fx=f(fxrow['OBS_VALUE']); report['eur_usd_reference']=str(fx);report['fx_as_of']=fxrow['TIME_PERIOD']
+          except Exception as e:
+              report['status']='ERREUR_SOURCE'; incidents.append('Taux BCE indisponible: '+str(e)[:140]);save();raise SystemExit('Pas de taux de change fiable')
+          try:
+              leaderboard=get('https://stats-data.hyperliquid.xyz/Mainnet/leaderboard')
+              rows=leaderboard.get('leaderboardRows',[])
+              def score_hl(row):
+                  m=perf(row,'month');w=perf(row,'week')
+                  if f(m.get('pnl'))<100 or f(m.get('vlm'))<20000 or f(w.get('pnl'))<=0:return -1
+                  if not 0.01<=f(m.get('roi'))<=1.5:return -1
+                  return f(m.get('pnl'))
+              for r in sorted(rows,key=score_hl,reverse=True)[:35]:
+                  if len([x for x in sources if x['platform']=='Hyperliquid'])>=3:break
+                  if score_hl(r)<0:break
+                  w=r.get('ethAddress','')
+                  if not re.fullmatch(r'0x[0-9a-fA-F]{40}',w):continue
+                  try:
+                      if fetch_positions('Hyperliquid',w):
+                          sources.append({'platform':'Hyperliquid','wallet':w,'name':str(r.get('displayName') or w[:10])[:50],
+                            'source_pnl_30d_usd':str(f(perf(r,'month').get('pnl')))})
+                  except Exception as e: incidents.append('Hyperliquid : '+type(e).__name__)
+          except Exception as e: incidents.append('Classement Hyperliquid indisponible: '+str(e)[:150])
+          try:
+              rows=get(api_poly+'/v1/leaderboard?'+urlencode({'category':'OVERALL','timePeriod':'MONTH','orderBy':'PNL','limit':35}))
+              if isinstance(rows,dict):rows=rows.get('data',[])
+              for r in rows:
+                  if len([x for x in sources if x['platform']=='Polymarket'])>=2:break
+                  w=r.get('proxyWallet','')
+                  if not re.fullmatch(r'0x[0-9a-fA-F]{40}',w) or f(r.get('pnl'))<=0:continue
+                  try:
+                      if fetch_positions('Polymarket',w):
+                          sources.append({'platform':'Polymarket','wallet':w,'name':str(r.get('userName') or w[:10])[:50],
+                            'source_pnl_30d_usd':str(f(r.get('pnl')))})
+                  except Exception as e: incidents.append('Polymarket : '+type(e).__name__)
+          except Exception as e: incidents.append('Classement Polymarket indisponible: '+str(e)[:150])
+          report['sources']=sources
+          if not sources:
+              report['status']='AUCUN_PORTEFEUILLE_VERIFIABLE';save();raise SystemExit('Pas de portefeuilles publics vérifiables')
+          books={s['wallet']:{'positions':{},'realized_usd':0.0,'fees_usd':0.0,'last_valid':None} for s in sources}
+          start=time.monotonic()
+          for minute in range(0,duration+1,5):
+              if minute:time.sleep(max(0,start+minute*60-time.monotonic()))
+              try:mids=hl({'type':'allMids','dex':''})
+              except Exception as e:mids={};incidents.append('Prix Hyperliquid indisponibles: '+type(e).__name__)
+              latest=[];observed=0
+              for s in sources:
+                  wallet=s['wallet']; platform=s['platform']; book=books[wallet]
+                  try:
+                      positions=fetch_positions(platform,wallet)
+                      prices=get_prices(platform,set(positions)|set(book['positions']),mids)
+                      if any(a not in prices for a in set(positions)|set(book['positions'])):
+                          raise ValueError('prix manquant : pas de rééquilibrage')
+                      observed+=1
+                      # Limite l'exposition fictive à 70% du budget de 10 EUR.
+                      notionals={a:abs(q)*prices[a] for a,q in positions.items()}
+                      total=sum(notionals.values())
+                      targets={a:(7*fx*(q*prices[a]/total)/prices[a]) for a,q in positions.items()} if total else {}
+                      for a in set(book['positions'])|set(targets):
+                          old=book['positions'].get(a)
+                          oldqty=old['qty'] if old else 0
+                          newqty=targets.get(a,0)
+                          px=prices[a]
+                          if abs(newqty-oldqty)>1e-10:
+                              if oldqty:
+                                  book['realized_usd']+=oldqty*(px-old['entry'])
+                              book['fees_usd']+=abs(newqty-oldqty)*px*0.001
+                              report['trades'].append({'minute':minute,'platform':platform,'wallet':wallet,'asset':a,
+                               'action':'MODIFICATION_POSITION_SIMULEE','quantity_change':round(newqty-oldqty,8),'observed_price_usd':px})
+                          if abs(newqty)>1e-10:
+                              book['positions'][a]={'qty':newqty,'entry':px if abs(newqty-oldqty)>1e-10 else old['entry']}
+                          else:book['positions'].pop(a,None)
+                      floating=sum(p['qty']*(prices[a]-p['entry']) for a,p in book['positions'].items())
+                      pnl=(book['realized_usd']+floating-book['fees_usd'])/fx
+                      entry={**s,'equity_eur':round(10+pnl,2),'pnl_eur':round(pnl,2),'fresh':True,
+                         'positions':[{'symbol':a,'qty':round(p['qty'],8),'side':'LONG' if p['qty']>0 else 'SHORT',
+                         'mark_usd':prices[a],'source_url':('https://app.hyperliquid.xyz/explorer/address/'+wallet if platform=='Hyperliquid' else 'https://polymarket.com/profile/'+wallet)} for a,p in book['positions'].items()]}
+                      book['last_valid']=entry;latest.append(entry)
+                  except Exception as e:
+                      incidents.append(f'{minute} min {platform}: {str(e)[:120]}')
+                      # Conserve le dernier relevé comme périmé, jamais comme cours live.
+                      if book['last_valid']:latest.append({**book['last_valid'],'fresh':False})
+              total=50+sum(x['pnl_eur'] for x in latest)
+              report['samples'].append({'observed_at_utc':iso(),'minute':minute,'total_eur':round(total,2),
+                'pnl_eur':round(total-50,2),'cash_unallocated_eur':10*(5-len(sources)), 'portfolios':latest})
+              report['status']='EN_COURS' if minute<duration and observed else ('TERMINE' if observed else 'SOURCE_INDISPONIBLE')
+              save();print('Minute',minute,'/',duration,'sources',observed,'/',len(sources),'total',round(total,2),'EUR',flush=True)
+          PY
