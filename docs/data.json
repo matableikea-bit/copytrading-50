@@ -1,10 +1,10 @@
 {
-  "status": "CONFIGURATION_REQUISE",
+  "status": "MARCHE_FERME_OU_SOURCE_INDISPONIBLE",
   "mode": "PAPER_REAL_STOCK_WATCHLIST",
   "stock_quotes": "REAL_IEX",
   "copy_trading": "NOT_CONNECTED",
   "adaptation": "RISK_ONLY_NO_AUTONOMOUS_TRADING",
-  "started_at_utc": "2026-11-14T18:07:32+00:00",
+  "started_at_utc": "2026-11-14T19:10:24+00:00",
   "duration_minutes": 240,
   "interval_minutes": 5,
   "capital_initial_eur": "50.00",
@@ -12,7 +12,7 @@
   "incidents": [
     {
       "minute": 0,
-      "reason": "Clés Alpaca IEX absentes ; aucun prix inventé"
+      "reason": "Marché actions US fermé : aucun cours live disponible."
     }
   ],
   "disclosure": "Quatre vraies actions observées, un portefeuille en cash; pas de copie de traders.",
