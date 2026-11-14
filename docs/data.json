@@ -1,0 +1,47 @@
+{
+  "status": "CONFIGURATION_REQUISE",
+  "mode": "PAPER_REAL_STOCK_WATCHLIST",
+  "stock_quotes": "REAL_IEX",
+  "copy_trading": "NOT_CONNECTED",
+  "adaptation": "RISK_ONLY_NO_AUTONOMOUS_TRADING",
+  "started_at_utc": "2026-11-14T18:07:32+00:00",
+  "duration_minutes": 240,
+  "interval_minutes": 5,
+  "capital_initial_eur": "50.00",
+  "samples": [],
+  "incidents": [
+    {
+      "minute": 0,
+      "reason": "Clés Alpaca IEX absentes ; aucun prix inventé"
+    }
+  ],
+  "disclosure": "Quatre vraies actions observées, un portefeuille en cash; pas de copie de traders.",
+  "fidelity": "IEX temps réel pendant la séance; taux BCE quotidien non exécutable",
+  "portfolios_initial": [
+    {
+      "id": "pelosi",
+      "label": "Nancy Pelosi",
+      "budget_eur": "10.00"
+    },
+    {
+      "id": "telegram",
+      "label": "Trader Telegram",
+      "budget_eur": "10.00"
+    },
+    {
+      "id": "top_traders",
+      "label": "Trader pro / Top Traders",
+      "budget_eur": "10.00"
+    },
+    {
+      "id": "institutional",
+      "label": "Fonds d’investissement",
+      "budget_eur": "10.00"
+    },
+    {
+      "id": "polymarket",
+      "label": "Polymarket (actions : inactif)",
+      "budget_eur": "10.00"
+    }
+  ]
+}
