@@ -1,0 +1,62 @@
+name: "Actions réelles — simulation 50 € à la demande"
+
+on:
+  workflow_dispatch:
+    inputs:
+      duration_minutes:
+        description: "Durée en minutes (5 à 330, multiple de 5)"
+        required: true
+        default: "60"
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: paper-live-stocks
+  cancel-in-progress: false
+
+jobs:
+  watch-us-stocks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Vérifier la durée
+        env:
+          REQUESTED_DURATION: ${{ inputs.duration_minutes }}
+        run: |
+          python - <<'PY'
+          import os
+          value = os.environ['REQUESTED_DURATION']
+          if not value.isdecimal() or not 5 <= int(value) <= 330 or int(value) % 5:
+              raise SystemExit('Durée requise : 5 à 330 minutes, multiple de 5')
+          PY
+      - name: Extraire le pack Python
+        run: |
+          python -m zipfile -e source-v3.zip .
+          test -f stock_session.py
+          test -f docs/index.html
+      - name: Sauver le dashboard public initial
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p docs
+          git add docs/index.html
+          if ! git diff --cached --quiet; then git commit -m "Add public paper trading dashboard"; git push; fi
+      - name: Simuler les cotations IEX et publier les relevés (toutes les 5 min)
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_API_SECRET: ${{ secrets.ALPACA_API_SECRET }}
+          SESSION_DURATION: ${{ inputs.duration_minutes }}
+        run: |
+          python publish_session.py --minutes "$SESSION_DURATION"
+      - name: Sauvegarder le rapport final même en cas d'échec
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-papier-${{ github.run_id }}
+          path: docs/data.json
+          if-no-files-found: warn
