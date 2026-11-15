@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T03:47:16+00:00",
+  "updated_at_utc": "2026-11-15T03:52:13+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -16,6 +16,13 @@
       "observed_at_utc": "2026-11-15T03:47:16+00:00",
       "capital_eur": 49.4533,
       "poly_trades": 4,
+      "fomo_trades": 0,
+      "poly_risk_exits": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T03:52:13+00:00",
+      "capital_eur": 49.3178,
+      "poly_trades": 5,
       "fomo_trades": 0,
       "poly_risk_exits": 0
     }
@@ -81,7 +88,7 @@
             "token": "108534542077320679697693708499731792701102813975517222080622181321794355009924",
             "qty": "16.66484950414661021863944789",
             "mark": "0.42",
-            "updated_at": 1794714436.4765146,
+            "updated_at": 1794714675.4759252,
             "cost_eur": "6.51300",
             "name": "Vikings vs. Packers",
             "opened_at": 1794714434.305563
@@ -241,10 +248,21 @@
         "wallet": "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
         "venue": "Polymarket",
         "budget": "8.00",
-        "cash": "8.00",
-        "positions": {},
+        "cash": "1.48700",
+        "positions": {
+          "46519015104064379455425407273873158568522319672591874878173170571801901690261": {
+            "token": "46519015104064379455425407273873158568522319672591874878173170571801901690261",
+            "qty": "11.74735292915252851477862720",
+            "mark": "0.6",
+            "updated_at": 1794714675.4579184,
+            "cost_eur": "6.51300",
+            "name": "Spread: North Dakota State (-5.5)",
+            "opened_at": 1794714644.8814352
+          }
+        },
         "seen": [
           "0187d005197e1401a13690b83bb531aaa277a4ed98595f7bff4734aa46951dad",
+          "09dffa6332a86a2b46063eb120ab0c27939e6d3d743991116194d712f54fe93a",
           "0a5584f37052ee7c730ad776d82770080c1537c83ef325606169c3bdea4eb2aa",
           "0fe4561fab32440891abf0a43c0c9bbe3bb41e13fc2466f64a73e0c8faa5841e",
           "0fec7b820963d3d7922da9ab5a4b92620dceca05c87e21ec99b90362dd697860",
@@ -273,6 +291,7 @@
           "865e8011f26d8017244c9657eb8f1cd3cbcd687cd5cfa2ce302fce7f21c5d2b0",
           "8c04d04bef0b79195988be424967262396240819184d4ed557dd87392f474874",
           "8eb15a41231a614196e40f431c430f640a8e1a414e527b67f3561540e7b05c02",
+          "8f55ee4e86f1c20cafb7f8836553f0b5afc85f4258f8b5f60260b8c98cd293f3",
           "916dbcc60893629c4ab9e2045029102037c7e4518ef352b220810f8537674cad",
           "a5409a1f1b1ce6802df9e06238ca44058dda96d1c216f5f3ae7be3ccc5ad8dc8",
           "ad9cc19ee7989be7c261a788046dc54fd8976c67b177ccc26e1ab97f387139fe",
@@ -292,11 +311,34 @@
           "e6f74e2133e950b8583b167cc5f16fe99bcecbcd0165ffcea257b9f392b2000a",
           "f680388e952546813722a9a6007605c9f10db09e4b85ce65405d580e1146f8b4",
           "f6813be3412a725f3a191b7935239d6d19604a112db72196f2f149b5cf5b77a4",
+          "f95975854a904a5fb6935801df6dbeef6603a10f3bc8fe041f18d5c83c60c163",
           "fa3c792c3b4c18ae30dd7f5aa303503af7b1bbc06ee958fb7ea036b3ddcc8e4a",
-          "ff09e7f1774f9b202c791a57db2ca661e609a6a24faafe17420df95d9b455211"
+          "ff09e7f1774f9b202c791a57db2ca661e609a6a24faafe17420df95d9b455211",
+          "poly:09dffa6332a86a2b46063eb120ab0c27939e6d3d743991116194d712f54fe93a"
         ],
-        "trades": [],
-        "rejected": {},
+        "trades": [
+          {
+            "timestamp_utc": "2026-11-15T03:50:44+00:00",
+            "trader": "HomeRunHazard",
+            "platform": "Polymarket",
+            "source_id": "poly:09dffa6332a86a2b46063eb120ab0c27939e6d3d743991116194d712f54fe93a",
+            "source_timestamp_utc": "2026-11-15T03:49:46+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "46519015104064379455425407273873158568522319672591874878173170571801901690261",
+            "title": "Spread: North Dakota State (-5.5)",
+            "side": "BUY",
+            "copy_price_usd": "0.61",
+            "source_price_usd": "0.59",
+            "virtual_notional_eur": "6.5000",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          }
+        ],
+        "rejected": {
+          "stale_or_future_source_fill": 1,
+          "unpriced_source_fill_expired": 1
+        },
         "unsafe_quotes": [],
         "cooldowns": {}
       },
@@ -311,7 +353,7 @@
             "token": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
             "qty": "12.72917885793878900606833546",
             "mark": "0.6",
-            "updated_at": 1794714436.5070236,
+            "updated_at": 1794714675.4759421,
             "cost_eur": "7.057346655178447324312170394",
             "name": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
             "opened_at": 1794714434.6254346
@@ -438,7 +480,7 @@
             "token": "30289940090088667668050088376461003061362172048916753227271073157706533834577",
             "qty": "21.07613319642071292357341939",
             "mark": "0.33",
-            "updated_at": 1794714436.5070417,
+            "updated_at": 1794714675.475951,
             "cost_eur": "6.51300",
             "name": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
             "opened_at": 1794714435.9683743
@@ -548,9 +590,12 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T03:47:13+00:00",
+    "last_poll": "2026-11-15T03:51:45+00:00",
     "started_at": 1794714129.2505972,
-    "errors": []
+    "errors": [
+      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)",
+      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)"
+    ]
   },
   "fomo": {
     "books": {
@@ -659,8 +704,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 116,
-      "unselected_or_unverified": 10
+      "non_live_alert": 131,
+      "unselected_or_unverified": 17
     },
     "errors": [],
     "reconnects": 0
