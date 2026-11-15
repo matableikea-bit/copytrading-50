@@ -3,20 +3,20 @@
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T05:33:12+00:00",
+  "observed_at_utc": "2026-11-15T05:38:12+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
-  "capital_eur": 46.7237,
-  "pnl_eur": null,
-  "capital_valuation_status": "UNRELIABLE_STALE_OR_QUARANTINED",
+  "capital_eur": 45.148,
+  "pnl_eur": -4.852,
+  "capital_valuation_status": "INDICATIVE_LIQUIDATION_QUOTES",
   "new_mirrored_trades": 12,
-  "polymarket_risk_exits_not_source_copies": 3,
-  "open_positions_not_liquidated": 7,
+  "polymarket_risk_exits_not_source_copies": 5,
+  "open_positions_not_liquidated": 5,
   "polymarket": {
     "budget_eur": 40.0,
-    "capital_eur": 36.72371,
+    "capital_eur": 35.148,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T05:32:44+00:00",
+    "last_poll_utc": "2026-11-15T05:37:46+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,14 +80,14 @@
             "qty": "16.66484950414661021863944789",
             "mark_usd": "0.42",
             "title": "Vikings vs. Packers",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           },
           {
             "token_id": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark_usd": "0.39",
             "title": "Spread: 49ers (-2.5)",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           }
         ]
       },
@@ -105,14 +105,14 @@
             "qty": "0.9400062793724959005222834286",
             "mark_usd": "0.45",
             "title": "Spread: Chiefs (-3.5)",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           },
           {
             "token_id": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark_usd": "0.26",
             "title": "Spread: Jaguars (-4.5)",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           }
         ]
       },
@@ -121,23 +121,16 @@
         "wallet": "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 0.54864,
-        "equity_eur": 7.74217,
-        "pnl_eur": -0.25783,
+        "cash_eur": 4.88701,
+        "equity_eur": 5.80934,
+        "pnl_eur": -2.19066,
         "positions": [
-          {
-            "token_id": "46519015104064379455425407273873158568522319672591874878173170571801901690261",
-            "qty": "11.74735292915252851477862720",
-            "mark_usd": "0.59",
-            "title": "Spread: North Dakota State (-5.5)",
-            "mark_age_seconds": 240
-          },
           {
             "token_id": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "1.306863611825617983369800383",
             "mark_usd": "0.78",
             "title": "Rockets vs. Wizards",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           }
         ]
       },
@@ -156,22 +149,14 @@
         "wallet": "0xf68a281980f8c13828e84e147e3822381d6e5b1b",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 9.08564,
-        "equity_eur": 9.99269,
-        "pnl_eur": 1.99269,
-        "positions": [
-          {
-            "token_id": "101603881415360735322856962039541488878256176329287774854805690311335985333809",
-            "qty": "1.822694938378057542924187797",
-            "mark_usd": "0.55",
-            "title": "Will Ciryl Gane win by KO or TKO?",
-            "mark_age_seconds": 1939
-          }
-        ]
+        "cash_eur": 10.34981,
+        "equity_eur": 10.34981,
+        "pnl_eur": 2.34981,
+        "positions": []
       }
     ],
     "new_mirrored_fills": 12,
-    "risk_exits": 3,
+    "risk_exits": 5,
     "pending_price_checks": 0,
     "trades": [
       {
@@ -329,6 +314,24 @@
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
       },
       {
+        "timestamp_utc": "2026-11-15T05:33:14+00:00",
+        "trader": "HomeRunHazard",
+        "platform": "Polymarket",
+        "trade_kind": "PAPER_RISK_EXIT_NOT_SOURCE_COPY",
+        "source_id": null,
+        "source_timestamp_utc": null,
+        "market": "POLYMARKET_RISK_EXIT",
+        "asset": "46519015104064379455425407273873158568522319672591874878173170571801901690261",
+        "title": "Spread: North Dakota State (-5.5)",
+        "side": "SELL",
+        "copy_price_usd": "0.41",
+        "source_price_usd": null,
+        "virtual_notional_eur": "4.3384",
+        "realized_pnl_eur": "-2.1746",
+        "exit_reason": "STOP_LOSS",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
         "timestamp_utc": "2026-11-15T03:47:14+00:00",
         "trader": "BreakTheBank",
         "platform": "Polymarket",
@@ -431,6 +434,24 @@
         "realized_pnl_eur": "2.0299",
         "exit_reason": "TAKE_PROFIT",
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T05:33:14+00:00",
+        "trader": "CUTJALENHURTS",
+        "platform": "Polymarket",
+        "trade_kind": "PAPER_RISK_EXIT_NOT_SOURCE_COPY",
+        "source_id": null,
+        "source_timestamp_utc": null,
+        "market": "POLYMARKET_RISK_EXIT",
+        "asset": "101603881415360735322856962039541488878256176329287774854805690311335985333809",
+        "title": "Will Ciryl Gane win by KO or TKO?",
+        "side": "SELL",
+        "copy_price_usd": "0.77",
+        "source_price_usd": null,
+        "virtual_notional_eur": "1.2642",
+        "realized_pnl_eur": "0.3199",
+        "exit_reason": "TAKE_PROFIT",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
       }
     ],
     "ignored": {
@@ -439,7 +460,7 @@
         "risk_cap_or_no_cash": 3
       },
       "nigiri99": {
-        "stale_or_future_source_fill": 126,
+        "stale_or_future_source_fill": 129,
         "risk_cap_or_no_cash": 27,
         "unpriced_source_fill_expired": 57,
         "market_not_ending_within_30h": 1
@@ -511,7 +532,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 1,
-    "last_message_utc": "2026-11-15T05:33:01+00:00",
+    "last_message_utc": "2026-11-15T05:38:01+00:00",
     "books": [
       {
         "name": "leo",
@@ -567,8 +588,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 474,
-      "unselected_or_unverified": 82
+      "non_live_alert": 489,
+      "unselected_or_unverified": 85
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -688,6 +709,13 @@
       "poly_trades": 12,
       "fomo_trades": 0,
       "poly_risk_exits": 3
+    },
+    {
+      "observed_at_utc": "2026-11-15T05:38:12+00:00",
+      "capital_eur": 45.148,
+      "poly_trades": 12,
+      "fomo_trades": 0,
+      "poly_risk_exits": 5
     }
   ],
   "snapshot_interval_minutes": 5,
