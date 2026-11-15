@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T12:43:13+00:00",
+  "updated_at_utc": "2026-11-15T12:44:11+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -487,6 +487,13 @@
       "poly_trades": 15,
       "fomo_trades": 0,
       "poly_risk_exits": 10
+    },
+    {
+      "observed_at_utc": "2026-11-15T12:44:11+00:00",
+      "capital_eur": 45.0712,
+      "poly_trades": 15,
+      "fomo_trades": 0,
+      "poly_risk_exits": 10
     }
   ],
   "issues": [],
@@ -550,7 +557,7 @@
             "token": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
             "qty": "13.27706009261109783141381614",
             "mark": "0.57",
-            "updated_at": 1794746542.0823395,
+            "updated_at": 1794746603.2676783,
             "cost_eur": "6.999082956958396923401840867",
             "name": "Patriots vs. Lions",
             "opened_at": 1794743575.1351802
@@ -559,7 +566,7 @@
             "token": "115409060983777450772125937546792914347599843448572648301569915268020202613802",
             "qty": "0.8100038550466332484419289538",
             "mark": "0.52",
-            "updated_at": 1794746542.0823076,
+            "updated_at": 1794746603.2515504,
             "cost_eur": "0.3901882454571278642325956544",
             "name": "Spread: Lions (-2.5)",
             "opened_at": 1794745696.3605025
@@ -1439,6 +1446,7 @@
           "3bf3b313360e6a0e054af47059ece89da6fbfc4e0257c46c771d4a8c60b406f7",
           "3c3c70d3c486fb4e0c367253d79234888b4b0a15d43191f9dcdd9f839e44208e",
           "3d9cbaf77927ec9c4f4e6f60c347e3c68ed2873ac4ff52da1022a116cbf63060",
+          "3dc08a9881b1ba2f50b730e0b5a351b8e055eb726356dfec4c4ef62fbdf852fa",
           "3e0adf8719831b25744baae5eb2b18f69fc109f892659dfcc4bcfd560c97170f",
           "3e3a16f9e1658027038b395935ca6751f80667da7add1889d018fb594db38f7a",
           "3f0eb29edb3e4c491df27accf0119c25c1615298f57fe41a2e54ba7e0ef410c6",
@@ -1680,6 +1688,7 @@
           "d7ac3051b8bd87ac8a501478683de9694806bdcb61124bc429cfda131c308547",
           "d82553183d1702a02fbe43e037cad53c44f2766e9c5e8e39987328eec90cdf91",
           "d88fdc996e2bcde3e9b247283383466aa57b15a589d0553e831a941295a1e715",
+          "d8b115a27e16f01cfd3562a474bb69bae52e6de32d932f64684f20d9a0457f1f",
           "d92f0e76d613935374c120404e37a49094481a109296c105e653ff49736b5b8b",
           "d95ba86d4efef1f7461c7731d9d697ef22cd9ef07c87fd2a5f10af8719ce5da6",
           "da57d68dd92935866ace7e042f23e76be48848b7216269dd4d8a5ddddf8ab25a",
@@ -1768,6 +1777,7 @@
           "poly:3a67496d366a777b024c5df32a8d889621ec93a2064a3784c62aeb8f460115b0",
           "poly:3c3c70d3c486fb4e0c367253d79234888b4b0a15d43191f9dcdd9f839e44208e",
           "poly:3d9cbaf77927ec9c4f4e6f60c347e3c68ed2873ac4ff52da1022a116cbf63060",
+          "poly:3dc08a9881b1ba2f50b730e0b5a351b8e055eb726356dfec4c4ef62fbdf852fa",
           "poly:41237af8c3b6bf707a6c532b28d66bea0c9ed81f4eaac81b48cb03965d81cea1",
           "poly:418ebd7c5a56ce53b3686f4cf7ca385d3387c93db2ce27a0fbb9d784824cbf74",
           "poly:445afcd00687a706ada7f9015b6bebd56777257d5ea3e37048f8a52aa79fac85",
@@ -1901,12 +1911,12 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 269,
+          "stale_or_future_source_fill": 270,
           "unpriced_source_fill_expired": 5,
           "risk_cap_or_no_cash": 20,
           "source_price_already_moved": 15,
           "invalid_or_extreme_source_price": 1,
-          "portfolio_drawdown_stop": 40
+          "portfolio_drawdown_stop": 41
         },
         "unsafe_quotes": [],
         "cooldowns": {
@@ -2617,7 +2627,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T12:42:52+00:00",
+    "last_poll": "2026-11-15T12:43:53+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
@@ -2779,8 +2789,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 1787,
-      "unselected_or_unverified": 354
+      "non_live_alert": 1790,
+      "unselected_or_unverified": 356
     },
     "errors": [],
     "reconnects": 5
