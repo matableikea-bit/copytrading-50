@@ -2,21 +2,21 @@
   "status": "PAPER_RUNNING",
   "mode": "PAPER_FOMO_30_EUR_POLY_20_EUR_V10",
   "started_at_utc": "2026-11-15T02:50:57.548754+00:00",
-  "observed_at_utc": "2026-11-15T03:00:58+00:00",
+  "observed_at_utc": "2026-11-15T03:05:59+00:00",
   "duration_minutes": 330,
   "capital_initial_eur": 50,
-  "capital_eur": 49.6553,
+  "capital_eur": 49.5863,
   "capital_valuation_status": "INDICATIVE_QUOTES_NO_REPORTED_ANOMALIES",
-  "pnl_eur": -0.3447,
-  "pnl_eur_if_all_marks_valid": -0.3447,
-  "new_mirrored_trades": 9,
+  "pnl_eur": -0.4137,
+  "pnl_eur_if_all_marks_valid": -0.4137,
+  "new_mirrored_trades": 11,
   "marks_reliability": "NO_REPORTED_MARK_ANOMALIES",
   "stale_positions_over_15min": 0,
   "polymarket": {
     "budget_eur": 20.0,
-    "capital_eur": 19.65531,
+    "capital_eur": 19.58631,
     "rankings_as_of_utc": "2026-11-15T02:50:55+00:00",
-    "last_poll_utc": "2026-11-15T03:00:42+00:00",
+    "last_poll_utc": "2026-11-15T03:05:45+00:00",
     "watched_wallets": 10,
     "selected_winners": [
       {
@@ -117,8 +117,8 @@
         "platform": "Polymarket",
         "initial_eur": 2.0,
         "cash_eur": 0.3968,
-        "equity_eur": 1.96037,
-        "pnl_eur": -0.03963,
+        "equity_eur": 2.0112,
+        "pnl_eur": 0.0112,
         "positions": [
           {
             "token_id": "55312781745086958549818693395440531431492427818819125634808790042923674294197",
@@ -130,21 +130,21 @@
           {
             "token_id": "43659502772185997089048224285491540379213029616892498735313428692694433249344",
             "qty": "0.8646618747249523250696787443",
-            "mark_usd": "0.495",
+            "mark_usd": "0.57",
             "title": "Will Perplexity launch a Muse-like personal agent before 2027?",
             "mark_age_seconds": 0
           },
           {
             "token_id": "109252931404335034637458223452909545621063881702767194554079363911098025603809",
             "qty": "0.5726981248178255659552417657",
-            "mark_usd": "0.755",
+            "mark_usd": "0.75",
             "title": "Will Moonshot be the third-best Chinese AI company at the end of November 2026?",
             "mark_age_seconds": 0
           },
           {
             "token_id": "8285136817825710261858017204258985493688244314834724739205991351192086485495",
             "qty": "0.4641869011681323008268801680",
-            "mark_usd": "0.930",
+            "mark_usd": "0.9175",
             "title": "Will PP win the most seats in Castellón in the 2026 Spanish general election?",
             "mark_age_seconds": 0
           }
@@ -191,7 +191,7 @@
             "qty": "0.8819551122194513715710723192",
             "mark_usd": "0.495",
             "title": "New Mexico Lobos vs. Santa Clara Broncos: O/U 165.5",
-            "mark_age_seconds": 295
+            "mark_age_seconds": 596
           }
         ]
       },
@@ -200,16 +200,30 @@
         "wallet": "0xd218e474776403a330142299f7796e8ba32eb5c9",
         "platform": "Polymarket",
         "initial_eur": 2.0,
-        "cash_eur": 0.99174,
-        "equity_eur": 1.70652,
-        "pnl_eur": -0.29348,
+        "cash_eur": 0.33778,
+        "equity_eur": 1.58669,
+        "pnl_eur": -0.41331,
         "positions": [
           {
             "token_id": "40217535979594382892270035974395609778209345077929307812668700224114300427620",
             "qty": "3.361595290601221025669991670",
             "mark_usd": "0.235",
             "title": "Bulls vs. Timberwolves",
+            "mark_age_seconds": 301
+          },
+          {
+            "token_id": "108219704549399147171726985345356262239199361318934193188133077315032734690573",
+            "qty": "2.939850374064837905236907731",
+            "mark_usd": "0.125",
+            "title": "Pistons vs. Heat",
             "mark_age_seconds": 0
+          },
+          {
+            "token_id": "53179265800497683070382619445915444696263386636692030258891503717041954258980",
+            "qty": "5.570850139932610824429175705",
+            "mark_usd": "0.04",
+            "title": "Spread: Timberwolves (-7.5)",
+            "mark_age_seconds": 295
           }
         ]
       },
@@ -264,7 +278,7 @@
         "positions": []
       }
     ],
-    "new_mirrored_fills": 9,
+    "new_mirrored_fills": 11,
     "trades": [
       {
         "timestamp_utc": "2026-11-15T02:56:00+00:00",
@@ -409,35 +423,66 @@
         "virtual_notional_eur": "0.2062",
         "source_amount_not_copied": true,
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:01:04+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "source_id": "poly:f9dcb2cca37ce67f0ab96edf8e81512bedc9444be577887c0cc986153c1cff67",
+        "source_timestamp_utc": "2026-11-15T03:00:04+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "108219704549399147171726985345356262239199361318934193188133077315032734690573",
+        "title": "Pistons vs. Heat",
+        "side": "BUY",
+        "copy_price_usd": "0.15",
+        "source_price_usd": "0.18",
+        "virtual_notional_eur": "0.4000",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:01:04+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "source_id": "poly:4047588504db709c17ac697ca409e029f48ea55154db406ffc157e66948af6ff",
+        "source_timestamp_utc": "2026-11-15T03:00:11+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "53179265800497683070382619445915444696263386636692030258891503717041954258980",
+        "title": "Spread: Timberwolves (-7.5)",
+        "side": "BUY",
+        "copy_price_usd": "0.05",
+        "source_price_usd": "0.03",
+        "virtual_notional_eur": "0.2527",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
       }
     ],
     "ignored": {
       "xtxpleasecallme": {
-        "stale_or_future_source_fill": 7,
-        "price_or_liquidity_unavailable": 18
+        "stale_or_future_source_fill": 13,
+        "price_or_liquidity_unavailable": 25,
+        "risk_cap_or_no_cash": 5
+      },
+      "0x492442EaB586F242B53bDa933fD5dE859c8A3782-17663": {
+        "stale_or_future_source_fill": 1
+      },
+      "HomeRunHazard": {
+        "price_or_liquidity_unavailable": 1
       },
       "cigarettes": {
-        "stale_or_future_source_fill": 6,
-        "price_or_liquidity_unavailable": 2
+        "stale_or_future_source_fill": 11,
+        "price_or_liquidity_unavailable": 3,
+        "risk_cap_or_no_cash": 1
       },
       "balthazar": {
-        "stale_or_future_source_fill": 1,
-        "price_or_liquidity_unavailable": 2
+        "stale_or_future_source_fill": 2,
+        "price_or_liquidity_unavailable": 6
       },
       "Bigggggggg": {
         "stale_or_future_source_fill": 1
       }
     },
     "errors": [
-      "0x5a218c7ad0:ValueError",
-      "0x5a218c7ad0:ValueError",
-      "0xad5353afe3:ValueError",
-      "0xad5353afe3:ValueError",
-      "0xad5353afe3:ValueError",
-      "0xad5353afe3:ValueError",
-      "0xad5353afe3:ValueError",
-      "0xad5353afe3:ValueError",
-      "0xad5353afe3:ValueError",
       "0xad5353afe3:ValueError",
       "0xad5353afe3:ValueError",
       "0xad5353afe3:ValueError",
@@ -451,6 +496,22 @@
       "0xad5353afe3:ValueError",
       "0xd218e47477:ValueError",
       "0xd218e47477:ValueError",
+      "mark:681146159393606:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0x5268527977:ValueError",
+      "0xd218e47477:ValueError",
+      "0x5a218c7ad0:ValueError",
+      "0x5a218c7ad0:ValueError",
+      "0x5a218c7ad0:ValueError",
+      "0x5a218c7ad0:ValueError",
+      "mark:402175359795943:ValueError",
+      "mark:531792658004976:ValueError",
       "mark:681146159393606:ValueError"
     ],
     "quotes_quarantined": 0
@@ -469,7 +530,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T03:00:48+00:00",
+    "last_message_utc": "2026-11-15T03:05:43+00:00",
     "books": [
       {
         "name": "leo",
@@ -525,8 +586,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 131,
-      "unselected_or_unverified": 27
+      "non_live_alert": 146,
+      "unselected_or_unverified": 53
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -551,6 +612,12 @@
       "observed_at_utc": "2026-11-15T03:00:58+00:00",
       "capital_eur": 49.6553,
       "poly_trades": 9,
+      "fomo_trades": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T03:05:59+00:00",
+      "capital_eur": 49.5863,
+      "poly_trades": 11,
       "fomo_trades": 0
     }
   ],
