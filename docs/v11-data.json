@@ -2,7 +2,7 @@
   "status": "PAPER_RUNNING",
   "mode": "PAPER_FOMO_20_EUR_POLY_30_EUR_V11_FAST",
   "started_at_utc": "2026-11-15T03:12:31.235087+00:00",
-  "observed_at_utc": "2026-11-15T03:32:32+00:00",
+  "observed_at_utc": "2026-11-15T03:37:33+00:00",
   "duration_minutes": 330,
   "capital_initial_eur": 50,
   "capital_eur": 48.7769,
@@ -18,7 +18,7 @@
     "budget_eur": 30.0,
     "capital_eur": 28.77688,
     "rankings_as_of_utc": "2026-11-15T03:12:29+00:00",
-    "last_poll_utc": "2026-11-15T03:32:26+00:00",
+    "last_poll_utc": "2026-11-15T03:37:30+00:00",
     "watched_wallets": 10,
     "selected_winners": [
       {
@@ -127,14 +127,14 @@
             "qty": "0.9416960020174306024191089716",
             "mark_usd": "0.625",
             "title": "Will Davante Adams have 7.5+ receiving touchdowns in the 2026-27 NFL regular season?",
-            "mark_age_seconds": 53
+            "mark_age_seconds": 52
           },
           {
             "token_id": "104279604547231872129402198190232956636095665469278761891693384128061158683041",
             "qty": "3.598385661849253550889043625",
             "mark_usd": "0.575",
             "title": "Will Bitcoin dip to $60,000 by December 31, 2026?",
-            "mark_age_seconds": 53
+            "mark_age_seconds": 52
           }
         ]
       },
@@ -162,14 +162,14 @@
             "qty": "2.790997190567884087250228858",
             "mark_usd": "0.785",
             "title": "Louisville Cardinals vs. Memphis Tigers",
-            "mark_age_seconds": 53
+            "mark_age_seconds": 52
           },
           {
             "token_id": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "0.7664666192880225369819571980",
             "mark_usd": "0.785",
             "title": "Rockets vs. Wizards",
-            "mark_age_seconds": 53
+            "mark_age_seconds": 52
           }
         ]
       },
@@ -207,7 +207,7 @@
             "qty": "2.227159374291543867603717978",
             "mark_usd": "0.97",
             "title": "Will the lowest temperature in Hong Kong be 25°C on November 16?",
-            "mark_age_seconds": 53
+            "mark_age_seconds": 52
           }
         ]
       },
@@ -235,7 +235,7 @@
             "qty": "0.6563299150785638236817242877",
             "mark_usd": "0.9255",
             "title": "Will Texas Longhorns win the 2027 CFP National Championship?",
-            "mark_age_seconds": 53
+            "mark_age_seconds": 52
           }
         ]
       },
@@ -262,7 +262,7 @@
     ],
     "new_mirrored_fills": 11,
     "risk_exits": 5,
-    "pending_price_checks": 1,
+    "pending_price_checks": 0,
     "trades": [
       {
         "timestamp_utc": "2026-11-15T03:16:12+00:00",
@@ -544,39 +544,28 @@
     ],
     "ignored": {
       "xtxpleasecallme": {
-        "stale_or_future_source_fill": 32,
-        "unpriced_source_fill_expired": 13,
-        "risk_cap_or_no_cash": 8
+        "stale_or_future_source_fill": 36,
+        "unpriced_source_fill_expired": 15,
+        "risk_cap_or_no_cash": 12
       },
       "HomeRunHazard": {
         "stale_or_future_source_fill": 9,
-        "risk_cap_or_no_cash": 18,
+        "risk_cap_or_no_cash": 20,
         "unpriced_source_fill_expired": 1
       },
       "balthazar": {
-        "stale_or_future_source_fill": 5,
+        "stale_or_future_source_fill": 9,
         "no_position_to_sell": 1,
-        "unpriced_source_fill_expired": 4
+        "unpriced_source_fill_expired": 9
       },
       "cigarettes": {
-        "stale_or_future_source_fill": 17,
+        "stale_or_future_source_fill": 28,
         "risk_cap_or_no_cash": 6,
-        "unpriced_source_fill_expired": 11,
-        "portfolio_drawdown_stop": 5
+        "unpriced_source_fill_expired": 16,
+        "portfolio_drawdown_stop": 10
       }
     },
     "errors": [
-      "0xad5353afe3:quote:Invalid or illiquid spread",
-      "0xad5353afe3:quote:Invalid or illiquid spread",
-      "0xad5353afe3:quote:Invalid or illiquid spread",
-      "0xad5353afe3:quote:Invalid or illiquid spread",
-      "0xad5353afe3:quote:Invalid or illiquid spread",
-      "0xad5353afe3:quote:Invalid or illiquid spread",
-      "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)",
-      "0xad5353afe3:quote:Empty book side",
-      "0xad5353afe3:quote:Invalid or illiquid spread",
-      "0xd218e47477:quote:Empty book side",
-      "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)",
       "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)",
       "0x5a218c7ad0:quote:HTTP Error 404: Not Found",
       "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)",
@@ -595,7 +584,18 @@
       "0x5268527977:quote:Invalid or illiquid spread",
       "0xd218e47477:quote:Empty book side",
       "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)",
-      "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)"
+      "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)",
+      "0x5a218c7ad0:quote:Invalid or illiquid spread",
+      "0x5a218c7ad0:quote:Empty book side",
+      "0x5a218c7ad0:quote:Empty book side",
+      "0x5a218c7ad0:quote:Empty book side",
+      "0x5a218c7ad0:quote:Empty book side",
+      "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xd218e47477:quote:Invalid or illiquid spread",
+      "0xd218e47477:quote:Invalid or illiquid spread",
+      "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)",
+      "0xd218e47477:quote:Invalid or illiquid spread",
+      "0xd218e47477:quote:Invalid or illiquid spread"
     ],
     "quotes_quarantined": 0
   },
@@ -613,7 +613,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T03:32:21+00:00",
+    "last_message_utc": "2026-11-15T03:37:21+00:00",
     "books": [
       {
         "name": "leo",
@@ -669,8 +669,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 161,
-      "unselected_or_unverified": 64,
+      "non_live_alert": 176,
+      "unselected_or_unverified": 79,
       "unsupported_alert_type": 1
     },
     "source_errors": [],
@@ -710,6 +710,13 @@
     },
     {
       "observed_at_utc": "2026-11-15T03:32:32+00:00",
+      "capital_eur": 48.7769,
+      "poly_trades": 11,
+      "fomo_trades": 0,
+      "poly_risk_exits": 5
+    },
+    {
+      "observed_at_utc": "2026-11-15T03:37:33+00:00",
       "capital_eur": 48.7769,
       "poly_trades": 11,
       "fomo_trades": 0,
