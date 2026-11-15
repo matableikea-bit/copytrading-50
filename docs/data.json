@@ -2,9 +2,9 @@
   "status": "SIMULATION_PAPER",
   "mode": "PAPER_MIRROR_FOMO_SIGNALS_V9",
   "started_at_utc": "2026-11-15T02:10:26+00:00",
-  "observed_at_utc": "2026-11-15T02:15:32+00:00",
+  "observed_at_utc": "2026-11-15T02:20:32+00:00",
   "capital_initial_eur": 50,
-  "capital_eur": 7442.6771,
+  "capital_eur": 7643.7476,
   "portfolios": [
     {
       "name": "leo",
@@ -35,8 +35,8 @@
     {
       "name": "heat",
       "platform": "FOMO",
-      "equity_eur": 10.0293,
-      "pnl_eur": 0.0293,
+      "equity_eur": 10.0544,
+      "pnl_eur": 0.0544,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -44,7 +44,7 @@
           "chain": "solana",
           "token": "HuAXPyDWDaMYFKuwQHpqL1oPnj93zdzWmtvFGzCeCUa7",
           "qty": "73.77246148506127680025632126",
-          "mark_usd": "0.02337",
+          "mark_usd": "0.02390",
           "symbol": "HuAXPyDWDa",
           "side": "LONG"
         },
@@ -52,7 +52,7 @@
           "chain": "solana",
           "token": "MoR1whCWjcLiUqAan4GHLRcn8wK4Jktk2DyDryNmeta",
           "qty": "19.11637778196743712195771634",
-          "mark_usd": "0.08512",
+          "mark_usd": "0.08453",
           "symbol": "MoR1whCWjc",
           "side": "LONG"
         }
@@ -61,8 +61,8 @@
     {
       "name": "minhxdynasty",
       "platform": "FOMO",
-      "equity_eur": 9.9801,
-      "pnl_eur": -0.0199,
+      "equity_eur": 10.0506,
+      "pnl_eur": 0.0506,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -70,7 +70,7 @@
           "chain": "solana",
           "token": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
           "qty": "109.3867532364701690486559246",
-          "mark_usd": "0.01506",
+          "mark_usd": "0.01522",
           "symbol": "4CxjZyMNoF",
           "side": "LONG"
         },
@@ -78,7 +78,7 @@
           "chain": "solana",
           "token": "H8xQ6poBjB9DTPMDTKWzWPrnxu4bDEhybxiouF8Ppump",
           "qty": "1550.331051509370441027942992",
-          "mark_usd": "0.001064",
+          "mark_usd": "0.001103",
           "symbol": "H8xQ6poBjB",
           "side": "LONG"
         }
@@ -87,8 +87,8 @@
     {
       "name": "joecroskey",
       "platform": "FOMO",
-      "equity_eur": 7402.7042,
-      "pnl_eur": 7392.7042,
+      "equity_eur": 7603.6712,
+      "pnl_eur": 7593.6712,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -96,7 +96,7 @@
           "chain": "solana",
           "token": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
           "qty": "109.3867532364701690486559246",
-          "mark_usd": "0.01506",
+          "mark_usd": "0.01522",
           "symbol": "4CxjZyMNoF",
           "side": "LONG"
         },
@@ -104,7 +104,7 @@
           "chain": "solana",
           "token": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
           "qty": "58.66117492197617884970595104",
-          "mark_usd": "139.31",
+          "mark_usd": "143.096",
           "symbol": "Ce2gx9KGXJ",
           "side": "LONG"
         }
@@ -113,8 +113,8 @@
     {
       "name": "bronbroncore",
       "platform": "FOMO",
-      "equity_eur": 9.9814,
-      "pnl_eur": -0.0186,
+      "equity_eur": 9.9893,
+      "pnl_eur": -0.0107,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -122,7 +122,7 @@
           "chain": "solana",
           "token": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
           "qty": "109.1695723895413732133508500",
-          "mark_usd": "0.01506",
+          "mark_usd": "0.01522",
           "symbol": "4CxjZyMNoF",
           "side": "LONG"
         },
@@ -130,7 +130,7 @@
           "chain": "solana",
           "token": "31k88G5Mq7ptbRDf3AM13HAq6wRQHXHikR8hik7wPygk",
           "qty": "6.713684325624624132086818654",
-          "mark_usd": "0.2464",
+          "mark_usd": "0.2451",
           "symbol": "31k88G5Mq7",
           "side": "LONG"
         }
@@ -139,11 +139,11 @@
   ],
   "trades": [],
   "ignored": {
-    "not_new_feed_trade": 116,
-    "unknown_or_unverified_trader": 16,
-    "not_buy_sell_or_supported_perp": 2,
-    "perp_action_unknown": 8,
-    "perp_short_requires_separate_model": 4
+    "not_new_feed_trade": 131,
+    "unknown_or_unverified_trader": 26,
+    "not_buy_sell_or_supported_perp": 7,
+    "perp_action_unknown": 13,
+    "perp_short_requires_separate_model": 7
   },
   "watchlist_selected": [
     "leo",
@@ -264,86 +264,6 @@
   "last_rejections": [
     {
       "reason": "unknown_or_unverified_trader",
-      "trader": "floziah",
-      "alert_type": "buy"
-    },
-    {
-      "reason": "unknown_or_unverified_trader",
-      "trader": "FondPlumStoat",
-      "alert_type": "buy"
-    },
-    {
-      "reason": "unknown_or_unverified_trader",
-      "trader": "Naoya",
-      "alert_type": "sell"
-    },
-    {
-      "reason": "perp_action_unknown",
-      "trader": "yotuo",
-      "alert_type": "perp"
-    },
-    {
-      "reason": "unknown_or_unverified_trader",
-      "trader": "patrykkk",
-      "alert_type": "buy"
-    },
-    {
-      "reason": "unknown_or_unverified_trader",
-      "trader": "FondPlumStoat",
-      "alert_type": "buy"
-    },
-    {
-      "reason": "perp_short_requires_separate_model",
-      "trader": "SwiftyTrades",
-      "alert_type": "perp"
-    },
-    {
-      "reason": "perp_action_unknown",
-      "trader": "druskicapital",
-      "alert_type": "perp"
-    },
-    {
-      "reason": "unknown_or_unverified_trader",
-      "trader": "orangie",
-      "alert_type": "buy"
-    },
-    {
-      "reason": "perp_short_requires_separate_model",
-      "trader": "0xAvast",
-      "alert_type": "perp"
-    },
-    {
-      "reason": "perp_short_requires_separate_model",
-      "trader": "peptidezz",
-      "alert_type": "perp"
-    },
-    {
-      "reason": "perp_action_unknown",
-      "trader": "ninjaitsover",
-      "alert_type": "perp"
-    },
-    {
-      "reason": "perp_action_unknown",
-      "trader": "fxcxc",
-      "alert_type": "perp"
-    },
-    {
-      "reason": "unknown_or_unverified_trader",
-      "trader": "ioseekers",
-      "alert_type": "buy"
-    },
-    {
-      "reason": "unknown_or_unverified_trader",
-      "trader": "NavalNosySwan",
-      "alert_type": "buy"
-    },
-    {
-      "reason": "unknown_or_unverified_trader",
-      "trader": "FaintDustyLouse",
-      "alert_type": "buy"
-    },
-    {
-      "reason": "unknown_or_unverified_trader",
       "trader": "NavalNosySwan",
       "alert_type": "buy"
     },
@@ -401,6 +321,96 @@
       "reason": "perp_action_unknown",
       "trader": "fxcxc",
       "alert_type": "perp"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "malk",
+      "alert_type": "buy"
+    },
+    {
+      "reason": "perp_short_requires_separate_model",
+      "trader": "Awqnerd",
+      "alert_type": "perp"
+    },
+    {
+      "reason": "perp_action_unknown",
+      "trader": "yotuo",
+      "alert_type": "perp"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "EarlyRoyalBoa",
+      "alert_type": "sell"
+    },
+    {
+      "reason": "perp_action_unknown",
+      "trader": "ApBagz",
+      "alert_type": "perp"
+    },
+    {
+      "reason": "perp_action_unknown",
+      "trader": "sebdegen",
+      "alert_type": "perp"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "toastmybread",
+      "alert_type": "sell"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "toastmybread",
+      "alert_type": "buy"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "uhohitsevans",
+      "alert_type": "buy"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "masterrcr",
+      "alert_type": "buy"
+    },
+    {
+      "reason": "perp_short_requires_separate_model",
+      "trader": "yotuo",
+      "alert_type": "perp"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "masterrcr",
+      "alert_type": "buy"
+    },
+    {
+      "reason": "perp_short_requires_separate_model",
+      "trader": "JessePinkmanYO",
+      "alert_type": "perp"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "weknowthetruth",
+      "alert_type": "sell"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "lemonxest",
+      "alert_type": "buy"
+    },
+    {
+      "reason": "perp_action_unknown",
+      "trader": "fxcxc",
+      "alert_type": "perp"
+    },
+    {
+      "reason": "perp_action_unknown",
+      "trader": "RektNgmi",
+      "alert_type": "perp"
+    },
+    {
+      "reason": "unknown_or_unverified_trader",
+      "trader": "reetardio",
+      "alert_type": "buy"
     }
   ],
   "v9_description": "Spot buys/sells and explicit Hyperliquid LONG increases/reductions from verified selected traders. Perps modeled as unlevered directional paper exposure, without funding or liquidation. No real orders; no profits are guaranteed.",
@@ -414,6 +424,11 @@
       "observed_at_utc": "2026-11-15T02:15:32+00:00",
       "capital_eur": 7442.6771,
       "trades_total": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T02:20:32+00:00",
+      "capital_eur": 7643.7476,
+      "trades_total": 0
     }
   ],
   "marks_status": "QUOTES_OBSERVED",
@@ -421,7 +436,7 @@
     "feed": "Alpaca IEX (gratuit)",
     "trading_mode": "OBSERVATION_SEULEMENT",
     "copied_equity_trades": 0,
-    "observed_at_utc": "2026-11-15T02:15:32+00:00",
+    "observed_at_utc": "2026-11-15T02:20:32+00:00",
     "prices": {},
     "coverage": "IEX seulement (pas toutes les bourses US)",
     "sources": "https://docs.alpaca.markets/us/docs/about-market-data-api",
@@ -444,7 +459,7 @@
   "websocket": {
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T02:15:29+00:00",
+    "last_message_utc": "2026-11-15T02:20:20+00:00",
     "dropped": 0
   },
   "mark_errors": [],
