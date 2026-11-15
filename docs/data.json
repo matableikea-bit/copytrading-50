@@ -2,15 +2,15 @@
   "status": "SIMULATION_PAPER",
   "mode": "PAPER_MIRROR_FOMO_RANKED_V8",
   "started_at_utc": "2026-11-15T01:48:20+00:00",
-  "observed_at_utc": "2026-11-15T01:58:37+00:00",
+  "observed_at_utc": "2026-11-15T02:03:37+00:00",
   "capital_initial_eur": 50,
-  "capital_eur": 49.9299,
+  "capital_eur": 49.887,
   "portfolios": [
     {
       "name": "leo",
       "platform": "FOMO",
-      "equity_eur": 9.9793,
-      "pnl_eur": -0.0207,
+      "equity_eur": 9.9722,
+      "pnl_eur": -0.0278,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -26,7 +26,7 @@
           "chain": "solana",
           "token": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "qty": "1.649321333819235456289850764",
-          "mark_usd": "0.9983",
+          "mark_usd": "0.9935",
           "symbol": "EPjFWdd5Au",
           "side": "LONG"
         }
@@ -35,8 +35,8 @@
     {
       "name": "joecroskey",
       "platform": "FOMO",
-      "equity_eur": 9.9999,
-      "pnl_eur": -0.0001,
+      "equity_eur": 9.9892,
+      "pnl_eur": -0.0108,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -44,7 +44,7 @@
           "chain": "solana",
           "token": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
           "qty": "118.0781845959892733896729666",
-          "mark_usd": "0.01405",
+          "mark_usd": "0.01395",
           "symbol": "4CxjZyMNoF",
           "side": "LONG"
         },
@@ -61,8 +61,8 @@
     {
       "name": "bronbroncore",
       "platform": "FOMO",
-      "equity_eur": 9.9949,
-      "pnl_eur": -0.0051,
+      "equity_eur": 9.9842,
+      "pnl_eur": -0.0158,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -70,7 +70,7 @@
           "chain": "solana",
           "token": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
           "qty": "118.0781845959892733896729666",
-          "mark_usd": "0.01405",
+          "mark_usd": "0.01395",
           "symbol": "4CxjZyMNoF",
           "side": "LONG"
         },
@@ -87,8 +87,8 @@
     {
       "name": "0xsneakky",
       "platform": "FOMO",
-      "equity_eur": 9.9675,
-      "pnl_eur": -0.0325,
+      "equity_eur": 9.9603,
+      "pnl_eur": -0.0397,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -96,7 +96,7 @@
           "chain": "solana",
           "token": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "qty": "1.649321333819235456289850764",
-          "mark_usd": "0.9983",
+          "mark_usd": "0.9935",
           "symbol": "EPjFWdd5Au",
           "side": "LONG"
         },
@@ -113,8 +113,8 @@
     {
       "name": "peptidezz",
       "platform": "FOMO",
-      "equity_eur": 9.9883,
-      "pnl_eur": -0.0117,
+      "equity_eur": 9.9811,
+      "pnl_eur": -0.0189,
       "cash_eur": 8.4985,
       "wallet_verified": true,
       "positions": [
@@ -122,7 +122,7 @@
           "chain": "solana",
           "token": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "qty": "1.649321333819235456289850764",
-          "mark_usd": "0.9983",
+          "mark_usd": "0.9935",
           "symbol": "EPjFWdd5Au",
           "side": "LONG"
         }
@@ -131,10 +131,10 @@
   ],
   "trades": [],
   "ignored": {
-    "not_new_feed_trade": 47,
+    "not_new_feed_trade": 62,
     "stale_source_event": 84,
-    "unknown_or_unverified_trader": 9,
-    "not_buy_sell": 20
+    "unknown_or_unverified_trader": 14,
+    "not_buy_sell": 32
   },
   "watchlist_selected": [
     "leo",
@@ -253,6 +253,11 @@
       "observed_at_utc": "2026-11-15T01:58:37+00:00",
       "capital_eur": 49.9299,
       "trades_total": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T02:03:37+00:00",
+      "capital_eur": 49.887,
+      "trades_total": 0
     }
   ],
   "marks_status": "QUOTES_OBSERVED",
@@ -260,7 +265,7 @@
     "feed": "Alpaca IEX (gratuit)",
     "trading_mode": "OBSERVATION_SEULEMENT",
     "copied_equity_trades": 0,
-    "observed_at_utc": "2026-11-15T01:58:37+00:00",
+    "observed_at_utc": "2026-11-15T02:03:37+00:00",
     "prices": {},
     "coverage": "IEX seulement (pas toutes les bourses US)",
     "sources": "https://docs.alpaca.markets/us/docs/about-market-data-api",
@@ -283,7 +288,7 @@
   "websocket": {
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T01:58:20+00:00",
+    "last_message_utc": "2026-11-15T02:03:20+00:00",
     "dropped": 0
   },
   "mark_errors": [],
