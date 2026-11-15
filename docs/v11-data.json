@@ -2,23 +2,23 @@
   "status": "PAPER_RUNNING",
   "mode": "PAPER_FOMO_20_EUR_POLY_30_EUR_V11_FAST",
   "started_at_utc": "2026-11-15T03:12:31.235087+00:00",
-  "observed_at_utc": "2026-11-15T03:17:31+00:00",
+  "observed_at_utc": "2026-11-15T03:22:32+00:00",
   "duration_minutes": 330,
   "capital_initial_eur": 50,
-  "capital_eur": 49.9513,
+  "capital_eur": 49.5207,
   "capital_valuation_status": "INDICATIVE_QUOTES_NO_REPORTED_ANOMALIES",
-  "pnl_eur": -0.0487,
-  "pnl_eur_if_all_marks_valid": -0.0487,
-  "new_mirrored_trades": 4,
-  "polymarket_risk_exits_not_copied": 0,
+  "pnl_eur": -0.4793,
+  "pnl_eur_if_all_marks_valid": -0.4793,
+  "new_mirrored_trades": 8,
+  "polymarket_risk_exits_not_copied": 2,
   "strategy": "POLY_60MIN_MAX_HOLD_TP_6PCT_SL_6PCT_PAPER",
   "marks_reliability": "NO_REPORTED_MARK_ANOMALIES",
   "stale_positions_over_15min": 0,
   "polymarket": {
     "budget_eur": 30.0,
-    "capital_eur": 29.9513,
+    "capital_eur": 29.52066,
     "rankings_as_of_utc": "2026-11-15T03:12:29+00:00",
-    "last_poll_utc": "2026-11-15T03:17:13+00:00",
+    "last_poll_utc": "2026-11-15T03:22:16+00:00",
     "watched_wallets": 10,
     "selected_winners": [
       {
@@ -119,8 +119,8 @@
         "platform": "Polymarket",
         "initial_eur": 3.0,
         "cash_eur": 0.43967,
-        "equity_eur": 2.938,
-        "pnl_eur": -0.062,
+        "equity_eur": 2.92522,
+        "pnl_eur": -0.07478,
         "positions": [
           {
             "token_id": "62204256402490347712632483292413246323147495363226973125640631705087247892041",
@@ -132,7 +132,7 @@
           {
             "token_id": "10468522244663277918640274093121584146864021641813846564008862486791170535916",
             "qty": "0.9416960020174306024191089716",
-            "mark_usd": "0.64",
+            "mark_usd": "0.625",
             "title": "Will Davante Adams have 7.5+ receiving touchdowns in the 2026-27 NFL regular season?",
             "mark_age_seconds": 57
           }
@@ -153,10 +153,25 @@
         "wallet": "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
         "platform": "Polymarket",
         "initial_eur": 3.0,
-        "cash_eur": 3.0,
-        "equity_eur": 3.0,
-        "pnl_eur": 0.0,
-        "positions": []
+        "cash_eur": 0.44566,
+        "equity_eur": 2.97245,
+        "pnl_eur": -0.02755,
+        "positions": [
+          {
+            "token_id": "11231037428983631511957566703033369719685513074360302513953233748546250129734",
+            "qty": "2.790997190567884087250228858",
+            "mark_usd": "0.785",
+            "title": "Louisville Cardinals vs. Memphis Tigers",
+            "mark_age_seconds": 57
+          },
+          {
+            "token_id": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
+            "qty": "0.7664666192880225369819571980",
+            "mark_usd": "0.785",
+            "title": "Rockets vs. Wizards",
+            "mark_age_seconds": 57
+          }
+        ]
       },
       {
         "name": "0x492442EaB586F242B53bDa933fD5dE859c8A3782-17663",
@@ -203,23 +218,23 @@
         "wallet": "0xd218e474776403a330142299f7796e8ba32eb5c9",
         "platform": "Polymarket",
         "initial_eur": 3.0,
-        "cash_eur": 0.44361,
-        "equity_eur": 3.0133,
-        "pnl_eur": 0.0133,
+        "cash_eur": 0.39626,
+        "equity_eur": 2.62299,
+        "pnl_eur": -0.37701,
         "positions": [
-          {
-            "token_id": "86238856930269158297633894715344370305155758731248529282208377802102469059377",
-            "qty": "5.802336264601653760336002100",
-            "mark_usd": "0.385",
-            "title": "UFC 334: Kevin Holland vs. Uroš Medic (Welterweight, Main Card)",
-            "mark_age_seconds": 57
-          },
           {
             "token_id": "30728609885715374288858063112149413594109064855980318558797537001408917409057",
             "qty": "0.6563299150785638236817242877",
-            "mark_usd": "0.9235",
+            "mark_usd": "0.9255",
             "title": "Will Texas Longhorns win the 2027 CFP National Championship?",
             "mark_age_seconds": 57
+          },
+          {
+            "token_id": "108219704549399147171726985345356262239199361318934193188133077315032734690573",
+            "qty": "18.72278503850396297242724216",
+            "mark_usd": "0.099",
+            "title": "Pistons vs. Heat",
+            "mark_age_seconds": 55
           }
         ]
       },
@@ -244,9 +259,9 @@
         "positions": []
       }
     ],
-    "new_mirrored_fills": 4,
-    "risk_exits": 0,
-    "pending_price_checks": 2,
+    "new_mirrored_fills": 8,
+    "risk_exits": 2,
+    "pending_price_checks": 0,
     "trades": [
       {
         "timestamp_utc": "2026-11-15T03:16:12+00:00",
@@ -278,6 +293,40 @@
         "copy_price_usd": "0.65",
         "source_price_usd": "0.6199999984",
         "virtual_notional_eur": "0.5552",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:21:17+00:00",
+        "trader": "HomeRunHazard",
+        "platform": "Polymarket",
+        "source_id": "poly:761ba577dd7be4182659b7715a43f931d3c53c0194087aff533cd95c22cd9971",
+        "source_timestamp_utc": "2026-11-15T03:20:49+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "11231037428983631511957566703033369719685513074360302513953233748546250129734",
+        "title": "Louisville Cardinals vs. Memphis Tigers",
+        "side": "BUY",
+        "copy_price_usd": "0.79",
+        "source_price_usd": "0.78",
+        "virtual_notional_eur": "2.0000",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:21:17+00:00",
+        "trader": "HomeRunHazard",
+        "platform": "Polymarket",
+        "source_id": "poly:8366fc2e9506b61af76cb470654c480e960a0d9d391c6a4c259e257408cd920f",
+        "source_timestamp_utc": "2026-11-15T03:21:10+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
+        "title": "Rockets vs. Wizards",
+        "side": "BUY",
+        "copy_price_usd": "0.79",
+        "source_price_usd": "0.7800000002",
+        "virtual_notional_eur": "0.5492",
         "source_amount_not_copied": true,
         "trade_kind": "MIRRORED_SOURCE_SIGNAL",
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
@@ -315,17 +364,91 @@
         "source_amount_not_copied": true,
         "trade_kind": "MIRRORED_SOURCE_SIGNAL",
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:17:33+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "trade_kind": "PAPER_RISK_EXIT_NOT_SOURCE_COPY",
+        "source_id": null,
+        "source_timestamp_utc": null,
+        "market": "POLYMARKET_RISK_EXIT",
+        "asset": "86238856930269158297633894715344370305155758731248529282208377802102469059377",
+        "title": "UFC 334: Kevin Holland vs. Uroš Medic (Welterweight, Main Card)",
+        "side": "SELL",
+        "copy_price_usd": "0.35",
+        "source_price_usd": null,
+        "virtual_notional_eur": "1.8293",
+        "realized_pnl_eur": "-0.1747",
+        "exit_reason": "STOP_LOSS",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:21:17+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "source_id": "poly:4d61859a41ccd7bcd81af3ce418d1ff653de540841fdad3f268942cd0d9c213e",
+        "source_timestamp_utc": "2026-11-15T03:18:37+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "86238856930269158297633894715344370305155758731248529282208377802102469059377",
+        "title": "UFC 334: Kevin Holland vs. Uroš Medic (Welterweight, Main Card)",
+        "side": "BUY",
+        "copy_price_usd": "0.26",
+        "source_price_usd": "0.35",
+        "virtual_notional_eur": "1.8497",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:21:35+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "trade_kind": "PAPER_RISK_EXIT_NOT_SOURCE_COPY",
+        "source_id": null,
+        "source_timestamp_utc": null,
+        "market": "POLYMARKET_RISK_EXIT",
+        "asset": "86238856930269158297633894715344370305155758731248529282208377802102469059377",
+        "title": "UFC 334: Kevin Holland vs. Uroš Medic (Welterweight, Main Card)",
+        "side": "SELL",
+        "copy_price_usd": "0.24",
+        "source_price_usd": null,
+        "virtual_notional_eur": "1.6955",
+        "realized_pnl_eur": "-0.1579",
+        "exit_reason": "STOP_LOSS",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:21:36+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "source_id": "poly:7ea6821e057d93e59f81ba67885810ce0dd88569f138e7e023ade239352ff91d",
+        "source_timestamp_utc": "2026-11-15T03:20:05+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "108219704549399147171726985345356262239199361318934193188133077315032734690573",
+        "title": "Pistons vs. Heat",
+        "side": "BUY",
+        "copy_price_usd": "0.101",
+        "source_price_usd": "0.121",
+        "virtual_notional_eur": "1.7153",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
       }
     ],
     "ignored": {
       "xtxpleasecallme": {
-        "stale_or_future_source_fill": 10,
-        "unpriced_source_fill_expired": 5
+        "stale_or_future_source_fill": 22,
+        "unpriced_source_fill_expired": 9,
+        "risk_cap_or_no_cash": 5
+      },
+      "balthazar": {
+        "stale_or_future_source_fill": 2
       },
       "cigarettes": {
-        "stale_or_future_source_fill": 6,
-        "risk_cap_or_no_cash": 1,
-        "unpriced_source_fill_expired": 1
+        "stale_or_future_source_fill": 8,
+        "risk_cap_or_no_cash": 6,
+        "unpriced_source_fill_expired": 3
       }
     },
     "errors": [
@@ -336,6 +459,11 @@
       "0xad5353afe3:quote:Invalid or illiquid spread",
       "0xad5353afe3:quote:Invalid or illiquid spread",
       "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)",
+      "0xad5353afe3:quote:Empty book side",
+      "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xd218e47477:quote:Empty book side",
+      "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)",
       "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)"
     ],
     "quotes_quarantined": 0
@@ -354,7 +482,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T03:17:26+00:00",
+    "last_message_utc": "2026-11-15T03:22:26+00:00",
     "books": [
       {
         "name": "leo",
@@ -410,8 +538,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 116,
-      "unselected_or_unverified": 20
+      "non_live_alert": 131,
+      "unselected_or_unverified": 39
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -433,6 +561,13 @@
       "poly_trades": 4,
       "fomo_trades": 0,
       "poly_risk_exits": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T03:22:32+00:00",
+      "capital_eur": 49.5207,
+      "poly_trades": 8,
+      "fomo_trades": 0,
+      "poly_risk_exits": 2
     }
   ],
   "snapshot_interval_minutes": 5,
