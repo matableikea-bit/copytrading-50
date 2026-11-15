@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T03:57:14+00:00",
+  "updated_at_utc": "2026-11-15T04:02:14+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -30,6 +30,13 @@
       "observed_at_utc": "2026-11-15T03:57:14+00:00",
       "capital_eur": 49.281,
       "poly_trades": 7,
+      "fomo_trades": 0,
+      "poly_risk_exits": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T04:02:14+00:00",
+      "capital_eur": 49.1167,
+      "poly_trades": 9,
       "fomo_trades": 0,
       "poly_risk_exits": 0
     }
@@ -95,7 +102,7 @@
             "token": "108534542077320679697693708499731792701102813975517222080622181321794355009924",
             "qty": "16.66484950414661021863944789",
             "mark": "0.42",
-            "updated_at": 1794714977.8992712,
+            "updated_at": 1794715280.020391,
             "cost_eur": "6.51300",
             "name": "Vikings vs. Packers",
             "opened_at": 1794714434.305563
@@ -112,6 +119,7 @@
           "1ebeadb3fbca7710a2072b053cc234da92c961d2e723309e7e0e9399b07a3096",
           "1fc6ee8b3645f8ac0d61df73a290f46e82b38abf5ef00aafdf0ec0658e2c84c0",
           "2474d27815139e8e3291e8a323646480ef674613c21a357d58b3d6d2615b22d4",
+          "254704ad93a203dd3bdb1bc342bda8c0b5edccd7edad35a4463f6f10d0b6f987",
           "2c8396999c3fa8742d707ba8e9f738dafa2539513be36bceb2b9f3c127880696",
           "2f00be7f5ad8dcf4e7d088bb16a1cbd8d6c03bfcd61045c14a11758c92eb93d0",
           "31bb895ff846998c0bd338031d2c99e5d7a5f6262c3159ce1b2bb24290bb210d",
@@ -180,7 +188,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 5
+          "stale_or_future_source_fill": 6
         },
         "unsafe_quotes": [],
         "cooldowns": {}
@@ -190,8 +198,18 @@
         "wallet": "0xdc41c39b95453c943174f369926018f6963bdd7e",
         "venue": "Polymarket",
         "budget": "8.00",
-        "cash": "8.00",
-        "positions": {},
+        "cash": "0.9407242115767185809062250037",
+        "positions": {
+          "40675833721684739055366242175795930970212903955757546003790192007994860876996": {
+            "token": "40675833721684739055366242175795930970212903955757546003790192007994860876996",
+            "qty": "14.65456909333905590105713408",
+            "mark": "0.52",
+            "updated_at": 1794715280.1559298,
+            "cost_eur": "7.059275788423281419093774996",
+            "name": "North Dakota State vs. Hawai'i: O/U 39.5",
+            "opened_at": 1794715039.1288624
+          }
+        },
         "seen": [
           "04ee4d433106e998048d2f6b538b9ca5eb02f6da424200322b157741d7ed080c",
           "134a56176275489bb0710f9ed032d192be599faadf796c9ca2b301539bc68e56",
@@ -200,6 +218,7 @@
           "1e956956211d8b8f3d06bc31646ee5adcce0ee07f5245e18e874571db5f50b63",
           "1f5d1c3d8d777b6d9d71d7ce8be84711dc2794d1531af91a212dd526afc481ea",
           "214d98e98936ffc0a737fcb033bf377ffdbbbccbf56934b85ae94d0eb623ea00",
+          "26898e359bf97802df976fd908aa9a5f9c79b35ab62351056ac8554369095982",
           "350b532a89bbb9cfb58a63cc6774dd8e6220a99bb59ba7dc6664d260890821c4",
           "36cd77ec4193efac99bc6564ba3fbf892e4def7918b679888ba6a486c681c61c",
           "3c0b44100198ce29e5fa77a25691a4a70e6fb39ffdb24eea09938913b9d2db4c",
@@ -207,12 +226,17 @@
           "42a5e8c606d58a8f58e449c6d33987e0b3e4696bea66903437dd08fe8d0f1493",
           "43c5f6561397a7eccf7a542a25d71cb5ccf3b9bb44a72b97a8812174936bed1b",
           "45d4300e0c2342bd9f0b57c5ea4875d727c4017112eb4160624253064009f3a0",
+          "463534809f583706ff0ee16970b4ebb1fb4275a0b949ff461c164df9b986bcee",
           "50d5c76cf77e1c9d03bd657d5226a0ffd31f9552c53bee0de15821ef85dedc6c",
+          "56d213c1feb3d334d9bb054ee296c64e378adf3af27522528cd2b33a70969a00",
+          "59b30818e6bb32bef1072cdcbbf26ad2711ca11bee74c62750d996bfd7ba15c1",
           "5aee6eb1f9f253d1eeb72af5b8d5e81e4ad3890d039ce1fe0b26ec1e1dd73701",
           "606827afc8717ddedfcc56119fd59716204865325badfaf5c7a1cede89c7ac8d",
           "62b5a669c99112ea851a84419c6db49287371eb954b706e26c963d95c503d295",
+          "64e1ce82b22eaf3a3ddfe3c3dc34bc1a7fa0b811fe50a82ea0ee5d1cb3f0c4c1",
           "679b441de3af8c4ac9aa56c214939a0f280e8636a2b5bc2e3598d990992b7f65",
           "6c840d86679c918d9bd52b879bc3afedb64428998e573d4ca7494f133e263314",
+          "7025c7ec1578627024243bfa8a0157d6f680019aa2de1dbe989e28b85b3bcbbb",
           "77185f932c487f9a7cd9fa172e9dd62eee6d7e10c59ec61db85ed88289262696",
           "796333ef911273bc4cb6701957e09ab1cd076bf4425636a420d045f4654fab19",
           "7a6a9d5fbe94bbd7aaa0d2b53c46feec125d4abe683e602f55041b4e783ac161",
@@ -220,6 +244,7 @@
           "80bb831d49cb4780bc29e6fab5236236c5748d57e9b5edc6679142588cab42a4",
           "83e5734863fda2ba09d8668b10d49f7bcb152a17777f1c81d35b8876ad452d2a",
           "84df65466d7cce963233fdc2a9b1af0a07fa405a37db8402c298fb474e54371a",
+          "8de28ac5e9e87b7bab3c58938ab711c46cf772a04dde09a4bb77bebb3dda9747",
           "907ac4d88aa60aed9712e05e72fa8ba0f84913b9baf659a9e5855acf5d551bb5",
           "96967caa21bd298f993af559d72cf46ab4695fcaf3b299bd2ac93e4722c8ea44",
           "9b02373d76f9b0cb88ad0f404e8618020e088d845531cb2b854f472e3618d984",
@@ -233,22 +258,67 @@
           "b6ad662032f2ca739b53c5dd5ad233eaf70ac1c4948ba67d4c3bb68088c49597",
           "ba75eb0552ed1492d9be17e74b6b9e1ac8c7e13da40cad3728edab11e9f6a5c2",
           "c528baadfdb6b2bef09bac218b109cede3bbc0720de8e449ce58e5000b5a732b",
+          "ca048cce47121d68ccd8714fcd7d5ac161ac00d908faa5aa28ac2c505ecaa267",
           "cc589d6ace36e73b5db2c2ca2cb97d91fb44f8b9fcbdc5cc0c3276e9461b46ab",
+          "d1de2473d70094f8f47e3b1c6bd76d97a8ec0ab1c30af33a7a536f98e691b53c",
           "d3624aa76636d39fe50bfab3d20fe712267bb9c77293d8605d01b1267c10f896",
           "d63878e0066c378a4fe581519d170da0b05ec852df85e567c32949f8881b8ef1",
           "d66b3401b387765251ab63992365d94eade802f312fb6b7cf451389ce775ffc2",
           "dade9ad0f435e858d04381eba7e82e923e8c2138c580babc789692ef43c9462b",
+          "dbfc230ec7fcff8c2361cf0e786bb140cbd208d94e24a277dd8225005a71a238",
           "e13c3931f04f11491d2070f0415caa11ec21f23c914a66f3a9a00825d5a729da",
           "e97c1d80d78822a71c3350c9df0fa6796e944fb4011051b8012c3734ebd64dd9",
           "ed942a985dcd1bc1509eca60caf84879b65c46252acd7d8007a48738ddb3238e",
           "eeeb84f4cf763213026b748c9349eed46946f6341e9271a55a2af234300e92e5",
           "f2556b779de008b3599f2826e40cf706513182104ce9e8bcc5b3e2fa2d4a3e71",
           "f5b2c94c9715e02e0b046f72d83c99d945fc7c26e30442cf3ea02647a7320647",
-          "fe794955d0f24d4e56c4ccca986ca6459cc4e316c7c9f539064b81035916bb78"
+          "fe794955d0f24d4e56c4ccca986ca6459cc4e316c7c9f539064b81035916bb78",
+          "poly:463534809f583706ff0ee16970b4ebb1fb4275a0b949ff461c164df9b986bcee",
+          "poly:59b30818e6bb32bef1072cdcbbf26ad2711ca11bee74c62750d996bfd7ba15c1",
+          "poly:64e1ce82b22eaf3a3ddfe3c3dc34bc1a7fa0b811fe50a82ea0ee5d1cb3f0c4c1",
+          "poly:7025c7ec1578627024243bfa8a0157d6f680019aa2de1dbe989e28b85b3bcbbb",
+          "poly:d1de2473d70094f8f47e3b1c6bd76d97a8ec0ab1c30af33a7a536f98e691b53c",
+          "poly:dbfc230ec7fcff8c2361cf0e786bb140cbd208d94e24a277dd8225005a71a238"
         ],
-        "trades": [],
+        "trades": [
+          {
+            "timestamp_utc": "2026-11-15T03:57:19+00:00",
+            "trader": "nigiri99",
+            "platform": "Polymarket",
+            "source_id": "poly:7025c7ec1578627024243bfa8a0157d6f680019aa2de1dbe989e28b85b3bcbbb",
+            "source_timestamp_utc": "2026-11-15T03:56:01+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "40675833721684739055366242175795930970212903955757546003790192007994860876996",
+            "title": "North Dakota State vs. Hawai'i: O/U 39.5",
+            "side": "BUY",
+            "copy_price_usd": "0.53",
+            "source_price_usd": "0.5198396501",
+            "virtual_notional_eur": "6.5000",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          },
+          {
+            "timestamp_utc": "2026-11-15T03:57:19+00:00",
+            "trader": "nigiri99",
+            "platform": "Polymarket",
+            "source_id": "poly:64e1ce82b22eaf3a3ddfe3c3dc34bc1a7fa0b811fe50a82ea0ee5d1cb3f0c4c1",
+            "source_timestamp_utc": "2026-11-15T03:56:01+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "40675833721684739055366242175795930970212903955757546003790192007994860876996",
+            "title": "North Dakota State vs. Hawai'i: O/U 39.5",
+            "side": "BUY",
+            "copy_price_usd": "0.53",
+            "source_price_usd": "0.5277756289",
+            "virtual_notional_eur": "0.5452",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          }
+        ],
         "rejected": {
-          "stale_or_future_source_fill": 2
+          "stale_or_future_source_fill": 6,
+          "risk_cap_or_no_cash": 4
         },
         "unsafe_quotes": [],
         "cooldowns": {}
@@ -264,7 +334,7 @@
             "token": "46519015104064379455425407273873158568522319672591874878173170571801901690261",
             "qty": "11.74735292915252851477862720",
             "mark": "0.6",
-            "updated_at": 1794714977.890576,
+            "updated_at": 1794715279.9983115,
             "cost_eur": "6.51300",
             "name": "Spread: North Dakota State (-5.5)",
             "opened_at": 1794714644.8814352
@@ -273,7 +343,7 @@
             "token": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "1.306863611825617983369800383",
             "mark": "0.78",
-            "updated_at": 1794714977.8992796,
+            "updated_at": 1794715280.0204134,
             "cost_eur": "0.9383580488540942725154327299",
             "name": "Rockets vs. Wizards",
             "opened_at": 1794714917.5795581
@@ -288,6 +358,8 @@
           "101e64116bd11bfe091ecb64f34fbc30163229db91c3f75eb7bc57df0b2aae66",
           "14f3e3a4ad0db878fcbf38de904d98bc0755e884ad1caad73db41a01398994b3",
           "1d419c4632cb3e03a0c83232114d9f8cd7a51b9f98848b3177568ee96152d107",
+          "2088bbbb18a2225ca144448300a49f2361e689229672951325ffedfb74c622fc",
+          "2221d75c357c63a291f3b66542c61a35a078cbb461e6b58c7689012ad35e6f99",
           "263445ce28b1bcd9f24a7700874383760239af863e71bb3c4ab712c547d2a8af",
           "2aa644dc8877bf19d0244ff220b45a331013baccab586cd93722ab640ee2c1da",
           "36f3249f55af104b9a0a730a418468226ec8ffe47d8e12cd530389f94886d9e3",
@@ -301,6 +373,7 @@
           "6b2706bfd55a54e100d2e89764a640f375bc7a85c25211d1dd2c52f40dc3db1f",
           "6f20f79c89fdea34abc9bb65361d6959c0acecc925b747b8225d8e03e35aabd8",
           "71292679ba1d8d928427f146431b0f9a063e70dab4a6bc6969b13cead1b54167",
+          "73a655ec5fc8da1b24c1d350e2775dbc6249ec5f5a6d628426b755e5798a2b53",
           "761ba577dd7be4182659b7715a43f931d3c53c0194087aff533cd95c22cd9971",
           "78021860317edea95e58f991c2d26444180ecc3ed0b9207039c693d2120484d3",
           "7d36076c734869688e6aea594dc3b74f441a6ca7092bd3108f724ade9a196eb9",
@@ -323,25 +396,37 @@
           "bbc28652dd7b0af98c9cfa3d9c7081c8b46f348900e2fcad4e94cc091cfb37d6",
           "bcf59ea401dad903d2b161d90e85243b3faea47cfb5a1480c0943a9c94eb97cd",
           "c0e8da6984e03477246bcd70b8a35cd0c9ac0ab7374471b3f26d891cfad23477",
+          "c4aead39b7ff23e69a7cef34b79c8debf0ad940978e62f0db865092497d3c3cf",
           "c8e7c9c663f4999b98a5e7e595f4e4a49c3deac17cd1d456ffcae935d0b7b931",
           "cbbe8dd6861c1d4bf27ba1fe0f819e9f1371f941092d0d7739277bca5ef61d76",
           "ce0ec1b95bb3bfc20351fc0abe6b3f990782b90081839229b475af7c75533d11",
+          "d0a89d04ea2169c15cdcb2815ab61bdc5dad1f3936e176b99b424ca7e1f5b3fb",
           "d6877a9e41db50c54e1b2a286f76f16030a38f084d6e74b67f0e330e851053c9",
           "d7006b2d8fd2cf016951c2b0f5dd51c2d2a519caabd474636a544946ce58f0d1",
+          "d95ba86d4efef1f7461c7731d9d697ef22cd9ef07c87fd2a5f10af8719ce5da6",
           "da57d68dd92935866ace7e042f23e76be48848b7216269dd4d8a5ddddf8ab25a",
           "e0b6e7b44bd90f48586e207e49a03e836b44fc12889444c2313f172166a24a1b",
           "e6f74e2133e950b8583b167cc5f16fe99bcecbcd0165ffcea257b9f392b2000a",
           "eaa4dae695319b368fc5d397ca98637c0b8e6316096dbe2517d8a8f64631627f",
+          "ef9067f9eb4b6eefd917a1adae98956a413d53e6594cc80593102cea3a4f161b",
+          "f1ea0cc3e17dcf9aaa5d487953b1cc6a30b07f441cfd42c2015e51329d1b3947",
+          "f35caa9d2df6a85e56ca8606ac5115d14f05598ec5db393dce4469ac25ddfd2b",
           "f680388e952546813722a9a6007605c9f10db09e4b85ce65405d580e1146f8b4",
           "f6813be3412a725f3a191b7935239d6d19604a112db72196f2f149b5cf5b77a4",
           "f95975854a904a5fb6935801df6dbeef6603a10f3bc8fe041f18d5c83c60c163",
           "fa3c792c3b4c18ae30dd7f5aa303503af7b1bbc06ee958fb7ea036b3ddcc8e4a",
           "ff09e7f1774f9b202c791a57db2ca661e609a6a24faafe17420df95d9b455211",
           "poly:09dffa6332a86a2b46063eb120ab0c27939e6d3d743991116194d712f54fe93a",
+          "poly:2221d75c357c63a291f3b66542c61a35a078cbb461e6b58c7689012ad35e6f99",
           "poly:69a8ca721f69bf461f095b10838a4fa01a98a07114f0ec8f6104a97b3728aef9",
+          "poly:73a655ec5fc8da1b24c1d350e2775dbc6249ec5f5a6d628426b755e5798a2b53",
           "poly:8818586041d56002bbbef60039010dfd1436835ecd6ec5d51810ae41cd6967b7",
           "poly:a7e36a47bb01e2040e70dd24e04ec5c5bd0ad65c58827594a8e4d956e68dc0c3",
-          "poly:eaa4dae695319b368fc5d397ca98637c0b8e6316096dbe2517d8a8f64631627f"
+          "poly:c4aead39b7ff23e69a7cef34b79c8debf0ad940978e62f0db865092497d3c3cf",
+          "poly:d95ba86d4efef1f7461c7731d9d697ef22cd9ef07c87fd2a5f10af8719ce5da6",
+          "poly:eaa4dae695319b368fc5d397ca98637c0b8e6316096dbe2517d8a8f64631627f",
+          "poly:ef9067f9eb4b6eefd917a1adae98956a413d53e6594cc80593102cea3a4f161b",
+          "poly:f35caa9d2df6a85e56ca8606ac5115d14f05598ec5db393dce4469ac25ddfd2b"
         ],
         "trades": [
           {
@@ -381,8 +466,10 @@
         ],
         "rejected": {
           "stale_or_future_source_fill": 1,
-          "unpriced_source_fill_expired": 1,
-          "risk_cap_or_no_cash": 3
+          "unpriced_source_fill_expired": 4,
+          "risk_cap_or_no_cash": 4,
+          "source_price_already_moved": 4,
+          "invalid_or_extreme_source_price": 1
         },
         "unsafe_quotes": [],
         "cooldowns": {}
@@ -398,7 +485,7 @@
             "token": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
             "qty": "12.72917885793878900606833546",
             "mark": "0.6",
-            "updated_at": 1794714978.0583732,
+            "updated_at": 1794715280.1648505,
             "cost_eur": "7.057346655178447324312170394",
             "name": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
             "opened_at": 1794714434.6254346
@@ -419,6 +506,7 @@
           "34db6695e46eb05fbef18bf0f9d7758902392eb69d3e768e1ace4fc1dd98251c",
           "39b6b833a13dcea5669d1b8193a8d527e9052f8aefbee9316038b274e1343ca6",
           "3d0694df09fe86159bc53ca497942b132c4c7141f3f590d2120fc96ad042108c",
+          "3d39519e8f64ab2ea2438d67b419e465f82256823b75c9cba8fd8c30187117db",
           "3e158f7a2ef60ba33457cca4b3371fce6f55cb739103e9f2f5fa6b7fa4439f73",
           "3fc708647c380831a88d72d01f16b1b78ade7cdd634cfa196a0b41d100010c10",
           "41039312393afc0ed39e13db8df6f19c8b6ff1c297290b2151dd73fe838f046a",
@@ -510,7 +598,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 3,
+          "stale_or_future_source_fill": 4,
           "risk_cap_or_no_cash": 5
         },
         "unsafe_quotes": [],
@@ -527,7 +615,7 @@
             "token": "30289940090088667668050088376461003061362172048916753227271073157706533834577",
             "qty": "21.07613319642071292357341939",
             "mark": "0.33",
-            "updated_at": 1794714977.8992865,
+            "updated_at": 1794715280.0204227,
             "cost_eur": "6.51300",
             "name": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
             "opened_at": 1794714435.9683743
@@ -536,7 +624,7 @@
             "token": "101603881415360735322856962039541488878256176329287774854805690311335985333809",
             "qty": "1.822694938378057542924187797",
             "mark": "0.56",
-            "updated_at": 1794714977.899256,
+            "updated_at": 1794715279.9983394,
             "cost_eur": "0.9442784311192606718497872966",
             "name": "Will Ciryl Gane win by KO or TKO?",
             "opened_at": 1794714736.6191528
@@ -669,11 +757,14 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T03:56:48+00:00",
+    "last_poll": "2026-11-15T04:01:52+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)",
-      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)"
+      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)",
+      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)",
+      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)",
+      "0x5268527977:quote:Invalid or illiquid spread"
     ]
   },
   "fomo": {
@@ -783,8 +874,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 146,
-      "unselected_or_unverified": 24
+      "non_live_alert": 161,
+      "unselected_or_unverified": 33
     },
     "errors": [],
     "reconnects": 0
