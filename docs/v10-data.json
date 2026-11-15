@@ -2,7 +2,7 @@
   "status": "PAPER_RUNNING",
   "mode": "PAPER_FOMO_30_EUR_POLY_20_EUR_V10",
   "started_at_utc": "2026-11-15T02:50:57.548754+00:00",
-  "observed_at_utc": "2026-11-15T02:50:57+00:00",
+  "observed_at_utc": "2026-11-15T02:55:57+00:00",
   "duration_minutes": 330,
   "capital_initial_eur": 50,
   "capital_eur": 50.0,
@@ -16,7 +16,7 @@
     "budget_eur": 20.0,
     "capital_eur": 20.0,
     "rankings_as_of_utc": "2026-11-15T02:50:55+00:00",
-    "last_poll_utc": "2026-11-15T02:50:57+00:00",
+    "last_poll_utc": "2026-11-15T02:55:39+00:00",
     "watched_wallets": 10,
     "selected_winners": [
       {
@@ -214,8 +214,16 @@
     ],
     "new_mirrored_fills": 0,
     "trades": [],
-    "ignored": {},
-    "errors": [],
+    "ignored": {
+      "balthazar": {
+        "stale_or_future_source_fill": 1,
+        "price_or_liquidity_unavailable": 2
+      }
+    },
+    "errors": [
+      "0x5a218c7ad0:ValueError",
+      "0x5a218c7ad0:ValueError"
+    ],
     "quotes_quarantined": 0
   },
   "fomo": {
@@ -232,7 +240,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T02:50:57+00:00",
+    "last_message_utc": "2026-11-15T02:55:40+00:00",
     "books": [
       {
         "name": "leo",
@@ -287,7 +295,10 @@
     ],
     "new_mirrored_alerts": 0,
     "trades": [],
-    "ignored": {},
+    "ignored": {
+      "non_live_alert": 116,
+      "unselected_or_unverified": 11
+    },
     "source_errors": [],
     "quotes_quarantined": 0
   },
@@ -297,6 +308,12 @@
   "history": [
     {
       "observed_at_utc": "2026-11-15T02:50:57+00:00",
+      "capital_eur": 50.0,
+      "poly_trades": 0,
+      "fomo_trades": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T02:55:57+00:00",
       "capital_eur": 50.0,
       "poly_trades": 0,
       "fomo_trades": 0
