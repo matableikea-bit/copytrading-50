@@ -1,22 +1,22 @@
 {
-  "status": "PAPER_PAUSED_AWAITING_SCHEDULE",
+  "status": "PAPER_RUNNING",
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T12:07:49+00:00",
+  "observed_at_utc": "2026-11-15T12:18:13+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
-  "capital_eur": 45.1205,
-  "pnl_eur": -4.8795,
+  "capital_eur": 45.1163,
+  "pnl_eur": -4.8837,
   "capital_valuation_status": "INDICATIVE_LIQUIDATION_QUOTES",
   "new_mirrored_trades": 13,
-  "polymarket_risk_exits_not_source_copies": 8,
-  "open_positions_not_liquidated": 3,
+  "polymarket_risk_exits_not_source_copies": 9,
+  "open_positions_not_liquidated": 2,
   "polymarket": {
     "budget_eur": 40.0,
-    "capital_eur": 35.12052,
+    "capital_eur": 35.11631,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T12:07:32+00:00",
+    "last_poll_utc": "2026-11-15T12:18:11+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -71,23 +71,16 @@
         "wallet": "0x45185b026c729f2caf1b01f6230db5d22e81db24",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 0.54109,
-        "equity_eur": 7.79759,
-        "pnl_eur": -0.20241,
+        "cash_eur": 1.47413,
+        "equity_eur": 7.79338,
+        "pnl_eur": -0.20662,
         "positions": [
-          {
-            "token_id": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
-            "qty": "2.589639791965310871750624020",
-            "mark_usd": "0.4",
-            "title": "Spread: 49ers (-2.5)",
-            "mark_age_seconds": 47
-          },
           {
             "token_id": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
             "qty": "12.25268982281557196353003455",
             "mark_usd": "0.57",
             "title": "Patriots vs. Lions",
-            "mark_age_seconds": 47
+            "mark_age_seconds": 0
           }
         ]
       },
@@ -105,7 +98,7 @@
             "qty": "23.02280846767836575287493286",
             "mark_usd": "0.26",
             "title": "Spread: Jaguars (-4.5)",
-            "mark_age_seconds": 47
+            "mark_age_seconds": 0
           }
         ]
       },
@@ -141,7 +134,7 @@
       }
     ],
     "new_mirrored_fills": 13,
-    "risk_exits": 8,
+    "risk_exits": 9,
     "pending_price_checks": 0,
     "trades": [
       {
@@ -211,6 +204,24 @@
         "virtual_notional_eur": "6.4462",
         "source_amount_not_copied": true,
         "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T12:18:13+00:00",
+        "trader": "VirIntrepidus",
+        "platform": "Polymarket",
+        "trade_kind": "PAPER_RISK_EXIT_NOT_SOURCE_COPY",
+        "source_id": null,
+        "source_timestamp_utc": null,
+        "market": "POLYMARKET_RISK_EXIT",
+        "asset": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
+        "title": "Spread: 49ers (-2.5)",
+        "side": "SELL",
+        "copy_price_usd": "0.4",
+        "source_price_usd": null,
+        "virtual_notional_eur": "0.9330",
+        "realized_pnl_eur": "-0.0084",
+        "exit_reason": "TIME_LIMIT",
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
       },
       {
@@ -512,7 +523,7 @@
     ],
     "ignored": {
       "VirIntrepidus": {
-        "stale_or_future_source_fill": 54,
+        "stale_or_future_source_fill": 58,
         "risk_cap_or_no_cash": 28
       },
       "nigiri99": {
@@ -522,12 +533,12 @@
         "market_not_ending_within_30h": 1
       },
       "HomeRunHazard": {
-        "stale_or_future_source_fill": 235,
+        "stale_or_future_source_fill": 265,
         "unpriced_source_fill_expired": 5,
         "risk_cap_or_no_cash": 20,
-        "source_price_already_moved": 13,
+        "source_price_already_moved": 15,
         "invalid_or_extreme_source_price": 1,
-        "portfolio_drawdown_stop": 27
+        "portfolio_drawdown_stop": 36
       },
       "BreakTheBank": {
         "stale_or_future_source_fill": 123,
@@ -589,7 +600,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 5,
-    "last_message_utc": "2026-11-15T12:07:44+00:00",
+    "last_message_utc": "2026-11-15T12:18:11+00:00",
     "books": [
       {
         "name": "leo",
@@ -1095,6 +1106,13 @@
       "poly_trades": 13,
       "fomo_trades": 0,
       "poly_risk_exits": 8
+    },
+    {
+      "observed_at_utc": "2026-11-15T12:18:13+00:00",
+      "capital_eur": 45.1163,
+      "poly_trades": 13,
+      "fomo_trades": 0,
+      "poly_risk_exits": 9
     }
   ],
   "snapshot_interval_minutes": 5,
