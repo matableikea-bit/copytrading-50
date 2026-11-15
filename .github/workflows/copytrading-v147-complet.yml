@@ -4583,7 +4583,7 @@ jobs:
           set -euo pipefail
           python -m unittest discover -s tests -q
           python -m compileall -q bot
-python -c 'from bot.settings import Config; assert Config.load("config.json").mode == "PAPER"'
+          python -c 'from bot.settings import Config; assert Config.load("config.json").mode == "PAPER"'
       - name: "Transmettre le programme source aux trois étapes"
         uses: actions/upload-artifact@v4
         with:
