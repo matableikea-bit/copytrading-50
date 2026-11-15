@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T12:28:12+00:00",
+  "updated_at_utc": "2026-11-15T12:33:12+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -466,6 +466,13 @@
       "poly_trades": 13,
       "fomo_trades": 0,
       "poly_risk_exits": 9
+    },
+    {
+      "observed_at_utc": "2026-11-15T12:33:12+00:00",
+      "capital_eur": 45.0955,
+      "poly_trades": 15,
+      "fomo_trades": 0,
+      "poly_risk_exits": 9
     }
   ],
   "issues": [],
@@ -523,16 +530,25 @@
         "wallet": "0x45185b026c729f2caf1b01f6230db5d22e81db24",
         "venue": "Polymarket",
         "budget": "8.00",
-        "cash": "1.474130635809637126750484457",
+        "cash": "0.5439393741026416069688597968",
         "positions": {
           "81257186747832054157920523116773359776964241594169856122985483596324692888690": {
             "token": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
-            "qty": "12.25268982281557196353003455",
+            "qty": "13.27706009261109783141381614",
             "mark": "0.57",
-            "updated_at": 1794745635.1177652,
-            "cost_eur": "6.459079940708529267852811861",
+            "updated_at": 1794745937.0986438,
+            "cost_eur": "6.999082956958396923401840867",
             "name": "Patriots vs. Lions",
             "opened_at": 1794743575.1351802
+          },
+          "115409060983777450772125937546792914347599843448572648301569915268020202613802": {
+            "token": "115409060983777450772125937546792914347599843448572648301569915268020202613802",
+            "qty": "0.8100038550466332484419289538",
+            "mark": "0.52",
+            "updated_at": 1794745937.0986347,
+            "cost_eur": "0.3901882454571278642325956544",
+            "name": "Spread: Lions (-2.5)",
+            "opened_at": 1794745696.3605025
           }
         },
         "seen": [
@@ -561,6 +577,7 @@
           "2474d27815139e8e3291e8a323646480ef674613c21a357d58b3d6d2615b22d4",
           "254704ad93a203dd3bdb1bc342bda8c0b5edccd7edad35a4463f6f10d0b6f987",
           "27ed73ae3584e1c7498038b44281f7de57a4ab0f5e0c92502cccf19b01bfaa82",
+          "28b1f6f19a1b17b5b8bd1c6d7abb32c063fde4ef6f3c88a02bdc996ad0859bea",
           "29b103ee8998d672294a91b22d9b6b9a943cb32aba80a1e3256d5f43ad62ac09",
           "2bca24ebb86ace5c97e6f8bc18b5680d3ba7462d60779973d5742f51a8a1819b",
           "2c8396999c3fa8742d707ba8e9f738dafa2539513be36bceb2b9f3c127880696",
@@ -627,6 +644,7 @@
           "9a7f711096125aaa4dccb20e9e6fa4fcbfc14690d4228feba1578161745ebbd7",
           "9a829489cbbadbf054eec225652b7723d3fb9f1600cff9ee30f3652a1c67a740",
           "9d582eced980a88b08555afc1d3837e136a70ed7d23a9b4a5cc0f28f9a279de5",
+          "9df411e36cf6e82a1199c90e908ea3a11abe55be5fe5dfd0db1d0f9b9df6e4fc",
           "9fd53a7d34ddb84484a7fec58f85c6d6d5c12de252ba697ed926f9166e3f92e0",
           "a165193847c4aab776341ae3f3664ebd82a421e759b284c8d2aa3144ffe34155",
           "a38a4be0b38436594c367a4d480fa267f816bc40853fd8bd5a5dfb39d9b58432",
@@ -648,6 +666,7 @@
           "c44a47f080f28aca7a7f6d6afab93fbfba297f14e978d6897c2d9539a7e318fa",
           "c5a0f90d113592df625840d49ead0d62fe207d2124da10a15f69cf8c7fb32f28",
           "c90e9d7e8914f2f511b768fe76a0771e31ae723e9b7ab577351b151b9ca6d6ff",
+          "c9975e907bb6c24b2da8096d612234531c0ea7fd3e43deebabd057c4970337f0",
           "ca9895b704eaaeb88f335ccb86852d174faee4a6848d59c5df0662ab10111adb",
           "ce4fc7273a10dd064a25e730c1530d0dbcca79413bfe4704e68b8c6ca77748d0",
           "d2adf9de33dd976c36f5e27dc6a7a99fda537872007500ba13bc54ab5ab40f39",
@@ -663,6 +682,7 @@
           "de84b64a4e67f54e05f39b63334051fa786fd10a3001ee9caeeed89ebd1a1ab8",
           "e250d48c669e66046190f61b498079ff7d039a34599a57eacf344506119b359f",
           "e27e1dad11653876cdc50ade8c420bf4bc7ab9cc445c5fcebd04e959dce0684a",
+          "e39aa29ec9143e5762d0b8780ff2882439ffbeee62d924105d41611373647066",
           "e47e234b41c5b6a1a36e2ba3486270836de14181bef4cde46d5c36c55b98ff13",
           "e6b1ada903d97301348005acbe888d0d6ca3bd706e2244ae1f84fb2447ec887b",
           "e92f3c30f4a9a2379f71f34dc3cf82081b67c21e87651403830c6533f8be5b30",
@@ -675,6 +695,7 @@
           "f85a5bf58695c60baa8d5230cf4d961881906373e03a076af4b559f793066a5e",
           "f9165ed1d4b247f3c09534d1f1b1f1193d4e5b030ef2540ffe9a6c65b3ff6ef7",
           "fa22df6dd4f10e9ee5010cf7cb18077fc66cbd8c3dd85d6e113679ec8196c1f9",
+          "fc8f3f8a76497f8ee16f73825e832f98414f46da34429430f6d1c7aa082cef9f",
           "fee37c756112a08a4fe46e1343bc2af31f2983dc3ed91adf928ea67af890ac86",
           "poly:043440ad0f015690e112fc27c3f4e1d8a7405c92ec03f9becaf7da133ba70fbe",
           "poly:0a1f36b5e7bf7625d55e302469f031836db16ffd39c835566fe9b85539ea9e4d",
@@ -682,6 +703,7 @@
           "poly:16937f517ed2c66a1588215e5c6b6b9da5205a8d517ea1be6c8df611bc7a14e8",
           "poly:1c7030b712c6c4fa9da20050d0cf92000d7ea7fa481bc3ae4d28696972d5512c",
           "poly:27ed73ae3584e1c7498038b44281f7de57a4ab0f5e0c92502cccf19b01bfaa82",
+          "poly:28b1f6f19a1b17b5b8bd1c6d7abb32c063fde4ef6f3c88a02bdc996ad0859bea",
           "poly:2bca24ebb86ace5c97e6f8bc18b5680d3ba7462d60779973d5742f51a8a1819b",
           "poly:2def1ec8d0893199fc8dae611b51aaa8a54df4bdc355610afed5c423e1df30c0",
           "poly:37cb93d5832222a078ec17d0d273d95a8d729789e9260142122232896054a425",
@@ -693,6 +715,7 @@
           "poly:7acca918d2fedf582bb573d864c6790e3fcf7f23adf581d2ef7bfcf4ad5b1f52",
           "poly:7da9b92d7e6ce3225a9337c01410986625730b7a8a1b6d1f1a2047d9702e3bf5",
           "poly:97f71ac828cdc472d73fddfcf09b39395f6fd3831de20e3637e712b3f69a26b4",
+          "poly:9df411e36cf6e82a1199c90e908ea3a11abe55be5fe5dfd0db1d0f9b9df6e4fc",
           "poly:a165193847c4aab776341ae3f3664ebd82a421e759b284c8d2aa3144ffe34155",
           "poly:ab32829fa1eb426573beabcbac614cba35f692b1ba21c4ba4facf6c943e86e62",
           "poly:b71a96c92565ee88e6a0b3bcade32034c48028c18cfa31e13ce9a8b28a6b0258",
@@ -701,6 +724,7 @@
           "poly:bf4b7f09ba32a0844e58597bc873aeac73be77a974377b42fb3031c76fa37bf0",
           "poly:c44a47f080f28aca7a7f6d6afab93fbfba297f14e978d6897c2d9539a7e318fa",
           "poly:c90e9d7e8914f2f511b768fe76a0771e31ae723e9b7ab577351b151b9ca6d6ff",
+          "poly:c9975e907bb6c24b2da8096d612234531c0ea7fd3e43deebabd057c4970337f0",
           "poly:d8b389952060848a76d18ae15879a78ffeea22c0dfcaf334e0e6eb67b0a35725",
           "poly:dd4ffad4107c01b16bcd31d4c4ceb248ae4ff345d44bf42fb41c1ab104742144",
           "poly:f43e2f6db3ebc38317769c5105bd9e35be1aca3d5b0de9663fdd96c5e53c61e7",
@@ -795,11 +819,45 @@
             "realized_pnl_eur": "-0.0084",
             "exit_reason": "TIME_LIMIT",
             "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          },
+          {
+            "timestamp_utc": "2026-11-15T12:28:16+00:00",
+            "trader": "VirIntrepidus",
+            "platform": "Polymarket",
+            "source_id": "poly:28b1f6f19a1b17b5b8bd1c6d7abb32c063fde4ef6f3c88a02bdc996ad0859bea",
+            "source_timestamp_utc": "2026-11-15T12:25:25+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
+            "title": "Patriots vs. Lions",
+            "side": "BUY",
+            "copy_price_usd": "0.58",
+            "source_price_usd": "0.5700000009",
+            "virtual_notional_eur": "0.5389",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          },
+          {
+            "timestamp_utc": "2026-11-15T12:28:16+00:00",
+            "trader": "VirIntrepidus",
+            "platform": "Polymarket",
+            "source_id": "poly:9df411e36cf6e82a1199c90e908ea3a11abe55be5fe5dfd0db1d0f9b9df6e4fc",
+            "source_timestamp_utc": "2026-11-15T12:25:56+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "115409060983777450772125937546792914347599843448572648301569915268020202613802",
+            "title": "Spread: Lions (-2.5)",
+            "side": "BUY",
+            "copy_price_usd": "0.53",
+            "source_price_usd": "0.5200000001",
+            "virtual_notional_eur": "0.3894",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 59,
-          "risk_cap_or_no_cash": 28
+          "stale_or_future_source_fill": 61,
+          "risk_cap_or_no_cash": 29
         },
         "unsafe_quotes": [],
         "cooldowns": {}
@@ -815,7 +873,7 @@
             "token": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark": "0.26",
-            "updated_at": 1794745635.1168292,
+            "updated_at": 1794745937.0986066,
             "cost_eur": "5.649802822432880323434438378",
             "name": "Spread: Jaguars (-4.5)",
             "opened_at": 1794717635.4889214
@@ -1518,6 +1576,7 @@
           "a7dbb7bcf4ea4ce06a674e05663fb44bf78409bca5c14501022e5a1e63e95472",
           "a7e36a47bb01e2040e70dd24e04ec5c5bd0ad65c58827594a8e4d956e68dc0c3",
           "a832656084e2917b11ee349e08f4849060c4c581ac52d42449f8ce712092d91d",
+          "a844ac770690cdb4fd4aa6322fb765c40c09f78ff5624478ff6f8e201c1e9ca4",
           "a9aa2a083db300511bef0b05c2471fff2f87f980d19db67ffcbe0fe58fab2a28",
           "aa563567cdd6b9d5eacac4d047b4a84b8b9cc6efbf052146ed1ec555f5e14265",
           "abcf49ed7e1c0be7c94e5617c199c6d6bb61c73e5e2651642bb249753c5453f7",
@@ -1591,6 +1650,7 @@
           "d6a3cf4442cc156268a6f2a373792b5ae41145e921f0ef8ee043289b35ea1a40",
           "d7006b2d8fd2cf016951c2b0f5dd51c2d2a519caabd474636a544946ce58f0d1",
           "d7465ddd3b473c1f9d4f6e50e91cb2fd0d03a301124d29af5dc4c8b997732992",
+          "d78003f687da40b4dc68d3849ec86d2642b750877fe446440ad6d6bb8146c29b",
           "d7ac3051b8bd87ac8a501478683de9694806bdcb61124bc429cfda131c308547",
           "d82553183d1702a02fbe43e037cad53c44f2766e9c5e8e39987328eec90cdf91",
           "d88fdc996e2bcde3e9b247283383466aa57b15a589d0553e831a941295a1e715",
@@ -1721,6 +1781,7 @@
           "poly:ca319c843f7ff6b268d04f6a71523654f20b40b6840a014ad41b561f8bf4116c",
           "poly:ce9c41c3df426a000a1a2129f826006fbe89dd172e300250689fef3c91adf120",
           "poly:d4add878320e493386619157d2720929c18f469c96ed1ef58bf18d8ef0c0fdaf",
+          "poly:d78003f687da40b4dc68d3849ec86d2642b750877fe446440ad6d6bb8146c29b",
           "poly:d92f0e76d613935374c120404e37a49094481a109296c105e653ff49736b5b8b",
           "poly:d95ba86d4efef1f7461c7731d9d697ef22cd9ef07c87fd2a5f10af8719ce5da6",
           "poly:db7cb98725d79d83533c7a8fa7089b1042a423f317177964e85f6e28b0488e95",
@@ -1810,12 +1871,12 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 267,
+          "stale_or_future_source_fill": 268,
           "unpriced_source_fill_expired": 5,
           "risk_cap_or_no_cash": 20,
           "source_price_already_moved": 15,
           "invalid_or_extreme_source_price": 1,
-          "portfolio_drawdown_stop": 36
+          "portfolio_drawdown_stop": 37
         },
         "unsafe_quotes": [],
         "cooldowns": {
@@ -2526,7 +2587,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T12:27:45+00:00",
+    "last_poll": "2026-11-15T12:32:47+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
@@ -2688,8 +2749,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 1742,
-      "unselected_or_unverified": 325
+      "non_live_alert": 1757,
+      "unselected_or_unverified": 343
     },
     "errors": [],
     "reconnects": 5
