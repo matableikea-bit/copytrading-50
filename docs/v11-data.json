@@ -1,0 +1,312 @@
+{
+  "status": "PAPER_RUNNING",
+  "mode": "PAPER_FOMO_20_EUR_POLY_30_EUR_V11_FAST",
+  "started_at_utc": "2026-11-15T03:12:31.235087+00:00",
+  "observed_at_utc": "2026-11-15T03:12:31+00:00",
+  "duration_minutes": 330,
+  "capital_initial_eur": 50,
+  "capital_eur": 50.0,
+  "capital_valuation_status": "INDICATIVE_QUOTES_NO_REPORTED_ANOMALIES",
+  "pnl_eur": 0.0,
+  "pnl_eur_if_all_marks_valid": 0.0,
+  "new_mirrored_trades": 0,
+  "polymarket_risk_exits_not_copied": 0,
+  "strategy": "POLY_60MIN_MAX_HOLD_TP_6PCT_SL_6PCT_PAPER",
+  "marks_reliability": "NO_REPORTED_MARK_ANOMALIES",
+  "stale_positions_over_15min": 0,
+  "polymarket": {
+    "budget_eur": 30.0,
+    "capital_eur": 30.0,
+    "rankings_as_of_utc": "2026-11-15T03:12:29+00:00",
+    "last_poll_utc": "2026-11-15T03:12:31+00:00",
+    "watched_wallets": 10,
+    "selected_winners": [
+      {
+        "wallet": "0xad5353afe30c2da57709e2704ef3ccdcf67eef24",
+        "name": "xtxpleasecallme",
+        "weekly_pnl_usd": "963741.1509279449",
+        "monthly_pnl_usd": "1668842.1712918465",
+        "weekly_rank": 1,
+        "monthly_rank": 12,
+        "weekly_volume_shares": "2121178.290256004"
+      },
+      {
+        "wallet": "0x0259b2054f046fe0ee8f3e075fdb85fc3ba9769e",
+        "name": "fantasy7788",
+        "weekly_pnl_usd": "843716.548009",
+        "monthly_pnl_usd": "1062198.1139380003",
+        "weekly_rank": 2,
+        "monthly_rank": 19,
+        "weekly_volume_shares": "7307657.861703999"
+      },
+      {
+        "wallet": "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
+        "name": "HomeRunHazard",
+        "weekly_pnl_usd": "660308.7069501941",
+        "monthly_pnl_usd": "1825884.1193512976",
+        "weekly_rank": 5,
+        "monthly_rank": 9,
+        "weekly_volume_shares": "15217550.368191998"
+      },
+      {
+        "wallet": "0x492442eab586f242b53bda933fd5de859c8a3782",
+        "name": "0x492442EaB586F242B53bDa933fD5dE859c8A3782-17663",
+        "weekly_pnl_usd": "837705.586992",
+        "monthly_pnl_usd": "947329.767516",
+        "weekly_rank": 3,
+        "monthly_rank": 22,
+        "weekly_volume_shares": "4955115.75299"
+      },
+      {
+        "wallet": "0xa2cced8bfae7d645f7f437fb76becf2fcbb70cbc",
+        "name": "justwins",
+        "weekly_pnl_usd": "684231.8880469406",
+        "monthly_pnl_usd": "984364.4767120254",
+        "weekly_rank": 4,
+        "monthly_rank": 21,
+        "weekly_volume_shares": "2694607.7125339997"
+      },
+      {
+        "wallet": "0x5a218c7ad04135830a45c41aaed7294df7809318",
+        "name": "balthazar",
+        "weekly_pnl_usd": "509898.54521874234",
+        "monthly_pnl_usd": "2199161.9061982865",
+        "weekly_rank": 11,
+        "monthly_rank": 5,
+        "weekly_volume_shares": "1351085.5046599992"
+      },
+      {
+        "wallet": "0x511f9c771449162349795d17becf8b37031acbe1",
+        "name": "Bigggggggg",
+        "weekly_pnl_usd": "524000.7632472689",
+        "monthly_pnl_usd": "1787059.8213752178",
+        "weekly_rank": 9,
+        "monthly_rank": 11,
+        "weekly_volume_shares": "1916632.3654160008"
+      },
+      {
+        "wallet": "0xd218e474776403a330142299f7796e8ba32eb5c9",
+        "name": "cigarettes",
+        "weekly_pnl_usd": "649769.8202054007",
+        "monthly_pnl_usd": "763015.8280898228",
+        "weekly_rank": 6,
+        "monthly_rank": 32,
+        "weekly_volume_shares": "4586295.667583994"
+      },
+      {
+        "wallet": "0x4f1d5ae26fc31472966e951af3183308736d8de2",
+        "name": "e46m3",
+        "weekly_pnl_usd": "324797.9742712396",
+        "monthly_pnl_usd": "3509571.6806005314",
+        "weekly_rank": 26,
+        "monthly_rank": 1,
+        "weekly_volume_shares": "298399.54087499937"
+      },
+      {
+        "wallet": "0x63d43bbb87f85af03b8f2f9e2fad7b54334fa2f1",
+        "name": "wokerjoesleeper",
+        "weekly_pnl_usd": "577061.5174167934",
+        "monthly_pnl_usd": "592735.0415719582",
+        "weekly_rank": 8,
+        "monthly_rank": 42,
+        "weekly_volume_shares": "2255.8999999999996"
+      }
+    ],
+    "books": [
+      {
+        "name": "xtxpleasecallme",
+        "wallet": "0xad5353afe30c2da57709e2704ef3ccdcf67eef24",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "fantasy7788",
+        "wallet": "0x0259b2054f046fe0ee8f3e075fdb85fc3ba9769e",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "HomeRunHazard",
+        "wallet": "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "0x492442EaB586F242B53bDa933fD5dE859c8A3782-17663",
+        "wallet": "0x492442eab586f242b53bda933fd5de859c8a3782",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "justwins",
+        "wallet": "0xa2cced8bfae7d645f7f437fb76becf2fcbb70cbc",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "balthazar",
+        "wallet": "0x5a218c7ad04135830a45c41aaed7294df7809318",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "Bigggggggg",
+        "wallet": "0x511f9c771449162349795d17becf8b37031acbe1",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "cigarettes",
+        "wallet": "0xd218e474776403a330142299f7796e8ba32eb5c9",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "e46m3",
+        "wallet": "0x4f1d5ae26fc31472966e951af3183308736d8de2",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "wokerjoesleeper",
+        "wallet": "0x63d43bbb87f85af03b8f2f9e2fad7b54334fa2f1",
+        "platform": "Polymarket",
+        "initial_eur": 3.0,
+        "cash_eur": 3.0,
+        "equity_eur": 3.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      }
+    ],
+    "new_mirrored_fills": 0,
+    "risk_exits": 0,
+    "pending_price_checks": 0,
+    "trades": [],
+    "ignored": {},
+    "errors": [],
+    "quotes_quarantined": 0
+  },
+  "fomo": {
+    "budget_eur": 20.0,
+    "capital_eur": 20.0,
+    "watchlist_candidate_count": 76,
+    "selected_verified": [
+      "leo",
+      "bronbroncore",
+      "joecroskey",
+      "peptidezz",
+      "minhxdynasty"
+    ],
+    "watched_wallets": 5,
+    "connected": false,
+    "reconnects": 0,
+    "last_message_utc": null,
+    "books": [
+      {
+        "name": "leo",
+        "wallet": "9LF3d3fxAbeabsxn2GLzMKqNbS1MUMtKvMcNLjTPbDNo",
+        "platform": "FOMO",
+        "initial_eur": 4.0,
+        "cash_eur": 4.0,
+        "equity_eur": 4.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "bronbroncore",
+        "wallet": "2EJPiGHWCddwUnoWoRHD3dfycjQwDV9iQceshn2HDpht",
+        "platform": "FOMO",
+        "initial_eur": 4.0,
+        "cash_eur": 4.0,
+        "equity_eur": 4.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "joecroskey",
+        "wallet": "8bXzTJq3sNkzD8T1mXVCaMvg1D3CL1heYJBgSPM8WVow",
+        "platform": "FOMO",
+        "initial_eur": 4.0,
+        "cash_eur": 4.0,
+        "equity_eur": 4.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "peptidezz",
+        "wallet": "0x603351dc1d59709d75f230e2fef348d069db520a",
+        "platform": "FOMO",
+        "initial_eur": 4.0,
+        "cash_eur": 4.0,
+        "equity_eur": 4.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "minhxdynasty",
+        "wallet": "3WxibuvNHxSfMY5mBXfzqmbA3svtKpWBUtCqan33PxJS",
+        "platform": "FOMO",
+        "initial_eur": 4.0,
+        "cash_eur": 4.0,
+        "equity_eur": 4.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      }
+    ],
+    "new_mirrored_alerts": 0,
+    "trades": [],
+    "ignored": {},
+    "source_errors": [],
+    "quotes_quarantined": 0
+  },
+  "fx_usd_per_eur": "1.1052",
+  "fx_date": "2026-11-13",
+  "errors": [],
+  "history": [
+    {
+      "observed_at_utc": "2026-11-15T03:12:31+00:00",
+      "capital_eur": 50.0,
+      "poly_trades": 0,
+      "fomo_trades": 0,
+      "poly_risk_exits": 0
+    }
+  ],
+  "snapshot_interval_minutes": 5,
+  "disclosure": "PAPER ONLY. Faster 60m strategy: profit and loss can occur quickly. No guaranteed sale if the market has no executable bid. Public wallet fills and FOMO published alerts, never private order execution. Quotes indicative; market settlement not credited without verification. No real money."
+}
