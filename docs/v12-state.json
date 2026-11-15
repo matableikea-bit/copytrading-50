@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T11:41:48+00:00",
+  "updated_at_utc": "2026-11-15T11:46:49+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -403,6 +403,13 @@
       "poly_trades": 12,
       "fomo_trades": 0,
       "poly_risk_exits": 5
+    },
+    {
+      "observed_at_utc": "2026-11-15T11:46:49+00:00",
+      "capital_eur": 45.2836,
+      "poly_trades": 12,
+      "fomo_trades": 0,
+      "poly_risk_exits": 5
     }
   ],
   "issues": [],
@@ -465,8 +472,8 @@
           "108534542077320679697693708499731792701102813975517222080622181321794355009924": {
             "token": "108534542077320679697693708499731792701102813975517222080622181321794355009924",
             "qty": "16.66484950414661021863944789",
-            "mark": "0.42",
-            "updated_at": 1794742908.7529263,
+            "mark": "0.43",
+            "updated_at": 1794743149.9828541,
             "cost_eur": "6.51300",
             "name": "Vikings vs. Packers",
             "opened_at": 1794714434.305563
@@ -475,7 +482,7 @@
             "token": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark": "0.39",
-            "updated_at": 1794742908.7844453,
+            "updated_at": 1794743150.018364,
             "cost_eur": "0.9414788705132517543350925014",
             "name": "Spread: 49ers (-2.5)",
             "opened_at": 1794715647.7941463
@@ -498,6 +505,7 @@
           "16937f517ed2c66a1588215e5c6b6b9da5205a8d517ea1be6c8df611bc7a14e8",
           "19371b251ca139d2c666a80077a78cf27a275d06cb7f971ffe8fc5e259ebf9f2",
           "19c53873cf3974277d8c07fbc84c9acea1a7def161fb1b0d3af031a9f98f9bd4",
+          "1c7030b712c6c4fa9da20050d0cf92000d7ea7fa481bc3ae4d28696972d5512c",
           "1ebeadb3fbca7710a2072b053cc234da92c961d2e723309e7e0e9399b07a3096",
           "1f19599a590b918d74e522cf2db402d1913b23f3e1c1d31e29824c2a6cf94080",
           "1fc6ee8b3645f8ac0d61df73a290f46e82b38abf5ef00aafdf0ec0658e2c84c0",
@@ -518,6 +526,7 @@
           "37cb93d5832222a078ec17d0d273d95a8d729789e9260142122232896054a425",
           "3afd96713847b6340f7d39d661b11468e97c01501b3d940037476528dc1bb1ff",
           "3dfd18befab0f561be2e6dd642d5f875938a9f6cf27ea062e8f814b93eec75a5",
+          "421a0577593f61d8329dc68a9b4d18a52282a4c8bdd4248e7f7133ec3da29b48",
           "43264586ff7b356f99086bee6831dbccadf60be0d67646a0b3e6eac6b519292d",
           "4371a0b2afa77fada029203ce918ab6f8b7ffb237534b627c629002d89eb410c",
           "46ddf8b9d99c85f93e069f16976432db3d7d08f5d3be5cc234bddee6896c91a7",
@@ -547,6 +556,7 @@
           "750207968e5f19371792923b2230a08541467c6cc233797a1d8e2b4a9f117d6f",
           "7841fa3724b657b2d954ac283ace5ff53e4dd2fff2a58c714272c0a6321d1d0e",
           "795a390aea77a670f661f7ddb856370da45981db10708c21b76ff21da190de0c",
+          "7acca918d2fedf582bb573d864c6790e3fcf7f23adf581d2ef7bfcf4ad5b1f52",
           "7b2605519032d0649db3ebe98a9bccb260f7967e2215bc3c92be3fcb79b97a68",
           "7b9b9d229e01ade5cc5b30e7b4b19cafcd758e29de10e363f5cf02f5834bcb5b",
           "7da6d561f309738cb7dfe67b70cb2108065dde9728d2a694a3bcb2b3df96a949",
@@ -571,10 +581,12 @@
           "a4d0a8c70ad98cdef3f02757590eabba5440523eeb5154b8810edb935397f663",
           "aa2ce9bf6bd37d2657cfe836fde064f637a1f35697c5f78fd59519da5211f73c",
           "af9843d1694ab935989178fd54a135f29175f7dff93ffdf555900eea03013847",
+          "b71a96c92565ee88e6a0b3bcade32034c48028c18cfa31e13ce9a8b28a6b0258",
           "b7f63b4f4a0ba441975a3d6b499a1d8e4f8b84b39fe5538841610f3007cd2167",
           "ba7809bbdcffcb2d4e566ca756b2e06989427c6f29b763f668da381b64206000",
           "bae52d67555bbed51f0bd8192e524d526610cb5e354488a85de94c1d05bef3fb",
           "bd9465fc25fe911739d3f065ed86d4efa9898979c3f4a2091b0d621808589133",
+          "be17ba4e8c2dc26700685369c0c6b9715c4e19a0616edc34af85ffb014ef6b32",
           "c0eb7bbf218ca8232eac7aee462395c89c276528eb2cbe5f86158d682c33901c",
           "c25653c9ff0254aece7b97b28f219e8d0e654906a728b16f00482051922fa9fe",
           "c44a47f080f28aca7a7f6d6afab93fbfba297f14e978d6897c2d9539a7e318fa",
@@ -591,6 +603,7 @@
           "da98f44cda9e98aba7b416934831ddba266c91e4cd5dac1542af76df911e4a42",
           "dafa894433cdacba9074af66b2d87b99f2425b1610962a21c8c6c52f312ff015",
           "dcaac2dc3127024aae1f2a9151175a4d82bdce2f0d5c48c9c124c311cb4d947e",
+          "dd4ffad4107c01b16bcd31d4c4ceb248ae4ff345d44bf42fb41c1ab104742144",
           "de84b64a4e67f54e05f39b63334051fa786fd10a3001ee9caeeed89ebd1a1ab8",
           "e27e1dad11653876cdc50ade8c420bf4bc7ab9cc445c5fcebd04e959dce0684a",
           "e47e234b41c5b6a1a36e2ba3486270836de14181bef4cde46d5c36c55b98ff13",
@@ -601,12 +614,14 @@
           "f253d1b352a0a215d55aecd09ca36b631b8d5b85b26afa58f01fa08a6d4bc046",
           "f43e2f6db3ebc38317769c5105bd9e35be1aca3d5b0de9663fdd96c5e53c61e7",
           "f587a5f169e447d6dea4e12cc021e67e9df76d9089f7eec2a7277ee5d57ec066",
+          "f85a5bf58695c60baa8d5230cf4d961881906373e03a076af4b559f793066a5e",
           "f9165ed1d4b247f3c09534d1f1b1f1193d4e5b030ef2540ffe9a6c65b3ff6ef7",
           "fa22df6dd4f10e9ee5010cf7cb18077fc66cbd8c3dd85d6e113679ec8196c1f9",
           "fee37c756112a08a4fe46e1343bc2af31f2983dc3ed91adf928ea67af890ac86",
           "poly:043440ad0f015690e112fc27c3f4e1d8a7405c92ec03f9becaf7da133ba70fbe",
           "poly:0a1f36b5e7bf7625d55e302469f031836db16ffd39c835566fe9b85539ea9e4d",
           "poly:16937f517ed2c66a1588215e5c6b6b9da5205a8d517ea1be6c8df611bc7a14e8",
+          "poly:1c7030b712c6c4fa9da20050d0cf92000d7ea7fa481bc3ae4d28696972d5512c",
           "poly:27ed73ae3584e1c7498038b44281f7de57a4ab0f5e0c92502cccf19b01bfaa82",
           "poly:2bca24ebb86ace5c97e6f8bc18b5680d3ba7462d60779973d5742f51a8a1819b",
           "poly:2def1ec8d0893199fc8dae611b51aaa8a54df4bdc355610afed5c423e1df30c0",
@@ -615,14 +630,19 @@
           "poly:61afaa648fcb223b41656cc0ef8724c75024d12390fd5f36c275970ae2a8918e",
           "poly:6a93b5046468ca16015150edcd46ec8bcd56270d35ff2e8220c0995270f2f0b3",
           "poly:795a390aea77a670f661f7ddb856370da45981db10708c21b76ff21da190de0c",
+          "poly:7acca918d2fedf582bb573d864c6790e3fcf7f23adf581d2ef7bfcf4ad5b1f52",
           "poly:7da9b92d7e6ce3225a9337c01410986625730b7a8a1b6d1f1a2047d9702e3bf5",
           "poly:97f71ac828cdc472d73fddfcf09b39395f6fd3831de20e3637e712b3f69a26b4",
           "poly:a165193847c4aab776341ae3f3664ebd82a421e759b284c8d2aa3144ffe34155",
+          "poly:b71a96c92565ee88e6a0b3bcade32034c48028c18cfa31e13ce9a8b28a6b0258",
           "poly:bd9465fc25fe911739d3f065ed86d4efa9898979c3f4a2091b0d621808589133",
+          "poly:be17ba4e8c2dc26700685369c0c6b9715c4e19a0616edc34af85ffb014ef6b32",
           "poly:c44a47f080f28aca7a7f6d6afab93fbfba297f14e978d6897c2d9539a7e318fa",
           "poly:c90e9d7e8914f2f511b768fe76a0771e31ae723e9b7ab577351b151b9ca6d6ff",
           "poly:d8b389952060848a76d18ae15879a78ffeea22c0dfcaf334e0e6eb67b0a35725",
+          "poly:dd4ffad4107c01b16bcd31d4c4ceb248ae4ff345d44bf42fb41c1ab104742144",
           "poly:f43e2f6db3ebc38317769c5105bd9e35be1aca3d5b0de9663fdd96c5e53c61e7",
+          "poly:f85a5bf58695c60baa8d5230cf4d961881906373e03a076af4b559f793066a5e",
           "poly:fa22df6dd4f10e9ee5010cf7cb18077fc66cbd8c3dd85d6e113679ec8196c1f9",
           "poly:fee37c756112a08a4fe46e1343bc2af31f2983dc3ed91adf928ea67af890ac86"
         ],
@@ -663,8 +683,8 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 51,
-          "risk_cap_or_no_cash": 19
+          "stale_or_future_source_fill": 52,
+          "risk_cap_or_no_cash": 25
         },
         "unsafe_quotes": [],
         "cooldowns": {}
@@ -680,7 +700,7 @@
             "token": "47446842303718527029443341349194378753598380685525344602906075248281464204985",
             "qty": "0.9400062793724959005222834286",
             "mark": "0.46",
-            "updated_at": 1794742908.7610345,
+            "updated_at": 1794743150.0183294,
             "cost_eur": "0.3930065721354431211499300625",
             "name": "Spread: Chiefs (-3.5)",
             "opened_at": 1794715344.2859125
@@ -689,7 +709,7 @@
             "token": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark": "0.26",
-            "updated_at": 1794742908.7844262,
+            "updated_at": 1794743150.0183542,
             "cost_eur": "5.649802822432880323434438378",
             "name": "Spread: Jaguars (-4.5)",
             "opened_at": 1794717635.4889214
@@ -1124,7 +1144,7 @@
             "token": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "1.306863611825617983369800383",
             "mark": "0.76",
-            "updated_at": 1794742908.7568734,
+            "updated_at": 1794743149.994216,
             "cost_eur": "0.9383580488540942725154327299",
             "name": "Rockets vs. Wizards",
             "opened_at": 1794714917.5795581
@@ -1423,6 +1443,7 @@
           "e6cae0524c569e44ef122f838c2efae4c1692241ca6a817bc3e62574326a734f",
           "e6f74e2133e950b8583b167cc5f16fe99bcecbcd0165ffcea257b9f392b2000a",
           "e8632de70616940faf97fb3108cb4d7532dd4aa446ae7577e38c53a976efce24",
+          "e92506f7f124b9bf35b61c1c40578633e113e639a34c750bfe8d680d305c5e03",
           "eaa4dae695319b368fc5d397ca98637c0b8e6316096dbe2517d8a8f64631627f",
           "ebcc4078e40b49c1964a3f7acb32e8f1e19582617eb8f5748280dbb6df64d4e5",
           "ebd919e5bb7cd2e5a81f316130d2038cfa51d53425c480cda2e004ad191f0406",
@@ -1503,6 +1524,7 @@
           "poly:d95ba86d4efef1f7461c7731d9d697ef22cd9ef07c87fd2a5f10af8719ce5da6",
           "poly:db7cb98725d79d83533c7a8fa7089b1042a423f317177964e85f6e28b0488e95",
           "poly:dbcbc43d092585e475f5b7427e92f4028e367dd8305a0c0196468a4df512e0cd",
+          "poly:e92506f7f124b9bf35b61c1c40578633e113e639a34c750bfe8d680d305c5e03",
           "poly:eaa4dae695319b368fc5d397ca98637c0b8e6316096dbe2517d8a8f64631627f",
           "poly:ef9067f9eb4b6eefd917a1adae98956a413d53e6594cc80593102cea3a4f161b",
           "poly:f055b321f138fb3bc9781e82911f78eb569cccf90222b2f1f70362622042f299",
@@ -1570,7 +1592,7 @@
           "risk_cap_or_no_cash": 20,
           "source_price_already_moved": 13,
           "invalid_or_extreme_source_price": 1,
-          "portfolio_drawdown_stop": 13
+          "portfolio_drawdown_stop": 14
         },
         "unsafe_quotes": [],
         "cooldowns": {
@@ -2278,7 +2300,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T11:41:48+00:00",
+    "last_poll": "2026-11-15T11:46:21+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
@@ -2440,8 +2462,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 1432,
-      "unselected_or_unverified": 292
+      "non_live_alert": 1548,
+      "unselected_or_unverified": 297
     },
     "errors": [],
     "reconnects": 5
