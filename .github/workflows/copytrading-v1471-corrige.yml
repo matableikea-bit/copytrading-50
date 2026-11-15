@@ -1,0 +1,273 @@
+
+name: "CopyTrading V14.7.1 — CURSOR FIX PAPER"
+
+on:
+  workflow_dispatch:
+    inputs:
+      session:
+        description: "Simulation fictive"
+        type: choice
+        options: ["2min", "10h", "12h"]
+        default: "2min"
+        required: true
+      capital:
+        description: "Capital USDC fictif"
+        type: choice
+        options: ["50", "100"]
+        default: "50"
+        required: true
+      profil:
+        type: choice
+        options: ["standard", "offensif"]
+        default: "standard"
+        required: true
+
+permissions:
+  contents: read
+concurrency:
+  group: copytrading-cursorfix-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    name: "Reconstruire la V14.7 lisible et vérifier le correctif"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: "Reconstituer les 41 fichiers Python et la configuration depuis V14.7"
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          src=Path('.github/workflows/copytrading-v147-complet.yml').read_text().splitlines()
+          pattern=re.compile(r"^ {10}cat > '([^']+)' <<'(__COPYTRADING_147_SOURCE_\d+__)'$")
+          i=0;count=0
+          while i<len(src):
+              m=pattern.match(src[i])
+              if not m:i+=1;continue
+              name,marker=m.groups()
+              j=i+1
+              while j<len(src) and src[j]!=' '*10+marker:j+=1
+              if j==len(src):raise RuntimeError('source file truncated: '+name)
+              path=Path(name)
+              if path.is_absolute() or '..' in path.parts:raise RuntimeError('unsafe source path')
+              path.parent.mkdir(parents=True,exist_ok=True)
+              path.write_text('\n'.join(row[10:] for row in src[i+1:j])+'\n')
+              count+=1;i=j+1
+          assert count==41, f'Expected 41 readable source files; got {count}'
+          assert Path('bot/providers.py').is_file() and Path('bot/runner.py').is_file()
+          PY
+      - name: "Appliquer le correctif du curseur (code Python visible)"
+        shell: bash
+        run: |
+          cat > bot/cursor_hotfix.py <<'PY'
+          """Safe recovery for high-activity wallet RPC cursors. PAPER only."""
+          from bot.providers import Helius, DataUnavailable
+          from bot.runner import Bot
+
+          # 5 pages of 1,000 signatures instead of only 5 * 100.
+          def larger_window(self, wallet, *, cursor=None, bootstrap_ts=None, max_pages=5):
+              if (cursor is None)==(bootstrap_ts is None):
+                  raise ValueError('exactly one cursor boundary is required')
+              before=None; found=False; rows=[]
+              for _ in range(max_pages):
+                  opts={'limit':1000,'commitment':'confirmed'}
+                  if before: opts['before']=before
+                  page=self._rpc_call('getSignaturesForAddress',[wallet,opts])
+                  if not isinstance(page,list):raise DataUnavailable('invalid RPC signature page')
+                  for item in page:
+                      if not isinstance(item,dict) or not isinstance(item.get('signature'),str):
+                          raise DataUnavailable('invalid RPC signature item')
+                      sig=item['signature']
+                      if cursor is not None and sig==cursor:
+                          found=True;break
+                      if bootstrap_ts is not None:
+                          ts=item.get('blockTime')
+                          if not isinstance(ts,int):raise DataUnavailable('RPC timestamp unavailable')
+                          if ts<=bootstrap_ts:
+                              found=True;break
+                      rows.append(item)
+                  if found:break
+                  if len(page)<1000:
+                      if bootstrap_ts is not None:found=True
+                      break
+                  sig=page[-1]['signature']
+                  if sig==before:raise DataUnavailable('RPC signature pagination stalled')
+                  before=sig
+              if not found:
+                  raise DataUnavailable('wallet history gap: RPC cursor not found; fail closed')
+              self.diagnostics['rpc_backlog_signatures']=len(rows)
+              return rows
+
+          old_decode=Helius._rpc_decode_range
+          def bounded_decode(self, rows, wallet):
+              if len(rows)>64:
+                  self.diagnostics['rpc_decode_limited_cycles']=self.diagnostics.get('rpc_decode_limited_cycles',0)+1
+                  rows=rows[-64:]
+              return old_decode(self,rows,wallet)
+
+          Helius._rpc_signature_range=larger_window
+          Helius._rpc_decode_range=bounded_decode
+          old_copy=Bot._copy_wallet
+
+          def resilient_copy(self,now,wallet):
+              try:
+                  return old_copy(self,now,wallet)
+              except DataUnavailable as exc:
+                  if 'wallet history gap: RPC cursor not found' not in str(exc):raise
+                  key='wallet_cursor:'+wallet
+                  checkpoint=self.store.get(key)
+                  cursor=checkpoint.get('signature') if isinstance(checkpoint,dict) else checkpoint
+                  if not cursor or any(p.get('source_wallet')==wallet for p in self.state['positions'].values()):raise
+                  latest=self.helius.latest_signature(wallet)
+                  if not isinstance(latest,str) or not latest or latest==cursor:raise
+                  self.store.put(key,{'initialized':True,'signature':latest,'bootstrap_ts':now,
+                                      'resynced_after_gap':True,'missed_history':True})
+                  diag=getattr(self.helius,'diagnostics',None)
+                  if isinstance(diag,dict):diag['rpc_cursor_resyncs']=diag.get('rpc_cursor_resyncs',0)+1
+                  self.log('COPIER','RESYNC','unverified_wallet_history_discarded',
+                           {'wallet':wallet,'copied_positions_open':False})
+                  raise DataUnavailable('wallet history resynchronized; previous trades skipped; no copy this cycle') from exc
+
+          Bot._copy_wallet=resilient_copy
+          PY
+      - name: "Exécuter les 151 tests existants et vérifier le chargement"
+        run: |
+          python -m unittest discover -s tests -q
+          python -m compileall -q bot
+          python -c 'import bot.cursor_hotfix; from bot.settings import Config; assert Config.load("config.json").mode=="PAPER"'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v1471-full-readable-sources
+          path: |
+            bot/
+            tests/
+            config.json
+            docs/
+          retention-days: 7
+
+  stage1:
+    name: "Étape 1 / 3 — COPYTRADING PAPER"
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v1471-full-readable-sources
+          path: .
+      - name: "Exécuter le bot avec le correctif RPC activé"
+        run: python -c 'import bot.cursor_hotfix; from bot.gh_session import main; main()' --session "${{ inputs.session }}" --stage 1
+      - name: "Créer le tableau de bord PAPER"
+        if: always()
+        run: python -m bot.snapshot
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: checkpoint-v1471-stage-1
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 7
+          if-no-files-found: warn
+
+  stage2:
+    name: "Étape 2 / 3 — COPYTRADING PAPER"
+    if: ${{ inputs.session != '2min' }}
+    needs: stage1
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v1471-full-readable-sources
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-v1471-stage-1
+          path: .
+      - name: "Exécuter le bot avec le correctif RPC activé"
+        run: python -c 'import bot.cursor_hotfix; from bot.gh_session import main; main()' --session "${{ inputs.session }}" --stage 2
+      - name: "Créer le tableau de bord PAPER"
+        if: always()
+        run: python -m bot.snapshot
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: checkpoint-v1471-stage-2
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 7
+          if-no-files-found: warn
+
+  stage3:
+    name: "Étape 3 / 3 — COPYTRADING PAPER"
+    if: ${{ inputs.session != '2min' }}
+    needs: stage2
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v1471-full-readable-sources
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-v1471-stage-2
+          path: .
+      - name: "Exécuter le bot avec le correctif RPC activé"
+        run: python -c 'import bot.cursor_hotfix; from bot.gh_session import main; main()' --session "${{ inputs.session }}" --stage 3
+      - name: "Créer le tableau de bord PAPER"
+        if: always()
+        run: python -m bot.snapshot
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: checkpoint-v1471-stage-3-final
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 14
+          if-no-files-found: warn
