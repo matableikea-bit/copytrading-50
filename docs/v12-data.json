@@ -1,22 +1,22 @@
 {
-  "status": "PAPER_PAUSED_AWAITING_SCHEDULE",
+  "status": "PAPER_RUNNING",
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T04:08:13+00:00",
+  "observed_at_utc": "2026-11-15T04:35:35+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
-  "capital_eur": 48.8881,
-  "pnl_eur": -1.1119,
+  "capital_eur": 45.4681,
+  "pnl_eur": -4.5319,
   "capital_valuation_status": "INDICATIVE_LIQUIDATION_QUOTES",
   "new_mirrored_trades": 11,
-  "polymarket_risk_exits_not_source_copies": 0,
-  "open_positions_not_liquidated": 9,
+  "polymarket_risk_exits_not_source_copies": 2,
+  "open_positions_not_liquidated": 7,
   "polymarket": {
     "budget_eur": 40.0,
-    "capital_eur": 38.88813,
+    "capital_eur": 35.46808,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T04:07:57+00:00",
+    "last_poll_utc": "2026-11-15T04:35:32+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,14 +80,14 @@
             "qty": "16.66484950414661021863944789",
             "mark_usd": "0.42",
             "title": "Vikings vs. Packers",
-            "mark_age_seconds": 51
+            "mark_age_seconds": 0
           },
           {
             "token_id": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark_usd": "0.39",
             "title": "Spread: 49ers (-2.5)",
-            "mark_age_seconds": 46
+            "mark_age_seconds": 0
           }
         ]
       },
@@ -96,23 +96,16 @@
         "wallet": "0xdc41c39b95453c943174f369926018f6963bdd7e",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 0.54772,
-        "equity_eur": 7.82548,
-        "pnl_eur": -0.17452,
+        "cash_eur": 6.09174,
+        "equity_eur": 6.47448,
+        "pnl_eur": -1.52552,
         "positions": [
-          {
-            "token_id": "40675833721684739055366242175795930970212903955757546003790192007994860876996",
-            "qty": "14.65456909333905590105713408",
-            "mark_usd": "0.52",
-            "title": "North Dakota State vs. Hawai'i: O/U 39.5",
-            "mark_age_seconds": 51
-          },
           {
             "token_id": "47446842303718527029443341349194378753598380685525344602906075248281464204985",
             "qty": "0.9400062793724959005222834286",
             "mark_usd": "0.45",
             "title": "Spread: Chiefs (-3.5)",
-            "mark_age_seconds": 51
+            "mark_age_seconds": 0
           }
         ]
       },
@@ -122,22 +115,22 @@
         "platform": "Polymarket",
         "initial_eur": 8.0,
         "cash_eur": 0.54864,
-        "equity_eur": 7.84847,
-        "pnl_eur": -0.15153,
+        "equity_eur": 8.48622,
+        "pnl_eur": 0.48622,
         "positions": [
           {
             "token_id": "46519015104064379455425407273873158568522319672591874878173170571801901690261",
             "qty": "11.74735292915252851477862720",
-            "mark_usd": "0.6",
+            "mark_usd": "0.66",
             "title": "Spread: North Dakota State (-5.5)",
-            "mark_age_seconds": 51
+            "mark_age_seconds": 0
           },
           {
             "token_id": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "1.306863611825617983369800383",
             "mark_usd": "0.78",
             "title": "Rockets vs. Wizards",
-            "mark_age_seconds": 51
+            "mark_age_seconds": 0
           }
         ]
       },
@@ -146,18 +139,10 @@
         "wallet": "0xf0318c32136c2db7fec88b84869aee6a1106c80c",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 0.94265,
-        "equity_eur": 7.85317,
-        "pnl_eur": -0.14683,
-        "positions": [
-          {
-            "token_id": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
-            "qty": "12.72917885793878900606833546",
-            "mark_usd": "0.6",
-            "title": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
-            "mark_age_seconds": 41
-          }
-        ]
+        "cash_eur": 4.95567,
+        "equity_eur": 4.95567,
+        "pnl_eur": -3.04433,
+        "positions": []
       },
       {
         "name": "CUTJALENHURTS",
@@ -165,28 +150,28 @@
         "platform": "Polymarket",
         "initial_eur": 8.0,
         "cash_eur": 0.54272,
-        "equity_eur": 7.56866,
-        "pnl_eur": -0.43134,
+        "equity_eur": 7.75936,
+        "pnl_eur": -0.24064,
         "positions": [
           {
             "token_id": "30289940090088667668050088376461003061362172048916753227271073157706533834577",
             "qty": "21.07613319642071292357341939",
-            "mark_usd": "0.32",
+            "mark_usd": "0.33",
             "title": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
-            "mark_age_seconds": 51
+            "mark_age_seconds": 0
           },
           {
             "token_id": "101603881415360735322856962039541488878256176329287774854805690311335985333809",
             "qty": "1.822694938378057542924187797",
             "mark_usd": "0.56",
             "title": "Will Ciryl Gane win by KO or TKO?",
-            "mark_age_seconds": 41
+            "mark_age_seconds": 0
           }
         ]
       }
     ],
     "new_mirrored_fills": 11,
-    "risk_exits": 0,
+    "risk_exits": 2,
     "pending_price_checks": 0,
     "trades": [
       {
@@ -275,6 +260,24 @@
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
       },
       {
+        "timestamp_utc": "2026-11-15T04:35:35+00:00",
+        "trader": "nigiri99",
+        "platform": "Polymarket",
+        "trade_kind": "PAPER_RISK_EXIT_NOT_SOURCE_COPY",
+        "source_id": null,
+        "source_timestamp_utc": null,
+        "market": "POLYMARKET_RISK_EXIT",
+        "asset": "40675833721684739055366242175795930970212903955757546003790192007994860876996",
+        "title": "North Dakota State vs. Hawai'i: O/U 39.5",
+        "side": "SELL",
+        "copy_price_usd": "0.42",
+        "source_price_usd": null,
+        "virtual_notional_eur": "5.5440",
+        "realized_pnl_eur": "-1.5153",
+        "exit_reason": "STOP_LOSS",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
         "timestamp_utc": "2026-11-15T03:50:44+00:00",
         "trader": "HomeRunHazard",
         "platform": "Polymarket",
@@ -343,6 +346,24 @@
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
       },
       {
+        "timestamp_utc": "2026-11-15T04:35:35+00:00",
+        "trader": "BreakTheBank",
+        "platform": "Polymarket",
+        "trade_kind": "PAPER_RISK_EXIT_NOT_SOURCE_COPY",
+        "source_id": null,
+        "source_timestamp_utc": null,
+        "market": "POLYMARKET_RISK_EXIT",
+        "asset": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
+        "title": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
+        "side": "SELL",
+        "copy_price_usd": "0.35",
+        "source_price_usd": null,
+        "virtual_notional_eur": "4.0130",
+        "realized_pnl_eur": "-3.0443",
+        "exit_reason": "STOP_LOSS",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
         "timestamp_utc": "2026-11-15T03:47:15+00:00",
         "trader": "CUTJALENHURTS",
         "platform": "Polymarket",
@@ -382,25 +403,27 @@
         "stale_or_future_source_fill": 7
       },
       "nigiri99": {
-        "stale_or_future_source_fill": 12,
-        "risk_cap_or_no_cash": 19,
+        "stale_or_future_source_fill": 60,
+        "risk_cap_or_no_cash": 21,
         "unpriced_source_fill_expired": 53
       },
       "HomeRunHazard": {
-        "stale_or_future_source_fill": 2,
+        "stale_or_future_source_fill": 52,
         "unpriced_source_fill_expired": 4,
         "risk_cap_or_no_cash": 5,
         "source_price_already_moved": 4,
         "invalid_or_extreme_source_price": 1
       },
       "BreakTheBank": {
-        "stale_or_future_source_fill": 7,
-        "risk_cap_or_no_cash": 9
+        "stale_or_future_source_fill": 48,
+        "risk_cap_or_no_cash": 9,
+        "portfolio_drawdown_stop": 9
       },
       "CUTJALENHURTS": {
-        "stale_or_future_source_fill": 7,
+        "stale_or_future_source_fill": 55,
         "source_price_already_moved": 3,
-        "risk_cap_or_no_cash": 3
+        "risk_cap_or_no_cash": 4,
+        "market_not_ending_within_30h": 1
       }
     },
     "errors": [
@@ -451,7 +474,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T04:08:10+00:00",
+    "last_message_utc": "2026-11-15T04:35:32+00:00",
     "books": [
       {
         "name": "leo",
@@ -565,6 +588,13 @@
       "poly_trades": 11,
       "fomo_trades": 0,
       "poly_risk_exits": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T04:35:35+00:00",
+      "capital_eur": 45.4681,
+      "poly_trades": 11,
+      "fomo_trades": 0,
+      "poly_risk_exits": 2
     }
   ],
   "snapshot_interval_minutes": 5,
