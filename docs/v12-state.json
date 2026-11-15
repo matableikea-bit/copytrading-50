@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T12:33:12+00:00",
+  "updated_at_utc": "2026-11-15T12:38:12+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -473,6 +473,13 @@
       "poly_trades": 15,
       "fomo_trades": 0,
       "poly_risk_exits": 9
+    },
+    {
+      "observed_at_utc": "2026-11-15T12:38:12+00:00",
+      "capital_eur": 45.0955,
+      "poly_trades": 15,
+      "fomo_trades": 0,
+      "poly_risk_exits": 9
     }
   ],
   "issues": [],
@@ -536,7 +543,7 @@
             "token": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
             "qty": "13.27706009261109783141381614",
             "mark": "0.57",
-            "updated_at": 1794745937.0986438,
+            "updated_at": 1794746239.5425642,
             "cost_eur": "6.999082956958396923401840867",
             "name": "Patriots vs. Lions",
             "opened_at": 1794743575.1351802
@@ -545,7 +552,7 @@
             "token": "115409060983777450772125937546792914347599843448572648301569915268020202613802",
             "qty": "0.8100038550466332484419289538",
             "mark": "0.52",
-            "updated_at": 1794745937.0986347,
+            "updated_at": 1794746239.5425203,
             "cost_eur": "0.3901882454571278642325956544",
             "name": "Spread: Lions (-2.5)",
             "opened_at": 1794745696.3605025
@@ -873,7 +880,7 @@
             "token": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark": "0.26",
-            "updated_at": 1794745937.0986066,
+            "updated_at": 1794746239.5305033,
             "cost_eur": "5.649802822432880323434438378",
             "name": "Spread: Jaguars (-4.5)",
             "opened_at": 1794717635.4889214
@@ -1504,6 +1511,7 @@
           "779d6d4dcfa287dae7bc1436df2bb2c1ea7fe4ca2a7974212590bb70fc5c7a90",
           "78021860317edea95e58f991c2d26444180ecc3ed0b9207039c693d2120484d3",
           "7808f55b30fd6d22e590497f0c34eb2f7f16d0ab32db908b40886a6d103cd518",
+          "7810468fa754c0150d9a9515b1b4ca7a7172cbdfbbcd2e7ef3841a733afdd513",
           "79898d593682b7cb88ea681bdc64a61875bff38b7748313f0ca0098882b3a21d",
           "79e71274af1d651d7da980b501449cadc4bfd271cd918478c54f66ae6960550b",
           "7a017f73599bd9edf2332fa43f39471b76f2ee76e0065e8ca6bb9e7562726cf2",
@@ -1661,6 +1669,7 @@
           "dab63ef760fbdc1b9775b13715d06c09b116b1ed2ce9ac7fc8d845179fc1f3f6",
           "daf69a2b0c6a548478db515cf7533b1ee4956f1fe99b32bea676580c42e70faf",
           "db2186f37f2846c34ab7572ad782523601dc2e07197601da7ba34c3ee2449bce",
+          "db6d780cf4e5f31b709351689fdf00e32d523a06fb2834cfaea81d5c795ef14c",
           "db7cb98725d79d83533c7a8fa7089b1042a423f317177964e85f6e28b0488e95",
           "dbcbc43d092585e475f5b7427e92f4028e367dd8305a0c0196468a4df512e0cd",
           "dc2b1740d80f4d009aa21378dcf0aa3ccd0f76a2afb00f2e5f3410c8c1bce850",
@@ -1784,6 +1793,7 @@
           "poly:d78003f687da40b4dc68d3849ec86d2642b750877fe446440ad6d6bb8146c29b",
           "poly:d92f0e76d613935374c120404e37a49094481a109296c105e653ff49736b5b8b",
           "poly:d95ba86d4efef1f7461c7731d9d697ef22cd9ef07c87fd2a5f10af8719ce5da6",
+          "poly:db6d780cf4e5f31b709351689fdf00e32d523a06fb2834cfaea81d5c795ef14c",
           "poly:db7cb98725d79d83533c7a8fa7089b1042a423f317177964e85f6e28b0488e95",
           "poly:dbcbc43d092585e475f5b7427e92f4028e367dd8305a0c0196468a4df512e0cd",
           "poly:dde3b22edf0f89a9f3d499bfa2ddb5be810739ebc82a2cc76cb3cba8cfd59ee5",
@@ -1871,12 +1881,12 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 268,
+          "stale_or_future_source_fill": 269,
           "unpriced_source_fill_expired": 5,
           "risk_cap_or_no_cash": 20,
           "source_price_already_moved": 15,
           "invalid_or_extreme_source_price": 1,
-          "portfolio_drawdown_stop": 37
+          "portfolio_drawdown_stop": 38
         },
         "unsafe_quotes": [],
         "cooldowns": {
@@ -2587,7 +2597,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T12:32:47+00:00",
+    "last_poll": "2026-11-15T12:37:49+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
@@ -2749,8 +2759,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 1757,
-      "unselected_or_unverified": 343
+      "non_live_alert": 1772,
+      "unselected_or_unverified": 346
     },
     "errors": [],
     "reconnects": 5
