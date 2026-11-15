@@ -3,20 +3,20 @@
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T03:42:12+00:00",
+  "observed_at_utc": "2026-11-15T03:47:16+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
-  "capital_eur": 50.0,
-  "pnl_eur": 0.0,
+  "capital_eur": 49.4533,
+  "pnl_eur": -0.5467,
   "capital_valuation_status": "INDICATIVE_LIQUIDATION_QUOTES",
-  "new_mirrored_trades": 0,
+  "new_mirrored_trades": 4,
   "polymarket_risk_exits_not_source_copies": 0,
-  "open_positions_not_liquidated": 0,
+  "open_positions_not_liquidated": 3,
   "polymarket": {
     "budget_eur": 40.0,
-    "capital_eur": 40.0,
+    "capital_eur": 39.45326,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T03:42:12+00:00",
+    "last_poll_utc": "2026-11-15T03:47:13+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -71,10 +71,18 @@
         "wallet": "0x45185b026c729f2caf1b01f6230db5d22e81db24",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 8.0,
-        "equity_eur": 8.0,
-        "pnl_eur": 0.0,
-        "positions": []
+        "cash_eur": 1.487,
+        "equity_eur": 7.82,
+        "pnl_eur": -0.18,
+        "positions": [
+          {
+            "token_id": "108534542077320679697693708499731792701102813975517222080622181321794355009924",
+            "qty": "16.66484950414661021863944789",
+            "mark_usd": "0.42",
+            "title": "Vikings vs. Packers",
+            "mark_age_seconds": 0
+          }
+        ]
       },
       {
         "name": "nigiri99",
@@ -101,27 +109,127 @@
         "wallet": "0xf0318c32136c2db7fec88b84869aee6a1106c80c",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 8.0,
-        "equity_eur": 8.0,
-        "pnl_eur": 0.0,
-        "positions": []
+        "cash_eur": 0.94265,
+        "equity_eur": 7.85317,
+        "pnl_eur": -0.14683,
+        "positions": [
+          {
+            "token_id": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
+            "qty": "12.72917885793878900606833546",
+            "mark_usd": "0.6",
+            "title": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
+            "mark_age_seconds": 0
+          }
+        ]
       },
       {
         "name": "CUTJALENHURTS",
         "wallet": "0xf68a281980f8c13828e84e147e3822381d6e5b1b",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 8.0,
-        "equity_eur": 8.0,
-        "pnl_eur": 0.0,
-        "positions": []
+        "cash_eur": 1.487,
+        "equity_eur": 7.78009,
+        "pnl_eur": -0.21991,
+        "positions": [
+          {
+            "token_id": "30289940090088667668050088376461003061362172048916753227271073157706533834577",
+            "qty": "21.07613319642071292357341939",
+            "mark_usd": "0.33",
+            "title": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
+            "mark_age_seconds": 0
+          }
+        ]
       }
     ],
-    "new_mirrored_fills": 0,
+    "new_mirrored_fills": 4,
     "risk_exits": 0,
     "pending_price_checks": 0,
-    "trades": [],
-    "ignored": {},
+    "trades": [
+      {
+        "timestamp_utc": "2026-11-15T03:47:14+00:00",
+        "trader": "VirIntrepidus",
+        "platform": "Polymarket",
+        "source_id": "poly:16937f517ed2c66a1588215e5c6b6b9da5205a8d517ea1be6c8df611bc7a14e8",
+        "source_timestamp_utc": "2026-11-15T03:44:37+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "108534542077320679697693708499731792701102813975517222080622181321794355009924",
+        "title": "Vikings vs. Packers",
+        "side": "BUY",
+        "copy_price_usd": "0.43",
+        "source_price_usd": "0.4200000232",
+        "virtual_notional_eur": "6.5000",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:47:14+00:00",
+        "trader": "BreakTheBank",
+        "platform": "Polymarket",
+        "source_id": "poly:24abf5f38227e26a8a7f2adf90f3264dbb3f76530ae599999b1c6d6a7d8fe9db",
+        "source_timestamp_utc": "2026-11-15T03:44:26+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
+        "title": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
+        "side": "BUY",
+        "copy_price_usd": "0.61",
+        "source_price_usd": "0.6",
+        "virtual_notional_eur": "6.5000",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:47:14+00:00",
+        "trader": "BreakTheBank",
+        "platform": "Polymarket",
+        "source_id": "poly:0a3a26f2a03092f50d48986a5729e7b9f0c42d4b98c48146aa7664d76a561e10",
+        "source_timestamp_utc": "2026-11-15T03:44:32+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
+        "title": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
+        "side": "BUY",
+        "copy_price_usd": "0.61",
+        "source_price_usd": "0.6",
+        "virtual_notional_eur": "0.5433",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:47:15+00:00",
+        "trader": "CUTJALENHURTS",
+        "platform": "Polymarket",
+        "source_id": "poly:ead9b99c516e0ebbb773da19605d21690a40f7a74a05fa2828b3fc26d9ca4fc0",
+        "source_timestamp_utc": "2026-11-15T03:44:47+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "30289940090088667668050088376461003061362172048916753227271073157706533834577",
+        "title": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
+        "side": "BUY",
+        "copy_price_usd": "0.34",
+        "source_price_usd": "0.3300000012",
+        "virtual_notional_eur": "6.5000",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      }
+    ],
+    "ignored": {
+      "VirIntrepidus": {
+        "stale_or_future_source_fill": 2
+      },
+      "nigiri99": {
+        "stale_or_future_source_fill": 2
+      },
+      "BreakTheBank": {
+        "stale_or_future_source_fill": 1,
+        "risk_cap_or_no_cash": 5
+      },
+      "CUTJALENHURTS": {
+        "stale_or_future_source_fill": 6,
+        "source_price_already_moved": 1
+      }
+    },
     "errors": [],
     "quotes_quarantined": 0
   },
@@ -137,9 +245,9 @@
       "ezfinance"
     ],
     "watched_wallets": 5,
-    "connected": false,
+    "connected": true,
     "reconnects": 0,
-    "last_message_utc": null,
+    "last_message_utc": "2026-11-15T03:47:01+00:00",
     "books": [
       {
         "name": "leo",
@@ -194,7 +302,10 @@
     ],
     "new_mirrored_alerts": 0,
     "trades": [],
-    "ignored": {},
+    "ignored": {
+      "non_live_alert": 116,
+      "unselected_or_unverified": 10
+    },
     "source_errors": [],
     "quotes_quarantined": 0
   },
@@ -206,6 +317,13 @@
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
       "capital_eur": 50.0,
       "poly_trades": 0,
+      "fomo_trades": 0,
+      "poly_risk_exits": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T03:47:16+00:00",
+      "capital_eur": 49.4533,
+      "poly_trades": 4,
       "fomo_trades": 0,
       "poly_risk_exits": 0
     }

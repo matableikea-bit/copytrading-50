@@ -3,12 +3,19 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T03:42:12+00:00",
+  "updated_at_utc": "2026-11-15T03:47:16+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
       "capital_eur": 50.0,
       "poly_trades": 0,
+      "fomo_trades": 0,
+      "poly_risk_exits": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T03:47:16+00:00",
+      "capital_eur": 49.4533,
+      "poly_trades": 4,
       "fomo_trades": 0,
       "poly_risk_exits": 0
     }
@@ -68,14 +75,25 @@
         "wallet": "0x45185b026c729f2caf1b01f6230db5d22e81db24",
         "venue": "Polymarket",
         "budget": "8.00",
-        "cash": "8.00",
-        "positions": {},
+        "cash": "1.48700",
+        "positions": {
+          "108534542077320679697693708499731792701102813975517222080622181321794355009924": {
+            "token": "108534542077320679697693708499731792701102813975517222080622181321794355009924",
+            "qty": "16.66484950414661021863944789",
+            "mark": "0.42",
+            "updated_at": 1794714436.4765146,
+            "cost_eur": "6.51300",
+            "name": "Vikings vs. Packers",
+            "opened_at": 1794714434.305563
+          }
+        },
         "seen": [
           "0343c981e9b07481d425256b9831a751159db807fc7eec358cefe66b69705705",
           "048beddb4049d93d23ef2593ef2ee9c4f4ccbfe307a04a83c27814f34ab0bae5",
           "065175b43bdda7ae965e444cb15775528cb59cb8edbcc51196c37563ba76da31",
           "0b314042e3976ba1b6a45c6aadfa3add4e3c1f4dbed287d00dc17a5329226bc3",
           "15fd117d22e82948b3d6d2999c0d9297257ceba88bc7b6f605516c3b9e788939",
+          "16937f517ed2c66a1588215e5c6b6b9da5205a8d517ea1be6c8df611bc7a14e8",
           "19c53873cf3974277d8c07fbc84c9acea1a7def161fb1b0d3af031a9f98f9bd4",
           "1ebeadb3fbca7710a2072b053cc234da92c961d2e723309e7e0e9399b07a3096",
           "1fc6ee8b3645f8ac0d61df73a290f46e82b38abf5ef00aafdf0ec0658e2c84c0",
@@ -98,6 +116,7 @@
           "7841fa3724b657b2d954ac283ace5ff53e4dd2fff2a58c714272c0a6321d1d0e",
           "7b2605519032d0649db3ebe98a9bccb260f7967e2215bc3c92be3fcb79b97a68",
           "7b9b9d229e01ade5cc5b30e7b4b19cafcd758e29de10e363f5cf02f5834bcb5b",
+          "81e425e542d678f0bf9506fccdbfd261af09f88cc312ead5d7af37dee8038ded",
           "8d8c5e5ac619e9d039854befee691f37ffbfe61eb829d5cdea7e6d37f8f32dc3",
           "8f67017127beddd0f8eedfa34b1cc33fd4848207e083bb1d953c87e660b809b8",
           "926a1d3a846ca4c5ce85ab7115186fc74fcc2897dc1f4b158715ed558a22e1c0",
@@ -107,6 +126,7 @@
           "9d582eced980a88b08555afc1d3837e136a70ed7d23a9b4a5cc0f28f9a279de5",
           "b7f63b4f4a0ba441975a3d6b499a1d8e4f8b84b39fe5538841610f3007cd2167",
           "c0eb7bbf218ca8232eac7aee462395c89c276528eb2cbe5f86158d682c33901c",
+          "c5a0f90d113592df625840d49ead0d62fe207d2124da10a15f69cf8c7fb32f28",
           "d2f7eebaca74a3b9866076a6c81e256ad78150ef2d15b97a3acf28c5c52261e9",
           "d6a030653aa843d7761dd06963f898d2fc7e66294f42903f23b0e8af54901b76",
           "d7203391ef2904c5a436a4c6b70c3f66775d4372448dcfb8fafa92d801b5e60e",
@@ -120,10 +140,31 @@
           "ef7f8154ea7520ac29cc13106d5b201de1496e3e47bbc43e89b27b65a44d2234",
           "f132ab196e7489a3ec99c5f94211e41b06af833d0037687a03bb5b6eba3cbf8e",
           "f253d1b352a0a215d55aecd09ca36b631b8d5b85b26afa58f01fa08a6d4bc046",
-          "f9165ed1d4b247f3c09534d1f1b1f1193d4e5b030ef2540ffe9a6c65b3ff6ef7"
+          "f9165ed1d4b247f3c09534d1f1b1f1193d4e5b030ef2540ffe9a6c65b3ff6ef7",
+          "poly:16937f517ed2c66a1588215e5c6b6b9da5205a8d517ea1be6c8df611bc7a14e8"
         ],
-        "trades": [],
-        "rejected": {},
+        "trades": [
+          {
+            "timestamp_utc": "2026-11-15T03:47:14+00:00",
+            "trader": "VirIntrepidus",
+            "platform": "Polymarket",
+            "source_id": "poly:16937f517ed2c66a1588215e5c6b6b9da5205a8d517ea1be6c8df611bc7a14e8",
+            "source_timestamp_utc": "2026-11-15T03:44:37+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "108534542077320679697693708499731792701102813975517222080622181321794355009924",
+            "title": "Vikings vs. Packers",
+            "side": "BUY",
+            "copy_price_usd": "0.43",
+            "source_price_usd": "0.4200000232",
+            "virtual_notional_eur": "6.5000",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          }
+        ],
+        "rejected": {
+          "stale_or_future_source_fill": 2
+        },
         "unsafe_quotes": [],
         "cooldowns": {}
       },
@@ -135,6 +176,7 @@
         "cash": "8.00",
         "positions": {},
         "seen": [
+          "04ee4d433106e998048d2f6b538b9ca5eb02f6da424200322b157741d7ed080c",
           "134a56176275489bb0710f9ed032d192be599faadf796c9ca2b301539bc68e56",
           "13b0b096f9bc40d6440638be4683f46fa8edc2b073ad449d8f12fb68dfb7bfc6",
           "1d57a0e1c54219bff6bc0d6ab93b7b9fc8fa56f7f3d3cd723dcfabebc042d2b9",
@@ -163,6 +205,7 @@
           "84df65466d7cce963233fdc2a9b1af0a07fa405a37db8402c298fb474e54371a",
           "907ac4d88aa60aed9712e05e72fa8ba0f84913b9baf659a9e5855acf5d551bb5",
           "96967caa21bd298f993af559d72cf46ab4695fcaf3b299bd2ac93e4722c8ea44",
+          "9b02373d76f9b0cb88ad0f404e8618020e088d845531cb2b854f472e3618d984",
           "9d4d6738c315aec05b3699191cd6da0431609aae5380954b212bc1fd01e4399d",
           "a58643ce5f6da3b6ac8cff79a82cc189f537d3cacc07aab6a10066674adcf178",
           "ab7351c3e50993cb17c0e12dbc64fa8315b80143e55aa0f45e362093bb14bd13",
@@ -187,7 +230,9 @@
           "fe794955d0f24d4e56c4ccca986ca6459cc4e316c7c9f539064b81035916bb78"
         ],
         "trades": [],
-        "rejected": {},
+        "rejected": {
+          "stale_or_future_source_fill": 2
+        },
         "unsafe_quotes": [],
         "cooldowns": {}
       },
@@ -260,21 +305,37 @@
         "wallet": "0xf0318c32136c2db7fec88b84869aee6a1106c80c",
         "venue": "Polymarket",
         "budget": "8.00",
-        "cash": "8.00",
-        "positions": {},
+        "cash": "0.9426533448215526756878296064",
+        "positions": {
+          "23208862140288254610121187571883191387693350915948952229094473665636902270938": {
+            "token": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
+            "qty": "12.72917885793878900606833546",
+            "mark": "0.6",
+            "updated_at": 1794714436.5070236,
+            "cost_eur": "7.057346655178447324312170394",
+            "name": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
+            "opened_at": 1794714434.6254346
+          }
+        },
         "seen": [
+          "0a3a26f2a03092f50d48986a5729e7b9f0c42d4b98c48146aa7664d76a561e10",
           "112e2dcc42d8482181870d4186ef078fccd0e367333dc966d1d403bd395bd553",
           "147c54a51c964ffe2768f0f2db565f07cda83bd2cb07162bbe6b82544b89bbf4",
+          "1c15d86275c5438ad202a23c7b0f9bb354c6d79633a0caface3683cc2787a1cf",
           "2205694ad71149cccc19abe08376f9f132030b7b9cdad2fe890567ca07c1677e",
           "237f4ac56afcc327e9873a7ecc3a96c26ad93c64cccb6e2201e1255c4288cca5",
+          "24abf5f38227e26a8a7f2adf90f3264dbb3f76530ae599999b1c6d6a7d8fe9db",
           "24fa38c86af1f327070f3ac20adaa89a19ffb0f4fd7e752817aa8da4bf00eab5",
           "262d12f2a1cc98e1f1a84d5a8342038eff49343acd4034cfdb4abce2225d2a5b",
+          "267c26312bbbcad5f536956e4f2ca06c29888532583e16ceef9bad17ecb027e9",
+          "338aa8018734370ba57ce1d11bd892015145344ea61d42933fc49928cd63536b",
           "34db6695e46eb05fbef18bf0f9d7758902392eb69d3e768e1ace4fc1dd98251c",
           "39b6b833a13dcea5669d1b8193a8d527e9052f8aefbee9316038b274e1343ca6",
           "3d0694df09fe86159bc53ca497942b132c4c7141f3f590d2120fc96ad042108c",
           "3e158f7a2ef60ba33457cca4b3371fce6f55cb739103e9f2f5fa6b7fa4439f73",
           "3fc708647c380831a88d72d01f16b1b78ade7cdd634cfa196a0b41d100010c10",
           "41039312393afc0ed39e13db8df6f19c8b6ff1c297290b2151dd73fe838f046a",
+          "412bdb369e2e0a9344f6e5d57b5b61afdbb030313ba9ddd9dfb24454afd7f6b5",
           "43e19777347bb2da0eeaed01373fe715ae3397ead1c4b97036220e5c01876494",
           "48ecb497a33289a6060944b6a00f3d20f8576d21d1bdb7163d06fb453b54a8fd",
           "4c462aad1eb27888a901aada824ec8cb7a457c7d218a64612e540e561cd77967",
@@ -309,13 +370,60 @@
           "e501529a93fed7ee766e3ecce42f16c341248d00d8ab457dcf36da38d85a78c4",
           "e5bf580b129c48761974a1e47ed54e3ac466f1e1f25bae0856a2e089367d7528",
           "e64cfc9319fd6897faa6477a3e30e37cf1eb1491f5a350d6eb214834d52c44d1",
+          "e6dc4d192c0730bf8f778b25456aca9566d51622383620cd106693d99cc75083",
+          "f0485f9484803683f0fdb6c53b76f6661dc8d1a22e523b2fa3ba65535cd6d86b",
           "f65f355e1ca7f2a59c5fd1344b695f19df9f578fd11d7ac77ed0675213c74e52",
           "f6c30d42b8c7270693a66e83ec67d06edf9f91af2e04007c70da504d1013b92f",
           "f83920230c7273492f9e8b774d934e15113965832c527b69f403c6b3d8ec0e23",
-          "fed7491209abf52bb9cfa2bf584dcc128c5f88d269e05f4e154d4b05f2e830a8"
+          "fed7491209abf52bb9cfa2bf584dcc128c5f88d269e05f4e154d4b05f2e830a8",
+          "poly:0a3a26f2a03092f50d48986a5729e7b9f0c42d4b98c48146aa7664d76a561e10",
+          "poly:1c15d86275c5438ad202a23c7b0f9bb354c6d79633a0caface3683cc2787a1cf",
+          "poly:24abf5f38227e26a8a7f2adf90f3264dbb3f76530ae599999b1c6d6a7d8fe9db",
+          "poly:338aa8018734370ba57ce1d11bd892015145344ea61d42933fc49928cd63536b",
+          "poly:412bdb369e2e0a9344f6e5d57b5b61afdbb030313ba9ddd9dfb24454afd7f6b5",
+          "poly:e6dc4d192c0730bf8f778b25456aca9566d51622383620cd106693d99cc75083",
+          "poly:f0485f9484803683f0fdb6c53b76f6661dc8d1a22e523b2fa3ba65535cd6d86b"
         ],
-        "trades": [],
-        "rejected": {},
+        "trades": [
+          {
+            "timestamp_utc": "2026-11-15T03:47:14+00:00",
+            "trader": "BreakTheBank",
+            "platform": "Polymarket",
+            "source_id": "poly:24abf5f38227e26a8a7f2adf90f3264dbb3f76530ae599999b1c6d6a7d8fe9db",
+            "source_timestamp_utc": "2026-11-15T03:44:26+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
+            "title": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
+            "side": "BUY",
+            "copy_price_usd": "0.61",
+            "source_price_usd": "0.6",
+            "virtual_notional_eur": "6.5000",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          },
+          {
+            "timestamp_utc": "2026-11-15T03:47:14+00:00",
+            "trader": "BreakTheBank",
+            "platform": "Polymarket",
+            "source_id": "poly:0a3a26f2a03092f50d48986a5729e7b9f0c42d4b98c48146aa7664d76a561e10",
+            "source_timestamp_utc": "2026-11-15T03:44:32+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "23208862140288254610121187571883191387693350915948952229094473665636902270938",
+            "title": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
+            "side": "BUY",
+            "copy_price_usd": "0.61",
+            "source_price_usd": "0.6",
+            "virtual_notional_eur": "0.5433",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          }
+        ],
+        "rejected": {
+          "stale_or_future_source_fill": 1,
+          "risk_cap_or_no_cash": 5
+        },
         "unsafe_quotes": [],
         "cooldowns": {}
       },
@@ -324,12 +432,24 @@
         "wallet": "0xf68a281980f8c13828e84e147e3822381d6e5b1b",
         "venue": "Polymarket",
         "budget": "8.00",
-        "cash": "8.00",
-        "positions": {},
+        "cash": "1.48700",
+        "positions": {
+          "30289940090088667668050088376461003061362172048916753227271073157706533834577": {
+            "token": "30289940090088667668050088376461003061362172048916753227271073157706533834577",
+            "qty": "21.07613319642071292357341939",
+            "mark": "0.33",
+            "updated_at": 1794714436.5070417,
+            "cost_eur": "6.51300",
+            "name": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
+            "opened_at": 1794714435.9683743
+          }
+        },
         "seen": [
           "0a63bb998807de8874a11f907e9a918f207d084755be20f24dec874cc20fdc91",
           "1079a0fa0cc8ee27efd58cb302096086713228b751a2de849cd311ad1ee8e2c5",
           "11cc7d9b4c5ccc046b2abb93d5144d1986b7f381eacc7a20fe86777b51c0bb9d",
+          "1935c99cdf6eb86b31676ed426aab077c279e3aafff5366eec2b6fc5965d076c",
+          "1937d76f2c68ef24b5fda2e8aa03ea5cb497d974ab462168098ba0474453faa9",
           "1b42eb61b921f885590a161b28eaee51d287f1eeaca0124191b308588db076b2",
           "1c6e1e12a0d85e2a6025d7a5253ffb932db1426f3345e69487b247310c0b7bf5",
           "23656a11b6dc00d9073b8142141fcfced349524b7aa090456f58d7030eb5f6e0",
@@ -342,6 +462,7 @@
           "3ea4ca938e3e9c889b7b14e1b3cc8365df21edbc4ccaddab263580082980bb38",
           "433c88b09fecedbc62e3862f4a299e46569c496344f8c8a104f20f3e87af05fc",
           "4b7bfaab886e830f21fa903125e249ab53bfc050d98c106d4bf001734d5fc154",
+          "4e0bc21822ee533202ecc13cba6e2f4c29ff00c6a4cc1dca6c9423b583ad35cf",
           "4eac63e464b1c0ecfca6063b9ea1065ede1670b797bae2cc28b0293d2768f231",
           "4ed19708512778a207cb06db89068754f6f3009171935f6fc2c9fcbfc4b76efd",
           "51ab1100909a492cd3c763605ced7155fc1fbeb5d57077f5751a7ebad3e1d491",
@@ -351,10 +472,12 @@
           "5ba6378e8b0a293b65e16027a49beb6c4cb30ad3edcc98adfa0a8c81916741a0",
           "616b5e07b567ac065da1751e71ae2fe4e092dde0f399ca877d86a5c08106aee5",
           "6243676222f89dbd74cd462daecd1cc7e3f8fec88bc60faad89b76e29d63cd62",
+          "627fb1b65adaa03a9015302aab57747a8fbe3133088dfbccf4c2bd8c3e2afe64",
           "63a3f738c1802407d0a3d9e19171e6a91b1ca2713b82989580aa524ea059889a",
           "71951263673d07bb328e154e3d2ac3786b515817d48cbbea1b7a51ebc1d749a6",
           "821607d70e159ab1a8ef19084e78d5d8f37da8268dd863d4b13f24aa1bea2fd4",
           "82404939f687bda816c9eea94bf9785673696d753925cba6d9805246c5aa14f3",
+          "82ed0ca19376ed4c1d2bc37d8d5b1a3c06b081d088f38c166e32f59ee5b04855",
           "830dbe583d338f9c2f4dfb2edb849c94e562040729f8c4b6a127576db7f0115b",
           "8f723bd7e8a93d7ef212feb50dd9f8418f330f2f7a80ca46972755c5da83da02",
           "90fd4827cfae38629166a15d974fce113f2b0470d8a95d196ceb47dbd67f3caf",
@@ -369,17 +492,43 @@
           "b1454bfad373423a6c07e5ef6fe71c8cea14f394648f357a7204423efacdb252",
           "b43cc4bb9077249d035b979ca90dedf5945994ca951e66debc2881c8674a9f96",
           "b83118bc69506cb89b258695065df2418b7e60c3495ba98b05bc3260c3f9f175",
+          "be82df3101249e7e40a3fbbc5181a71e9527d0d39335c52f19857ec2d9fa7818",
+          "be9061c04c058c5e1bf17a69947825ce64143fdffd93faf21d7e2abbeb20e6a5",
           "c9362b59dd196a5972ab7112a918b411c0a26150fd60ee2ed9274b736cae73a7",
           "d9347533c6477aae5dd57f75f43c6c63ad583b934839158c1264c70b304dc4c5",
           "dd5bdbeb49b85e370a9e0879e1195380c1141bf1e8f749a530e6cc9bbd2b365b",
           "e86a363fee308cca40fe33d938d75561a11bd5790409b12b4f537997531e9084",
           "eab386932ba7eb5f9dde8af7c146b1db45bb343b04593a2f06f368a964f065e5",
+          "ead9b99c516e0ebbb773da19605d21690a40f7a74a05fa2828b3fc26d9ca4fc0",
           "ef8bc1a6064297a33c9b7ec70c1bad8c8933978c59c55235dbf0993ea1be5b30",
           "f1baafa1322793e1914690f9ecd5a52ac65397e930fac9daa324debd78e896bc",
-          "ffedf544c4f1f629106f08dd02bbbcdc94eff134b6dd83057ba918ba3b056068"
+          "ffedf544c4f1f629106f08dd02bbbcdc94eff134b6dd83057ba918ba3b056068",
+          "poly:82ed0ca19376ed4c1d2bc37d8d5b1a3c06b081d088f38c166e32f59ee5b04855",
+          "poly:ead9b99c516e0ebbb773da19605d21690a40f7a74a05fa2828b3fc26d9ca4fc0"
         ],
-        "trades": [],
-        "rejected": {},
+        "trades": [
+          {
+            "timestamp_utc": "2026-11-15T03:47:15+00:00",
+            "trader": "CUTJALENHURTS",
+            "platform": "Polymarket",
+            "source_id": "poly:ead9b99c516e0ebbb773da19605d21690a40f7a74a05fa2828b3fc26d9ca4fc0",
+            "source_timestamp_utc": "2026-11-15T03:44:47+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "30289940090088667668050088376461003061362172048916753227271073157706533834577",
+            "title": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
+            "side": "BUY",
+            "copy_price_usd": "0.34",
+            "source_price_usd": "0.3300000012",
+            "virtual_notional_eur": "6.5000",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          }
+        ],
+        "rejected": {
+          "stale_or_future_source_fill": 6,
+          "source_price_already_moved": 1
+        },
         "unsafe_quotes": [],
         "cooldowns": {}
       }
@@ -399,7 +548,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T03:42:12+00:00",
+    "last_poll": "2026-11-15T03:47:13+00:00",
     "started_at": 1794714129.2505972,
     "errors": []
   },
@@ -509,7 +658,10 @@
       }
     },
     "watchlist_candidates": 77,
-    "ignored": {},
+    "ignored": {
+      "non_live_alert": 116,
+      "unselected_or_unverified": 10
+    },
     "errors": [],
     "reconnects": 0
   }
