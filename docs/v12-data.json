@@ -1,22 +1,22 @@
 {
-  "status": "PAPER_RUNNING",
+  "status": "PAPER_PAUSED_AWAITING_SCHEDULE",
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T05:00:33+00:00",
+  "observed_at_utc": "2026-11-15T05:01:33+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
-  "capital_eur": 45.3461,
-  "pnl_eur": -4.6539,
+  "capital_eur": 45.5587,
+  "pnl_eur": -4.4413,
   "capital_valuation_status": "INDICATIVE_LIQUIDATION_QUOTES",
   "new_mirrored_trades": 12,
   "polymarket_risk_exits_not_source_copies": 2,
   "open_positions_not_liquidated": 8,
   "polymarket": {
     "budget_eur": 40.0,
-    "capital_eur": 35.34611,
+    "capital_eur": 35.55869,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T05:00:15+00:00",
+    "last_poll_utc": "2026-11-15T05:01:16+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,14 +80,14 @@
             "qty": "16.66484950414661021863944789",
             "mark_usd": "0.42",
             "title": "Vikings vs. Packers",
-            "mark_age_seconds": 50
+            "mark_age_seconds": 49
           },
           {
             "token_id": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark_usd": "0.39",
             "title": "Spread: 49ers (-2.5)",
-            "mark_age_seconds": 50
+            "mark_age_seconds": 49
           }
         ]
       },
@@ -105,14 +105,14 @@
             "qty": "0.9400062793724959005222834286",
             "mark_usd": "0.45",
             "title": "Spread: Chiefs (-3.5)",
-            "mark_age_seconds": 50
+            "mark_age_seconds": 49
           },
           {
             "token_id": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark_usd": "0.26",
             "title": "Spread: Jaguars (-4.5)",
-            "mark_age_seconds": 50
+            "mark_age_seconds": 49
           }
         ]
       },
@@ -122,22 +122,22 @@
         "platform": "Polymarket",
         "initial_eur": 8.0,
         "cash_eur": 0.54864,
-        "equity_eur": 8.80509,
-        "pnl_eur": 0.80509,
+        "equity_eur": 9.01767,
+        "pnl_eur": 1.01767,
         "positions": [
           {
             "token_id": "46519015104064379455425407273873158568522319672591874878173170571801901690261",
             "qty": "11.74735292915252851477862720",
-            "mark_usd": "0.69",
+            "mark_usd": "0.71",
             "title": "Spread: North Dakota State (-5.5)",
-            "mark_age_seconds": 50
+            "mark_age_seconds": 49
           },
           {
             "token_id": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "1.306863611825617983369800383",
             "mark_usd": "0.78",
             "title": "Rockets vs. Wizards",
-            "mark_age_seconds": 50
+            "mark_age_seconds": 49
           }
         ]
       },
@@ -165,14 +165,14 @@
             "qty": "21.07613319642071292357341939",
             "mark_usd": "0.32",
             "title": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
-            "mark_age_seconds": 50
+            "mark_age_seconds": 49
           },
           {
             "token_id": "101603881415360735322856962039541488878256176329287774854805690311335985333809",
             "qty": "1.822694938378057542924187797",
             "mark_usd": "0.55",
             "title": "Will Ciryl Gane win by KO or TKO?",
-            "mark_age_seconds": 50
+            "mark_age_seconds": 40
           }
         ]
       }
@@ -424,30 +424,32 @@
     ],
     "ignored": {
       "VirIntrepidus": {
-        "stale_or_future_source_fill": 8
+        "stale_or_future_source_fill": 8,
+        "risk_cap_or_no_cash": 1
       },
       "nigiri99": {
-        "stale_or_future_source_fill": 68,
-        "risk_cap_or_no_cash": 26,
-        "unpriced_source_fill_expired": 57
+        "stale_or_future_source_fill": 76,
+        "risk_cap_or_no_cash": 27,
+        "unpriced_source_fill_expired": 57,
+        "market_not_ending_within_30h": 1
       },
       "HomeRunHazard": {
-        "stale_or_future_source_fill": 78,
+        "stale_or_future_source_fill": 80,
         "unpriced_source_fill_expired": 4,
-        "risk_cap_or_no_cash": 19,
-        "source_price_already_moved": 9,
+        "risk_cap_or_no_cash": 20,
+        "source_price_already_moved": 11,
         "invalid_or_extreme_source_price": 1
       },
       "BreakTheBank": {
-        "stale_or_future_source_fill": 51,
+        "stale_or_future_source_fill": 73,
         "risk_cap_or_no_cash": 9,
-        "portfolio_drawdown_stop": 29
+        "portfolio_drawdown_stop": 57
       },
       "CUTJALENHURTS": {
-        "stale_or_future_source_fill": 57,
+        "stale_or_future_source_fill": 65,
         "source_price_already_moved": 3,
-        "risk_cap_or_no_cash": 8,
-        "market_not_ending_within_30h": 1
+        "risk_cap_or_no_cash": 14,
+        "market_not_ending_within_30h": 5
       }
     },
     "errors": [
@@ -496,9 +498,9 @@
       "ezfinance"
     ],
     "watched_wallets": 5,
-    "connected": true,
-    "reconnects": 0,
-    "last_message_utc": "2026-11-15T05:00:21+00:00",
+    "connected": false,
+    "reconnects": 1,
+    "last_message_utc": "2026-11-15T05:01:21+00:00",
     "books": [
       {
         "name": "leo",
@@ -554,8 +556,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 355,
-      "unselected_or_unverified": 75
+      "non_live_alert": 358,
+      "unselected_or_unverified": 77
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -651,6 +653,13 @@
     {
       "observed_at_utc": "2026-11-15T05:00:33+00:00",
       "capital_eur": 45.3461,
+      "poly_trades": 12,
+      "fomo_trades": 0,
+      "poly_risk_exits": 2
+    },
+    {
+      "observed_at_utc": "2026-11-15T05:01:33+00:00",
+      "capital_eur": 45.5587,
       "poly_trades": 12,
       "fomo_trades": 0,
       "poly_risk_exits": 2
