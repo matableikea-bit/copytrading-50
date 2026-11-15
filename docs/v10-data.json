@@ -2,21 +2,21 @@
   "status": "PAPER_RUNNING",
   "mode": "PAPER_FOMO_30_EUR_POLY_20_EUR_V10",
   "started_at_utc": "2026-11-15T02:50:57.548754+00:00",
-  "observed_at_utc": "2026-11-15T02:55:57+00:00",
+  "observed_at_utc": "2026-11-15T03:00:58+00:00",
   "duration_minutes": 330,
   "capital_initial_eur": 50,
-  "capital_eur": 50.0,
+  "capital_eur": 49.6553,
   "capital_valuation_status": "INDICATIVE_QUOTES_NO_REPORTED_ANOMALIES",
-  "pnl_eur": 0.0,
-  "pnl_eur_if_all_marks_valid": 0.0,
-  "new_mirrored_trades": 0,
+  "pnl_eur": -0.3447,
+  "pnl_eur_if_all_marks_valid": -0.3447,
+  "new_mirrored_trades": 9,
   "marks_reliability": "NO_REPORTED_MARK_ANOMALIES",
   "stale_positions_over_15min": 0,
   "polymarket": {
     "budget_eur": 20.0,
-    "capital_eur": 20.0,
+    "capital_eur": 19.65531,
     "rankings_as_of_utc": "2026-11-15T02:50:55+00:00",
-    "last_poll_utc": "2026-11-15T02:55:39+00:00",
+    "last_poll_utc": "2026-11-15T03:00:42+00:00",
     "watched_wallets": 10,
     "selected_winners": [
       {
@@ -116,10 +116,39 @@
         "wallet": "0xad5353afe30c2da57709e2704ef3ccdcf67eef24",
         "platform": "Polymarket",
         "initial_eur": 2.0,
-        "cash_eur": 2.0,
-        "equity_eur": 2.0,
-        "pnl_eur": 0.0,
-        "positions": []
+        "cash_eur": 0.3968,
+        "equity_eur": 1.96037,
+        "pnl_eur": -0.03963,
+        "positions": [
+          {
+            "token_id": "55312781745086958549818693395440531431492427818819125634808790042923674294197",
+            "qty": "0.5011108592155973702108365450",
+            "mark_usd": "0.87",
+            "title": "China x Philippines military clash before 2027?",
+            "mark_age_seconds": 0
+          },
+          {
+            "token_id": "43659502772185997089048224285491540379213029616892498735313428692694433249344",
+            "qty": "0.8646618747249523250696787443",
+            "mark_usd": "0.495",
+            "title": "Will Perplexity launch a Muse-like personal agent before 2027?",
+            "mark_age_seconds": 0
+          },
+          {
+            "token_id": "109252931404335034637458223452909545621063881702767194554079363911098025603809",
+            "qty": "0.5726981248178255659552417657",
+            "mark_usd": "0.755",
+            "title": "Will Moonshot be the third-best Chinese AI company at the end of November 2026?",
+            "mark_age_seconds": 0
+          },
+          {
+            "token_id": "8285136817825710261858017204258985493688244314834724739205991351192086485495",
+            "qty": "0.4641869011681323008268801680",
+            "mark_usd": "0.930",
+            "title": "Will PP win the most seats in Castellón in the 2026 Spanish general election?",
+            "mark_age_seconds": 0
+          }
+        ]
       },
       {
         "name": "fantasy7788",
@@ -146,20 +175,43 @@
         "wallet": "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
         "platform": "Polymarket",
         "initial_eur": 2.0,
-        "cash_eur": 2.0,
-        "equity_eur": 2.0,
-        "pnl_eur": 0.0,
-        "positions": []
+        "cash_eur": 1.1984,
+        "equity_eur": 1.98842,
+        "pnl_eur": -0.01158,
+        "positions": [
+          {
+            "token_id": "83990587169641429049216042349177490084530237438912326627864998876765073445926",
+            "qty": "0.8819551122194513715710723192",
+            "mark_usd": "0.495",
+            "title": "Spurs vs. Jazz: O/U 223.5",
+            "mark_age_seconds": 0
+          },
+          {
+            "token_id": "68114615939360624946703824451555999439570937931875183695785950089587311335191",
+            "qty": "0.8819551122194513715710723192",
+            "mark_usd": "0.495",
+            "title": "New Mexico Lobos vs. Santa Clara Broncos: O/U 165.5",
+            "mark_age_seconds": 295
+          }
+        ]
       },
       {
         "name": "cigarettes",
         "wallet": "0xd218e474776403a330142299f7796e8ba32eb5c9",
         "platform": "Polymarket",
         "initial_eur": 2.0,
-        "cash_eur": 2.0,
-        "equity_eur": 2.0,
-        "pnl_eur": 0.0,
-        "positions": []
+        "cash_eur": 0.99174,
+        "equity_eur": 1.70652,
+        "pnl_eur": -0.29348,
+        "positions": [
+          {
+            "token_id": "40217535979594382892270035974395609778209345077929307812668700224114300427620",
+            "qty": "3.361595290601221025669991670",
+            "mark_usd": "0.235",
+            "title": "Bulls vs. Timberwolves",
+            "mark_age_seconds": 0
+          }
+        ]
       },
       {
         "name": "balthazar",
@@ -212,17 +264,194 @@
         "positions": []
       }
     ],
-    "new_mirrored_fills": 0,
-    "trades": [],
+    "new_mirrored_fills": 9,
+    "trades": [
+      {
+        "timestamp_utc": "2026-11-15T02:56:00+00:00",
+        "trader": "xtxpleasecallme",
+        "platform": "Polymarket",
+        "source_id": "poly:ee157ffba52b5e059a83b2028f6222b3adf616f3e2811523af84623f57a9acd6",
+        "source_timestamp_utc": "2026-11-15T02:53:13+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "55312781745086958549818693395440531431492427818819125634808790042923674294197",
+        "title": "China x Philippines military clash before 2027?",
+        "side": "BUY",
+        "copy_price_usd": "0.88",
+        "source_price_usd": "0.87",
+        "virtual_notional_eur": "0.4000",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T02:56:00+00:00",
+        "trader": "xtxpleasecallme",
+        "platform": "Polymarket",
+        "source_id": "poly:8f87ae77f07bc8cecebf7dc4b3f51b6102283c8f73964dc99ec8b0d952da2f1e",
+        "source_timestamp_utc": "2026-11-15T02:53:22+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "43659502772185997089048224285491540379213029616892498735313428692694433249344",
+        "title": "Will Perplexity launch a Muse-like personal agent before 2027?",
+        "side": "BUY",
+        "copy_price_usd": "0.51",
+        "source_price_usd": "0.44",
+        "virtual_notional_eur": "0.4000",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T02:56:01+00:00",
+        "trader": "xtxpleasecallme",
+        "platform": "Polymarket",
+        "source_id": "poly:4f25f551093b35ce114b9c3a0cf8197618816498a73f1fedace96d733a9d48a4",
+        "source_timestamp_utc": "2026-11-15T02:53:35+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "109252931404335034637458223452909545621063881702767194554079363911098025603809",
+        "title": "Will Moonshot be the third-best Chinese AI company at the end of November 2026?",
+        "side": "BUY",
+        "copy_price_usd": "0.77",
+        "source_price_usd": "0.74",
+        "virtual_notional_eur": "0.4000",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T02:56:02+00:00",
+        "trader": "xtxpleasecallme",
+        "platform": "Polymarket",
+        "source_id": "poly:160bf19ed4d6d771849045fa30fa3a1425636cc9dccc70b1a9785a6755dfaacf",
+        "source_timestamp_utc": "2026-11-15T02:54:16+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "8285136817825710261858017204258985493688244314834724739205991351192086485495",
+        "title": "Will PP win the most seats in Castellón in the 2026 Spanish general election?",
+        "side": "BUY",
+        "copy_price_usd": "0.95",
+        "source_price_usd": "0.901",
+        "virtual_notional_eur": "0.4000",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T02:56:03+00:00",
+        "trader": "HomeRunHazard",
+        "platform": "Polymarket",
+        "source_id": "poly:07d2ba7a4a3cd7bede97b6d4d67a1f4a5cfe0456b702c198573bb21cc4332441",
+        "source_timestamp_utc": "2026-11-15T02:53:16+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "83990587169641429049216042349177490084530237438912326627864998876765073445926",
+        "title": "Spurs vs. Jazz: O/U 223.5",
+        "side": "BUY",
+        "copy_price_usd": "0.5",
+        "source_price_usd": "0.4900000099",
+        "virtual_notional_eur": "0.4000",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T02:56:03+00:00",
+        "trader": "HomeRunHazard",
+        "platform": "Polymarket",
+        "source_id": "poly:0755823765102e3c35781704506410b1ebef7995d056d1ff67dbd96197ef0731",
+        "source_timestamp_utc": "2026-11-15T02:55:49+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "68114615939360624946703824451555999439570937931875183695785950089587311335191",
+        "title": "New Mexico Lobos vs. Santa Clara Broncos: O/U 165.5",
+        "side": "BUY",
+        "copy_price_usd": "0.5",
+        "source_price_usd": "0.4900000008",
+        "virtual_notional_eur": "0.4000",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T02:56:03+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "source_id": "poly:fc39dff4aa27a316cd83bef13494e7132e2ea8932cf38a919ad54007e1de4d2f",
+        "source_timestamp_utc": "2026-11-15T02:55:07+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "40217535979594382892270035974395609778209345077929307812668700224114300427620",
+        "title": "Bulls vs. Timberwolves",
+        "side": "BUY",
+        "copy_price_usd": "0.33",
+        "source_price_usd": "0.38",
+        "virtual_notional_eur": "0.4000",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T02:56:03+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "source_id": "poly:b9bd7b933e023b6bbbef3f830e0f7d0df9dfff956098ecacb6f624bdcb0b36c1",
+        "source_timestamp_utc": "2026-11-15T02:55:46+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "40217535979594382892270035974395609778209345077929307812668700224114300427620",
+        "title": "Bulls vs. Timberwolves",
+        "side": "BUY",
+        "copy_price_usd": "0.33",
+        "source_price_usd": "0.37",
+        "virtual_notional_eur": "0.4000",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T02:56:03+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "source_id": "poly:e374f7bfae161f7bb0a0c7978c6c882beb430479f8fea8c36c3110baf064b26e",
+        "source_timestamp_utc": "2026-11-15T02:55:47+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "40217535979594382892270035974395609778209345077929307812668700224114300427620",
+        "title": "Bulls vs. Timberwolves",
+        "side": "BUY",
+        "copy_price_usd": "0.33",
+        "source_price_usd": "0.37",
+        "virtual_notional_eur": "0.2062",
+        "source_amount_not_copied": true,
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      }
+    ],
     "ignored": {
+      "xtxpleasecallme": {
+        "stale_or_future_source_fill": 7,
+        "price_or_liquidity_unavailable": 18
+      },
+      "cigarettes": {
+        "stale_or_future_source_fill": 6,
+        "price_or_liquidity_unavailable": 2
+      },
       "balthazar": {
         "stale_or_future_source_fill": 1,
         "price_or_liquidity_unavailable": 2
+      },
+      "Bigggggggg": {
+        "stale_or_future_source_fill": 1
       }
     },
     "errors": [
       "0x5a218c7ad0:ValueError",
-      "0x5a218c7ad0:ValueError"
+      "0x5a218c7ad0:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xad5353afe3:ValueError",
+      "0xd218e47477:ValueError",
+      "0xd218e47477:ValueError",
+      "mark:681146159393606:ValueError"
     ],
     "quotes_quarantined": 0
   },
@@ -240,7 +469,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T02:55:40+00:00",
+    "last_message_utc": "2026-11-15T03:00:48+00:00",
     "books": [
       {
         "name": "leo",
@@ -296,8 +525,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 116,
-      "unselected_or_unverified": 11
+      "non_live_alert": 131,
+      "unselected_or_unverified": 27
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -316,6 +545,12 @@
       "observed_at_utc": "2026-11-15T02:55:57+00:00",
       "capital_eur": 50.0,
       "poly_trades": 0,
+      "fomo_trades": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T03:00:58+00:00",
+      "capital_eur": 49.6553,
+      "poly_trades": 9,
       "fomo_trades": 0
     }
   ],
