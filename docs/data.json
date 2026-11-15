@@ -1,100 +1,242 @@
 {
   "status": "SIMULATION_PAPER",
-  "mode": "PAPER_MIRROR_FOMO_ALERTS_V7",
-  "started_at_utc": "2026-11-15T01:19:16+00:00",
-  "observed_at_utc": "2026-11-15T01:44:17+00:00",
+  "mode": "PAPER_MIRROR_FOMO_RANKED_V8",
+  "started_at_utc": "2026-11-15T01:48:20+00:00",
+  "observed_at_utc": "2026-11-15T01:48:36+00:00",
   "capital_initial_eur": 50,
-  "capital_eur": 50.0,
+  "capital_eur": 49.9194,
   "portfolios": [
-    {
-      "name": "0xsneakky",
-      "platform": "FOMO",
-      "equity_eur": 10.0,
-      "pnl_eur": 0.0,
-      "cash_eur": 10.0,
-      "wallet_verified": true,
-      "positions": []
-    },
-    {
-      "name": "sol589",
-      "platform": "FOMO",
-      "equity_eur": 10.0,
-      "pnl_eur": 0.0,
-      "cash_eur": 10.0,
-      "wallet_verified": true,
-      "positions": []
-    },
-    {
-      "name": "end837",
-      "platform": "FOMO",
-      "equity_eur": 10.0,
-      "pnl_eur": 0.0,
-      "cash_eur": 10.0,
-      "wallet_verified": true,
-      "positions": []
-    },
-    {
-      "name": "guavaguy",
-      "platform": "FOMO",
-      "equity_eur": 10.0,
-      "pnl_eur": 0.0,
-      "cash_eur": 10.0,
-      "wallet_verified": true,
-      "positions": []
-    },
     {
       "name": "leo",
       "platform": "FOMO",
-      "equity_eur": 10.0,
-      "pnl_eur": 0.0,
-      "cash_eur": 10.0,
+      "equity_eur": 9.9821,
+      "pnl_eur": -0.0179,
+      "cash_eur": 6.997,
       "wallet_verified": true,
-      "positions": []
+      "positions": [
+        {
+          "chain": "solana",
+          "token": "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH",
+          "qty": "1.650542564344576895390965923",
+          "mark_usd": "0.9994",
+          "symbol": "CASHx9KJUS",
+          "side": "LONG"
+        },
+        {
+          "chain": "solana",
+          "token": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "qty": "1.649321333819235456289850764",
+          "mark_usd": "1.00014",
+          "symbol": "EPjFWdd5Au",
+          "side": "LONG"
+        }
+      ]
+    },
+    {
+      "name": "joecroskey",
+      "platform": "FOMO",
+      "equity_eur": 9.9821,
+      "pnl_eur": -0.0179,
+      "cash_eur": 6.997,
+      "wallet_verified": true,
+      "positions": [
+        {
+          "chain": "solana",
+          "token": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
+          "qty": "118.0781845959892733896729666",
+          "mark_usd": "0.01397",
+          "symbol": "4CxjZyMNoF",
+          "side": "LONG"
+        },
+        {
+          "chain": "solana",
+          "token": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+          "qty": "60.02737404679658476178061657",
+          "mark_usd": "0.02748",
+          "symbol": "Ce2gx9KGXJ",
+          "side": "LONG"
+        }
+      ]
+    },
+    {
+      "name": "bronbroncore",
+      "platform": "FOMO",
+      "equity_eur": 9.9821,
+      "pnl_eur": -0.0179,
+      "cash_eur": 6.997,
+      "wallet_verified": true,
+      "positions": [
+        {
+          "chain": "solana",
+          "token": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
+          "qty": "118.0781845959892733896729666",
+          "mark_usd": "0.01397",
+          "symbol": "4CxjZyMNoF",
+          "side": "LONG"
+        },
+        {
+          "chain": "solana",
+          "token": "31k88G5Mq7ptbRDf3AM13HAq6wRQHXHikR8hik7wPygk",
+          "qty": "6.782698350353495679497250589",
+          "mark_usd": "0.2432",
+          "symbol": "31k88G5Mq7",
+          "side": "LONG"
+        }
+      ]
+    },
+    {
+      "name": "0xsneakky",
+      "platform": "FOMO",
+      "equity_eur": 9.9821,
+      "pnl_eur": -0.0179,
+      "cash_eur": 6.997,
+      "wallet_verified": true,
+      "positions": [
+        {
+          "chain": "solana",
+          "token": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "qty": "1.649321333819235456289850764",
+          "mark_usd": "1.00014",
+          "symbol": "EPjFWdd5Au",
+          "side": "LONG"
+        },
+        {
+          "chain": "solana",
+          "token": "MoR1whCWjcLiUqAan4GHLRcn8wK4Jktk2DyDryNmeta",
+          "qty": "18.99968024425213256454424491",
+          "mark_usd": "0.08682",
+          "symbol": "MoR1whCWjc",
+          "side": "LONG"
+        }
+      ]
+    },
+    {
+      "name": "peptidezz",
+      "platform": "FOMO",
+      "equity_eur": 9.991,
+      "pnl_eur": -0.009,
+      "cash_eur": 8.4985,
+      "wallet_verified": true,
+      "positions": [
+        {
+          "chain": "solana",
+          "token": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+          "qty": "1.649321333819235456289850764",
+          "mark_usd": "1.00014",
+          "symbol": "EPjFWdd5Au",
+          "side": "LONG"
+        }
+      ]
     }
   ],
   "trades": [],
-  "ignored": {
-    "not_new_feed_trade": 176,
-    "not_buy_sell": 59,
-    "unknown_or_unverified_trader": 16
-  },
+  "ignored": {},
   "watchlist_selected": [
+    "leo",
+    "joecroskey",
+    "bronbroncore",
     "0xsneakky",
-    "sol589",
-    "end837",
-    "guavaguy",
-    "leo"
+    "peptidezz"
   ],
   "disclosure": "Only matching, verified, published FOMO alerts mirrored; not all on-chain fills. Paper, no real orders.",
+  "initial_observed_holdings": [
+    {
+      "trader": "leo",
+      "chain": "solana",
+      "asset": "CASHx9KJUStyftLFWGvEVf59SGeG9sh5FfcnZMVPCASH",
+      "action": "INITIAL_POSITION_OBSERVED_PAPER",
+      "virtual_eur": "1.50",
+      "observed_price_usd": "0.9994",
+      "source": "FomoAPI balance snapshot",
+      "not_source_execution": true
+    },
+    {
+      "trader": "leo",
+      "chain": "solana",
+      "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "action": "INITIAL_POSITION_OBSERVED_PAPER",
+      "virtual_eur": "1.50",
+      "observed_price_usd": "1.00014",
+      "source": "FomoAPI balance snapshot",
+      "not_source_execution": true
+    },
+    {
+      "trader": "joecroskey",
+      "chain": "solana",
+      "asset": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
+      "action": "INITIAL_POSITION_OBSERVED_PAPER",
+      "virtual_eur": "1.50",
+      "observed_price_usd": "0.01397",
+      "source": "FomoAPI balance snapshot",
+      "not_source_execution": true
+    },
+    {
+      "trader": "joecroskey",
+      "chain": "solana",
+      "asset": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+      "action": "INITIAL_POSITION_OBSERVED_PAPER",
+      "virtual_eur": "1.50",
+      "observed_price_usd": "0.02748",
+      "source": "FomoAPI balance snapshot",
+      "not_source_execution": true
+    },
+    {
+      "trader": "bronbroncore",
+      "chain": "solana",
+      "asset": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
+      "action": "INITIAL_POSITION_OBSERVED_PAPER",
+      "virtual_eur": "1.50",
+      "observed_price_usd": "0.01397",
+      "source": "FomoAPI balance snapshot",
+      "not_source_execution": true
+    },
+    {
+      "trader": "bronbroncore",
+      "chain": "solana",
+      "asset": "31k88G5Mq7ptbRDf3AM13HAq6wRQHXHikR8hik7wPygk",
+      "action": "INITIAL_POSITION_OBSERVED_PAPER",
+      "virtual_eur": "1.50",
+      "observed_price_usd": "0.2432",
+      "source": "FomoAPI balance snapshot",
+      "not_source_execution": true
+    },
+    {
+      "trader": "0xsneakky",
+      "chain": "solana",
+      "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "action": "INITIAL_POSITION_OBSERVED_PAPER",
+      "virtual_eur": "1.50",
+      "observed_price_usd": "1.00014",
+      "source": "FomoAPI balance snapshot",
+      "not_source_execution": true
+    },
+    {
+      "trader": "0xsneakky",
+      "chain": "solana",
+      "asset": "MoR1whCWjcLiUqAan4GHLRcn8wK4Jktk2DyDryNmeta",
+      "action": "INITIAL_POSITION_OBSERVED_PAPER",
+      "virtual_eur": "1.50",
+      "observed_price_usd": "0.08682",
+      "source": "FomoAPI balance snapshot",
+      "not_source_execution": true
+    },
+    {
+      "trader": "peptidezz",
+      "chain": "solana",
+      "asset": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+      "action": "INITIAL_POSITION_OBSERVED_PAPER",
+      "virtual_eur": "1.50",
+      "observed_price_usd": "1.00014",
+      "source": "FomoAPI balance snapshot",
+      "not_source_execution": true
+    }
+  ],
+  "source_errors": [],
+  "note": "Source holdings are mirrors of observed portfolio snapshots, not claimed executions. Source fill size may be absent; virtual amounts are chosen with fixed caps. No real orders.",
   "history": [
     {
-      "observed_at_utc": "2026-11-15T01:19:16+00:00",
-      "capital_eur": 50.0,
-      "trades_total": 0
-    },
-    {
-      "observed_at_utc": "2026-11-15T01:24:16+00:00",
-      "capital_eur": 50.0,
-      "trades_total": 0
-    },
-    {
-      "observed_at_utc": "2026-11-15T01:29:16+00:00",
-      "capital_eur": 50.0,
-      "trades_total": 0
-    },
-    {
-      "observed_at_utc": "2026-11-15T01:34:17+00:00",
-      "capital_eur": 50.0,
-      "trades_total": 0
-    },
-    {
-      "observed_at_utc": "2026-11-15T01:39:17+00:00",
-      "capital_eur": 50.0,
-      "trades_total": 0
-    },
-    {
-      "observed_at_utc": "2026-11-15T01:44:17+00:00",
-      "capital_eur": 50.0,
+      "observed_at_utc": "2026-11-15T01:48:36+00:00",
+      "capital_eur": 49.9194,
       "trades_total": 0
     }
   ],
@@ -103,7 +245,7 @@
     "feed": "Alpaca IEX (gratuit)",
     "trading_mode": "OBSERVATION_SEULEMENT",
     "copied_equity_trades": 0,
-    "observed_at_utc": "2026-11-15T01:44:17+00:00",
+    "observed_at_utc": "2026-11-15T01:48:36+00:00",
     "prices": {},
     "coverage": "IEX seulement (pas toutes les bourses US)",
     "sources": "https://docs.alpaca.markets/us/docs/about-market-data-api",
@@ -126,7 +268,7 @@
   "websocket": {
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T01:44:00+00:00",
+    "last_message_utc": "2026-11-15T01:48:36+00:00",
     "dropped": 0
   },
   "mark_errors": [],
