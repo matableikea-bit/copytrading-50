@@ -3,7 +3,7 @@
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T11:56:50+00:00",
+  "observed_at_utc": "2026-11-15T12:01:51+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
   "capital_eur": 45.0988,
@@ -16,7 +16,7 @@
     "budget_eur": 40.0,
     "capital_eur": 35.09885,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T11:56:26+00:00",
+    "last_poll_utc": "2026-11-15T12:01:29+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,14 +80,14 @@
             "qty": "2.589639791965310871750624020",
             "mark_usd": "0.39",
             "title": "Spread: 49ers (-2.5)",
-            "mark_age_seconds": 54
+            "mark_age_seconds": 52
           },
           {
             "token_id": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
             "qty": "12.25268982281557196353003455",
             "mark_usd": "0.57",
             "title": "Patriots vs. Lions",
-            "mark_age_seconds": 54
+            "mark_age_seconds": 52
           }
         ]
       },
@@ -105,14 +105,14 @@
             "qty": "0.9400062793724959005222834286",
             "mark_usd": "0.46",
             "title": "Spread: Chiefs (-3.5)",
-            "mark_age_seconds": 54
+            "mark_age_seconds": 52
           },
           {
             "token_id": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark_usd": "0.26",
             "title": "Spread: Jaguars (-4.5)",
-            "mark_age_seconds": 54
+            "mark_age_seconds": 52
           }
         ]
       },
@@ -501,8 +501,8 @@
     ],
     "ignored": {
       "VirIntrepidus": {
-        "stale_or_future_source_fill": 53,
-        "risk_cap_or_no_cash": 25
+        "stale_or_future_source_fill": 54,
+        "risk_cap_or_no_cash": 26
       },
       "nigiri99": {
         "stale_or_future_source_fill": 140,
@@ -516,7 +516,7 @@
         "risk_cap_or_no_cash": 20,
         "source_price_already_moved": 13,
         "invalid_or_extreme_source_price": 1,
-        "portfolio_drawdown_stop": 18
+        "portfolio_drawdown_stop": 24
       },
       "BreakTheBank": {
         "stale_or_future_source_fill": 123,
@@ -578,7 +578,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 5,
-    "last_message_utc": "2026-11-15T11:56:44+00:00",
+    "last_message_utc": "2026-11-15T12:01:44+00:00",
     "books": [
       {
         "name": "leo",
@@ -634,8 +634,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 1578,
-      "unselected_or_unverified": 306
+      "non_live_alert": 1593,
+      "unselected_or_unverified": 308
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -1059,6 +1059,13 @@
     },
     {
       "observed_at_utc": "2026-11-15T11:56:50+00:00",
+      "capital_eur": 45.0988,
+      "poly_trades": 13,
+      "fomo_trades": 0,
+      "poly_risk_exits": 7
+    },
+    {
+      "observed_at_utc": "2026-11-15T12:01:51+00:00",
       "capital_eur": 45.0988,
       "poly_trades": 13,
       "fomo_trades": 0,
