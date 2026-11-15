@@ -4583,5 +4583,180 @@ jobs:
           set -euo pipefail
           python -m unittest discover -s tests -q
           python -m compileall -q bot
-          python -c 'from bot.settings import Config; c=Config.load("config.json"); assert c.mode=="PAPER", "GitHub LIVE forbidden"'
-      - name: "Transmettre le prog
+          python -c 'from bot.settings import Config; c=Config.load("config.json"); assert c.mode=="PAPER", "GitHub LIVE 
+      - name: "Transmettre le programme source aux trois étapes"
+        uses: actions/upload-artifact@v4
+        with:
+          name: bot-source-v14-7-readable
+          path: |
+            .gitignore
+            CHANGELOG_V14.7.md
+            GITHUB_INSTALL.md
+            README.md
+            README_HISTORY.md
+            README_OFFENSIF.md
+            README_V14.5.md
+            README_V14.7.md
+            SECURITY.md
+            bot/__init__.py
+            bot/__main__.py
+            bot/brain.py
+            bot/executor.py
+            bot/fairplay.py
+            bot/gh_session.py
+            bot/live.py
+            bot/monitors.py
+            bot/performance.py
+            bot/profiles.py
+            bot/providers.py
+            bot/risk.py
+            bot/runner.py
+            bot/settings.py
+            bot/snapshot.py
+            bot/store.py
+            bot/strategy.py
+            config.json
+            docs/index.html
+            examples/config-10h.json
+            examples/config-copy-wallets.json
+            scripts/copytrading-v14.service
+            scripts/run-10h.sh
+            scripts/run-12h.sh
+            tests/test_github_workflow.py
+            tests/test_performance.py
+            tests/test_v14.py
+            tests/test_v141.py
+            tests/test_v143.py
+            tests/test_v145_brain.py
+            tests/test_v146_offensif.py
+            tests/test_v147_regressions.py
+          retention-days: 7
+          if-no-files-found: error
+
+  segment_1:
+    name: "Étape 1 / 3 — simulation PAPER"
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: "Récupérer le code source complet"
+        uses: actions/download-artifact@v4
+        with:
+          name: bot-source-v14-7-readable
+          path: .
+      - name: "Collecter les données, simuler les trades et sauvegarder"
+        run: python -m bot.gh_session --session "${{ inputs.session }}" --stage 1
+      - name: "Générer le tableau de bord hors ligne"
+        if: always()
+        run: python -m bot.snapshot
+      - name: "Publier les résultats et le journal SQLite"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-stage-1
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 7
+          if-no-files-found: warn
+
+  segment_2:
+    name: "Étape 2 / 3 — simulation PAPER"
+    if: ${{ inputs.session != '2min' }}
+    needs: segment_1
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: bot-source-v14-7-readable
+          path: .
+      - name: "Reprendre exactement le portefeuille précédent"
+        uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-stage-1
+          path: .
+      - name: "Collecter les données, simuler les trades et sauvegarder"
+        run: python -m bot.gh_session --session "${{ inputs.session }}" --stage 2
+      - name: "Générer le tableau de bord hors ligne"
+        if: always()
+        run: python -m bot.snapshot
+      - name: "Publier les résultats et le journal SQLite"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-stage-2
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 7
+          if-no-files-found: warn
+
+  segment_3:
+    name: "Étape 3 / 3 — simulation PAPER"
+    if: ${{ inputs.session != '2min' }}
+    needs: segment_2
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: bot-source-v14-7-readable
+          path: .
+      - name: "Reprendre exactement le portefeuille précédent"
+        uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-stage-2
+          path: .
+      - name: "Collecter les données, simuler les trades et sauvegarder"
+        run: python -m bot.gh_session --session "${{ inputs.session }}" --stage 3
+      - name: "Générer le tableau de bord hors ligne"
+        if: always()
+        run: python -m bot.snapshot
+      - name: "Publier les résultats et le journal SQLite"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-stage-3-final
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 14
+          if-no-files-found: warn
+
