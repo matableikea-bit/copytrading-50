@@ -3,7 +3,7 @@
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T09:08:59+00:00",
+  "observed_at_utc": "2026-11-15T09:14:00+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
   "capital_eur": 45.1362,
@@ -16,7 +16,7 @@
     "budget_eur": 40.0,
     "capital_eur": 35.13617,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T09:08:34+00:00",
+    "last_poll_utc": "2026-11-15T09:13:36+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,14 +80,14 @@
             "qty": "16.66484950414661021863944789",
             "mark_usd": "0.42",
             "title": "Vikings vs. Packers",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 54
           },
           {
             "token_id": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark_usd": "0.39",
             "title": "Spread: 49ers (-2.5)",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 54
           }
         ]
       },
@@ -105,14 +105,14 @@
             "qty": "0.9400062793724959005222834286",
             "mark_usd": "0.45",
             "title": "Spread: Chiefs (-3.5)",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 54
           },
           {
             "token_id": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark_usd": "0.26",
             "title": "Spread: Jaguars (-4.5)",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 54
           }
         ]
       },
@@ -130,7 +130,7 @@
             "qty": "1.306863611825617983369800383",
             "mark_usd": "0.77",
             "title": "Rockets vs. Wizards",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 54
           }
         ]
       },
@@ -533,7 +533,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 3,
-    "last_message_utc": "2026-11-15T09:08:47+00:00",
+    "last_message_utc": "2026-11-15T09:13:59+00:00",
     "books": [
       {
         "name": "leo",
@@ -589,8 +589,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 1041,
-      "unselected_or_unverified": 207
+      "non_live_alert": 1056,
+      "unselected_or_unverified": 216
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -867,6 +867,13 @@
     },
     {
       "observed_at_utc": "2026-11-15T09:08:59+00:00",
+      "capital_eur": 45.1362,
+      "poly_trades": 12,
+      "fomo_trades": 0,
+      "poly_risk_exits": 5
+    },
+    {
+      "observed_at_utc": "2026-11-15T09:14:00+00:00",
       "capital_eur": 45.1362,
       "poly_trades": 12,
       "fomo_trades": 0,
