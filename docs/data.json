@@ -2,15 +2,15 @@
   "status": "SIMULATION_PAPER",
   "mode": "PAPER_MIRROR_FOMO_RANKED_V8",
   "started_at_utc": "2026-11-15T01:48:20+00:00",
-  "observed_at_utc": "2026-11-15T01:53:37+00:00",
+  "observed_at_utc": "2026-11-15T01:58:37+00:00",
   "capital_initial_eur": 50,
-  "capital_eur": 50.0287,
+  "capital_eur": 49.9299,
   "portfolios": [
     {
       "name": "leo",
       "platform": "FOMO",
-      "equity_eur": 9.9851,
-      "pnl_eur": -0.0149,
+      "equity_eur": 9.9793,
+      "pnl_eur": -0.0207,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -26,7 +26,7 @@
           "chain": "solana",
           "token": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "qty": "1.649321333819235456289850764",
-          "mark_usd": "1.0022",
+          "mark_usd": "0.9983",
           "symbol": "EPjFWdd5Au",
           "side": "LONG"
         }
@@ -35,8 +35,8 @@
     {
       "name": "joecroskey",
       "platform": "FOMO",
-      "equity_eur": 10.0412,
-      "pnl_eur": 0.0412,
+      "equity_eur": 9.9999,
+      "pnl_eur": -0.0001,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -44,7 +44,7 @@
           "chain": "solana",
           "token": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
           "qty": "118.0781845959892733896729666",
-          "mark_usd": "0.01432",
+          "mark_usd": "0.01405",
           "symbol": "4CxjZyMNoF",
           "side": "LONG"
         },
@@ -52,7 +52,7 @@
           "chain": "solana",
           "token": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
           "qty": "60.02737404679658476178061657",
-          "mark_usd": "0.02788",
+          "mark_usd": "0.02765",
           "symbol": "Ce2gx9KGXJ",
           "side": "LONG"
         }
@@ -61,8 +61,8 @@
     {
       "name": "bronbroncore",
       "platform": "FOMO",
-      "equity_eur": 10.0238,
-      "pnl_eur": 0.0238,
+      "equity_eur": 9.9949,
+      "pnl_eur": -0.0051,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -70,7 +70,7 @@
           "chain": "solana",
           "token": "4CxjZyMNoF1p6eXHXHv1TWpS2X47CuUmLwtGe18spump",
           "qty": "118.0781845959892733896729666",
-          "mark_usd": "0.01432",
+          "mark_usd": "0.01405",
           "symbol": "4CxjZyMNoF",
           "side": "LONG"
         },
@@ -87,8 +87,8 @@
     {
       "name": "0xsneakky",
       "platform": "FOMO",
-      "equity_eur": 9.9845,
-      "pnl_eur": -0.0155,
+      "equity_eur": 9.9675,
+      "pnl_eur": -0.0325,
       "cash_eur": 6.997,
       "wallet_verified": true,
       "positions": [
@@ -96,7 +96,7 @@
           "chain": "solana",
           "token": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "qty": "1.649321333819235456289850764",
-          "mark_usd": "1.0022",
+          "mark_usd": "0.9983",
           "symbol": "EPjFWdd5Au",
           "side": "LONG"
         },
@@ -104,7 +104,7 @@
           "chain": "solana",
           "token": "MoR1whCWjcLiUqAan4GHLRcn8wK4Jktk2DyDryNmeta",
           "qty": "18.99968024425213256454424491",
-          "mark_usd": "0.08678",
+          "mark_usd": "0.08613",
           "symbol": "MoR1whCWjc",
           "side": "LONG"
         }
@@ -113,8 +113,8 @@
     {
       "name": "peptidezz",
       "platform": "FOMO",
-      "equity_eur": 9.9941,
-      "pnl_eur": -0.0059,
+      "equity_eur": 9.9883,
+      "pnl_eur": -0.0117,
       "cash_eur": 8.4985,
       "wallet_verified": true,
       "positions": [
@@ -122,7 +122,7 @@
           "chain": "solana",
           "token": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
           "qty": "1.649321333819235456289850764",
-          "mark_usd": "1.0022",
+          "mark_usd": "0.9983",
           "symbol": "EPjFWdd5Au",
           "side": "LONG"
         }
@@ -131,10 +131,10 @@
   ],
   "trades": [],
   "ignored": {
-    "not_new_feed_trade": 32,
+    "not_new_feed_trade": 47,
     "stale_source_event": 84,
-    "unknown_or_unverified_trader": 7,
-    "not_buy_sell": 12
+    "unknown_or_unverified_trader": 9,
+    "not_buy_sell": 20
   },
   "watchlist_selected": [
     "leo",
@@ -248,6 +248,11 @@
       "observed_at_utc": "2026-11-15T01:53:37+00:00",
       "capital_eur": 50.0287,
       "trades_total": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T01:58:37+00:00",
+      "capital_eur": 49.9299,
+      "trades_total": 0
     }
   ],
   "marks_status": "QUOTES_OBSERVED",
@@ -255,7 +260,7 @@
     "feed": "Alpaca IEX (gratuit)",
     "trading_mode": "OBSERVATION_SEULEMENT",
     "copied_equity_trades": 0,
-    "observed_at_utc": "2026-11-15T01:53:37+00:00",
+    "observed_at_utc": "2026-11-15T01:58:37+00:00",
     "prices": {},
     "coverage": "IEX seulement (pas toutes les bourses US)",
     "sources": "https://docs.alpaca.markets/us/docs/about-market-data-api",
@@ -278,7 +283,7 @@
   "websocket": {
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T01:53:21+00:00",
+    "last_message_utc": "2026-11-15T01:58:20+00:00",
     "dropped": 0
   },
   "mark_errors": [],
