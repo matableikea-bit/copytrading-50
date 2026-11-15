@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T12:18:13+00:00",
+  "updated_at_utc": "2026-11-15T12:23:11+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -452,6 +452,13 @@
       "poly_trades": 13,
       "fomo_trades": 0,
       "poly_risk_exits": 9
+    },
+    {
+      "observed_at_utc": "2026-11-15T12:23:11+00:00",
+      "capital_eur": 45.1163,
+      "poly_trades": 13,
+      "fomo_trades": 0,
+      "poly_risk_exits": 9
     }
   ],
   "issues": [],
@@ -515,7 +522,7 @@
             "token": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
             "qty": "12.25268982281557196353003455",
             "mark": "0.57",
-            "updated_at": 1794745093.7199702,
+            "updated_at": 1794745333.2373931,
             "cost_eur": "6.459079940708529267852811861",
             "name": "Patriots vs. Lions",
             "opened_at": 1794743575.1351802
@@ -800,7 +807,7 @@
             "token": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark": "0.26",
-            "updated_at": 1794745093.7195628,
+            "updated_at": 1794745333.2373369,
             "cost_eur": "5.649802822432880323434438378",
             "name": "Spread: Jaguars (-4.5)",
             "opened_at": 1794717635.4889214
@@ -2509,7 +2516,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T12:18:11+00:00",
+    "last_poll": "2026-11-15T12:22:43+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
@@ -2671,8 +2678,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 1611,
-      "unselected_or_unverified": 315
+      "non_live_alert": 1727,
+      "unselected_or_unverified": 322
     },
     "errors": [],
     "reconnects": 5
