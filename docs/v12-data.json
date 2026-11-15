@@ -3,20 +3,20 @@
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T04:40:32+00:00",
+  "observed_at_utc": "2026-11-15T04:45:33+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
-  "capital_eur": 45.8932,
-  "pnl_eur": -4.1068,
+  "capital_eur": 45.6596,
+  "pnl_eur": -4.3404,
   "capital_valuation_status": "INDICATIVE_LIQUIDATION_QUOTES",
-  "new_mirrored_trades": 11,
+  "new_mirrored_trades": 12,
   "polymarket_risk_exits_not_source_copies": 2,
-  "open_positions_not_liquidated": 7,
+  "open_positions_not_liquidated": 8,
   "polymarket": {
     "budget_eur": 40.0,
-    "capital_eur": 35.89324,
+    "capital_eur": 35.65959,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T04:40:04+00:00",
+    "last_poll_utc": "2026-11-15T04:45:08+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,14 +80,14 @@
             "qty": "16.66484950414661021863944789",
             "mark_usd": "0.42",
             "title": "Vikings vs. Packers",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           },
           {
             "token_id": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark_usd": "0.39",
             "title": "Spread: 49ers (-2.5)",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           }
         ]
       },
@@ -96,16 +96,23 @@
         "wallet": "0xdc41c39b95453c943174f369926018f6963bdd7e",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 6.09174,
-        "equity_eur": 6.47448,
-        "pnl_eur": -1.52552,
+        "cash_eur": 0.44194,
+        "equity_eur": 6.24083,
+        "pnl_eur": -1.75917,
         "positions": [
           {
             "token_id": "47446842303718527029443341349194378753598380685525344602906075248281464204985",
             "qty": "0.9400062793724959005222834286",
             "mark_usd": "0.45",
             "title": "Spread: Chiefs (-3.5)",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
+          },
+          {
+            "token_id": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
+            "qty": "23.02280846767836575287493286",
+            "mark_usd": "0.26",
+            "title": "Spread: Jaguars (-4.5)",
+            "mark_age_seconds": 56
           }
         ]
       },
@@ -123,14 +130,14 @@
             "qty": "11.74735292915252851477862720",
             "mark_usd": "0.7",
             "title": "Spread: North Dakota State (-5.5)",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           },
           {
             "token_id": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "1.306863611825617983369800383",
             "mark_usd": "0.78",
             "title": "Rockets vs. Wizards",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           }
         ]
       },
@@ -158,19 +165,19 @@
             "qty": "21.07613319642071292357341939",
             "mark_usd": "0.33",
             "title": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           },
           {
             "token_id": "101603881415360735322856962039541488878256176329287774854805690311335985333809",
             "qty": "1.822694938378057542924187797",
             "mark_usd": "0.56",
             "title": "Will Ciryl Gane win by KO or TKO?",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 56
           }
         ]
       }
     ],
-    "new_mirrored_fills": 11,
+    "new_mirrored_fills": 12,
     "risk_exits": 2,
     "pending_price_checks": 0,
     "trades": [
@@ -275,6 +282,23 @@
         "virtual_notional_eur": "5.5440",
         "realized_pnl_eur": "-1.5153",
         "exit_reason": "STOP_LOSS",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T04:40:35+00:00",
+        "trader": "nigiri99",
+        "platform": "Polymarket",
+        "source_id": "poly:3097730437157e2b921e62c0b53f986bad3e4eef923559c489cc77397077c20c",
+        "source_timestamp_utc": "2026-11-15T04:37:43+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
+        "title": "Spread: Jaguars (-4.5)",
+        "side": "BUY",
+        "copy_price_usd": "0.27",
+        "source_price_usd": "0.27",
+        "virtual_notional_eur": "5.6385",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
       },
       {
@@ -404,11 +428,11 @@
       },
       "nigiri99": {
         "stale_or_future_source_fill": 60,
-        "risk_cap_or_no_cash": 21,
-        "unpriced_source_fill_expired": 53
+        "risk_cap_or_no_cash": 22,
+        "unpriced_source_fill_expired": 55
       },
       "HomeRunHazard": {
-        "stale_or_future_source_fill": 52,
+        "stale_or_future_source_fill": 55,
         "unpriced_source_fill_expired": 4,
         "risk_cap_or_no_cash": 5,
         "source_price_already_moved": 4,
@@ -455,8 +479,8 @@
       "0xdc41c39b95:quote:Invalid or illiquid spread",
       "0xdc41c39b95:quote:Invalid or illiquid spread",
       "0xdc41c39b95:quote:Invalid or illiquid spread",
-      "0xdc41c39b95:quote:Invalid or illiquid spread",
-      "0xdc41c39b95:quote:Invalid or illiquid spread"
+      "mark:465190151040643:Invalid or illiquid spread",
+      "mark:465190151040643:Invalid or illiquid spread"
     ],
     "quotes_quarantined": 0
   },
@@ -474,7 +498,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T04:40:21+00:00",
+    "last_message_utc": "2026-11-15T04:45:21+00:00",
     "books": [
       {
         "name": "leo",
@@ -530,8 +554,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 295,
-      "unselected_or_unverified": 56
+      "non_live_alert": 310,
+      "unselected_or_unverified": 60
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -600,6 +624,13 @@
       "observed_at_utc": "2026-11-15T04:40:32+00:00",
       "capital_eur": 45.8932,
       "poly_trades": 11,
+      "fomo_trades": 0,
+      "poly_risk_exits": 2
+    },
+    {
+      "observed_at_utc": "2026-11-15T04:45:33+00:00",
+      "capital_eur": 45.6596,
+      "poly_trades": 12,
       "fomo_trades": 0,
       "poly_risk_exits": 2
     }
