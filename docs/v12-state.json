@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T08:02:51+00:00",
+  "updated_at_utc": "2026-11-15T08:07:52+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -235,6 +235,13 @@
       "poly_trades": 12,
       "fomo_trades": 0,
       "poly_risk_exits": 5
+    },
+    {
+      "observed_at_utc": "2026-11-15T08:07:52+00:00",
+      "capital_eur": 45.1362,
+      "poly_trades": 12,
+      "fomo_trades": 0,
+      "poly_risk_exits": 5
     }
   ],
   "issues": [],
@@ -298,7 +305,7 @@
             "token": "108534542077320679697693708499731792701102813975517222080622181321794355009924",
             "qty": "16.66484950414661021863944789",
             "mark": "0.42",
-            "updated_at": 1794729716.71764,
+            "updated_at": 1794730018.6717186,
             "cost_eur": "6.51300",
             "name": "Vikings vs. Packers",
             "opened_at": 1794714434.305563
@@ -307,7 +314,7 @@
             "token": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark": "0.39",
-            "updated_at": 1794729716.722857,
+            "updated_at": 1794730018.6717396,
             "cost_eur": "0.9414788705132517543350925014",
             "name": "Spread: 49ers (-2.5)",
             "opened_at": 1794715647.7941463
@@ -362,6 +369,7 @@
           "795a390aea77a670f661f7ddb856370da45981db10708c21b76ff21da190de0c",
           "7b2605519032d0649db3ebe98a9bccb260f7967e2215bc3c92be3fcb79b97a68",
           "7b9b9d229e01ade5cc5b30e7b4b19cafcd758e29de10e363f5cf02f5834bcb5b",
+          "7da9b92d7e6ce3225a9337c01410986625730b7a8a1b6d1f1a2047d9702e3bf5",
           "7f3f441bc85efb252adea87efdd42c1b7c5b6e07e36fee3a4c35b1c5d49ec3a4",
           "81e425e542d678f0bf9506fccdbfd261af09f88cc312ead5d7af37dee8038ded",
           "83ad00be2b537d39edd7c46dcedf1fd2bcdc5d25e7bac503d88671eaef039965",
@@ -378,6 +386,7 @@
           "a4d0a8c70ad98cdef3f02757590eabba5440523eeb5154b8810edb935397f663",
           "b7f63b4f4a0ba441975a3d6b499a1d8e4f8b84b39fe5538841610f3007cd2167",
           "c0eb7bbf218ca8232eac7aee462395c89c276528eb2cbe5f86158d682c33901c",
+          "c44a47f080f28aca7a7f6d6afab93fbfba297f14e978d6897c2d9539a7e318fa",
           "c5a0f90d113592df625840d49ead0d62fe207d2124da10a15f69cf8c7fb32f28",
           "c90e9d7e8914f2f511b768fe76a0771e31ae723e9b7ab577351b151b9ca6d6ff",
           "ca9895b704eaaeb88f335ccb86852d174faee4a6848d59c5df0662ab10111adb",
@@ -407,6 +416,8 @@
           "poly:61afaa648fcb223b41656cc0ef8724c75024d12390fd5f36c275970ae2a8918e",
           "poly:6a93b5046468ca16015150edcd46ec8bcd56270d35ff2e8220c0995270f2f0b3",
           "poly:795a390aea77a670f661f7ddb856370da45981db10708c21b76ff21da190de0c",
+          "poly:7da9b92d7e6ce3225a9337c01410986625730b7a8a1b6d1f1a2047d9702e3bf5",
+          "poly:c44a47f080f28aca7a7f6d6afab93fbfba297f14e978d6897c2d9539a7e318fa",
           "poly:c90e9d7e8914f2f511b768fe76a0771e31ae723e9b7ab577351b151b9ca6d6ff",
           "poly:d8b389952060848a76d18ae15879a78ffeea22c0dfcaf334e0e6eb67b0a35725"
         ],
@@ -448,7 +459,7 @@
         ],
         "rejected": {
           "stale_or_future_source_fill": 23,
-          "risk_cap_or_no_cash": 9
+          "risk_cap_or_no_cash": 11
         },
         "unsafe_quotes": [],
         "cooldowns": {}
@@ -464,7 +475,7 @@
             "token": "47446842303718527029443341349194378753598380685525344602906075248281464204985",
             "qty": "0.9400062793724959005222834286",
             "mark": "0.45",
-            "updated_at": 1794729716.7206879,
+            "updated_at": 1794730018.6717298,
             "cost_eur": "0.3930065721354431211499300625",
             "name": "Spread: Chiefs (-3.5)",
             "opened_at": 1794715344.2859125
@@ -473,7 +484,7 @@
             "token": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark": "0.26",
-            "updated_at": 1794729716.7176166,
+            "updated_at": 1794730018.6716928,
             "cost_eur": "5.649802822432880323434438378",
             "name": "Spread: Jaguars (-4.5)",
             "opened_at": 1794717635.4889214
@@ -905,7 +916,7 @@
             "token": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "1.306863611825617983369800383",
             "mark": "0.77",
-            "updated_at": 1794729716.7228727,
+            "updated_at": 1794730018.6717477,
             "cost_eur": "0.9383580488540942725154327299",
             "name": "Rockets vs. Wizards",
             "opened_at": 1794714917.5795581
@@ -1952,7 +1963,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T08:02:26+00:00",
+    "last_poll": "2026-11-15T08:07:28+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
@@ -2114,8 +2125,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 877,
-      "unselected_or_unverified": 176
+      "non_live_alert": 892,
+      "unselected_or_unverified": 182
     },
     "errors": [],
     "reconnects": 2
