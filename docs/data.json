@@ -1,47 +1,107 @@
 {
-  "status": "MARCHE_FERME_OU_SOURCE_INDISPONIBLE",
-  "mode": "PAPER_REAL_STOCK_WATCHLIST",
-  "stock_quotes": "REAL_IEX",
-  "copy_trading": "NOT_CONNECTED",
-  "adaptation": "RISK_ONLY_NO_AUTONOMOUS_TRADING",
-  "started_at_utc": "2026-11-14T21:51:51+00:00",
-  "duration_minutes": 60,
-  "interval_minutes": 5,
-  "capital_initial_eur": "50.00",
-  "samples": [],
-  "incidents": [
+  "status": "SIMULATION_PAPER",
+  "mode": "PAPER_MIRROR_FOMO_ALERTS_V7",
+  "started_at_utc": "2026-11-15T01:19:16+00:00",
+  "observed_at_utc": "2026-11-15T01:19:16+00:00",
+  "capital_initial_eur": 50,
+  "capital_eur": 50.0,
+  "portfolios": [
     {
-      "minute": 0,
-      "reason": "Marché actions US fermé : aucun cours live disponible."
+      "name": "0xsneakky",
+      "platform": "FOMO",
+      "equity_eur": 10.0,
+      "pnl_eur": 0.0,
+      "cash_eur": 10.0,
+      "wallet_verified": true,
+      "positions": []
+    },
+    {
+      "name": "sol589",
+      "platform": "FOMO",
+      "equity_eur": 10.0,
+      "pnl_eur": 0.0,
+      "cash_eur": 10.0,
+      "wallet_verified": true,
+      "positions": []
+    },
+    {
+      "name": "end837",
+      "platform": "FOMO",
+      "equity_eur": 10.0,
+      "pnl_eur": 0.0,
+      "cash_eur": 10.0,
+      "wallet_verified": true,
+      "positions": []
+    },
+    {
+      "name": "guavaguy",
+      "platform": "FOMO",
+      "equity_eur": 10.0,
+      "pnl_eur": 0.0,
+      "cash_eur": 10.0,
+      "wallet_verified": true,
+      "positions": []
+    },
+    {
+      "name": "leo",
+      "platform": "FOMO",
+      "equity_eur": 10.0,
+      "pnl_eur": 0.0,
+      "cash_eur": 10.0,
+      "wallet_verified": true,
+      "positions": []
     }
   ],
-  "disclosure": "Quatre vraies actions observées, un portefeuille en cash; pas de copie de traders.",
-  "fidelity": "IEX temps réel pendant la séance; taux BCE quotidien non exécutable",
-  "portfolios_initial": [
+  "trades": [],
+  "ignored": {},
+  "watchlist_selected": [
+    "0xsneakky",
+    "sol589",
+    "end837",
+    "guavaguy",
+    "leo"
+  ],
+  "disclosure": "Only matching, verified, published FOMO alerts mirrored; not all on-chain fills. Paper, no real orders.",
+  "history": [
     {
-      "id": "pelosi",
-      "label": "Nancy Pelosi",
-      "budget_eur": "10.00"
-    },
-    {
-      "id": "telegram",
-      "label": "Trader Telegram",
-      "budget_eur": "10.00"
-    },
-    {
-      "id": "top_traders",
-      "label": "Trader pro / Top Traders",
-      "budget_eur": "10.00"
-    },
-    {
-      "id": "institutional",
-      "label": "Fonds d’investissement",
-      "budget_eur": "10.00"
-    },
-    {
-      "id": "polymarket",
-      "label": "Polymarket (actions : inactif)",
-      "budget_eur": "10.00"
+      "observed_at_utc": "2026-11-15T01:19:16+00:00",
+      "capital_eur": 50.0,
+      "trades_total": 0
     }
-  ]
+  ],
+  "marks_status": "QUOTES_OBSERVED",
+  "us_market": {
+    "feed": "Alpaca IEX (gratuit)",
+    "trading_mode": "OBSERVATION_SEULEMENT",
+    "copied_equity_trades": 0,
+    "observed_at_utc": "2026-11-15T01:19:16+00:00",
+    "prices": {},
+    "coverage": "IEX seulement (pas toutes les bourses US)",
+    "sources": "https://docs.alpaca.markets/us/docs/about-market-data-api",
+    "status": "MARCHE_FERME",
+    "note": "Hors seance reguliere US; cryptos et Polymarket continuent."
+  },
+  "markets": {
+    "FOMO_crypto": "PUBLIC_FEED",
+    "Hyperliquid": "NOT_ACTIVE_IN_THIS_FOMO_SESSION",
+    "Polymarket": "NOT_ACTIVE_IN_THIS_FOMO_SESSION",
+    "FX": "ECB_DAILY_REFERENCE",
+    "Pre_IPO": "NOT_CONNECTED"
+  },
+  "interval_seconds": 1,
+  "snapshot_interval_minutes": 5,
+  "duration_minutes": 240,
+  "ecb_usd_per_eur": "1.1052",
+  "ecb_date": "2026-11-13",
+  "source": "FomoAPI /ws/alerts (third party, partial public feed)",
+  "websocket": {
+    "connected": false,
+    "reconnects": 0,
+    "last_message_utc": null,
+    "dropped": 0
+  },
+  "mark_errors": [],
+  "watchlist_total": 72,
+  "feed_latency": "Free: 7-day trial real-time, thereafter 15s-delayed; not every on-chain fill",
+  "quotes": "DEXScreener indicative, not firm or time-guaranteed"
 }
