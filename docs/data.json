@@ -2,7 +2,7 @@
   "status": "SIMULATION_PAPER",
   "mode": "PAPER_MIRROR_FOMO_ALERTS_V7",
   "started_at_utc": "2026-11-15T01:19:16+00:00",
-  "observed_at_utc": "2026-11-15T01:24:16+00:00",
+  "observed_at_utc": "2026-11-15T01:29:16+00:00",
   "capital_initial_eur": 50,
   "capital_eur": 50.0,
   "portfolios": [
@@ -54,9 +54,9 @@
   ],
   "trades": [],
   "ignored": {
-    "not_new_feed_trade": 116,
-    "not_buy_sell": 15,
-    "unknown_or_unverified_trader": 4
+    "not_new_feed_trade": 131,
+    "not_buy_sell": 28,
+    "unknown_or_unverified_trader": 10
   },
   "watchlist_selected": [
     "0xsneakky",
@@ -76,6 +76,11 @@
       "observed_at_utc": "2026-11-15T01:24:16+00:00",
       "capital_eur": 50.0,
       "trades_total": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T01:29:16+00:00",
+      "capital_eur": 50.0,
+      "trades_total": 0
     }
   ],
   "marks_status": "QUOTES_OBSERVED",
@@ -83,7 +88,7 @@
     "feed": "Alpaca IEX (gratuit)",
     "trading_mode": "OBSERVATION_SEULEMENT",
     "copied_equity_trades": 0,
-    "observed_at_utc": "2026-11-15T01:24:16+00:00",
+    "observed_at_utc": "2026-11-15T01:29:16+00:00",
     "prices": {},
     "coverage": "IEX seulement (pas toutes les bourses US)",
     "sources": "https://docs.alpaca.markets/us/docs/about-market-data-api",
@@ -106,7 +111,7 @@
   "websocket": {
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T01:24:03+00:00",
+    "last_message_utc": "2026-11-15T01:29:06+00:00",
     "dropped": 0
   },
   "mark_errors": [],
