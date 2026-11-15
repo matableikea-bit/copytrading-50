@@ -3,7 +3,7 @@
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T12:23:11+00:00",
+  "observed_at_utc": "2026-11-15T12:28:12+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
   "capital_eur": 45.1163,
@@ -16,7 +16,7 @@
     "budget_eur": 40.0,
     "capital_eur": 35.11631,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T12:22:43+00:00",
+    "last_poll_utc": "2026-11-15T12:27:45+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,7 +80,7 @@
             "qty": "12.25268982281557196353003455",
             "mark_usd": "0.57",
             "title": "Patriots vs. Lions",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 57
           }
         ]
       },
@@ -98,7 +98,7 @@
             "qty": "23.02280846767836575287493286",
             "mark_usd": "0.26",
             "title": "Spread: Jaguars (-4.5)",
-            "mark_age_seconds": 58
+            "mark_age_seconds": 57
           }
         ]
       },
@@ -523,7 +523,7 @@
     ],
     "ignored": {
       "VirIntrepidus": {
-        "stale_or_future_source_fill": 58,
+        "stale_or_future_source_fill": 59,
         "risk_cap_or_no_cash": 28
       },
       "nigiri99": {
@@ -533,7 +533,7 @@
         "market_not_ending_within_30h": 1
       },
       "HomeRunHazard": {
-        "stale_or_future_source_fill": 265,
+        "stale_or_future_source_fill": 267,
         "unpriced_source_fill_expired": 5,
         "risk_cap_or_no_cash": 20,
         "source_price_already_moved": 15,
@@ -600,7 +600,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 5,
-    "last_message_utc": "2026-11-15T12:23:04+00:00",
+    "last_message_utc": "2026-11-15T12:28:04+00:00",
     "books": [
       {
         "name": "leo",
@@ -656,8 +656,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 1727,
-      "unselected_or_unverified": 322
+      "non_live_alert": 1742,
+      "unselected_or_unverified": 325
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -1116,6 +1116,13 @@
     },
     {
       "observed_at_utc": "2026-11-15T12:23:11+00:00",
+      "capital_eur": 45.1163,
+      "poly_trades": 13,
+      "fomo_trades": 0,
+      "poly_risk_exits": 9
+    },
+    {
+      "observed_at_utc": "2026-11-15T12:28:12+00:00",
       "capital_eur": 45.1163,
       "poly_trades": 13,
       "fomo_trades": 0,

@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T12:23:11+00:00",
+  "updated_at_utc": "2026-11-15T12:28:12+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -459,6 +459,13 @@
       "poly_trades": 13,
       "fomo_trades": 0,
       "poly_risk_exits": 9
+    },
+    {
+      "observed_at_utc": "2026-11-15T12:28:12+00:00",
+      "capital_eur": 45.1163,
+      "poly_trades": 13,
+      "fomo_trades": 0,
+      "poly_risk_exits": 9
     }
   ],
   "issues": [],
@@ -522,7 +529,7 @@
             "token": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
             "qty": "12.25268982281557196353003455",
             "mark": "0.57",
-            "updated_at": 1794745333.2373931,
+            "updated_at": 1794745635.1177652,
             "cost_eur": "6.459079940708529267852811861",
             "name": "Patriots vs. Lions",
             "opened_at": 1794743575.1351802
@@ -659,6 +666,7 @@
           "e47e234b41c5b6a1a36e2ba3486270836de14181bef4cde46d5c36c55b98ff13",
           "e6b1ada903d97301348005acbe888d0d6ca3bd706e2244ae1f84fb2447ec887b",
           "e92f3c30f4a9a2379f71f34dc3cf82081b67c21e87651403830c6533f8be5b30",
+          "ef1d8c50877180d2f25323c16fa207561b806aea35780c3220d1ad75a5e5eca8",
           "ef7f8154ea7520ac29cc13106d5b201de1496e3e47bbc43e89b27b65a44d2234",
           "f132ab196e7489a3ec99c5f94211e41b06af833d0037687a03bb5b6eba3cbf8e",
           "f253d1b352a0a215d55aecd09ca36b631b8d5b85b26afa58f01fa08a6d4bc046",
@@ -790,7 +798,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 58,
+          "stale_or_future_source_fill": 59,
           "risk_cap_or_no_cash": 28
         },
         "unsafe_quotes": [],
@@ -807,7 +815,7 @@
             "token": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark": "0.26",
-            "updated_at": 1794745333.2373369,
+            "updated_at": 1794745635.1168292,
             "cost_eur": "5.649802822432880323434438378",
             "name": "Spread: Jaguars (-4.5)",
             "opened_at": 1794717635.4889214
@@ -1556,6 +1564,7 @@
           "c6e26ca088540708a5513c999fea45fb1c9557c324c35ed5cd09efd05b8fbe93",
           "c6f698601c05cfa60fa960eb7647057f2dd12f6ec18051f6bbbf2b925eb2bdf1",
           "c7266a781285e0136f5b7c73bbc901ec390f0ff201aea9aa3c18ed1ebf36b094",
+          "c76a97604b20b94b822c8cb2958f10b4178c812708b9518fbdc485b61d7697f5",
           "c79d1a45c9c7523de5f46341ffd12dbb9db6886091e1fbca229b05b1cef6a1ad",
           "c7d0d820bdaa0babb6240a783e0a1134fb40d292e7652a2d1150575ac32c047c",
           "c8e46f126c884e1cd2df944f35d0261b332e15abbb5b83e7f5f7c22e9a3e1db4",
@@ -1574,6 +1583,7 @@
           "d149d64540c84b140b743561eae469f0792b6e96a49b8ada97f503243983baa0",
           "d287c1c727e0915f81f214c216d560fd03e16da1297b1695a68db8f51186b73d",
           "d3a074ee1032ad95ab97516dcd65ddc5e231b723c3e5fc6ddab41cfc562170ae",
+          "d46e87546afacb00d26dc7f0fe483340ff556603373ed2db2a6badc11c13e1cd",
           "d4add878320e493386619157d2720929c18f469c96ed1ef58bf18d8ef0c0fdaf",
           "d4ded55b2a8a0806e6569b490e86ecb83664afca0ad5613525a2c0f8cd34122a",
           "d521d039414659a9466e70986f82c33d9767232b825ba1454674423b43edf146",
@@ -1800,7 +1810,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 265,
+          "stale_or_future_source_fill": 267,
           "unpriced_source_fill_expired": 5,
           "risk_cap_or_no_cash": 20,
           "source_price_already_moved": 15,
@@ -2516,7 +2526,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T12:22:43+00:00",
+    "last_poll": "2026-11-15T12:27:45+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
@@ -2678,8 +2688,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 1727,
-      "unselected_or_unverified": 322
+      "non_live_alert": 1742,
+      "unselected_or_unverified": 325
     },
     "errors": [],
     "reconnects": 5
