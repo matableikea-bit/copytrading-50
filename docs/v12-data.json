@@ -1,0 +1,215 @@
+{
+  "status": "PAPER_RUNNING",
+  "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
+  "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
+  "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
+  "observed_at_utc": "2026-11-15T03:42:12+00:00",
+  "horizon_hours": 10,
+  "capital_initial_eur": 50,
+  "capital_eur": 50.0,
+  "pnl_eur": 0.0,
+  "capital_valuation_status": "INDICATIVE_LIQUIDATION_QUOTES",
+  "new_mirrored_trades": 0,
+  "polymarket_risk_exits_not_source_copies": 0,
+  "open_positions_not_liquidated": 0,
+  "polymarket": {
+    "budget_eur": 40.0,
+    "capital_eur": 40.0,
+    "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
+    "last_poll_utc": "2026-11-15T03:42:12+00:00",
+    "watched_wallets": 5,
+    "selected_winners": [
+      {
+        "wallet": "0x45185b026c729f2caf1b01f6230db5d22e81db24",
+        "name": "VirIntrepidus",
+        "daily_pnl_usd": "342969.6845075069",
+        "weekly_pnl_usd": "373545.53296510223",
+        "daily_rank": 1,
+        "weekly_rank": 16,
+        "daily_volume_shares": "89729.00655199999"
+      },
+      {
+        "wallet": "0xdc41c39b95453c943174f369926018f6963bdd7e",
+        "name": "nigiri99",
+        "daily_pnl_usd": "244187.1840224245",
+        "weekly_pnl_usd": "384399.6362231193",
+        "daily_rank": 2,
+        "weekly_rank": 14,
+        "daily_volume_shares": "846942.2138909999"
+      },
+      {
+        "wallet": "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
+        "name": "HomeRunHazard",
+        "daily_pnl_usd": "70543.29995610646",
+        "weekly_pnl_usd": "660308.7069501941",
+        "daily_rank": 5,
+        "weekly_rank": 5,
+        "daily_volume_shares": "549812.8363709999"
+      },
+      {
+        "wallet": "0xf0318c32136c2db7fec88b84869aee6a1106c80c",
+        "name": "BreakTheBank",
+        "daily_pnl_usd": "167525.56609211152",
+        "weekly_pnl_usd": "225589.1420758568",
+        "daily_rank": 3,
+        "weekly_rank": 35,
+        "daily_volume_shares": "498938.22192900017"
+      },
+      {
+        "wallet": "0xf68a281980f8c13828e84e147e3822381d6e5b1b",
+        "name": "CUTJALENHURTS",
+        "daily_pnl_usd": "88967.33347214307",
+        "weekly_pnl_usd": "134926.25574922515",
+        "daily_rank": 4,
+        "weekly_rank": 60,
+        "daily_volume_shares": "404020.718239"
+      }
+    ],
+    "books": [
+      {
+        "name": "VirIntrepidus",
+        "wallet": "0x45185b026c729f2caf1b01f6230db5d22e81db24",
+        "platform": "Polymarket",
+        "initial_eur": 8.0,
+        "cash_eur": 8.0,
+        "equity_eur": 8.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "nigiri99",
+        "wallet": "0xdc41c39b95453c943174f369926018f6963bdd7e",
+        "platform": "Polymarket",
+        "initial_eur": 8.0,
+        "cash_eur": 8.0,
+        "equity_eur": 8.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "HomeRunHazard",
+        "wallet": "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
+        "platform": "Polymarket",
+        "initial_eur": 8.0,
+        "cash_eur": 8.0,
+        "equity_eur": 8.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "BreakTheBank",
+        "wallet": "0xf0318c32136c2db7fec88b84869aee6a1106c80c",
+        "platform": "Polymarket",
+        "initial_eur": 8.0,
+        "cash_eur": 8.0,
+        "equity_eur": 8.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "CUTJALENHURTS",
+        "wallet": "0xf68a281980f8c13828e84e147e3822381d6e5b1b",
+        "platform": "Polymarket",
+        "initial_eur": 8.0,
+        "cash_eur": 8.0,
+        "equity_eur": 8.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      }
+    ],
+    "new_mirrored_fills": 0,
+    "risk_exits": 0,
+    "pending_price_checks": 0,
+    "trades": [],
+    "ignored": {},
+    "errors": [],
+    "quotes_quarantined": 0
+  },
+  "fomo": {
+    "budget_eur": 10.0,
+    "capital_eur": 10.0,
+    "watchlist_candidate_count": 77,
+    "selected_verified": [
+      "leo",
+      "bronbroncore",
+      "joecroskey",
+      "peptidezz",
+      "ezfinance"
+    ],
+    "watched_wallets": 5,
+    "connected": false,
+    "reconnects": 0,
+    "last_message_utc": null,
+    "books": [
+      {
+        "name": "leo",
+        "wallet": "9LF3d3fxAbeabsxn2GLzMKqNbS1MUMtKvMcNLjTPbDNo",
+        "platform": "FOMO",
+        "initial_eur": 2.0,
+        "cash_eur": 2.0,
+        "equity_eur": 2.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "bronbroncore",
+        "wallet": "2EJPiGHWCddwUnoWoRHD3dfycjQwDV9iQceshn2HDpht",
+        "platform": "FOMO",
+        "initial_eur": 2.0,
+        "cash_eur": 2.0,
+        "equity_eur": 2.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "joecroskey",
+        "wallet": "8bXzTJq3sNkzD8T1mXVCaMvg1D3CL1heYJBgSPM8WVow",
+        "platform": "FOMO",
+        "initial_eur": 2.0,
+        "cash_eur": 2.0,
+        "equity_eur": 2.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "peptidezz",
+        "wallet": "0x603351dc1d59709d75f230e2fef348d069db520a",
+        "platform": "FOMO",
+        "initial_eur": 2.0,
+        "cash_eur": 2.0,
+        "equity_eur": 2.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      },
+      {
+        "name": "ezfinance",
+        "wallet": "5QfdxDgq4gYxQ9G3WyyL75BqDGUsVp5shjjnYmKSD8dg",
+        "platform": "FOMO",
+        "initial_eur": 2.0,
+        "cash_eur": 2.0,
+        "equity_eur": 2.0,
+        "pnl_eur": 0.0,
+        "positions": []
+      }
+    ],
+    "new_mirrored_alerts": 0,
+    "trades": [],
+    "ignored": {},
+    "source_errors": [],
+    "quotes_quarantined": 0
+  },
+  "fx_usd_per_eur": "1.1052",
+  "fx_date": "2026-11-13",
+  "errors": [],
+  "history": [
+    {
+      "observed_at_utc": "2026-11-15T03:42:12+00:00",
+      "capital_eur": 50.0,
+      "poly_trades": 0,
+      "fomo_trades": 0,
+      "poly_risk_exits": 0
+    }
+  ],
+  "snapshot_interval_minutes": 5,
+  "disclosure": "PAPER ONLY, aggressive and highly speculative. No real money. Scheduled workflows can start late or skip runs; signals between jobs may be missed. Time-to-end is based on Gamma market metadata and is not guaranteed settlement. Bid/liquidity estimated; fees approximated. Unliquidated positions may lose their entire value."
+}
