@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T11:51:49+00:00",
+  "updated_at_utc": "2026-11-15T11:56:50+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -417,6 +417,13 @@
       "poly_trades": 12,
       "fomo_trades": 0,
       "poly_risk_exits": 6
+    },
+    {
+      "observed_at_utc": "2026-11-15T11:56:50+00:00",
+      "capital_eur": 45.0988,
+      "poly_trades": 13,
+      "fomo_trades": 0,
+      "poly_risk_exits": 7
     }
   ],
   "issues": [],
@@ -474,16 +481,25 @@
         "wallet": "0x45185b026c729f2caf1b01f6230db5d22e81db24",
         "venue": "Polymarket",
         "budget": "8.00",
-        "cash": "7.000167014773531288058922462",
+        "cash": "0.541087074065002020206110601",
         "positions": {
           "26182673670567202222495754804603923388843201884360664876973142624147899393722": {
             "token": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark": "0.39",
-            "updated_at": 1794743453.63718,
+            "updated_at": 1794743756.300227,
             "cost_eur": "0.9414788705132517543350925014",
             "name": "Spread: 49ers (-2.5)",
             "opened_at": 1794715647.7941463
+          },
+          "81257186747832054157920523116773359776964241594169856122985483596324692888690": {
+            "token": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
+            "qty": "12.25268982281557196353003455",
+            "mark": "0.57",
+            "updated_at": 1794743756.274749,
+            "cost_eur": "6.459079940708529267852811861",
+            "name": "Patriots vs. Lions",
+            "opened_at": 1794743575.1351802
           }
         },
         "seen": [
@@ -529,6 +545,7 @@
           "43264586ff7b356f99086bee6831dbccadf60be0d67646a0b3e6eac6b519292d",
           "4371a0b2afa77fada029203ce918ab6f8b7ffb237534b627c629002d89eb410c",
           "46ddf8b9d99c85f93e069f16976432db3d7d08f5d3be5cc234bddee6896c91a7",
+          "499c2630f6cbcddf1fb6eb43d437205d35abfabe35d38da7465eca58917f3cd8",
           "4ac146e14e910fd9f8596951d272a11a591ea2978d3fad71e0160f0ce6f3501d",
           "4c67cbd5e9c1bf20aeaf460e71e6d57d1471803f7592f0e59f714a1c192d6539",
           "4cb31f36eba025adc2e504d7c2f47b46b8ffba302d4d1b054666c01dddb46357",
@@ -625,6 +642,7 @@
           "poly:2bca24ebb86ace5c97e6f8bc18b5680d3ba7462d60779973d5742f51a8a1819b",
           "poly:2def1ec8d0893199fc8dae611b51aaa8a54df4bdc355610afed5c423e1df30c0",
           "poly:37cb93d5832222a078ec17d0d273d95a8d729789e9260142122232896054a425",
+          "poly:499c2630f6cbcddf1fb6eb43d437205d35abfabe35d38da7465eca58917f3cd8",
           "poly:5eb8ebf4461cac32dc7455e09b921f7fd58b75ac0fb2bfec0b686575417a8cda",
           "poly:61afaa648fcb223b41656cc0ef8724c75024d12390fd5f36c275970ae2a8918e",
           "poly:6a93b5046468ca16015150edcd46ec8bcd56270d35ff2e8220c0995270f2f0b3",
@@ -697,6 +715,23 @@
             "realized_pnl_eur": "-0.0584",
             "exit_reason": "TIME_LIMIT",
             "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          },
+          {
+            "timestamp_utc": "2026-11-15T11:52:55+00:00",
+            "trader": "VirIntrepidus",
+            "platform": "Polymarket",
+            "source_id": "poly:499c2630f6cbcddf1fb6eb43d437205d35abfabe35d38da7465eca58917f3cd8",
+            "source_timestamp_utc": "2026-11-15T11:51:04+00:00",
+            "market": "POLYMARKET_PUBLIC_FILL",
+            "asset": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
+            "title": "Patriots vs. Lions",
+            "side": "BUY",
+            "copy_price_usd": "0.58",
+            "source_price_usd": "0.57",
+            "virtual_notional_eur": "6.4462",
+            "source_amount_not_copied": true,
+            "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
           }
         ],
         "rejected": {
@@ -717,7 +752,7 @@
             "token": "47446842303718527029443341349194378753598380685525344602906075248281464204985",
             "qty": "0.9400062793724959005222834286",
             "mark": "0.46",
-            "updated_at": 1794743453.6395214,
+            "updated_at": 1794743756.274811,
             "cost_eur": "0.3930065721354431211499300625",
             "name": "Spread: Chiefs (-3.5)",
             "opened_at": 1794715344.2859125
@@ -726,7 +761,7 @@
             "token": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark": "0.26",
-            "updated_at": 1794743453.6394875,
+            "updated_at": 1794743756.2748196,
             "cost_eur": "5.649802822432880323434438378",
             "name": "Spread: Jaguars (-4.5)",
             "opened_at": 1794717635.4889214
@@ -927,6 +962,7 @@
           "a58643ce5f6da3b6ac8cff79a82cc189f537d3cacc07aab6a10066674adcf178",
           "a6e3d247d57199940d8209ea332b4deb3ad231982241e9cbaeec48e7220546c9",
           "a85598b24a160950f48906d986921599c918a9f581cc215b63403f33b36d164b",
+          "a8985e33172eea526cb1146f718653fd93053894536d7bb02de4d29e502ef5dc",
           "aa6fe3a62107d5e8552d8585ecda9d74551e8c23be344fe736fe83970aee101c",
           "ab363ac91f5fcd6dd80d2b9467bcb1e51838e00add4b7bc82728d08c15c51eb8",
           "ab502ece456a918965b1476b3213a639326cd652023547cecf63c9039bf4e0f6",
@@ -1140,7 +1176,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 139,
+          "stale_or_future_source_fill": 140,
           "risk_cap_or_no_cash": 31,
           "unpriced_source_fill_expired": 57,
           "market_not_ending_within_30h": 1
@@ -1155,18 +1191,8 @@
         "wallet": "0x5268527977f700f9bf9b6d5cd843859e4e70135d",
         "venue": "Polymarket",
         "budget": "8.00",
-        "cash": "4.887010496994399247782183883",
-        "positions": {
-          "90092500659798801622355169229904716992685795179718424301565615637204790614764": {
-            "token": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
-            "qty": "1.306863611825617983369800383",
-            "mark": "0.76",
-            "updated_at": 1794743453.639504,
-            "cost_eur": "0.9383580488540942725154327299",
-            "name": "Rockets vs. Wizards",
-            "opened_at": 1794714917.5795581
-          }
-        },
+        "cash": "5.769875087039500924312146648",
+        "positions": {},
         "seen": [
           "0095dc0a63370df888d878298cb182efa081e08fb949c92f89b112fbd7225906",
           "01229e6d36a444dedce71502c76255f0de81900df80e5ed8085bdd2058eb7856",
@@ -1252,6 +1278,7 @@
           "3f0eb29edb3e4c491df27accf0119c25c1615298f57fe41a2e54ba7e0ef410c6",
           "3fada3eaeb2b22753c7d3f39ed194eee591ce9edee693a2bcbc6c530ed0f9d7e",
           "41237af8c3b6bf707a6c532b28d66bea0c9ed81f4eaac81b48cb03965d81cea1",
+          "423f1320e3917be28fd2acfb6d06b8afa7935d372d24df9f4f8dff63889676f6",
           "445afcd00687a706ada7f9015b6bebd56777257d5ea3e37048f8a52aa79fac85",
           "45be90b015b3f16a5c2656ffca2f9d681113db5af42d1b8961d7785a5921be62",
           "4692d594cc49e06b3ff18a514b0e3daa2aba7fb250d21348a0fb12d8bffaf9c0",
@@ -1270,6 +1297,7 @@
           "5006453f4d1c4005a34bf3d3fdbd3014a174d31ad7ea5f4caaf5f2dd1cc2c2cd",
           "504ce74f73d56af6a2de7bd177683228d42e2ef391af4032ee294a89661ee055",
           "50a1f1f2e66b7a9764c5dc02a13ff2a2bc765a469fc21d8a977b3cd6813030fb",
+          "51291668f3d90129f61949c49b101d7ff188af10a61ce66d6f267f1727c48d26",
           "52882d028ad32adcac55fe508ff2b0d6ede54be15f6e73b8fbf5b3dbc8c43297",
           "52ae5f9981c4314a494ec1d088bcf1e3849c0fab42297bd669e2703ad9aa6a56",
           "53253318e311f690e60977b6f2826f52ac74e1afa8d820820931e68d0bcaa7bc",
@@ -1612,10 +1640,28 @@
             "realized_pnl_eur": "-2.1746",
             "exit_reason": "STOP_LOSS",
             "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+          },
+          {
+            "timestamp_utc": "2026-11-15T11:55:56+00:00",
+            "trader": "HomeRunHazard",
+            "platform": "Polymarket",
+            "trade_kind": "PAPER_RISK_EXIT_NOT_SOURCE_COPY",
+            "source_id": null,
+            "source_timestamp_utc": null,
+            "market": "POLYMARKET_RISK_EXIT",
+            "asset": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
+            "title": "Rockets vs. Wizards",
+            "side": "SELL",
+            "copy_price_usd": "0.75",
+            "source_price_usd": null,
+            "virtual_notional_eur": "0.8829",
+            "realized_pnl_eur": "-0.0555",
+            "exit_reason": "TIME_LIMIT",
+            "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 228,
+          "stale_or_future_source_fill": 230,
           "unpriced_source_fill_expired": 5,
           "risk_cap_or_no_cash": 20,
           "source_price_already_moved": 13,
@@ -2071,6 +2117,7 @@
           "3fa8b74773349caee242b8722113eb891845244fc917d2ec9e333894f554f262",
           "4013caff37149e856360a3f362c2c701342bf03642c3981b5de07840478fc612",
           "412af4ffbb8803c50d0cd4b39434f77cd67b11676710232bf2efd6d0b839615a",
+          "41963503201a4ca78ba67d9402c3d776b369a361012677e0433e8010e892a453",
           "433c88b09fecedbc62e3862f4a299e46569c496344f8c8a104f20f3e87af05fc",
           "434b948db87037b0449caa53989600dabadcb445b88304e756af450da9144c18",
           "465bafc5e031e28b6030646e4ddd5767d6104ae1ba7a802e0e016013fe94e84a",
@@ -2117,6 +2164,7 @@
           "70d4ee0c220cb3f20baf6ac3971f917e8bf431cfd87fb36da0abb13055020382",
           "710f0eea56141b27facac9a10e318c216feca77d60ce397bf8c2454aecd1a03a",
           "71951263673d07bb328e154e3d2ac3786b515817d48cbbea1b7a51ebc1d749a6",
+          "7367d329fe28a6194a749767faea69aeb464a6cb77ed8a7c356553b9d5eb91c6",
           "740f07f5b99ff0ccbf776b5c7ab6a2b583f640c951368ecbe827397ac4c8dda1",
           "74645baf428d4017e97f199a5a4dd59ed35230faac827c497943bb633e1dc10d",
           "7466a56dd78ddecd7b641629c9d97b4f574f29e16712ba87fd5a15b56337766c",
@@ -2209,6 +2257,7 @@
           "f5c42f2aadeaa4e2da70e018321e8bc4c1d368193d9a06c3d85dd1071c7a7034",
           "f80670490065e011a4ef7e8e6278e8a1a029bcf135f90becdd2ce260706e7661",
           "fa45ed44a07258d08f95b4f6dd55ec4dc231f5d85bc6f5cc2739ccc4d326256b",
+          "fe83d584f1ecb01f45507f7210a59b6b37ca7f266f766591df452c6bd25ab956",
           "fef36e971e0ca7cbb2a009b38f7eb41439c295c1a071b9c498d1c2c82b412201",
           "ffedf544c4f1f629106f08dd02bbbcdc94eff134b6dd83057ba918ba3b056068",
           "poly:098d1adb396d3eb9d182c9fcf527372081929dc4b5c2b5c833d1e27d2c775f7f",
@@ -2304,7 +2353,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 118,
+          "stale_or_future_source_fill": 121,
           "source_price_already_moved": 3,
           "risk_cap_or_no_cash": 14,
           "market_not_ending_within_30h": 7
@@ -2328,7 +2377,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T11:51:23+00:00",
+    "last_poll": "2026-11-15T11:56:26+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
@@ -2490,8 +2539,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 1563,
-      "unselected_or_unverified": 298
+      "non_live_alert": 1578,
+      "unselected_or_unverified": 306
     },
     "errors": [],
     "reconnects": 5
