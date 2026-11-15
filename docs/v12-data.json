@@ -3,20 +3,20 @@
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T04:02:14+00:00",
+  "observed_at_utc": "2026-11-15T04:07:15+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
-  "capital_eur": 49.1167,
-  "pnl_eur": -0.8833,
+  "capital_eur": 48.9158,
+  "pnl_eur": -1.0842,
   "capital_valuation_status": "INDICATIVE_LIQUIDATION_QUOTES",
-  "new_mirrored_trades": 9,
+  "new_mirrored_trades": 10,
   "polymarket_risk_exits_not_source_copies": 0,
-  "open_positions_not_liquidated": 7,
+  "open_positions_not_liquidated": 8,
   "polymarket": {
     "budget_eur": 40.0,
-    "capital_eur": 39.11674,
+    "capital_eur": 38.91578,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T04:01:52+00:00",
+    "last_poll_utc": "2026-11-15T04:06:56+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,7 +80,7 @@
             "qty": "16.66484950414661021863944789",
             "mark_usd": "0.42",
             "title": "Vikings vs. Packers",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 53
           }
         ]
       },
@@ -89,16 +89,23 @@
         "wallet": "0xdc41c39b95453c943174f369926018f6963bdd7e",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 0.94072,
-        "equity_eur": 7.83574,
-        "pnl_eur": -0.16426,
+        "cash_eur": 0.54772,
+        "equity_eur": 7.82548,
+        "pnl_eur": -0.17452,
         "positions": [
           {
             "token_id": "40675833721684739055366242175795930970212903955757546003790192007994860876996",
             "qty": "14.65456909333905590105713408",
             "mark_usd": "0.52",
             "title": "North Dakota State vs. Hawai'i: O/U 39.5",
-            "mark_age_seconds": 54
+            "mark_age_seconds": 53
+          },
+          {
+            "token_id": "47446842303718527029443341349194378753598380685525344602906075248281464204985",
+            "qty": "0.9400062793724959005222834286",
+            "mark_usd": "0.45",
+            "title": "Spread: Chiefs (-3.5)",
+            "mark_age_seconds": 53
           }
         ]
       },
@@ -116,14 +123,14 @@
             "qty": "11.74735292915252851477862720",
             "mark_usd": "0.6",
             "title": "Spread: North Dakota State (-5.5)",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 53
           },
           {
             "token_id": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "1.306863611825617983369800383",
             "mark_usd": "0.78",
             "title": "Rockets vs. Wizards",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 53
           }
         ]
       },
@@ -141,7 +148,7 @@
             "qty": "12.72917885793878900606833546",
             "mark_usd": "0.6",
             "title": "UFC 334: Amanda Nunes vs. Kayla Harrison (Women's Bantamweight, Main Card)",
-            "mark_age_seconds": 54
+            "mark_age_seconds": 53
           }
         ]
       },
@@ -151,27 +158,27 @@
         "platform": "Polymarket",
         "initial_eur": 8.0,
         "cash_eur": 0.54272,
-        "equity_eur": 7.75936,
-        "pnl_eur": -0.24064,
+        "equity_eur": 7.56866,
+        "pnl_eur": -0.43134,
         "positions": [
           {
             "token_id": "30289940090088667668050088376461003061362172048916753227271073157706533834577",
             "qty": "21.07613319642071292357341939",
-            "mark_usd": "0.33",
+            "mark_usd": "0.32",
             "title": "UFC 334: Josh Hokit vs. Ciryl Gane (Heavyweight, Main Card)",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 53
           },
           {
             "token_id": "101603881415360735322856962039541488878256176329287774854805690311335985333809",
             "qty": "1.822694938378057542924187797",
             "mark_usd": "0.56",
             "title": "Will Ciryl Gane win by KO or TKO?",
-            "mark_age_seconds": 55
+            "mark_age_seconds": 53
           }
         ]
       }
     ],
-    "new_mirrored_fills": 9,
+    "new_mirrored_fills": 10,
     "risk_exits": 0,
     "pending_price_checks": 0,
     "trades": [
@@ -222,6 +229,23 @@
         "copy_price_usd": "0.53",
         "source_price_usd": "0.5277756289",
         "virtual_notional_eur": "0.5452",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T04:02:24+00:00",
+        "trader": "nigiri99",
+        "platform": "Polymarket",
+        "source_id": "poly:70ef131fa46056d58da0c70ad4b3f30037d7865dc1b642f82510f6dac12abc25",
+        "source_timestamp_utc": "2026-11-15T04:00:13+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "47446842303718527029443341349194378753598380685525344602906075248281464204985",
+        "title": "Spread: Chiefs (-3.5)",
+        "side": "BUY",
+        "copy_price_usd": "0.46",
+        "source_price_usd": "0.46",
+        "virtual_notional_eur": "0.3922",
         "source_amount_not_copied": true,
         "trade_kind": "MIRRORED_SOURCE_SIGNAL",
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
@@ -331,35 +355,61 @@
     ],
     "ignored": {
       "VirIntrepidus": {
-        "stale_or_future_source_fill": 6
+        "stale_or_future_source_fill": 7
       },
       "nigiri99": {
-        "stale_or_future_source_fill": 6,
-        "risk_cap_or_no_cash": 4
+        "stale_or_future_source_fill": 8,
+        "risk_cap_or_no_cash": 12,
+        "unpriced_source_fill_expired": 37
       },
       "HomeRunHazard": {
-        "stale_or_future_source_fill": 1,
+        "stale_or_future_source_fill": 2,
         "unpriced_source_fill_expired": 4,
-        "risk_cap_or_no_cash": 4,
+        "risk_cap_or_no_cash": 5,
         "source_price_already_moved": 4,
         "invalid_or_extreme_source_price": 1
       },
       "BreakTheBank": {
-        "stale_or_future_source_fill": 4,
-        "risk_cap_or_no_cash": 5
+        "stale_or_future_source_fill": 5,
+        "risk_cap_or_no_cash": 7
       },
       "CUTJALENHURTS": {
         "stale_or_future_source_fill": 7,
-        "source_price_already_moved": 1,
+        "source_price_already_moved": 2,
         "risk_cap_or_no_cash": 1
       }
     },
     "errors": [
-      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)",
-      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)",
-      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)",
-      "0x5268527977:quote:Insufficient executable best-level depth ($8 each side)",
-      "0x5268527977:quote:Invalid or illiquid spread"
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread",
+      "0xdc41c39b95:quote:Invalid or illiquid spread"
     ],
     "quotes_quarantined": 0
   },
@@ -377,7 +427,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 0,
-    "last_message_utc": "2026-11-15T04:02:05+00:00",
+    "last_message_utc": "2026-11-15T04:07:01+00:00",
     "books": [
       {
         "name": "leo",
@@ -433,8 +483,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 161,
-      "unselected_or_unverified": 33
+      "non_live_alert": 176,
+      "unselected_or_unverified": 40
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -475,6 +525,13 @@
       "observed_at_utc": "2026-11-15T04:02:14+00:00",
       "capital_eur": 49.1167,
       "poly_trades": 9,
+      "fomo_trades": 0,
+      "poly_risk_exits": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T04:07:15+00:00",
+      "capital_eur": 48.9158,
+      "poly_trades": 10,
       "fomo_trades": 0,
       "poly_risk_exits": 0
     }
