@@ -3,7 +3,7 @@
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T13:32:08+00:00",
+  "observed_at_utc": "2026-11-15T13:37:08+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
   "capital_eur": 45.0712,
@@ -16,7 +16,7 @@
     "budget_eur": 40.0,
     "capital_eur": 35.0712,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T13:32:07+00:00",
+    "last_poll_utc": "2026-11-15T13:36:39+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,14 +80,14 @@
             "qty": "13.27706009261109783141381614",
             "mark_usd": "0.57",
             "title": "Patriots vs. Lions",
-            "mark_age_seconds": 0
+            "mark_age_seconds": 59
           },
           {
             "token_id": "115409060983777450772125937546792914347599843448572648301569915268020202613802",
             "qty": "0.8100038550466332484419289538",
             "mark_usd": "0.52",
             "title": "Spread: Lions (-2.5)",
-            "mark_age_seconds": 0
+            "mark_age_seconds": 59
           }
         ]
       },
@@ -652,9 +652,9 @@
       "ezfinance"
     ],
     "watched_wallets": 5,
-    "connected": false,
+    "connected": true,
     "reconnects": 5,
-    "last_message_utc": null,
+    "last_message_utc": "2026-11-15T13:37:05+00:00",
     "books": [
       {
         "name": "leo",
@@ -710,8 +710,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 1790,
-      "unselected_or_unverified": 356
+      "non_live_alert": 1906,
+      "unselected_or_unverified": 367
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -1212,6 +1212,13 @@
     },
     {
       "observed_at_utc": "2026-11-15T13:32:08+00:00",
+      "capital_eur": 45.0712,
+      "poly_trades": 15,
+      "fomo_trades": 0,
+      "poly_risk_exits": 10
+    },
+    {
+      "observed_at_utc": "2026-11-15T13:37:08+00:00",
       "capital_eur": 45.0712,
       "poly_trades": 15,
       "fomo_trades": 0,

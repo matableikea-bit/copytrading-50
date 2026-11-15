@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T13:32:08+00:00",
+  "updated_at_utc": "2026-11-15T13:37:08+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -501,6 +501,13 @@
       "poly_trades": 15,
       "fomo_trades": 0,
       "poly_risk_exits": 10
+    },
+    {
+      "observed_at_utc": "2026-11-15T13:37:08+00:00",
+      "capital_eur": 45.0712,
+      "poly_trades": 15,
+      "fomo_trades": 0,
+      "poly_risk_exits": 10
     }
   ],
   "issues": [],
@@ -564,7 +571,7 @@
             "token": "81257186747832054157920523116773359776964241594169856122985483596324692888690",
             "qty": "13.27706009261109783141381614",
             "mark": "0.57",
-            "updated_at": 1794749528.3251507,
+            "updated_at": 1794749769.561802,
             "cost_eur": "6.999082956958396923401840867",
             "name": "Patriots vs. Lions",
             "opened_at": 1794743575.1351802
@@ -573,7 +580,7 @@
             "token": "115409060983777450772125937546792914347599843448572648301569915268020202613802",
             "qty": "0.8100038550466332484419289538",
             "mark": "0.52",
-            "updated_at": 1794749528.3180091,
+            "updated_at": 1794749769.5617812,
             "cost_eur": "0.3901882454571278642325956544",
             "name": "Spread: Lions (-2.5)",
             "opened_at": 1794745696.3605025
@@ -2731,7 +2738,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T13:32:07+00:00",
+    "last_poll": "2026-11-15T13:36:39+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
@@ -2893,8 +2900,8 @@
     },
     "watchlist_candidates": 77,
     "ignored": {
-      "non_live_alert": 1790,
-      "unselected_or_unverified": 356
+      "non_live_alert": 1906,
+      "unselected_or_unverified": 367
     },
     "errors": [],
     "reconnects": 5
