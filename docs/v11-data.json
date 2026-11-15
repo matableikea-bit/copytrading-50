@@ -2,23 +2,23 @@
   "status": "PAPER_RUNNING",
   "mode": "PAPER_FOMO_20_EUR_POLY_30_EUR_V11_FAST",
   "started_at_utc": "2026-11-15T03:12:31.235087+00:00",
-  "observed_at_utc": "2026-11-15T03:12:31+00:00",
+  "observed_at_utc": "2026-11-15T03:17:31+00:00",
   "duration_minutes": 330,
   "capital_initial_eur": 50,
-  "capital_eur": 50.0,
+  "capital_eur": 49.9513,
   "capital_valuation_status": "INDICATIVE_QUOTES_NO_REPORTED_ANOMALIES",
-  "pnl_eur": 0.0,
-  "pnl_eur_if_all_marks_valid": 0.0,
-  "new_mirrored_trades": 0,
+  "pnl_eur": -0.0487,
+  "pnl_eur_if_all_marks_valid": -0.0487,
+  "new_mirrored_trades": 4,
   "polymarket_risk_exits_not_copied": 0,
   "strategy": "POLY_60MIN_MAX_HOLD_TP_6PCT_SL_6PCT_PAPER",
   "marks_reliability": "NO_REPORTED_MARK_ANOMALIES",
   "stale_positions_over_15min": 0,
   "polymarket": {
     "budget_eur": 30.0,
-    "capital_eur": 30.0,
+    "capital_eur": 29.9513,
     "rankings_as_of_utc": "2026-11-15T03:12:29+00:00",
-    "last_poll_utc": "2026-11-15T03:12:31+00:00",
+    "last_poll_utc": "2026-11-15T03:17:13+00:00",
     "watched_wallets": 10,
     "selected_winners": [
       {
@@ -118,10 +118,25 @@
         "wallet": "0xad5353afe30c2da57709e2704ef3ccdcf67eef24",
         "platform": "Polymarket",
         "initial_eur": 3.0,
-        "cash_eur": 3.0,
-        "equity_eur": 3.0,
-        "pnl_eur": 0.0,
-        "positions": []
+        "cash_eur": 0.43967,
+        "equity_eur": 2.938,
+        "pnl_eur": -0.062,
+        "positions": [
+          {
+            "token_id": "62204256402490347712632483292413246323147495363226973125640631705087247892041",
+            "qty": "2.320934505840661504134400840",
+            "mark_usd": "0.93",
+            "title": "Will New Zealand vs. India end in a draw?",
+            "mark_age_seconds": 57
+          },
+          {
+            "token_id": "10468522244663277918640274093121584146864021641813846564008862486791170535916",
+            "qty": "0.9416960020174306024191089716",
+            "mark_usd": "0.64",
+            "title": "Will Davante Adams have 7.5+ receiving touchdowns in the 2026-27 NFL regular season?",
+            "mark_age_seconds": 57
+          }
+        ]
       },
       {
         "name": "fantasy7788",
@@ -188,10 +203,25 @@
         "wallet": "0xd218e474776403a330142299f7796e8ba32eb5c9",
         "platform": "Polymarket",
         "initial_eur": 3.0,
-        "cash_eur": 3.0,
-        "equity_eur": 3.0,
-        "pnl_eur": 0.0,
-        "positions": []
+        "cash_eur": 0.44361,
+        "equity_eur": 3.0133,
+        "pnl_eur": 0.0133,
+        "positions": [
+          {
+            "token_id": "86238856930269158297633894715344370305155758731248529282208377802102469059377",
+            "qty": "5.802336264601653760336002100",
+            "mark_usd": "0.385",
+            "title": "UFC 334: Kevin Holland vs. Uroš Medic (Welterweight, Main Card)",
+            "mark_age_seconds": 57
+          },
+          {
+            "token_id": "30728609885715374288858063112149413594109064855980318558797537001408917409057",
+            "qty": "0.6563299150785638236817242877",
+            "mark_usd": "0.9235",
+            "title": "Will Texas Longhorns win the 2027 CFP National Championship?",
+            "mark_age_seconds": 57
+          }
+        ]
       },
       {
         "name": "e46m3",
@@ -214,12 +244,100 @@
         "positions": []
       }
     ],
-    "new_mirrored_fills": 0,
+    "new_mirrored_fills": 4,
     "risk_exits": 0,
-    "pending_price_checks": 0,
-    "trades": [],
-    "ignored": {},
-    "errors": [],
+    "pending_price_checks": 2,
+    "trades": [
+      {
+        "timestamp_utc": "2026-11-15T03:16:12+00:00",
+        "trader": "xtxpleasecallme",
+        "platform": "Polymarket",
+        "source_id": "poly:db58317e0a6bbea96fab7e8db1c64e6a74474586797e63374410f39a0bb23489",
+        "source_timestamp_utc": "2026-11-15T03:14:08+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "62204256402490347712632483292413246323147495363226973125640631705087247892041",
+        "title": "Will New Zealand vs. India end in a draw?",
+        "side": "BUY",
+        "copy_price_usd": "0.95",
+        "source_price_usd": "0.94",
+        "virtual_notional_eur": "2.0000",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:16:13+00:00",
+        "trader": "xtxpleasecallme",
+        "platform": "Polymarket",
+        "source_id": "poly:2ce3aa933812eac16aa97f7865e8b529fc541cb0466b2bb9612ae5ad22bf3a29",
+        "source_timestamp_utc": "2026-11-15T03:15:49+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "10468522244663277918640274093121584146864021641813846564008862486791170535916",
+        "title": "Will Davante Adams have 7.5+ receiving touchdowns in the 2026-27 NFL regular season?",
+        "side": "BUY",
+        "copy_price_usd": "0.65",
+        "source_price_usd": "0.6199999984",
+        "virtual_notional_eur": "0.5552",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:16:13+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "source_id": "poly:e682c7ba85cf0279ad974362ecef602a46b808fcc16ecc447a3d48d5b85a2b9d",
+        "source_timestamp_utc": "2026-11-15T03:13:35+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "86238856930269158297633894715344370305155758731248529282208377802102469059377",
+        "title": "UFC 334: Kevin Holland vs. Uroš Medic (Welterweight, Main Card)",
+        "side": "BUY",
+        "copy_price_usd": "0.38",
+        "source_price_usd": "0.24",
+        "virtual_notional_eur": "2.0000",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
+        "timestamp_utc": "2026-11-15T03:16:13+00:00",
+        "trader": "cigarettes",
+        "platform": "Polymarket",
+        "source_id": "poly:e78f49ec0678b89714077d4f7bd81c09d8e54b1a2f1c13c4202bbab26f367df4",
+        "source_timestamp_utc": "2026-11-15T03:14:32+00:00",
+        "market": "POLYMARKET_PUBLIC_FILL",
+        "asset": "30728609885715374288858063112149413594109064855980318558797537001408917409057",
+        "title": "Will Texas Longhorns win the 2027 CFP National Championship?",
+        "side": "BUY",
+        "copy_price_usd": "0.926",
+        "source_price_usd": "0.926",
+        "virtual_notional_eur": "0.5513",
+        "source_amount_not_copied": true,
+        "trade_kind": "MIRRORED_SOURCE_SIGNAL",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      }
+    ],
+    "ignored": {
+      "xtxpleasecallme": {
+        "stale_or_future_source_fill": 10,
+        "unpriced_source_fill_expired": 5
+      },
+      "cigarettes": {
+        "stale_or_future_source_fill": 6,
+        "risk_cap_or_no_cash": 1,
+        "unpriced_source_fill_expired": 1
+      }
+    },
+    "errors": [
+      "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xad5353afe3:quote:Invalid or illiquid spread",
+      "0xd218e47477:quote:Insufficient executable best-level depth ($3.50 each side)"
+    ],
     "quotes_quarantined": 0
   },
   "fomo": {
@@ -234,9 +352,9 @@
       "minhxdynasty"
     ],
     "watched_wallets": 5,
-    "connected": false,
+    "connected": true,
     "reconnects": 0,
-    "last_message_utc": null,
+    "last_message_utc": "2026-11-15T03:17:26+00:00",
     "books": [
       {
         "name": "leo",
@@ -291,7 +409,10 @@
     ],
     "new_mirrored_alerts": 0,
     "trades": [],
-    "ignored": {},
+    "ignored": {
+      "non_live_alert": 116,
+      "unselected_or_unverified": 20
+    },
     "source_errors": [],
     "quotes_quarantined": 0
   },
@@ -303,6 +424,13 @@
       "observed_at_utc": "2026-11-15T03:12:31+00:00",
       "capital_eur": 50.0,
       "poly_trades": 0,
+      "fomo_trades": 0,
+      "poly_risk_exits": 0
+    },
+    {
+      "observed_at_utc": "2026-11-15T03:17:31+00:00",
+      "capital_eur": 49.9513,
+      "poly_trades": 4,
       "fomo_trades": 0,
       "poly_risk_exits": 0
     }
