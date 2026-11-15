@@ -1,0 +1,201 @@
+name: "CopyTrading 50 V8 - Selection + miroir PAPER"
+on:
+  workflow_dispatch:
+    inputs:
+      duration_minutes:
+        description: "Duree de session en minutes (5 a 330, pas de 5)"
+        required: true
+        default: "240"
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: copytrading50-v7
+  cancel-in-progress: false
+jobs:
+  simulation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verifier la duree
+        env:
+          DURATION: ${{ inputs.duration_minutes }}
+        run: |
+          python3 - <<'PY_CHECK'
+          import os
+          v=os.environ['DURATION']
+          if not v.isdecimal() or not 5 <= int(v) <= 330 or int(v) % 5:
+              raise SystemExit('Duree invalide (5..330, multiple de 5)')
+          PY_CHECK
+      - name: Recuperer le code PAPER V7 deja installe
+        run: |
+          python3 - <<'PY_V7'
+          import base64,io,re,zipfile
+          from pathlib import Path
+          p=Path('.github/workflows/copy-mirror-v7.yml')
+          if not p.exists():
+              raise SystemExit('Installer d abord la V7 (fichier GitHub manquant)')
+          original=p.read_text(encoding='utf-8')
+          m=re.search("bundle="+chr(39)*3+r"\s*(.*?)\s*"+chr(39)*3,original,re.S)
+          if not m:
+              raise SystemExit('Archive V7 integree absente ou invalide')
+          raw=base64.b64decode(''.join(m.group(1).split()),validate=True)
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              if z.testzip() is not None: raise SystemExit('Archive V7 corrompue')
+              for f in z.infolist():
+                  name=Path(f.filename)
+                  if name.is_absolute() or '..' in name.parts: raise SystemExit('Chemin ZIP refuse')
+              z.extractall('.')
+          PY_V7
+          python3 -m pip install websocket-client==1.8.0
+      - name: Installer les correctifs V8 et executer les tests
+        run: |
+          python3 - <<'PY_V8'
+          import base64,io,zipfile
+          from pathlib import Path
+          bundle = """
+          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
+          AAAAAA==
+          """
+          raw=base64.b64decode(''.join(bundle.split()),validate=True)
+          with zipfile.ZipFile(io.BytesIO(raw)) as z:
+              if z.testzip() is not None: raise SystemExit('Archive correctifs V8 corrompue')
+              for item in z.infolist():
+                  name=Path(item.filename)
+                  if name.is_absolute() or '..' in name.parts: raise SystemExit('Chemin ZIP refuse')
+              z.extractall('.')
+          PY_V8
+          python3 -m unittest discover -s tests -q
+          python3 -m unittest discover -p "test_*.py" -q
+          python3 -m py_compile run_live.py mirror.py discovery_v8.py mirror_v8.py
+      - name: Copier les signaux publics sans argent reel
+        env:
+          FOMO_API_KEY: ${{ secrets.FOMO_API_KEY }}
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_API_SECRET: ${{ secrets.ALPACA_API_SECRET }}
+          DURATION: ${{ inputs.duration_minutes }}
+        run: |
+          python3 - <<'PY_RUN'
+          import os
+          import run_live
+          from discovery_v8 import choose_handles
+          from mirror_v8 import PaperMirrorV8
+          run_live.choose_handles = choose_handles
+          run_live.PaperMirror = PaperMirrorV8
+          run_live.main(['--minutes',os.environ['DURATION'],'--publish'])
+          PY_RUN
+      - name: Enregistrer le rapport final meme en cas d erreur
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: copytrading-v8-rapport-${{ github.run_id }}
+          path: docs/data.json
+          if-no-files-found: warn
