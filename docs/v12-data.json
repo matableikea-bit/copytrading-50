@@ -3,20 +3,20 @@
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T12:38:12+00:00",
+  "observed_at_utc": "2026-11-15T12:43:13+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
-  "capital_eur": 45.0955,
-  "pnl_eur": -4.9045,
+  "capital_eur": 45.0712,
+  "pnl_eur": -4.9288,
   "capital_valuation_status": "INDICATIVE_LIQUIDATION_QUOTES",
   "new_mirrored_trades": 15,
-  "polymarket_risk_exits_not_source_copies": 9,
-  "open_positions_not_liquidated": 3,
+  "polymarket_risk_exits_not_source_copies": 10,
+  "open_positions_not_liquidated": 2,
   "polymarket": {
     "budget_eur": 40.0,
-    "capital_eur": 35.09554,
+    "capital_eur": 35.0712,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T12:37:49+00:00",
+    "last_poll_utc": "2026-11-15T12:42:52+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,14 +80,14 @@
             "qty": "13.27706009261109783141381614",
             "mark_usd": "0.57",
             "title": "Patriots vs. Lions",
-            "mark_age_seconds": 53
+            "mark_age_seconds": 51
           },
           {
             "token_id": "115409060983777450772125937546792914347599843448572648301569915268020202613802",
             "qty": "0.8100038550466332484419289538",
             "mark_usd": "0.52",
             "title": "Spread: Lions (-2.5)",
-            "mark_age_seconds": 53
+            "mark_age_seconds": 51
           }
         ]
       },
@@ -96,18 +96,10 @@
         "wallet": "0xdc41c39b95453c943174f369926018f6963bdd7e",
         "platform": "Polymarket",
         "initial_eur": 8.0,
-        "cash_eur": 0.83142,
-        "equity_eur": 6.24757,
-        "pnl_eur": -1.75243,
-        "positions": [
-          {
-            "token_id": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
-            "qty": "23.02280846767836575287493286",
-            "mark_usd": "0.26",
-            "title": "Spread: Jaguars (-4.5)",
-            "mark_age_seconds": 53
-          }
-        ]
+        "cash_eur": 6.22323,
+        "equity_eur": 6.22323,
+        "pnl_eur": -1.77677,
+        "positions": []
       },
       {
         "name": "HomeRunHazard",
@@ -141,7 +133,7 @@
       }
     ],
     "new_mirrored_fills": 15,
-    "risk_exits": 9,
+    "risk_exits": 10,
     "pending_price_checks": 0,
     "trades": [
       {
@@ -370,6 +362,24 @@
         "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
       },
       {
+        "timestamp_utc": "2026-11-15T12:41:21+00:00",
+        "trader": "nigiri99",
+        "platform": "Polymarket",
+        "trade_kind": "PAPER_RISK_EXIT_NOT_SOURCE_COPY",
+        "source_id": null,
+        "source_timestamp_utc": null,
+        "market": "POLYMARKET_RISK_EXIT",
+        "asset": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
+        "title": "Spread: Jaguars (-4.5)",
+        "side": "SELL",
+        "copy_price_usd": "0.26",
+        "source_price_usd": null,
+        "virtual_notional_eur": "5.3918",
+        "realized_pnl_eur": "-0.2580",
+        "exit_reason": "TIME_LIMIT",
+        "model": "PAPER_ONLY_PUBLIC_QUOTE_NOT_ACTUAL_FILL"
+      },
+      {
         "timestamp_utc": "2026-11-15T03:50:44+00:00",
         "trader": "HomeRunHazard",
         "platform": "Polymarket",
@@ -564,7 +574,7 @@
     ],
     "ignored": {
       "VirIntrepidus": {
-        "stale_or_future_source_fill": 61,
+        "stale_or_future_source_fill": 62,
         "risk_cap_or_no_cash": 29
       },
       "nigiri99": {
@@ -579,7 +589,7 @@
         "risk_cap_or_no_cash": 20,
         "source_price_already_moved": 15,
         "invalid_or_extreme_source_price": 1,
-        "portfolio_drawdown_stop": 38
+        "portfolio_drawdown_stop": 40
       },
       "BreakTheBank": {
         "stale_or_future_source_fill": 123,
@@ -641,7 +651,7 @@
     "watched_wallets": 5,
     "connected": true,
     "reconnects": 5,
-    "last_message_utc": "2026-11-15T12:38:04+00:00",
+    "last_message_utc": "2026-11-15T12:43:04+00:00",
     "books": [
       {
         "name": "leo",
@@ -697,8 +707,8 @@
     "new_mirrored_alerts": 0,
     "trades": [],
     "ignored": {
-      "non_live_alert": 1772,
-      "unselected_or_unverified": 346
+      "non_live_alert": 1787,
+      "unselected_or_unverified": 354
     },
     "source_errors": [],
     "quotes_quarantined": 0
@@ -1182,6 +1192,13 @@
       "poly_trades": 15,
       "fomo_trades": 0,
       "poly_risk_exits": 9
+    },
+    {
+      "observed_at_utc": "2026-11-15T12:43:13+00:00",
+      "capital_eur": 45.0712,
+      "poly_trades": 15,
+      "fomo_trades": 0,
+      "poly_risk_exits": 10
     }
   ],
   "snapshot_interval_minutes": 5,
