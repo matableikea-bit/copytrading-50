@@ -1,9 +1,9 @@
 {
-  "status": "PAPER_PAUSED_AWAITING_SCHEDULE",
+  "status": "PAPER_RUNNING",
   "mode": "PAPER_V12_TURBO_40_POLY_10_FOMO",
   "started_at_utc": "2026-11-15T03:42:08.652285+00:00",
   "session_deadline_utc": "2026-11-15T13:42:08.652285+00:00",
-  "observed_at_utc": "2026-11-15T08:08:48+00:00",
+  "observed_at_utc": "2026-11-15T08:53:58+00:00",
   "horizon_hours": 10,
   "capital_initial_eur": 50,
   "capital_eur": 45.1362,
@@ -16,7 +16,7 @@
     "budget_eur": 40.0,
     "capital_eur": 35.13617,
     "rankings_as_of_utc": "2026-11-15T03:42:09+00:00",
-    "last_poll_utc": "2026-11-15T08:08:29+00:00",
+    "last_poll_utc": "2026-11-15T08:53:58+00:00",
     "watched_wallets": 5,
     "selected_winners": [
       {
@@ -80,14 +80,14 @@
             "qty": "16.66484950414661021863944789",
             "mark_usd": "0.42",
             "title": "Vikings vs. Packers",
-            "mark_age_seconds": 49
+            "mark_age_seconds": 0
           },
           {
             "token_id": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark_usd": "0.39",
             "title": "Spread: 49ers (-2.5)",
-            "mark_age_seconds": 49
+            "mark_age_seconds": 0
           }
         ]
       },
@@ -105,14 +105,14 @@
             "qty": "0.9400062793724959005222834286",
             "mark_usd": "0.45",
             "title": "Spread: Chiefs (-3.5)",
-            "mark_age_seconds": 49
+            "mark_age_seconds": 0
           },
           {
             "token_id": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark_usd": "0.26",
             "title": "Spread: Jaguars (-4.5)",
-            "mark_age_seconds": 49
+            "mark_age_seconds": 0
           }
         ]
       },
@@ -130,7 +130,7 @@
             "qty": "1.306863611825617983369800383",
             "mark_usd": "0.77",
             "title": "Rockets vs. Wizards",
-            "mark_age_seconds": 49
+            "mark_age_seconds": 0
           }
         ]
       },
@@ -456,17 +456,17 @@
     ],
     "ignored": {
       "VirIntrepidus": {
-        "stale_or_future_source_fill": 23,
+        "stale_or_future_source_fill": 34,
         "risk_cap_or_no_cash": 12
       },
       "nigiri99": {
-        "stale_or_future_source_fill": 136,
+        "stale_or_future_source_fill": 137,
         "risk_cap_or_no_cash": 31,
         "unpriced_source_fill_expired": 57,
         "market_not_ending_within_30h": 1
       },
       "HomeRunHazard": {
-        "stale_or_future_source_fill": 136,
+        "stale_or_future_source_fill": 139,
         "unpriced_source_fill_expired": 4,
         "risk_cap_or_no_cash": 20,
         "source_price_already_moved": 13,
@@ -479,7 +479,7 @@
         "portfolio_drawdown_stop": 57
       },
       "CUTJALENHURTS": {
-        "stale_or_future_source_fill": 117,
+        "stale_or_future_source_fill": 118,
         "source_price_already_moved": 3,
         "risk_cap_or_no_cash": 14,
         "market_not_ending_within_30h": 7
@@ -533,7 +533,7 @@
     "watched_wallets": 5,
     "connected": false,
     "reconnects": 3,
-    "last_message_utc": "2026-11-15T08:08:42+00:00",
+    "last_message_utc": null,
     "books": [
       {
         "name": "leo",
@@ -839,6 +839,13 @@
     },
     {
       "observed_at_utc": "2026-11-15T08:08:48+00:00",
+      "capital_eur": 45.1362,
+      "poly_trades": 12,
+      "fomo_trades": 0,
+      "poly_risk_exits": 5
+    },
+    {
+      "observed_at_utc": "2026-11-15T08:53:58+00:00",
       "capital_eur": 45.1362,
       "poly_trades": 12,
       "fomo_trades": 0,

@@ -3,7 +3,7 @@
   "status": "ACTIVE",
   "started_ts": 1794714128.6522846,
   "deadline_ts": 1794750128.6522846,
-  "updated_at_utc": "2026-11-15T08:08:48+00:00",
+  "updated_at_utc": "2026-11-15T08:53:58+00:00",
   "history": [
     {
       "observed_at_utc": "2026-11-15T03:42:12+00:00",
@@ -249,6 +249,13 @@
       "poly_trades": 12,
       "fomo_trades": 0,
       "poly_risk_exits": 5
+    },
+    {
+      "observed_at_utc": "2026-11-15T08:53:58+00:00",
+      "capital_eur": 45.1362,
+      "poly_trades": 12,
+      "fomo_trades": 0,
+      "poly_risk_exits": 5
     }
   ],
   "issues": [],
@@ -312,7 +319,7 @@
             "token": "108534542077320679697693708499731792701102813975517222080622181321794355009924",
             "qty": "16.66484950414661021863944789",
             "mark": "0.42",
-            "updated_at": 1794730079.5740027,
+            "updated_at": 1794732838.3323448,
             "cost_eur": "6.51300",
             "name": "Vikings vs. Packers",
             "opened_at": 1794714434.305563
@@ -321,13 +328,14 @@
             "token": "26182673670567202222495754804603923388843201884360664876973142624147899393722",
             "qty": "2.589639791965310871750624020",
             "mark": "0.39",
-            "updated_at": 1794730079.5789955,
+            "updated_at": 1794732838.3323617,
             "cost_eur": "0.9414788705132517543350925014",
             "name": "Spread: 49ers (-2.5)",
             "opened_at": 1794715647.7941463
           }
         },
         "seen": [
+          "00222faacf6019358dc523c92cb5727ff7e6f796a69a07b556bdca6e5b0de833",
           "0343c981e9b07481d425256b9831a751159db807fc7eec358cefe66b69705705",
           "043440ad0f015690e112fc27c3f4e1d8a7405c92ec03f9becaf7da133ba70fbe",
           "048beddb4049d93d23ef2593ef2ee9c4f4ccbfe307a04a83c27814f34ab0bae5",
@@ -335,6 +343,7 @@
           "0a1f36b5e7bf7625d55e302469f031836db16ffd39c835566fe9b85539ea9e4d",
           "0ac2a746f8c69671c52a012f8ceecdc69a9c6315c95bf313463ec1097dd9d856",
           "0b314042e3976ba1b6a45c6aadfa3add4e3c1f4dbed287d00dc17a5329226bc3",
+          "0b507997c4a44f5babc37832f69d3369f55d3ce400b4e566758314b286e89862",
           "0cef3de1a5ec8df2ddf549d0eab479a66f094e7455b4ac1dd3b7d5e812cde33c",
           "10cb9d01201a2ab4ebe022da881502fe406e2b46736ef32ca2141b0de7b3eea3",
           "15fd117d22e82948b3d6d2999c0d9297257ceba88bc7b6f605516c3b9e788939",
@@ -349,12 +358,15 @@
           "29b103ee8998d672294a91b22d9b6b9a943cb32aba80a1e3256d5f43ad62ac09",
           "2bca24ebb86ace5c97e6f8bc18b5680d3ba7462d60779973d5742f51a8a1819b",
           "2c8396999c3fa8742d707ba8e9f738dafa2539513be36bceb2b9f3c127880696",
+          "2d0b0112a6826880f71f4644fd572e81d225563089941f3f9d559f8a3d2f21ed",
           "2f00be7f5ad8dcf4e7d088bb16a1cbd8d6c03bfcd61045c14a11758c92eb93d0",
           "314e6198c4eb584e20e76f8511136d7ec2c74213fd88ada2492bbe03e3c9d4f2",
           "31bb895ff846998c0bd338031d2c99e5d7a5f6262c3159ce1b2bb24290bb210d",
           "375dffc14391e087cc918f5b6b1f087430cfad2949372432b6014793db84eb58",
           "37cb93d5832222a078ec17d0d273d95a8d729789e9260142122232896054a425",
+          "3afd96713847b6340f7d39d661b11468e97c01501b3d940037476528dc1bb1ff",
           "4371a0b2afa77fada029203ce918ab6f8b7ffb237534b627c629002d89eb410c",
+          "46ddf8b9d99c85f93e069f16976432db3d7d08f5d3be5cc234bddee6896c91a7",
           "4ac146e14e910fd9f8596951d272a11a591ea2978d3fad71e0160f0ce6f3501d",
           "4c67cbd5e9c1bf20aeaf460e71e6d57d1471803f7592f0e59f714a1c192d6539",
           "4cb31f36eba025adc2e504d7c2f47b46b8ffba302d4d1b054666c01dddb46357",
@@ -362,12 +374,14 @@
           "504fa58ed65ab2042bdc40ccf4ac6bbf824d899133a2080c3a40e3d402a33ce2",
           "50886cb64bff93a027123b2c87bbf36e557b542d7686b912a351c3c8c4446fd1",
           "51f29ff24d29c102a2d1ce139064401bc95fcee2937042eafa70095613540179",
+          "57c2f356e8a76014f82ac7da7cb7302dc72f1692433f7ee3c7e1c04e1a4b3efd",
           "5c8dba5635971aac65fe09a2aab13941a215d25fe17bb51829710718406e3b8c",
           "5eb8ebf4461cac32dc7455e09b921f7fd58b75ac0fb2bfec0b686575417a8cda",
           "61afaa648fcb223b41656cc0ef8724c75024d12390fd5f36c275970ae2a8918e",
           "63da5dc2a3810eff3403cbe41b876c8a9f6d1d7a971fc8363daf42c7e345b9e8",
           "6a93b5046468ca16015150edcd46ec8bcd56270d35ff2e8220c0995270f2f0b3",
           "6b24b9379870e38d18ea05a42683307bb0d2a99618d107acabd30eb10c3f3832",
+          "6ce1b8549f9fe207c6425405e95661fd3bb447c5feff15938e17ab991008b22c",
           "6dfe1a1909b2c70f9f5a8f0d0a40ecfee9fe54376e860aca2fddaa78f946a886",
           "71a1d8595f246c43c71dd155e564f6666995389ad40cfce7900d6b1e1657c3e9",
           "71ed79f854760148f06e3b81ffab467309f386041cc2b278449a0269d4109152",
@@ -391,20 +405,24 @@
           "9a7f711096125aaa4dccb20e9e6fa4fcbfc14690d4228feba1578161745ebbd7",
           "9a829489cbbadbf054eec225652b7723d3fb9f1600cff9ee30f3652a1c67a740",
           "9d582eced980a88b08555afc1d3837e136a70ed7d23a9b4a5cc0f28f9a279de5",
+          "a38a4be0b38436594c367a4d480fa267f816bc40853fd8bd5a5dfb39d9b58432",
           "a4d0a8c70ad98cdef3f02757590eabba5440523eeb5154b8810edb935397f663",
           "b7f63b4f4a0ba441975a3d6b499a1d8e4f8b84b39fe5538841610f3007cd2167",
           "c0eb7bbf218ca8232eac7aee462395c89c276528eb2cbe5f86158d682c33901c",
+          "c25653c9ff0254aece7b97b28f219e8d0e654906a728b16f00482051922fa9fe",
           "c44a47f080f28aca7a7f6d6afab93fbfba297f14e978d6897c2d9539a7e318fa",
           "c5a0f90d113592df625840d49ead0d62fe207d2124da10a15f69cf8c7fb32f28",
           "c90e9d7e8914f2f511b768fe76a0771e31ae723e9b7ab577351b151b9ca6d6ff",
           "ca9895b704eaaeb88f335ccb86852d174faee4a6848d59c5df0662ab10111adb",
           "ce4fc7273a10dd064a25e730c1530d0dbcca79413bfe4704e68b8c6ca77748d0",
+          "d2adf9de33dd976c36f5e27dc6a7a99fda537872007500ba13bc54ab5ab40f39",
           "d2f7eebaca74a3b9866076a6c81e256ad78150ef2d15b97a3acf28c5c52261e9",
           "d6a030653aa843d7761dd06963f898d2fc7e66294f42903f23b0e8af54901b76",
           "d7203391ef2904c5a436a4c6b70c3f66775d4372448dcfb8fafa92d801b5e60e",
           "d8b389952060848a76d18ae15879a78ffeea22c0dfcaf334e0e6eb67b0a35725",
           "da4f56cf7fa9b8b5e09fea87357eace8c3036fecb78bde893069082358687e6e",
           "da98f44cda9e98aba7b416934831ddba266c91e4cd5dac1542af76df911e4a42",
+          "dafa894433cdacba9074af66b2d87b99f2425b1610962a21c8c6c52f312ff015",
           "dcaac2dc3127024aae1f2a9151175a4d82bdce2f0d5c48c9c124c311cb4d947e",
           "e27e1dad11653876cdc50ade8c420bf4bc7ab9cc445c5fcebd04e959dce0684a",
           "e47e234b41c5b6a1a36e2ba3486270836de14181bef4cde46d5c36c55b98ff13",
@@ -467,7 +485,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 23,
+          "stale_or_future_source_fill": 34,
           "risk_cap_or_no_cash": 12
         },
         "unsafe_quotes": [],
@@ -484,7 +502,7 @@
             "token": "47446842303718527029443341349194378753598380685525344602906075248281464204985",
             "qty": "0.9400062793724959005222834286",
             "mark": "0.45",
-            "updated_at": 1794730079.5789788,
+            "updated_at": 1794732838.33404,
             "cost_eur": "0.3930065721354431211499300625",
             "name": "Spread: Chiefs (-3.5)",
             "opened_at": 1794715344.2859125
@@ -493,7 +511,7 @@
             "token": "41991324287769954914823241114937031638491968571371208793919306838262697653247",
             "qty": "23.02280846767836575287493286",
             "mark": "0.26",
-            "updated_at": 1794730079.573978,
+            "updated_at": 1794732838.334027,
             "cost_eur": "5.649802822432880323434438378",
             "name": "Spread: Jaguars (-4.5)",
             "opened_at": 1794717635.4889214
@@ -739,6 +757,7 @@
           "d2573fa5320120ecec6db04aef2e360852690292a1d08210a020b366e83f8717",
           "d2ce589b6edbdd7433e7c807425896fbe3f353c9cb286db52df8eddfcc646a5d",
           "d3624aa76636d39fe50bfab3d20fe712267bb9c77293d8605d01b1267c10f896",
+          "d4e08eb0b5c687047898d3e76e72ede75064a735bb7be871fe75dd8de4a5a380",
           "d528b59aef3fb6eff9fdd296a45586f89a492cd574e87ae840d2ca59a97d44c0",
           "d63878e0066c378a4fe581519d170da0b05ec852df85e567c32949f8881b8ef1",
           "d66b3401b387765251ab63992365d94eade802f312fb6b7cf451389ce775ffc2",
@@ -904,7 +923,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 136,
+          "stale_or_future_source_fill": 137,
           "risk_cap_or_no_cash": 31,
           "unpriced_source_fill_expired": 57,
           "market_not_ending_within_30h": 1
@@ -925,7 +944,7 @@
             "token": "90092500659798801622355169229904716992685795179718424301565615637204790614764",
             "qty": "1.306863611825617983369800383",
             "mark": "0.77",
-            "updated_at": 1794730079.579005,
+            "updated_at": 1794732838.3323123,
             "cost_eur": "0.9383580488540942725154327299",
             "name": "Rockets vs. Wizards",
             "opened_at": 1794714917.5795581
@@ -1005,6 +1024,7 @@
           "53253318e311f690e60977b6f2826f52ac74e1afa8d820820931e68d0bcaa7bc",
           "59fd1be0b6092a037b62f68345703f91e24465d4b8f0114581a9c98045724a8e",
           "5a3e98d9239bb3717e48ad8f7ec0edadafa44a71c9d7c7c69b4752babca93ffd",
+          "5a4c10cf4acf31da9e1d892d24556407f973bcbb36d44b022d0da13df259bd70",
           "5b9db1486b0fc20ea8e1929f8898ff308031b9868b9f32de379e70694f159755",
           "5ba2b972536cc4651b5e111a105e3846429e25b0ac526c9e3459f274aeef76d5",
           "5f0176aedfefcfe4299652b79d71c5a0507d43ba499286026d0dd867f21b6d19",
@@ -1027,6 +1047,7 @@
           "7085a33d82853e25fb5ce511675cd655ccb559ac46f01b5bf83fe239ee54b53d",
           "71292679ba1d8d928427f146431b0f9a063e70dab4a6bc6969b13cead1b54167",
           "71bce2c74c4f8c89cf8f35f3a0f0faf18423663aad019c04dc684b5a4453c9a1",
+          "724f8d2c4da9ad8b6c1855a4f3e414ebc6e900fc4be89fed32f0e656ef82dc18",
           "73a655ec5fc8da1b24c1d350e2775dbc6249ec5f5a6d628426b755e5798a2b53",
           "74aeca048c5d08e0067b0fe4f6cee9e8828323d4b9928dc3a243b4506c81a093",
           "75bea684a3afa100defda9d212fcc4ede2b43901b08a7df87a2d63d1a79b40ec",
@@ -1128,6 +1149,7 @@
           "db7cb98725d79d83533c7a8fa7089b1042a423f317177964e85f6e28b0488e95",
           "dbcbc43d092585e475f5b7427e92f4028e367dd8305a0c0196468a4df512e0cd",
           "dc2b1740d80f4d009aa21378dcf0aa3ccd0f76a2afb00f2e5f3410c8c1bce850",
+          "dec5e73325d558b0a03a36f2b3b01ffc8f0b2a9854b39a259cec1af8ad671f73",
           "e0b6e7b44bd90f48586e207e49a03e836b44fc12889444c2313f172166a24a1b",
           "e3443d06fc5e3097ad852cc8e7addf0d3a03d546f9c4a75b8e1bc3966af9a5e3",
           "e45444b7c96b8ed17d8c8c94b4115681533301ac9201ae588ab3fdf704ece8f1",
@@ -1260,7 +1282,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 136,
+          "stale_or_future_source_fill": 139,
           "unpriced_source_fill_expired": 4,
           "risk_cap_or_no_cash": 20,
           "source_price_already_moved": 13,
@@ -1728,6 +1750,7 @@
           "4ed19708512778a207cb06db89068754f6f3009171935f6fc2c9fcbfc4b76efd",
           "4edbf7af498b876da7ff5b912a5317374c7e02c270591ce81e5e1a45c7bfb9c6",
           "4f497e7f05ff77225fca4ddf53c32960a732ccbf720ed5fcd940824e9ad2f997",
+          "4fd40002a3191e26248bae2b3e90783738d268eda70bc1f940ed7a4e81efd0ba",
           "50744f5bd9783543a2c5e2695331a2a32aaaee172cffa3cb4e8540bcfe6d9424",
           "5122cbe166158ef45eee0ef3b07c9760e070fb70a55354a5155d370825d8f6e7",
           "51ab1100909a492cd3c763605ced7155fc1fbeb5d57077f5751a7ebad3e1d491",
@@ -1948,7 +1971,7 @@
           }
         ],
         "rejected": {
-          "stale_or_future_source_fill": 117,
+          "stale_or_future_source_fill": 118,
           "source_price_already_moved": 3,
           "risk_cap_or_no_cash": 14,
           "market_not_ending_within_30h": 7
@@ -1972,7 +1995,7 @@
       "0xf68a281980f8c13828e84e147e3822381d6e5b1b": {}
     },
     "last_ranking": "2026-11-15T03:42:09+00:00",
-    "last_poll": "2026-11-15T08:08:29+00:00",
+    "last_poll": "2026-11-15T08:53:58+00:00",
     "started_at": 1794714129.2505972,
     "errors": [
       "0xdc41c39b95:quote:Invalid or illiquid spread",
