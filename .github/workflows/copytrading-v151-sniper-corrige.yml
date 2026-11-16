@@ -1,0 +1,439 @@
+name: "CopyTrading V15.1 — SNIPER INTÉGRÉ CORRIGÉ (PAPER)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      session:
+        description: "Durée du bot unifié PAPER"
+        required: true
+        type: choice
+        default: "2min"
+        options: ["2min", "10h", "12h"]
+      capital:
+        description: "Capital fictif USDC"
+        required: true
+        type: choice
+        default: "100"
+        options: ["50", "100"]
+      profil:
+        description: "Profil de risque PAPER"
+        required: true
+        type: choice
+        default: "offensif"
+        options: ["standard", "offensif"]
+
+permissions:
+  contents: read
+concurrency:
+  group: copytrading-v151unified-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    name: "Reconstruire V15, corriger les lancements, 194 tests + API"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: "Réutiliser les sources du bot V15 déjà présent"
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, subprocess
+          source=Path('.github/workflows/copytrading-v15-unifie-paper.yml')
+          if not source.is_file():
+              raise SystemExit('V15 introuvable : garder copytrading-v15-unifie-paper.yml')
+          text=source.read_text(encoding='utf-8')
+          expected='325980b54935bc5dcfa99acba6a4c6e54a9c597a9c7b3e5d3f55cb6abcfdc74f'
+          if hashlib.sha256(text.encode()).hexdigest()!=expected:
+              raise SystemExit('V15 source modifiée : correctif court incompatible, utiliser le fichier complet V15.1')
+          lines=text.splitlines()
+          names=(
+              'Reconstituer les 41 fichiers lisibles de V14.7',
+              'Appliquer les correctifs V14.7.3, tous visibles',
+              'Intégrer le Sniper au moteur existant — patch lisible',
+          )
+          for title in names:
+              marker='      - name: "'+title+'"'
+              if lines.count(marker)!=1:
+                  raise RuntimeError('Étape V15 introuvable: '+title)
+              start=lines.index(marker)+1
+              while start<len(lines) and lines[start]!='        run: |':
+                  start+=1
+              if start==len(lines):raise RuntimeError('Script V15 absent: '+title)
+              body=[]
+              for line in lines[start+1:]:
+                  if line.startswith('          '):body.append(line[10:])
+                  elif line=='':body.append('')
+                  else:break
+              script='\n'.join(body)+'\n'
+              print('Étape V15:',title,flush=True)
+              subprocess.run(['bash','-c',script],check=True)
+          PY
+      - name: "Correctif V15.1 Solana v1 + Token-2022 sûr"
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/sniper-v151.patch <<'__V151_SOLANA_PATCH__'
+          --- a/bot/sniper_transport.py
+          +++ b/bot/sniper_transport.py
+          @@ -21,6 +21,8 @@
+           from urllib.error import HTTPError, URLError
+           from urllib.parse import urlencode
+           from urllib.request import Request, urlopen
+          +
+          +from .providers import TOKEN_2022_PROGRAM, SAFE_MINT_EXTENSIONS
+           
+           USDC = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'
+           PUMPFUN = '6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P'
+          @@ -127,7 +129,7 @@
+                   for attempt in range(3):
+                       tx = self.rpc('getTransaction', [signature, {
+                           'encoding': 'jsonParsed', 'commitment': 'confirmed',
+          -                'maxSupportedTransactionVersion': 0}])
+          +                'maxSupportedTransactionVersion': 1}])
+                       if tx is not None:
+                           launched_at=tx.get('blockTime') if isinstance(tx, dict) else None
+                           if isinstance(launched_at,int) and time.time()-launched_at>12:
+          @@ -140,15 +142,36 @@
+               def mint_safe(self, mint):
+                   """Conservative base-token check; unknown authorities fail CLOSED."""
+                   acc = self.rpc('getAccountInfo', [mint, {'encoding': 'jsonParsed', 'commitment': 'confirmed'}])
+          -        val = (acc or {}).get('value') or {}
+          -        info = (((val.get('data') or {}).get('parsed') or {}).get('info') or {})
+          -        if val.get('owner') != TOKEN_PROGRAM:
+          +        val = (acc or {}).get('value') if isinstance(acc, dict) else None
+          +        if not isinstance(val, dict):
+          +            raise ProviderFailure('mint_account_missing')
+          +        owner = val.get('owner')
+          +        if owner not in (TOKEN_PROGRAM, TOKEN_2022_PROGRAM):
+                       raise ProviderFailure('unsupported_token_program')
+          +        data = val.get('data')
+          +        parsed = data.get('parsed') if isinstance(data, dict) else None
+          +        if not isinstance(parsed, dict) or parsed.get('type') != 'mint':
+          +            raise ProviderFailure('unverified_mint_account_type')
+          +        info = parsed.get('info')
+          +        if not isinstance(info, dict):
+          +            raise ProviderFailure('unverified_mint_info')
+                   if info.get('mintAuthority') is not None or info.get('freezeAuthority') is not None:
+                       raise ProviderFailure('active_mint_or_freeze_authority')
+          -        if not isinstance(info.get('decimals'), int) or not 0 <= info['decimals'] <= 12:
+          +        if owner == TOKEN_2022_PROGRAM:
+          +            # Keep the exact same fail-closed extension policy as SCANNER/RISK.
+          +            # Fees, transfer hooks, delegates, pauses and unknown extensions
+          +            # can make a 15-second exit impossible; never whitelist them.
+          +            extensions = info.get('extensions')
+          +            if not isinstance(extensions, list):
+          +                raise ProviderFailure('token2022_extensions_missing')
+          +            for ext in extensions:
+          +                name = ext.get('extension') if isinstance(ext, dict) else None
+          +                if name not in SAFE_MINT_EXTENSIONS:
+          +                    raise ProviderFailure('token2022_unsafe_or_unknown_extension')
+          +        decimals = info.get('decimals')
+          +        if type(decimals) is not int or not 0 <= decimals <= 12:
+                       raise ProviderFailure('unverified_mint_decimals')
+          -        return info['decimals']
+          +        return decimals
+           
+               def quote(self, input_mint, output_mint, amount):
+                   # Free API keys are often rate limited. Do not use 2m scanner's slow
+          --- /dev/null
+          +++ b/tests/test_sniper_v151_fix.py
+          @@ -0,0 +1,115 @@
+          +"""Regression tests grounded in V15 run #43843095636 (RPC -32015 / Token-2022)."""
+          +import json
+          +import time
+          +import unittest
+          +from unittest.mock import patch
+          +from bot.providers import TOKEN_PROGRAM, TOKEN_2022_PROGRAM
+          +from bot.sniper_transport import Remote, ProviderFailure, new_mint_from_transaction, create_event_signature, PUMPFUN
+          +
+          +MINT = 'B'*44
+          +SIGN = 'C'*88
+          +
+          +
+          +def mint_payload(owner=TOKEN_2022_PROGRAM, *, decimals=6, extensions=None,
+          +                 with_extensions=True, mint_authority=None, freeze_authority=None,
+          +                 parsed_type='mint'):
+          +    info = {'decimals':decimals, 'mintAuthority':mint_authority,
+          +            'freezeAuthority':freeze_authority}
+          +    if with_extensions:
+          +        info['extensions'] = [] if extensions is None else extensions
+          +    return {'value': {'owner':owner,'data':{'parsed':{'type':parsed_type, 'info':info}}}}
+          +
+          +class SniperV151Compatibility(unittest.TestCase):
+          +    def remote(self, acc=None):
+          +        calls=[]
+          +        acc = mint_payload() if acc is None else acc
+          +        def transport(url, *, method='GET', payload=None, headers=None):
+          +            if payload:
+          +                calls.append(payload)
+          +                method=payload['method']
+          +                if method=='getAccountInfo':return {'result':acc}
+          +                if method=='getTransaction':
+          +                    # Mimic the -32015 failure observed in GitHub's actual run.
+          +                    version=payload['params'][1]['maxSupportedTransactionVersion']
+          +                    if version < 1:
+          +                        return {'error':{'code':-32015,'message':'version 1 required'}}
+          +                    return {'result':{
+          +                        'blockTime':int(time.time()),
+          +                        'meta':{'err':None,'innerInstructions':[
+          +                            {'instructions':[{'parsed':{'type':'initializeMint2',
+          +                                                        'info':{'mint':MINT}}}]}]},
+          +                        'transaction':{'message':{'instructions':[]}},
+          +                        'version':1}}
+          +                raise AssertionError('Unexpected '+method)
+          +            return {'outAmount':'5000000','inAmount':None,'feeBps':0}
+          +        return Remote('fake-helius','fake-jupiter',transport=transport),calls
+          +
+          +    def test_rpc_v1_transactions_are_fetched_instead_of_minus_32015(self):
+          +        remote,calls=self.remote()
+          +        self.assertEqual(remote.confirmed_new_mint(SIGN),MINT)
+          +        self.assertEqual(calls[0]['params'][1]['maxSupportedTransactionVersion'],1)
+          +        self.assertEqual(calls[0]['params'][1]['encoding'],'jsonParsed')
+          +
+          +    def test_token2022_safe_metadata_extensions_pass(self):
+          +        r,_=self.remote(mint_payload(extensions=[{'extension':'metadataPointer'},
+          +                                                 {'extension':'tokenMetadata'}]))
+          +        self.assertEqual(r.mint_safe(MINT),6)
+          +
+          +    def test_token2022_without_extensions_passes_if_rpc_provides_empty_list(self):
+          +        r,_=self.remote(mint_payload())
+          +        self.assertEqual(r.mint_safe(MINT),6)
+          +
+          +    def test_legacy_spl_mint_unchanged(self):
+          +        r,_=self.remote(mint_payload(owner=TOKEN_PROGRAM,with_extensions=False))
+          +        self.assertEqual(r.mint_safe(MINT),6)
+          +
+          +    def test_token2022_unsafe_extensions_never_accepted(self):
+          +        for name in ('transferFeeConfig','transferHook','permanentDelegate',
+          +                     'pausable','nonTransferable','confidentialTransferMint',
+          +                     'defaultAccountState','mintCloseAuthority','unknownExtension'):
+          +            with self.subTest(name=name):
+          +                r,_=self.remote(mint_payload(extensions=[{'extension':name}]))
+          +                with self.assertRaisesRegex(ProviderFailure,'unsafe_or_unknown'):
+          +                    r.mint_safe(MINT)
+          +
+          +    def test_token2022_missing_extension_data_is_rejected(self):
+          +        r,_=self.remote(mint_payload(with_extensions=False))
+          +        with self.assertRaisesRegex(ProviderFailure,'extensions_missing'):
+          +            r.mint_safe(MINT)
+          +
+          +    def test_token2022_freeze_and_mint_authorities_rejected(self):
+          +        for params in ({'mint_authority':'C'*44},{'freeze_authority':'D'*44}):
+          +            with self.subTest(params=params):
+          +                r,_=self.remote(mint_payload(**params))
+          +                with self.assertRaisesRegex(ProviderFailure,'active_mint_or_freeze'):
+          +                    r.mint_safe(MINT)
+          +
+          +    def test_non_mint_accounts_rejected(self):
+          +        for params in ({'parsed_type':'account'},{'owner':'C'*44}):
+          +            with self.subTest(params=params):
+          +                r,_=self.remote(mint_payload(**params))
+          +                with self.assertRaises(ProviderFailure):r.mint_safe(MINT)
+          +
+          +    def test_malformed_and_bool_decimals_rejected(self):
+          +        for params in ({'decimals':True},{'decimals':13},{'decimals':'6'},
+          +                       {'decimals':-1}):
+          +            with self.subTest(params=params):
+          +                r,_=self.remote(mint_payload(**params))
+          +                with self.assertRaisesRegex(ProviderFailure,'decimals'):
+          +                    r.mint_safe(MINT)
+          +
+          +    def test_incomplete_mint_data_rejected(self):
+          +        for acc in ({}, {'value':None},{'value':{'owner':TOKEN_2022_PROGRAM}},
+          +                    {'value':{'owner':TOKEN_2022_PROGRAM,'data':{'parsed':{}}}}):
+          +            with self.subTest(acc=acc):
+          +                r,_=self.remote(acc)
+          +                with self.assertRaises(ProviderFailure):r.mint_safe(MINT)
+          +
+          +    def test_create_v2_log_and_parsed_inner_mint(self):
+          +        logs={'method':'logsNotification', 'params':{'result':{'value':{'signature':SIGN,
+          +            'err':None,'logs':[f'Program {PUMPFUN} invoke [1]','Program log: Instruction: CreateV2']}}}}
+          +        self.assertEqual(create_event_signature(logs),SIGN)
+          +        remote,_=self.remote()
+          +        self.assertEqual(remote.confirmed_new_mint(SIGN),MINT)
+          +
+          +if __name__=='__main__':unittest.main()
+          __V151_SOLANA_PATCH__
+          patch -p1 --fuzz=0 < /tmp/sniper-v151.patch
+      - name: "194 tests automatiques et compilation"
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -q
+          python -m compileall -q bot
+          python -c 'from bot.settings import Config; assert Config.load("config.json").mode == "PAPER"'
+      - name: "Diagnostic Helius et Jupiter (lecture seule, aucun ordre)"
+        shell: bash
+        env:
+          HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+          JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+        run: |
+          python - <<'PY'
+          from bot.providers import SolanaRPC,Jupiter,USDC,SOL,DataUnavailable
+          import os
+          if not os.getenv('HELIUS_API_KEY'):
+              raise SystemExit('DIAGNOSTIC : HELIUS_API_KEY absente (Secret GitHub)')
+          try:
+              r=SolanaRPC().call('getAccountInfo',[USDC,{'encoding':'jsonParsed'}])
+              if not isinstance(r,dict) or not isinstance(r.get('value'),dict):
+                  raise DataUnavailable('Réponse mint USDC vide')
+              print('DIAGNOSTIC : RPC Helius répond correctement')
+          except DataUnavailable as exc:
+              raise SystemExit('DIAGNOSTIC : Helius : '+str(exc)) from None
+          try:
+              j=Jupiter()
+              buy=j.order(USDC,SOL,5_000_000)
+              sell=j.order(SOL,USDC,int(buy['outAmount']))
+              if int(sell['outAmount'])<=0:
+                  raise DataUnavailable('Cotation retour vide')
+              print('DIAGNOSTIC : Jupiter USDC/SOL aller-retour répond (cotations uniquement)')
+          except DataUnavailable as exc:
+              raise SystemExit('DIAGNOSTIC : Jupiter : '+str(exc)) from None
+          PY
+      - name: "Partager le code auditable avec la simulation"
+        uses: actions/upload-artifact@v4
+        with:
+          name: v151unified-sources-lisibles
+          path: |
+            bot/
+            tests/
+            config.json
+            docs/
+            README_V14.7.3.md
+          retention-days: 7
+          if-no-files-found: error
+
+  stage1:
+    name: "Étape 1/3 — Scanner et simuler"
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v151unified-sources-lisibles
+          path: .
+      - name: "Installer client Helius WebSocket"
+        run: python -m pip install --disable-pip-version-check websocket-client==1.9.0
+      - name: "SCANNER + COPIER + BRAIN + SNIPER (UN SEUL portefeuille PAPER)"
+        run: python -m bot.gh_unified --session "${{ inputs.session }}" --stage 1
+      - name: "Générer le tableau de bord hors ligne"
+        if: always()
+        run: python -m bot.snapshot
+      - name: "Enregistrer la base SQLite et les résultats"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-v151-unified-stage-1
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 7
+          if-no-files-found: warn
+  stage2:
+    name: "Étape 2/3 — Reprendre le portefeuille"
+    if: ${{ inputs.session != '2min' }}
+    needs: stage1
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v151unified-sources-lisibles
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-v151-unified-stage-1
+          path: .
+      - name: "Installer client Helius WebSocket"
+        run: python -m pip install --disable-pip-version-check websocket-client==1.9.0
+      - name: "SCANNER + COPIER + BRAIN + SNIPER (UN SEUL portefeuille PAPER)"
+        run: python -m bot.gh_unified --session "${{ inputs.session }}" --stage 2
+      - name: "Générer le tableau de bord hors ligne"
+        if: always()
+        run: python -m bot.snapshot
+      - name: "Enregistrer la base SQLite et les résultats"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-v151-unified-stage-2
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 7
+          if-no-files-found: warn
+  stage3:
+    name: "Étape 3/3 — Bilan final"
+    if: ${{ inputs.session != '2min' }}
+    needs: stage2
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v151unified-sources-lisibles
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-v151-unified-stage-2
+          path: .
+      - name: "Installer client Helius WebSocket"
+        run: python -m pip install --disable-pip-version-check websocket-client==1.9.0
+      - name: "SCANNER + COPIER + BRAIN + SNIPER (UN SEUL portefeuille PAPER)"
+        run: python -m bot.gh_unified --session "${{ inputs.session }}" --stage 3
+      - name: "Générer le tableau de bord hors ligne"
+        if: always()
+        run: python -m bot.snapshot
+      - name: "Enregistrer la base SQLite et les résultats"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-v151-unified-stage-3-final
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 14
+          if-no-files-found: warn
