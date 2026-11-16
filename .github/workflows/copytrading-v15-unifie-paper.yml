@@ -1,4 +1,4 @@
-name: "CopyTrading V14.7.3 — AUDIT PAPER"
+name: "CopyTrading V15 — SNIPER INTÉGRÉ + V14.7.3 PAPER"
 
 on:
   workflow_dispatch:
@@ -13,19 +13,19 @@ on:
         description: "Capital fictif USDC"
         required: true
         type: choice
-        default: "50"
+        default: "100"
         options: ["50", "100"]
       profil:
         description: "Offensif augmente les risques sans garantir de gain"
         required: true
         type: choice
-        default: "standard"
+        default: "offensif"
         options: ["standard", "offensif"]
 
 permissions:
   contents: read
 concurrency:
-  group: copytrading-v1473-${{ github.ref }}
+  group: copytrading-v15unified-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -122,7 +122,7 @@ jobs:
           +python -m compileall -q bot
           +```
           +
-          +Consulter les `checkpoint-v1473-stage-1/2/3` produits par GitHub Actions. Les contrôles API du workflow sont en lecture seule et ne passent aucun ordre.
+          +Consulter les `checkpoint-v15-unified-stage-1/2/3` produits par GitHub Actions. Les contrôles API du workflow sont en lecture seule et ne passent aucun ordre.
           --- a/bot/__init__.py
           +++ b/bot/__init__.py
           @@ -1,2 +1,2 @@
@@ -810,7 +810,700 @@ jobs:
           __COPYTRADING_1473_PATCH__
           patch -p1 --fuzz=0 < /tmp/copytrading-v1473.patch
           python -c 'from bot import __version__; assert __version__ == "14.7.3"'
-      - name: "174 tests de régression + compilation"
+      - name: "Intégrer le Sniper au moteur existant — patch lisible"
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/v15unified.patch <<'__SNIPER_UNIFIED_PATCH__'
+          --- a/bot/store.py
+          +++ b/bot/store.py
+          @@ -12,7 +12,7 @@
+           class Store:
+               def __init__(self,path):
+                   self.path=Path(path);self.path.parent.mkdir(parents=True,exist_ok=True)
+          -        self.db=sqlite3.connect(str(self.path),timeout=20,isolation_level=None)
+          +        self.db=sqlite3.connect(str(self.path),timeout=20,isolation_level=None,check_same_thread=False)
+                   self.db.execute('PRAGMA journal_mode=WAL');self.db.execute('PRAGMA synchronous=FULL')
+                   self.db.executescript('''
+                     CREATE TABLE IF NOT EXISTS kv(k TEXT PRIMARY KEY, v TEXT NOT NULL);
+          --- a/bot/runner.py
+          +++ b/bot/runner.py
+          @@ -499,7 +499,8 @@
+                                            liquidations=self.exit_values)
+                   report['scout_candidates']=self.scout_candidates
+                   report['brain_enabled']=self.cfg.brain_enabled
+          -        report['bot_release']='14.7.3'
+          +        report['bot_release']='15.0-unified-paper'
+          +        report['sniper']=self.store.get('sniper_stats', {'enabled': False})
+                   report['strategy_profile']=self.cfg.strategy_profile
+                   report['brain_latest_assessments']=self.brain_assessments
+                   report['executor_quote_audit']='Jupiter buy+sell quote with round-trip costs; never guaranteed fill'
+          @@ -580,8 +581,10 @@
+                       net=self.exit_values.get(mint)
+                       if net is not None:
+                           p['peak_exit_value_usdc']=str(max(D(p.get('peak_exit_value_usdc',net)),D(net)))
+          -            # Do not use DexScreener mid-prices as executable stop triggers.
+          -            reason=exit_reason(p,m,now,self.cfg,net) if net is not None else None
+          +            # The embedded Sniper owns its precise 15-second exit clock.
+          +            # Only the emergency/session exits can override its own timer.
+          +            reason=(None if p.get('source')=='SNIPER' else
+          +                    exit_reason(p,m,now,self.cfg,net) if net is not None else None)
+                       prior=self.store.earlier(mint,now,120)
+                       if m and prior and prior['liquidity']>0 and m.liquidity_usd<prior['liquidity']*(1-D(self.cfg.max_liquidity_drop_fraction)):
+                           reason='liquidity_collapse'
+          @@ -589,7 +592,7 @@
+                       if flattening:reason='operator_flatten_positions'
+                       if reason:
+                           self._sell(mint,reason)
+          -            elif net is not None and not p.get('partial_take_profit_done',False):
+          +            elif p.get('source')!='SNIPER' and net is not None and not p.get('partial_take_profit_done',False):
+                           # Bank a portion of a winning position based on the *net*
+                           # liquidation quote. Urgent full exits always take priority.
+                           cost=D(p['cost_usdc'])
+          --- a/bot/gh_session.py
+          +++ b/bot/gh_session.py
+          @@ -189,6 +189,8 @@
+                           if remaining <= 0:
+                               break
+                           sleep(min(cfg.poll_seconds, remaining))
+          +            if hasattr(bot, 'shutdown'):
+          +                bot.shutdown()
+                       store.put('github_session_meta', {**meta, 'last_stage': stage})
+                       store.db.execute('PRAGMA wal_checkpoint(TRUNCATE)')
+                   finally:
+          --- a/bot/snapshot.py
+          +++ b/bot/snapshot.py
+          @@ -2,6 +2,7 @@
+           from __future__ import annotations
+           import argparse
+           import json
+          +from html import escape
+           from pathlib import Path
+          
+          
+          @@ -18,7 +19,29 @@
+               header = header.replace('V14.3', 'V14.7').replace(
+                   'Tableau de bord local : lecture de <code>status.json</code> toutes les 10 secondes.',
+                   'Rapport statique GitHub Actions : photographie à la fin de cette étape.')
+          -    return (header + '\n// Snapshot of an actual PAPER run; never an invented performance.\n'
+          +    # Display the embedded Sniper inside the SAME portfolio dashboard.
+          +    sniper = report.get('sniper', {})
+          +    if sniper.get('enabled'):
+          +        def n(key):
+          +            return escape(str(int(sniper.get(key, 0))))
+          +        issue = escape(str(sniper.get('last_issue', '') or 'Aucune erreur signalée')[:140])
+          +        sniper_card = (
+          +            '<section class="card" style="margin:18px 0">'
+          +            '<h2>⚡ SNIPER · intégré au portefeuille</h2>'
+          +            '<p class="muted">Flux Pump.fun temps réel · âge minimum 0 s · '
+          +            'tentative de sortie 15 s après l’entrée · cotations PAPER seulement</p>'
+          +            '<div style="display:flex;flex-wrap:wrap;gap:15px">'
+          +            '<div>Signaux : <strong>' + n('events') + '</strong></div>'
+          +            '<div>Achats : <strong>' + n('buys') + '</strong></div>'
+          +            '<div>Ventes : <strong>' + n('sells') + '</strong></div>'
+          +            '<div>Refus : <strong>' + n('rejects') + '</strong></div>'
+          +            '<div>Sorties à réessayer : <strong>' + n('exit_retries') + '</strong></div>'
+          +            '</div><p class="muted">Dernier diagnostic : ' + issue + '</p>'
+          +            '<p class="muted">Objectif 1 seconde, non garanti. Cotation ≠ ordre exécuté.</p>'
+          +            '</section>')
+          +        header = header.replace('<div class="grid hero">',
+          +                                sniper_card + '\n<div class="grid hero">', 1)
+          +    return (header + '\n// Snapshot of an actual PAPER run; never an invented performance.\n' 
+                       'const SNAPSHOT_REPORT = ' + data + ';\n'
+                       'update(SNAPSHOT_REPORT);\n'
+                       '</script>\n</body></html>\n')
+          --- /dev/null
+          +++ b/bot/sniper_transport.py
+          @@ -0,0 +1,175 @@
+          +"""Solana Pump.fun READ-ONLY transport; embedded in V14.7.3 PAPER engine.
+          +
+          +Targets a 1-second event reaction; this is not a guaranteed fill/latency.
+          +Not a live-trading program. Market prices are executable-like Jupiter indicative
+          +quotes with NO taker, not confirmed on-chain execution or a profitability claim.
+          +"""
+          +from __future__ import annotations
+          +
+          +import argparse
+          +import csv
+          +from html import escape
+          +import json
+          +import os
+          +import re
+          +import sys
+          +import time
+          +from collections import deque
+          +from dataclasses import dataclass
+          +from decimal import Decimal, ROUND_DOWN
+          +from pathlib import Path
+          +from urllib.error import HTTPError, URLError
+          +from urllib.parse import urlencode
+          +from urllib.request import Request, urlopen
+          +
+          +USDC = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'
+          +PUMPFUN = '6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P'
+          +TOKEN_PROGRAM = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'
+          +SOLANA_BASE58 = set('123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz')
+          +FIELDS = ['timestamp_utc', 'event', 'mint', 'signature', 'elapsed_seconds', 'amount_usdc', 'proceeds_usdc', 'net_pnl_usdc', 'reason']
+          +
+          +
+          +def D(x):
+          +    result = Decimal(str(x))
+          +    if not result.is_finite():
+          +        raise ValueError('non-finite decimal')
+          +    return result
+          +
+          +
+          +def is_pubkey(mint):
+          +    return isinstance(mint, str) and 32 <= len(mint) <= 44 and all(c in SOLANA_BASE58 for c in mint)
+          +
+          +
+          +def is_signature(signature):
+          +    return isinstance(signature, str) and 80 <= len(signature) <= 90 and all(c in SOLANA_BASE58 for c in signature)
+          +
+          +
+          +def create_event_signature(payload):
+          +    """Only verified successful Pump.fun launch instructions create candidates."""
+          +    if not isinstance(payload, dict) or payload.get('method') != 'logsNotification':
+          +        return None
+          +    value = (payload.get('params') or {}).get('result') or {}
+          +    value = value.get('value') or {}
+          +    logs = value.get('logs') or []
+          +    if value.get('err') is not None or not isinstance(logs, list):
+          +        return None
+          +    invoked = any(isinstance(s, str) and f'Program {PUMPFUN} invoke' in s for s in logs)
+          +    created = any(isinstance(s, str) and re.search(r'Instruction:\s*Create(?:V2)?\b', s, re.I) for s in logs)
+          +    signature = value.get('signature')
+          +    return signature if invoked and created and is_signature(signature) else None
+          +
+          +
+          +def new_mint_from_transaction(tx):
+          +    """Requires exactly one mint initialized in the confirmed transaction."""
+          +    if not isinstance(tx, dict) or (tx.get('meta') or {}).get('err') is not None:
+          +        return None
+          +    inner = (tx.get('meta') or {}).get('innerInstructions') or []
+          +    top = ((tx.get('transaction') or {}).get('message') or {}).get('instructions') or []
+          +    instructions = list(top)
+          +    for group in inner:
+          +        instructions.extend(group.get('instructions') or [])
+          +    mints = set()
+          +    for inst in instructions:
+          +        if not isinstance(inst, dict):
+          +            continue
+          +        parsed = inst.get('parsed') or {}
+          +        if isinstance(parsed, dict) and parsed.get('type') in ('initializeMint', 'initializeMint2'):
+          +            mint = (parsed.get('info') or {}).get('mint')
+          +            if is_pubkey(mint):
+          +                mints.add(mint)
+          +    return next(iter(mints)) if len(mints) == 1 else None
+          +
+          +
+          +class ProviderFailure(Exception):
+          +    pass
+          +
+          +
+          +class Remote:
+          +    def __init__(self, helius_key, jupiter_key, transport=None):
+          +        self.helius_key = helius_key
+          +        self.jupiter_key = jupiter_key
+          +        self.transport = transport or self._http_json
+          +        self.rpc_url = 'https://mainnet.helius-rpc.com/?' + urlencode({'api-key': helius_key})
+          +        self.last_jupiter_request_at = float('-inf')
+          +
+          +    @staticmethod
+          +    def _http_json(url, method='GET', payload=None, headers=None):
+          +        req = Request(url, method=method, data=json.dumps(payload).encode() if payload is not None else None,
+          +                      headers={'Accept': 'application/json', 'Content-Type': 'application/json', **(headers or {})})
+          +        try:
+          +            with urlopen(req, timeout=3) as resp:
+          +                if resp.status != 200:
+          +                    raise ProviderFailure('HTTP '+str(resp.status))
+          +                raw = resp.read(750001)
+          +                if len(raw) > 750000:
+          +                    raise ProviderFailure('response_too_large')
+          +                return json.loads(raw)
+          +        except HTTPError as e:
+          +            raise ProviderFailure('HTTP '+str(e.code)) from e
+          +        except (URLError, TimeoutError, OSError) as e:
+          +            raise ProviderFailure('network_'+type(e).__name__) from e
+          +        except (UnicodeDecodeError, ValueError) as e:
+          +            raise ProviderFailure('invalid_json') from e
+          +
+          +    def rpc(self, method, params):
+          +        response = self.transport(self.rpc_url, method='POST', payload={
+          +            'jsonrpc': '2.0', 'id': 1, 'method': method, 'params': params})
+          +        if not isinstance(response, dict):
+          +            raise ProviderFailure('RPC malformed_response')
+          +        if response.get('error'):
+          +            error = response['error']
+          +            code = error.get('code', 'unknown') if isinstance(error, dict) else 'unknown'
+          +            raise ProviderFailure('RPC '+method+' error_'+str(code))
+          +        return response.get('result')
+          +
+          +    def confirmed_new_mint(self, signature):
+          +        # A freshly confirmed signature sometimes takes a moment to become queryable.
+          +        for attempt in range(3):
+          +            tx = self.rpc('getTransaction', [signature, {
+          +                'encoding': 'jsonParsed', 'commitment': 'confirmed',
+          +                'maxSupportedTransactionVersion': 0}])
+          +            if tx is not None:
+          +                launched_at=tx.get('blockTime') if isinstance(tx, dict) else None
+          +                if isinstance(launched_at,int) and time.time()-launched_at>12:
+          +                    return None  # Late replay, never pretend it was first-second.
+          +                return new_mint_from_transaction(tx)
+          +            if attempt < 2:
+          +                time.sleep(.2)
+          +        return None
+          +
+          +    def mint_safe(self, mint):
+          +        """Conservative base-token check; unknown authorities fail CLOSED."""
+          +        acc = self.rpc('getAccountInfo', [mint, {'encoding': 'jsonParsed', 'commitment': 'confirmed'}])
+          +        val = (acc or {}).get('value') or {}
+          +        info = (((val.get('data') or {}).get('parsed') or {}).get('info') or {})
+          +        if val.get('owner') != TOKEN_PROGRAM:
+          +            raise ProviderFailure('unsupported_token_program')
+          +        if info.get('mintAuthority') is not None or info.get('freezeAuthority') is not None:
+          +            raise ProviderFailure('active_mint_or_freeze_authority')
+          +        if not isinstance(info.get('decimals'), int) or not 0 <= info['decimals'] <= 12:
+          +            raise ProviderFailure('unverified_mint_decimals')
+          +        return info['decimals']
+          +
+          +    def quote(self, input_mint, output_mint, amount):
+          +        # Free API keys are often rate limited. Do not use 2m scanner's slow
+          +        # backoff path; pause only when needed and record true order latency.
+          +        delay = max(0, self.last_jupiter_request_at + 1.1 - time.monotonic())
+          +        if delay:
+          +            time.sleep(delay)
+          +        self.last_jupiter_request_at = time.monotonic()
+          +        url = 'https://api.jup.ag/swap/v2/order?' + urlencode({
+          +            'inputMint': input_mint, 'outputMint': output_mint, 'amount': str(amount)})
+          +        res = self.transport(url, headers={'x-api-key': self.jupiter_key})
+          +        if not isinstance(res, dict) or res.get('errorCode'):
+          +            raise ProviderFailure('Jupiter_no_valid_quote')
+          +        try:
+          +            out = int(res['outAmount'])
+          +            fee = int(res.get('feeBps') or 0)
+          +            inp = int(res.get('inAmount', amount))
+          +        except (ValueError, TypeError, KeyError) as e:
+          +            raise ProviderFailure('Jupiter_malformed_quote') from e
+          +        if inp != amount or out <= 0 or not 0 <= fee <= 300:
+          +            raise ProviderFailure('Jupiter_bad_amount_or_fee')
+          +        return out
+          +
+          +
+          --- /dev/null
+          +++ b/bot/sniper_agent.py
+          @@ -0,0 +1,251 @@
+          +"""Embedded high-frequency PAPER Sniper for the V14.7 portfolio.
+          +
+          +Shares ONE Bot.state, SQLite and cash balance with SCOUT, COPIER and RISK.
+          +Never places live orders. The entry/exit prices are indicative Jupiter quotes,
+          +not fills. Pump.fun bonding-curve tokens may not be quotable on Jupiter.
+          +"""
+          +from __future__ import annotations
+          +import json
+          +import os
+          +from pathlib import Path
+          +from threading import Event, RLock, Thread
+          +import time
+          +from urllib.parse import urlencode
+          +from decimal import Decimal, ROUND_DOWN
+          +
+          +from .settings import D
+          +from .risk import risk_budget
+          +from .runner import Bot, stamp
+          +from .providers import USDC
+          +from .sniper_transport import (Remote, ProviderFailure, PUMPFUN,
+          +                               create_event_signature, is_pubkey, is_signature)
+          +
+          +
+          +class SniperAgent:
+          +    def __init__(self, bot: Bot, lock: RLock, *, remote=None, mono=time.monotonic,
+          +                 wall=time.time, socket_factory=None):
+          +        if bot.cfg.mode != 'PAPER':
+          +            raise ValueError('Sniper is PAPER only')
+          +        self.bot, self.lock = bot, lock
+          +        self.mono, self.wall = mono, wall
+          +        self.remote = remote or Remote(os.getenv('HELIUS_API_KEY',''),
+          +                                      os.getenv('JUPITER_API_KEY',''))
+          +        self.socket_factory=socket_factory
+          +        self.stop=Event()
+          +        self.thread=None
+          +        self.stats=bot.store.get('sniper_stats',{
+          +            'enabled':True, 'hold_seconds_target':15, 'age_min_seconds':0,
+          +            'reaction_target_seconds':1, 'guaranteed_latency':False,
+          +            'events':0, 'buys':0, 'sells':0, 'rejects':0, 'exit_retries':0,
+          +            'last_issue':'', 'price_type':'indicative_quotes_not_real_fills'})
+          +        self.stats['enabled']=True
+          +        self.stats['age_min_seconds']=0
+          +        self.stats['shared_portfolio']=True
+          +        with self.lock:self.bot.store.put('sniper_stats',self.stats)
+          +
+          +    def record(self, decision, reason, *, mint='', signature='', delay=None):
+          +        """Always called while holding the shared state lock."""
+          +        if decision=='BUY':self.stats['buys']+=1
+          +        elif decision=='SELL':self.stats['sells']+=1
+          +        elif decision=='REJECT':self.stats['rejects']+=1
+          +        elif decision=='RETRY':self.stats['exit_retries']+=1
+          +        self.stats['last_issue']=reason if decision in ('REJECT','RETRY','ERROR') else ''
+          +        if delay is not None:self.stats['last_observed_latency_seconds']=round(delay,3)
+          +        self.stats['last_event']=reason
+          +        self.stats['last_updated_utc']=stamp(int(self.wall()))
+          +        self.bot.store.put('sniper_stats',self.stats)
+          +        eid=f'sniper:{decision}:{mint}:{signature}:{int(self.wall()*10)}:{self.stats["events"]}'
+          +        self.bot.log('SNIPER',decision,reason,{'mint':mint,'signature':signature,
+          +                    'elapsed_seconds':delay},event_id=eid)
+          +
+          +    def candidate(self, mint, signature, received_at):
+          +        """Launch has been validated by Pump.fun logs + a confirmed transaction."""
+          +        if not is_pubkey(mint) or not is_signature(signature):return False
+          +        with self.lock:
+          +            self.stats['events']+=1
+          +            eid=f'sniper:launch:{mint}'
+          +            if self.bot.store.seen(eid):return False
+          +            # Persist dedup before potentially slow provider calls.
+          +            self.bot.log('SNIPER','OBSERVED','launch',{'mint':mint},event_id=eid)
+          +            if self.bot.state['halted'] or int(self.wall())>=self.bot.state['expires_at']:
+          +                self.record('REJECT','halted_or_expired',mint=mint);return False
+          +            if Path('STOP_TRADING').exists() or Path('PAUSE_BUYS').exists():
+          +                self.record('REJECT','operator_paused',mint=mint);return False
+          +            if mint in self.bot.state['positions']:
+          +                self.record('REJECT','already_owned',mint=mint);return False
+          +            amount,reason=risk_budget(self.bot.state,self.bot.cfg,self.bot.marks,self.bot.exit_values)
+          +            amount=min(amount,D(self.bot.cfg.starting_usdc)*D('0.10'))
+          +            amount=min(amount,D(self.bot.state['cash_usdc'])-D(self.bot.cfg.paper_network_cost_usdc))
+          +            if amount<D(self.bot.cfg.min_trade_usdc):
+          +                self.record('REJECT',reason if reason!='pass' else 'risk_budget_insufficient',mint=mint)
+          +                return False
+          +        if self.mono()-received_at>5:
+          +            with self.lock:self.record('REJECT','stale_launch',mint=mint,
+          +                                       delay=self.mono()-received_at)
+          +            return False
+          +        try:
+          +            decimals=self.remote.mint_safe(mint)
+          +            if type(decimals) is not int:
+          +                raise ProviderFailure('invalid_verified_token_decimals')
+          +            raw_usdc=int((amount*D(1000000)).to_integral_value(rounding=ROUND_DOWN))
+          +            raw_qty=int(self.remote.quote(USDC,mint,raw_usdc)*
+          +                        (1-D(self.bot.cfg.paper_extra_slippage_fraction)))
+          +            if raw_qty<=0:raise ProviderFailure('no_token_after_slippage')
+          +            reverse=int(self.remote.quote(mint,USDC,raw_qty))
+          +            net=(D(reverse)/D(1000000)*(1-D(self.bot.cfg.paper_extra_slippage_fraction))-
+          +                 D(self.bot.cfg.paper_network_cost_usdc))
+          +            if net<=0 or net<amount*(1-D(self.bot.cfg.max_all_in_round_trip_loss_fraction)):
+          +                raise ProviderFailure('roundtrip_loss_exceeds_limit')
+          +        except (ProviderFailure,ValueError,ArithmeticError) as exc:
+          +            with self.lock:self.record('REJECT',str(exc)[:100],mint=mint,
+          +                                       delay=self.mono()-received_at)
+          +            return False
+          +        latency=self.mono()-received_at
+          +        if latency>8:
+          +            with self.lock:self.record('REJECT','quote_late_over_8s',mint=mint,delay=latency)
+          +            return False
+          +        with self.lock:
+          +            # Reassess against the SAME shared portfolio after slow network calls.
+          +            allowed,reason=risk_budget(self.bot.state,self.bot.cfg,self.bot.marks,self.bot.exit_values)
+          +            cost=amount+D(self.bot.cfg.paper_network_cost_usdc)
+          +            if (allowed<amount or mint in self.bot.state['positions'] or
+          +                self.bot.state['halted'] or int(self.wall())>=self.bot.state['expires_at'] or
+          +                D(self.bot.state['cash_usdc'])<cost):
+          +                self.record('REJECT','shared_risk_changed',mint=mint,delay=latency)
+          +                return False
+          +            if latency>8:
+          +                self.record('REJECT','late_after_lock',mint=mint,delay=latency)
+          +                return False
+          +            opened_at=int(self.wall())
+          +            qty=D(raw_qty)/(D(10)**decimals)
+          +            if qty<=0:
+          +                self.record('REJECT','invalid_token_quantity',mint=mint);return False
+          +            self.bot.state['cash_usdc']=str(D(self.bot.state['cash_usdc'])-cost)
+          +            self.bot.exit_values[mint]=net
+          +            self.bot.state['positions'][mint]={
+          +                'symbol':'SNIPER','qty':str(qty),'raw_qty':str(raw_qty),
+          +                'decimals':decimals,'cost_usdc':str(cost),
+          +                'entry_price_usd':str(amount/qty),'peak_price_usd':str(amount/qty),
+          +                'peak_exit_value_usdc':str(net),'partial_take_profit_done':False,
+          +                'opened_at':opened_at,'source':'SNIPER','source_wallet':None,
+          +                'event_id':eid,'sniper_exit_due_wall':self.wall()+15,
+          +                'sniper_entry_signature':signature}
+          +            trade={'time':stamp(opened_at),'side':'BUY','mint':mint,'symbol':'SNIPER',
+          +                   'source':'SNIPER','source_wallet':None,'position_id':f'{mint}:{opened_at}',
+          +                   'spent_usdc':str(amount),'qty':str(qty),
+          +                   'paper_network_cost_usdc':str(self.bot.cfg.paper_network_cost_usdc),
+          +                   'mode':'PAPER','chain_tx_signature':None,
+          +                   'measured_entry_latency_seconds':round(latency,3),
+          +                   'execution':'indicative_jupiter_quote_no_fill'}
+          +            self.bot.state['trades'].append(trade)
+          +            self.record('BUY','shared_paper_buy',mint=mint,signature=signature,delay=latency)
+          +            return True
+          +
+          +    def exit_due(self):
+          +        """Sells sniper positions at 15s (or retries); preserves failed open exits."""
+          +        with self.lock:
+          +            now=self.wall()
+          +            for mint,p in list(self.bot.state['positions'].items()):
+          +                if p.get('source')!='SNIPER':continue
+          +                due=p.get('sniper_exit_due_wall')
+          +                if due is None:due=now  # resume after restart, never defer stale exits
+          +                if now<float(due):continue
+          +                elapsed=max(0,now-float(due)+15)
+          +                done=self.bot._sell(mint,'sniper_exit_15s',
+          +                                    event_id=f'sniper:exit:{mint}:{p["opened_at"]}')
+          +                if done:
+          +                    self.record('SELL','sniper_exit_15s',mint=mint,delay=elapsed)
+          +                else:
+          +                    p['sniper_exit_due_wall']=self.wall()+1
+          +                    self.bot.store.put('portfolio',self.bot.state)
+          +                    self.record('RETRY','exit_quote_unavailable',mint=mint,delay=elapsed)
+          +
+          +    def consume_message(self,msg):
+          +        """WebSocket launches only; never takes trading instructions from the feed."""
+          +        try:payload=json.loads(msg)
+          +        except (ValueError,TypeError):return
+          +        if not isinstance(payload,dict):return
+          +        if payload.get('error'):
+          +            with self.lock:self.record('ERROR','helius_subscription_rejected')
+          +            return
+          +        signature=create_event_signature(payload)
+          +        if not signature:return
+          +        arrival=self.mono()
+          +        try:mint=self.remote.confirmed_new_mint(signature)
+          +        except ProviderFailure as exc:
+          +            with self.lock:self.record('REJECT',str(exc)[:100],signature=signature)
+          +            return
+          +        if mint:self.candidate(mint,signature,arrival)
+          +
+          +    def start(self):
+          +        self.thread=Thread(target=self._stream,daemon=True,name='embedded-sniper-websocket')
+          +        self.thread.start()
+          +
+          +    def shutdown(self):
+          +        self.stop.set()
+          +        if self.thread:self.thread.join(timeout=12)
+          +        if self.thread and self.thread.is_alive():
+          +            raise RuntimeError('sniper_worker_still_running_at_checkpoint')
+          +
+          +    def _stream(self):
+          +        if not self.remote.helius_key or not self.remote.jupiter_key:
+          +            with self.lock:self.record('ERROR','helius_or_jupiter_secret_missing')
+          +            return
+          +        factory=self.socket_factory
+          +        if factory is None:
+          +            from websocket import create_connection
+          +            factory=create_connection
+          +        pause=.5
+          +        while not self.stop.is_set() and int(self.wall())<self.bot.state['expires_at']:
+          +            sock=None
+          +            try:
+          +                sock=factory('wss://mainnet.helius-rpc.com/?'+urlencode({'api-key':self.remote.helius_key}),timeout=2)
+          +                sock.settimeout(.25)
+          +                sock.send(json.dumps({'jsonrpc':'2.0','id':1,'method':'logsSubscribe',
+          +                                      'params':[{'mentions':[PUMPFUN]}, {'commitment':'confirmed'}]}))
+          +                pause=.5
+          +                while not self.stop.is_set():
+          +                    self.exit_due()
+          +                    if int(self.wall())>=self.bot.state['expires_at']:
+          +                        break
+          +                    try:msg=sock.recv()
+          +                    except TimeoutError:continue
+          +                    except Exception as exc:
+          +                        if type(exc).__name__ in ('WebSocketTimeoutException','WebSocketConnectionClosedException'):
+          +                            if type(exc).__name__=='WebSocketTimeoutException':continue
+          +                        raise
+          +                    self.consume_message(msg)
+          +            except Exception as exc:
+          +                # The Helius URL embeds the API key: never expose exception text.
+          +                with self.lock:self.record('ERROR','stream_'+type(exc).__name__)
+          +            finally:
+          +                if sock:
+          +                    try:sock.close()
+          +                    except Exception:pass
+          +            if not self.stop.is_set():self.stop.wait(pause)
+          +            pause=min(8,pause*2)
+          +        # After session expiry, try to complete scheduled PAPER exits briefly.
+          +        grace=self.mono()+30
+          +        while not self.stop.is_set() and self.mono()<grace:
+          +            with self.lock:remaining=any(p.get('source')=='SNIPER' for p in self.bot.state['positions'].values())
+          +            if not remaining:break
+          +            self.exit_due()
+          +            self.stop.wait(.25)
+          +
+          +
+          +class IntegratedBot(Bot):
+          +    """The original V14.7.3 bot with one embedded event-driven Sniper agent."""
+          +    def __init__(self,*args, start_sniper=True, sniper_remote=None, sniper_clock=None, **kwargs):
+          +        super().__init__(*args,**kwargs)
+          +        self._shared_lock=RLock()
+          +        self.sniper=SniperAgent(self,self._shared_lock,remote=sniper_remote,
+          +                                **(sniper_clock or {}))
+          +        if start_sniper:self.sniper.start()
+          +
+          +    def tick(self):
+          +        with self._shared_lock:
+          +            return super().tick()
+          +
+          +    def shutdown(self):
+          +        self.sniper.shutdown()
+          +        with self._shared_lock:self.store.put('portfolio',self.state)
+          --- /dev/null
+          +++ b/bot/gh_unified.py
+          @@ -0,0 +1,36 @@
+          +"""One GitHub PAPER portfolio, one SQLite checkpoint, with embedded Sniper."""
+          +from __future__ import annotations
+          +import argparse
+          +import os
+          +import sys
+          +
+          +from .gh_session import SESSION_SECONDS, run_stage, prepare_config, write_performance, append_summary
+          +from .sniper_agent import IntegratedBot
+          +
+          +
+          +def main(argv=None):
+          +    p=argparse.ArgumentParser()
+          +    p.add_argument('--session',choices=SESSION_SECONDS,required=True)
+          +    p.add_argument('--stage',type=int,required=True)
+          +    p.add_argument('--config',default='config.json')
+          +    p.add_argument('--db',default='runtime/github-session.sqlite')
+          +    p.add_argument('--report',default='docs/status.json')
+          +    p.add_argument('--performance',default='docs/performance.json')
+          +    p.add_argument('--trades',default='docs/trades.csv')
+          +    args=p.parse_args(argv)
+          +    cfg=prepare_config(args.config,os.getenv('SIM_WALLETS_JSON'))
+          +    cfg.session_hours=1 if args.session=='2min' else int(args.session[:-1])
+          +    cfg.validate()
+          +    try:
+          +        report=run_stage(cfg,session=args.session,stage=args.stage,db_path=args.db,
+          +                         report_path=args.report,run_id=os.getenv('GITHUB_RUN_ID','local'),
+          +                         bot_factory=IntegratedBot)
+          +        write_performance(args.db,args.performance,args.trades)
+          +        append_summary(report,args.stage,args.session)
+          +        print('UNIFIED PAPER checkpoint saved',flush=True)
+          +    except Exception as exc:
+          +        # The remote may echo secrets in error messages: log exception type only.
+          +        print('UNIFIED PAPER FAIL CLOSED: '+type(exc).__name__,file=sys.stderr,flush=True)
+          +        raise SystemExit(2)
+          +
+          +if __name__=='__main__':main()
+          --- /dev/null
+          +++ b/tests/test_unified_sniper.py
+          @@ -0,0 +1,102 @@
+          +"""Embedded Sniper shares the normal PAPER portfolio, not a second cash wallet."""
+          +from decimal import Decimal
+          +from pathlib import Path
+          +from tempfile import TemporaryDirectory
+          +from threading import RLock
+          +import unittest
+          +
+          +from bot.settings import Config
+          +from bot.store import Store
+          +from bot.sniper_agent import SniperAgent,IntegratedBot
+          +from bot.sniper_transport import PUMPFUN
+          +
+          +MINT='B'*44
+          +SIGN='C'*88
+          +
+          +class FakeRemote:
+          +    helius_key='fixture'
+          +    jupiter_key='fixture'
+          +    def __init__(self):self.calls=0;self.fail_sell=False;self.fail_check=False
+          +    def mint_safe(self,m):
+          +        if self.fail_check:raise RuntimeError('fixture_invalid')
+          +        return 6
+          +    def quote(self,a,b,n):
+          +        self.calls+=1
+          +        if self.fail_sell and self.calls>2:
+          +            from bot.sniper_transport import ProviderFailure
+          +            raise ProviderFailure('HTTP 429')
+          +        return int(n*100) if a.startswith('EPjF') else int(n/100*1.03)
+          +
+          +class FakeClock:
+          +    t=1700000000.0
+          +    def mono(self):return self.t
+          +    def wall(self):return self.t
+          +
+          +class EmbeddedSniperTests(unittest.TestCase):
+          +    def setUp(self):
+          +        self.tmp=TemporaryDirectory();self.store=Store(str(Path(self.tmp.name)/'s.db'))
+          +        self.cfg=Config();self.cfg.mode='PAPER';self.cfg.starting_usdc='100'
+          +        self.clock=FakeClock();self.remote=FakeRemote()
+          +        self.bot=IntegratedBot(self.cfg,self.store,start_sniper=False,
+          +                               sniper_remote=self.remote,sniper_clock={
+          +                                   'mono':self.clock.mono,'wall':self.clock.wall})
+          +        self.bot.state['expires_at']=1700009999
+          +        self.bot.jupiter.order=lambda *a,**kw:{'outAmount':'11100000','feeBps':0}
+          +    def tearDown(self):self.bot.shutdown();self.store.close();self.tmp.cleanup()
+          +    def test_single_cash_portfolio_buy_sell_and_15_second_timer(self):
+          +        self.assertTrue(self.bot.sniper.candidate(MINT,SIGN,self.clock.mono()))
+          +        self.assertEqual(len(self.bot.state['positions']),1)
+          +        self.assertEqual(Decimal(self.bot.state['cash_usdc']),Decimal('91.90'))
+          +        self.assertEqual(self.bot.state['trades'][0]['source'],'SNIPER')
+          +        self.assertEqual(self.store.get('portfolio')['cash_usdc'],'91.90')
+          +        self.clock.t+=14.9;self.bot.sniper.exit_due()
+          +        self.assertEqual(len(self.bot.state['positions']),1)
+          +        self.clock.t+=.2;self.bot.sniper.exit_due()
+          +        self.assertEqual(len(self.bot.state['positions']),0)
+          +        self.assertEqual(self.bot.state['trades'][-1]['side'],'SELL')
+          +        self.assertEqual(self.bot.state['trades'][-1]['reason'],'sniper_exit_15s')
+          +        self.assertEqual(self.bot.sniper.stats['buys'],1)
+          +        self.assertEqual(self.bot.sniper.stats['sells'],1)
+          +    def test_duplicate_not_bought_twice_even_after_restart(self):
+          +        self.assertTrue(self.bot.sniper.candidate(MINT,SIGN,self.clock.mono()))
+          +        self.assertFalse(self.bot.sniper.candidate(MINT,SIGN,self.clock.mono()))
+          +        self.assertEqual(self.bot.sniper.stats['buys'],1)
+          +        self.assertEqual(self.store.get('portfolio')['trades'][0]['side'],'BUY')
+          +    def test_missing_quote_never_creates_buy(self):
+          +        from bot.sniper_transport import ProviderFailure
+          +        self.remote.quote=lambda a,b,n:(_ for _ in ()).throw(ProviderFailure('HTTP_429'))
+          +        self.assertFalse(self.bot.sniper.candidate(MINT,SIGN,self.clock.mono()))
+          +        self.assertEqual(self.bot.state['positions'],{})
+          +        self.assertEqual(Decimal(self.bot.state['cash_usdc']),Decimal('100'))
+          +    def test_stale_launch_is_rejected_without_network_order(self):
+          +        self.assertFalse(self.bot.sniper.candidate(MINT,SIGN,self.clock.mono()-9))
+          +        self.assertEqual(self.remote.calls,0)
+          +    def test_exit_quote_failure_does_not_fabricate_profit(self):
+          +        self.bot.sniper.candidate(MINT,SIGN,self.clock.mono())
+          +        self.bot.jupiter.order=lambda *a,**kw:(_ for _ in ()).throw(
+          +            __import__('bot.providers',fromlist=['DataUnavailable']).DataUnavailable('HTTP 429'))
+          +        self.clock.t+=15.1;self.bot.sniper.exit_due()
+          +        self.assertIn(MINT,self.bot.state['positions'])
+          +        self.assertEqual(self.bot.sniper.stats['sells'],0)
+          +        self.assertEqual(self.bot.sniper.stats['exit_retries'],1)
+          +    def test_restarted_checkpoint_uses_wall_time_not_runner_monotonic(self):
+          +        self.bot.sniper.candidate(MINT,SIGN,self.clock.mono())
+          +        self.clock.t+=90
+          +        self.bot.sniper.exit_due()
+          +        self.assertEqual(self.bot.sniper.stats['sells'],1)
+          +    def test_stop_flags_block_sniper(self):
+          +        self.bot.state['halted']=True
+          +        self.assertFalse(self.bot.sniper.candidate(MINT,SIGN,self.clock.mono()))
+          +        self.assertEqual(Decimal(self.bot.state['cash_usdc']),Decimal('100'))
+          +    def test_live_mode_rejected(self):
+          +        self.bot.cfg.mode='LIVE'
+          +        with self.assertRaisesRegex(ValueError,'PAPER'):
+          +            SniperAgent(self.bot,RLock(),remote=self.remote)
+          +    def test_report_combines_sniper_with_existing_engine(self):
+          +        self.bot.sniper.candidate(MINT,SIGN,self.clock.mono())
+          +        report=self.bot._report(int(self.clock.wall()))
+          +        self.assertEqual(report['sniper']['buys'],1)
+          +        self.assertEqual(report['starting_balance_usdc'],'100')
+          +        self.assertEqual(len(report['trades']),1)
+          +
+          +if __name__=='__main__':unittest.main()
+          --- /dev/null
+          +++ b/README_V15_UNIFIED.md
+          @@ -0,0 +1,9 @@
+          +# CopyTrading 50 V15 — Sniper intégré (PAPER ONLY)
+          +
+          +Ce n'est **pas** un second bot ou un deuxième portefeuille. Le moteur de V14.7.3 garde SCANNER / COPIER / BRAIN / EXECUTOR / RISK / BANKER ; le **SNIPER** écoute en parallèle les créations Pump.fun par Helius WebSocket et dépose les positions et transactions dans **la même base SQLite et le même état `portfolio`**. Le dashboard contient un panneau Sniper et l'historique global contient les transactions source=SNIPER. Les étapes GitHub conservent les mêmes positions et le même solde.
+          +
+          +Réglage : âge minimum **0 secondes pour SNIPER seulement** (les seuils du SCANNER classique restent inchangés). Entrée: nouvelle création Pump.fun validée puis contrôle du token + deux cotations Jupiter + contrôle de coût, délais, risque global. Plafond **10% du capital de départ par entrée**, et plafonds globaux inchangés. Sortie tentée 15 secondes après entrée. Aucune vente n'est inventée lorsque les cotations échouent ; le moteur réessaie et conserve la position ouverte dans le rapport.
+          +
+          +**Limitations critiques** : l'écoute WebSocket est rapide, mais les requêtes réseau, la confirmation de bloc et l'obtention d'une route Jupiter ne permettent pas de garantir une entrée en 1 seconde. De nouveaux tokens Pump.fun peuvent ne pas être routables sur Jupiter pendant la phase de bonding curve : ils sont **rejetés** plutôt que d'acheter sans devis. Les cotations PAPER ne sont pas de vrais fills et ne permettent pas de conclure qu'une stratégie de 15 secondes gagnerait de l'argent. Le système ne fournit aucun code de trading réel, aucune clé privée et aucun dépôt.
+          +
+          +Installer `.github/workflows/copytrading-v15-unifie-paper.yml` en conservant `.github/workflows/copytrading-v147-complet.yml` comme source historique. Tester d'abord `2min / 100 / offensif`, puis examiner `checkpoint-v15-unified-stage-1` et l'interface `docs/resultats.html`. La simulation V14.7.3 déjà en cours n'est pas modifiée.
+          __SNIPER_UNIFIED_PATCH__
+          patch -p1 --fuzz=0 < /tmp/v15unified.patch
+          python -c 'from bot.sniper_agent import IntegratedBot; assert IntegratedBot'
+      - name: "Tests V14.7.3 + Sniper commun + compilation"
         run: |
           set -euo pipefail
           python -m unittest discover -s tests -q
@@ -847,7 +1540,7 @@ jobs:
       - name: "Partager le code auditable avec la simulation"
         uses: actions/upload-artifact@v4
         with:
-          name: v1473-sources-lisibles
+          name: v15unified-sources-lisibles
           path: |
             bot/
             tests/
@@ -874,10 +1567,12 @@ jobs:
           python-version: "3.11"
       - uses: actions/download-artifact@v4
         with:
-          name: v1473-sources-lisibles
+          name: v15unified-sources-lisibles
           path: .
-      - name: "Exécuter le bot PAPER avec protections"
-        run: python -m bot.gh_session --session "${{ inputs.session }}" --stage 1
+      - name: "Installer client Helius WebSocket"
+        run: python -m pip install --disable-pip-version-check websocket-client==1.9.0
+      - name: "SCANNER + COPIER + BRAIN + SNIPER (UN SEUL portefeuille PAPER)"
+        run: python -m bot.gh_unified --session "${{ inputs.session }}" --stage 1
       - name: "Générer le tableau de bord hors ligne"
         if: always()
         run: python -m bot.snapshot
@@ -885,7 +1580,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: checkpoint-v1473-stage-1
+          name: checkpoint-v15-unified-stage-1
           path: |
             runtime/github-session.sqlite
             docs/status.json
@@ -912,14 +1607,16 @@ jobs:
           python-version: "3.11"
       - uses: actions/download-artifact@v4
         with:
-          name: v1473-sources-lisibles
+          name: v15unified-sources-lisibles
           path: .
       - uses: actions/download-artifact@v4
         with:
-          name: checkpoint-v1473-stage-1
+          name: checkpoint-v15-unified-stage-1
           path: .
-      - name: "Exécuter le bot PAPER avec protections"
-        run: python -m bot.gh_session --session "${{ inputs.session }}" --stage 2
+      - name: "Installer client Helius WebSocket"
+        run: python -m pip install --disable-pip-version-check websocket-client==1.9.0
+      - name: "SCANNER + COPIER + BRAIN + SNIPER (UN SEUL portefeuille PAPER)"
+        run: python -m bot.gh_unified --session "${{ inputs.session }}" --stage 2
       - name: "Générer le tableau de bord hors ligne"
         if: always()
         run: python -m bot.snapshot
@@ -927,7 +1624,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: checkpoint-v1473-stage-2
+          name: checkpoint-v15-unified-stage-2
           path: |
             runtime/github-session.sqlite
             docs/status.json
@@ -954,14 +1651,16 @@ jobs:
           python-version: "3.11"
       - uses: actions/download-artifact@v4
         with:
-          name: v1473-sources-lisibles
+          name: v15unified-sources-lisibles
           path: .
       - uses: actions/download-artifact@v4
         with:
-          name: checkpoint-v1473-stage-2
+          name: checkpoint-v15-unified-stage-2
           path: .
-      - name: "Exécuter le bot PAPER avec protections"
-        run: python -m bot.gh_session --session "${{ inputs.session }}" --stage 3
+      - name: "Installer client Helius WebSocket"
+        run: python -m pip install --disable-pip-version-check websocket-client==1.9.0
+      - name: "SCANNER + COPIER + BRAIN + SNIPER (UN SEUL portefeuille PAPER)"
+        run: python -m bot.gh_unified --session "${{ inputs.session }}" --stage 3
       - name: "Générer le tableau de bord hors ligne"
         if: always()
         run: python -m bot.snapshot
@@ -969,7 +1668,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: checkpoint-v1473-stage-3-final
+          name: checkpoint-v15-unified-stage-3-final
           path: |
             runtime/github-session.sqlite
             docs/status.json
