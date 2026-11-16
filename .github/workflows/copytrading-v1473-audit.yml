@@ -1,0 +1,980 @@
+name: "CopyTrading V14.7.3 — AUDIT PAPER"
+
+on:
+  workflow_dispatch:
+    inputs:
+      session:
+        description: "Durée de la simulation PAPER"
+        required: true
+        type: choice
+        default: "2min"
+        options: ["2min", "10h", "12h"]
+      capital:
+        description: "Capital fictif USDC"
+        required: true
+        type: choice
+        default: "50"
+        options: ["50", "100"]
+      profil:
+        description: "Offensif augmente les risques sans garantir de gain"
+        required: true
+        type: choice
+        default: "standard"
+        options: ["standard", "offensif"]
+
+permissions:
+  contents: read
+concurrency:
+  group: copytrading-v1473-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    name: "Reconstruction des sources + 174 tests + diagnostic API"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: "Reconstituer les 41 fichiers lisibles de V14.7"
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          source=Path('.github/workflows/copytrading-v147-complet.yml')
+          if not source.is_file(): raise RuntimeError('La V14.7 complète doit rester installée')
+          lines=source.read_text(encoding='utf-8').splitlines()
+          regex=re.compile(r"^ {10}cat > '([^']+)' <<'(__COPYTRADING_147_SOURCE_\d+__)'$")
+          i=0;count=0
+          while i<len(lines):
+              match=regex.match(lines[i])
+              if not match:i+=1;continue
+              name,end=match.groups();j=i+1
+              while j<len(lines) and lines[j]!=' '*10+end:j+=1
+              if j==len(lines):raise RuntimeError('Source V14.7 tronquée: '+name)
+              path=Path(name)
+              if path.is_absolute() or '..' in path.parts:raise RuntimeError('Chemin source interdit')
+              path.parent.mkdir(parents=True,exist_ok=True)
+              path.write_text('\n'.join(line[10:] for line in lines[i+1:j])+'\n',encoding='utf-8')
+              count+=1;i=j+1
+          assert count==41, f'Sources incomplètes: {count} au lieu de 41'
+          PY
+      - name: "Appliquer les correctifs V14.7.3, tous visibles"
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/copytrading-v1473.patch <<'__COPYTRADING_1473_PATCH__'
+          --- /dev/null
+          +++ b/README_V14.7.2.txt
+          @@ -0,0 +1,21 @@
+          +CopyTrading V14.7.2 — diagnostic et correction des API (PAPER ONLY)
+          +
+          +Corrigé par rapport au workflow V14.7.1 :
+          +- Les vérifications on-chain utilisent maintenant le RPC Helius associé à HELIUS_API_KEY lorsque SOLANA_RPC_URL et HELIUS_RPC_URL ne sont pas définies.
+          +- Les échecs HTTP affichent le service, le chemin sans paramètres secrets et le code HTTP exact.
+          +- Les réponses Jupiter V2 de type « cotation seule » sont acceptées sans requestId ; les ordres avec wallet exigent toujours requestId et transaction.
+          +- Le workflow vérifie les cotations Jupiter SOL/USDC et l'accès RPC Helius AVANT de lancer un test long ; aucune transaction réelle.
+          +- Les contrôles de sécurité Token-2022, prix aller-retour, wallet et frais restent en place.
+          +- Le bot fonctionne uniquement en PAPER sur GitHub.
+          +
+          +Validation effectuée : 159 tests locaux par reconstitution depuis le YAML V14.7 de GitHub. Une copie séparée V14.7.1 améliorée a aussi passé 166 tests. Pas d'accès aux clés GitHub dans cet environnement : les réponses Helius/Jupiter réelles et les profits ne sont PAS vérifiés.
+          +
+          +Installation dans copytrading-50 :
+          +1. Ajouter un NOUVEAU fichier dans .github/workflows/copytrading-v1472-api-fix.yml.
+          +2. Coller intégralement CopyTrading-50-V14.7.2-API-FIX-A-COPIER.yml, puis enregistrer.
+          +3. GitHub Actions > CopyTrading V14.7.2 — API FIX PAPER > Run workflow.
+          +4. Choisir session=2min, capital=50, profil=standard.
+          +5. Si « Diagnostic Helius + Jupiter » rouge, consulter son journal : il indique le service et le statut HTTP, sans exposer les clés.
+          +6. Si tout est vert, consulter checkpoint-v1472-stage-1 (simulation). La couleur verte valide le programme, PAS une rentabilité.
+          +
+          +Ne pas remplacer V14.7.1 avant d'avoir obtenu le diagnostic. Le code est lisible, sans base64 ni programme compressé.
+          --- /dev/null
+          +++ b/README_V14.7.3.md
+          @@ -0,0 +1,28 @@
+          +# CopyTrading 50 V14.7.3 — audit de fonctionnement PAPER
+          +
+          +**PAPER uniquement.** Aucune clé privée requise, aucun ordre réel envoyé depuis GitHub. Le but est de vérifier le fonctionnement, pas de promettre un rendement.
+          +
+          +## Corrections contrôlées
+          +
+          +- Helius : fallback RPC en cas de 404 de l’ancien endpoint ; recherche du curseur par pages de 1 000 signatures maximum, y compris lorsque le fournisseur renvoie une page partielle et décodage de 64 signatures au plus par cycle ; aucune avance de curseur lors d’une erreur. Le mode de transport (RPC/Enhanced) est désormais enregistré **pour chaque wallet**, puis restauré après chaque redémarrage GitHub ; les anciens checkpoints sans information de transport sont repris en RPC pour éviter les mélanges.
+          +- Wallets trop actifs : après trois pertes de curseur rapprochées, la source est marquée indisponible pendant 30 minutes, sans interrompre les autres sources. Une transaction manquée n’est jamais présentée comme copiée.
+          +- Comptes token : vérification RPC sur Helius avec la clé existante ; contrôle des autorités et extensions Token-2022 ; refus des actifs et des routes invérifiables.
+          +- Jupiter : cotations `GET /swap/v2/order` aller-retour sans `requestId` en mode PAPER ; contrôle des montants et vérification des frais ; espacement des appels HTTP (environ 1,1 s avec une clé, 2,1 s sans clé) pour respecter les limitations courantes.
+          +- Diagnostics : API, méthode et code HTTP sans exposer les clés ; résultat de chaque wallet et avertissements de perte d’historique dans les rapports.
+          +- 174 tests locaux dont quatre pour garantir la conservation du transport RPC/Enhanced à travers les étapes GitHub. Tests de bout en bout avec fixtures SYNTHÉTIQUES : SCANNER → BRAIN/RISK → achat PAPER → vente PAPER → persistance SQLite ; plus tests de pagination et de sécurité.
+          +
+          +## Limites non résolues par des tests locaux
+          +
+          +- Le nombre et la durée des transactions réelles dépendent des API Helius/Jupiter et des permissions de leurs clés. Il faut une exécution GitHub pour valider les réponses de ces fournisseurs.
+          +- Les wallets extrêmement actifs dépassent parfois la capacité d’un poll toutes les 60 s ; le bot les met en pause plutôt que de masquer les pertes d’événements. Un service à flux continu (WebSocket/indexeur) serait nécessaire pour du copy trading à la seconde.
+          +- Les cotations Jupiter ne garantissent pas un prix exécuté. Les ventes peuvent rester impossibles et la totalité du capital peut être perdue en réel.
+          +- Les adresses suivies n’ont pas été auditées en tant que traders rentables.
+          +
+          +## Vérification locale
+          +
+          +```bash
+          +python -m unittest discover -s tests -q
+          +python -m compileall -q bot
+          +```
+          +
+          +Consulter les `checkpoint-v1473-stage-1/2/3` produits par GitHub Actions. Les contrôles API du workflow sont en lecture seule et ne passent aucun ordre.
+          --- a/bot/__init__.py
+          +++ b/bot/__init__.py
+          @@ -1,2 +1,2 @@
+           """CopyTrading 50 V14.3. Experimental trading automation; no guaranteed returns."""
+          -__version__ = "14.7.0"
+          +__version__ = "14.7.3"
+          --- /dev/null
+          +++ b/bot/cursor_hotfix.py
+          @@ -0,0 +1,4 @@
+          +"""Compatibility shim: cursor safeguards now live in providers.py and runner.py.
+          +
+          +Importing this module no longer monkeypatches wallet processing.
+          +"""
+          --- a/bot/providers.py
+          +++ b/bot/providers.py
+          @@ -8,9 +8,9 @@
+           import json
+           import os
+           import time
+           from urllib.request import Request, urlopen
+          -from urllib.parse import urlencode, quote
+          +from urllib.parse import urlencode, quote, urlsplit
+           from urllib.error import HTTPError, URLError
+           from .settings import D
+           
+           USDC='EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'
+          @@ -22,29 +22,61 @@
+           
+           class DataUnavailable(RuntimeError): pass
+           
+           
+          +def safe_endpoint(url):
+          +    """Return a stable HTTP endpoint label, never a URL containing API keys."""
+          +    parsed=urlsplit(url)
+          +    hostname=(parsed.hostname or '').lower()
+          +    label={'api.jup.ag':'Jupiter', 'mainnet.helius-rpc.com':'Helius RPC',
+          +           'api.helius.xyz':'Helius Enhanced',
+          +           'api.mainnet-beta.solana.com':'Solana public RPC',
+          +           'api.dexscreener.com':'DexScreener',
+          +           'api.geckoterminal.com':'GeckoTerminal'}.get(hostname,'API')
+          +    # Never include query parameters: ?api-key=... is a credential.
+          +    # A user-supplied custom RPC may put its API token in the URL path.
+          +    # Only expose paths from known, audited provider hosts.
+          +    if label=='API':
+          +        route='/request'
+          +    else:
+          +        route=parsed.path if label=='Jupiter' else ('/rpc' if label.endswith('RPC') else parsed.path)
+          +    # Helius Enhanced wallet addresses in paths are not needed for diagnostics.
+          +    if label=='Helius Enhanced':route='/v0/addresses/{wallet}/transactions'
+          +    return label+' '+route[:70]
+          +
+          +
+           def request_json(url, *, method='GET', data=None, headers=None, attempts=3, timeout=12):
+               if not url.startswith('https://'):
+                   raise DataUnavailable('HTTPS required')
+          +    endpoint=safe_endpoint(url)
+               body=json.dumps(data,separators=(',',':')).encode() if data is not None else None
+               head={'Accept':'application/json','User-Agent':'CopyTrading50-V14/1.0'}
+          -    if body:head['Content-Type']='application/json'
+          +    if body is not None:head['Content-Type']='application/json'
+               head.update(headers or {})
+               for index in range(attempts):
+                   try:
+                       req=Request(url,data=body,headers=head,method=method)
+                       with urlopen(req,timeout=timeout) as response:
+          -                if response.status!=200: raise DataUnavailable('bad HTTP status')
+          +                if response.status!=200:
+          +                    raise DataUnavailable(f'{endpoint} HTTP {response.status}')
+                           content=response.read(2_000_001)
+          -                if len(content)>2_000_000: raise DataUnavailable('response too large')
+          -            return json.loads(content)
+          -        except (HTTPError,URLError,TimeoutError,ValueError,OSError) as exc:
+          -            if isinstance(exc,HTTPError) and 400<=exc.code<500 and exc.code!=429:
+          -                raise DataUnavailable(f'HTTP {exc.code}') from exc
+          -            if index==attempts-1: raise DataUnavailable(f'data fetch failed: {type(exc).__name__}') from exc
+          -            time.sleep(min(6,2**index))
+          -    raise DataUnavailable('request failed')
+          +                if len(content)>2_000_000:
+          +                    raise DataUnavailable(f'{endpoint} response too large')
+          +            try:return json.loads(content)
+          +            except (ValueError,UnicodeDecodeError) as exc:
+          +                raise DataUnavailable(f'{endpoint} invalid JSON response') from exc
+          +        except HTTPError as exc:
+          +            status=int(exc.code)
+          +            # No raw exception, response body, headers or URL: they may contain secrets.
+          +            if 400<=status<500 and status not in (408,429):
+          +                raise DataUnavailable(f'{endpoint} HTTP {status}') from exc
+          +            if index==attempts-1:
+          +                raise DataUnavailable(f'{endpoint} HTTP {status} after {attempts} attempts') from exc
+          +        except (URLError,TimeoutError,OSError) as exc:
+          +            if index==attempts-1:
+          +                raise DataUnavailable(f'{endpoint} transport error: {type(exc).__name__}') from exc
+          +        if index<attempts-1:time.sleep(min(4,2**index))
+          +    raise DataUnavailable(f'{endpoint} request failed')
+           
+           
+           @dataclass(frozen=True)
+           class Market:
+          @@ -389,9 +421,11 @@
+                   if (cursor is None)==(bootstrap_ts is None):
+                       raise ValueError('provide exactly one RPC history boundary')
+                   before=None;found=False;collected=[]
+                   for _ in range(max_pages):
+          -            opts={'limit':100}
+          +            # Solana permits up to 1,000 signatures per RPC page. A 100-item
+          +            # page loses the cursors of busy wallets unnecessarily.
+          +            opts={'limit':1000,'commitment':'confirmed'}
+                       if before:opts['before']=before
+                       items=self._rpc_call('getSignaturesForAddress',[wallet,opts])
+                       if not isinstance(items,list):raise DataUnavailable('invalid RPC signature page')
+                       for item in items:
+          @@ -407,20 +441,31 @@
+                               if ts<=bootstrap_ts:
+                                   found=True;break
+                           collected.append(item)
+                       if found:break
+          -            if len(items)<100:
+          +            if not items:
+          +                # Reaching the oldest available history is a valid boundary
+          +                # only when bootstrapping an empty baseline, never for a cursor.
+                           if bootstrap_ts is not None:found=True
+                           break
+          +            # A partial RPC page is NOT proof there are no older signatures.
+          +            # Some providers enforce smaller server-side page sizes.
+                       sig=items[-1]['signature']
+          -            if sig==before:raise DataUnavailable('RPC signature pagination stalled')
+          +            if sig==before:raise DataUnavailable('RPC signature pagination stalled; history gap unverified')
+                       before=sig
+                   if not found:
+                       raise DataUnavailable('wallet history gap: RPC cursor not found; fail closed')
+          +        self.diagnostics['rpc_backlog_signatures']=len(collected)
+                   return collected
+           
+               def _rpc_decode_range(self,rows,wallet):
+                   """Decode only signatures newer than a verified cursor, in chain order."""
+          +        # Decode oldest unread first. Keep the cursor at the newest decoded
+          +        # signature: later signatures will be picked up in subsequent cycles.
+          +        # Never advance a cursor beyond unprocessed swaps or a missed SELL.
+          +        if len(rows)>64:
+          +            self.diagnostics['rpc_decode_limited_cycles']=self.diagnostics.get('rpc_decode_limited_cycles',0)+1
+          +            rows=rows[-64:]
+                   collected=[]
+                   for item in rows:
+                       sig=item['signature']
+                       evt={'signature':sig,'type':'OTHER','timestamp':item.get('blockTime')}
+          @@ -530,16 +575,26 @@
+           
+           
+           class SolanaRPC:
+               def __init__(self,url=None,fetch=request_json):
+          -        self.url=url or os.getenv('SOLANA_RPC_URL','https://api.mainnet-beta.solana.com')
+          +        # Prefer the already configured private Helius RPC over the public Solana
+          +        # endpoint, which can throttle getAccountInfo/getTokenSupply heavily.
+          +        # An explicitly configured SOLANA_RPC_URL always takes precedence.
+          +        key=os.getenv('HELIUS_API_KEY','').strip()
+          +        self.url=(url or os.getenv('SOLANA_RPC_URL') or os.getenv('HELIUS_RPC_URL')
+          +                  or ('https://mainnet.helius-rpc.com/?'+urlencode({'api-key':key})
+          +                      if key else 'https://api.mainnet-beta.solana.com'))
+                   self.fetch=fetch
+               def call(self,method,params):
+                   data=self.fetch(self.url,method='POST',data={'jsonrpc':'2.0','id':1,'method':method,'params':params})
+                   if not isinstance(data,dict):
+                       raise DataUnavailable('malformed Solana RPC response')
+                   if data.get('error') is not None:
+          -            raise DataUnavailable('Solana RPC error '+str(data.get('error'))[:100])
+          +            err=data['error']
+          +            code=err.get('code','unknown') if isinstance(err,dict) else 'unknown'
+          +            # Providers occasionally echo submitted URLs in JSON-RPC error
+          +            # messages. Never include them in logs alongside API credentials.
+          +            raise DataUnavailable(f'Solana RPC {method} error code {code}')
+                   if 'result' not in data:
+                       raise DataUnavailable('Solana RPC missing result')
+                   return data['result']
+               def mint_info(self,mint):
+          @@ -601,26 +656,46 @@
+               BASE='https://api.jup.ag/swap/v2/'
+               def __init__(self,key=None,fetch=request_json):
+                   self.key=key if key is not None else os.getenv('JUPITER_API_KEY','')
+                   self.fetch=fetch
+          +        self._last_request_scheduled_at=0.0
+          +        # Keyless Jupiter is capped around 0.5 req/s and free keys around 1
+          +        # req/s. Do not pace synthetic fixture transports during unit tests.
+          +        self._pace_network_requests=(fetch is request_json)
+               def _headers(self):return {'x-api-key':self.key} if self.key else {}
+          +    def _pace(self):
+          +        if not self._pace_network_requests:return
+          +        now=time.monotonic()
+          +        delay=max(0.0,self._last_request_scheduled_at-now)
+          +        if delay:time.sleep(delay)
+          +        self._last_request_scheduled_at=time.monotonic()+(1.1 if self.key else 2.1)
+               def order(self,input_mint,output_mint,amount,taker=None,slippage_bps=None):
+                   if not isinstance(amount,int) or amount<=0:raise DataUnavailable('invalid amount')
+                   params={'inputMint':input_mint,'outputMint':output_mint,'amount':str(amount)}
+                   if taker:params['taker']=taker
+                   if slippage_bps is not None:
+                       if not isinstance(slippage_bps,int) or not 1<=slippage_bps<=500:
+                           raise DataUnavailable('invalid slippage bound')
+                       params['slippageBps']=str(slippage_bps)
+          +        self._pace()
+                   data=self.fetch(self.BASE+'order?'+urlencode(params),headers=self._headers())
+          -        if not isinstance(data,dict) or data.get('errorCode') or not data.get('requestId'):
+          +        if not isinstance(data,dict) or data.get('errorCode'):
+                       raise DataUnavailable('Jupiter quote error')
+          +        if taker and not data.get('requestId'):
+          +            raise DataUnavailable('Jupiter executable order missing requestId')
+                   try:
+                       output=int(data['outAmount'])
+                       fee=int(data.get('feeBps') or 0)
+                   except (KeyError,ValueError,TypeError) as exc:
+                       raise DataUnavailable('Jupiter quote missing valid output/fee') from exc
+                   if output<=0 or fee<0:raise DataUnavailable('invalid Jupiter quote')
+          +        # A quote returned for a different notional must never pass preflight.
+          +        if data.get('inAmount') is not None:
+          +            try: actual_input=int(data['inAmount'])
+          +            except (TypeError,ValueError) as exc:
+          +                raise DataUnavailable('invalid Jupiter quoted input amount') from exc
+          +            if actual_input!=amount:
+          +                raise DataUnavailable('Jupiter quoted input does not match requested amount')
+                   if taker and not data.get('transaction'):raise DataUnavailable('Jupiter transaction unavailable')
+                   return data
+               def execute(self,signed_b64,request_id):
+                   data=self.fetch(self.BASE+'execute',method='POST',
+          --- a/bot/runner.py
+          +++ b/bot/runner.py
+          @@ -91,9 +91,8 @@
+                               value=value*(1-D(self.cfg.paper_extra_slippage_fraction))
+                               value-=D(self.cfg.paper_network_cost_usdc)
+                           if value<=0:raise DataUnavailable('liquidation proceeds nonpositive')
+                           values[mint]=value
+          -                if not self.jupiter.key:time.sleep(2.1)
+                       except (DataUnavailable,ValueError,KeyError,TypeError) as exc:
+                           self.log('RISK','ERROR','cannot_value_executable_exit',
+                                    {'mint':mint,'reason':str(exc)[:100]})
+                   self.exit_values=values
+          @@ -137,10 +136,8 @@
+                   if raw<=0:raise DataUnavailable('notional too small')
+                   buy=self.jupiter.order(USDC,mint,raw)
+                   received=int(D(buy['outAmount'])*(1-D(self.cfg.paper_extra_slippage_fraction)))
+                   if received<=0:raise DataUnavailable('zero token output')
+          -        # Limit requests: Jupiter keyless may throttle above 0.5 RPS.
+          -        if not self.jupiter.key:time.sleep(2.1)
+                   reverse=self.jupiter.order(mint,USDC,received)
+                   audit=check_roundtrip(amount_usdc,received,reverse,buy,self.cfg)
+                   self.last_execution_audit=audit
+                   return received,buy,reverse
+          @@ -339,33 +336,85 @@
+                                    {'wallet':wallet,'reason':reason})
+                   if failures:
+                       raise DataUnavailable(str(len(failures))+' wallet feeds unavailable')
+           
+          +    def _wallet_transport_metadata(self):
+          +        transport=getattr(self.helius,'transport',None)
+          +        return {'transport':transport} if transport in ('rpc','enhanced') else {}
+          +
+               def _copy_wallet(self,now,wallet):
+                   key='wallet_cursor:'+wallet
+          +        # A source generating more history than periodic polling can verify
+          +        # must be marked unhealthy rather than silently making new copies.
+          +        gap_key='wallet_gap_policy:'+wallet
+          +        gap=self.store.get(gap_key,{})
+          +        paused_until=int(gap.get('paused_until',0)) if isinstance(gap,dict) else 0
+          +        if now<paused_until:
+          +            raise DataUnavailable('wallet activity exceeds safe polling capacity; temporarily paused')
+                   checkpoint=self.store.get(key)
+                   # A single atomic checkpoint distinguishes an empty initial history
+                   # from a wallet which has *never* been bootstrapped. Older string
+                   # cursor values remain readable when upgrading an existing database.
+                   initialized=isinstance(checkpoint,dict) and checkpoint.get('initialized',False)
+                   cursor=checkpoint.get('signature') if isinstance(checkpoint,dict) else checkpoint
+                   initialized=initialized or (checkpoint is not None and not isinstance(checkpoint,dict))
+          +        # GitHub stages are separate processes. RPC cursors include ALL
+          +        # signatures, whereas the Enhanced feed may include SWAPs only. Switching
+          +        # back to Enhanced can make a perfectly valid RPC cursor appear missing.
+          +        # Persist and restore each wallet's provider transport individually.
+          +        if initialized and hasattr(self.helius,'transport'):
+          +            saved_transport=checkpoint.get('transport') if isinstance(checkpoint,dict) else None
+          +            # Legacy checkpoints did not record transport. RPC can search both
+          +            # enhanced swap signatures and ordinary signatures; the reverse is
+          +            # not true, so the only safe migration choice is RPC.
+          +            self.helius.transport=saved_transport if saved_transport in ('rpc','enhanced') else 'rpc'
+                   if not initialized:
+                       # Establish the exact most-recent signature; never duplicate a
+                       # historical position when a tracked wallet is first enabled.
+                       if hasattr(self.helius,'latest_signature'):
+                           newest=self.helius.latest_signature(wallet)
+                       else:  # Dependency-injected older test/provider adapters
+                           _,newest=self.helius.since(wallet,None)
+                       self.store.put(key,{'initialized':True,'signature':newest,
+          -                                'bootstrap_ts':now})
+          +                                'bootstrap_ts':now,
+          +                                **self._wallet_transport_metadata()})
+                       self.log('COPIER','BOOTSTRAP','skip_historical_trades',{'wallet':wallet})
+                       return 0
+                   bootstrap_ts=checkpoint.get('bootstrap_ts') if isinstance(checkpoint,dict) else None
+          -        if cursor is None and bootstrap_ts is not None and hasattr(self.helius,'since_bootstrap'):
+          -            txs,newest=self.helius.since_bootstrap(wallet,int(bootstrap_ts))
+          -        else:
+          -            txs,newest=self.helius.since(wallet,cursor)
+          +        try:
+          +            if cursor is None and bootstrap_ts is not None and hasattr(self.helius,'since_bootstrap'):
+          +                txs,newest=self.helius.since_bootstrap(wallet,int(bootstrap_ts))
+          +            else:
+          +                txs,newest=self.helius.since(wallet,cursor)
+          +        except DataUnavailable as exc:
+          +            # A missing RPC cursor means an unverified gap, not an empty
+          +            # history. Never replay old BUYs and never skip an outstanding SELL.
+          +            if ('wallet history gap' not in str(exc)
+          +                    or not cursor
+          +                    or any(p.get('source_wallet')==wallet for p in self.state['positions'].values())):
+          +                raise
+          +            start=int(gap.get('window_start',now)) if isinstance(gap,dict) else now
+          +            count=int(gap.get('resync_count',0)) if isinstance(gap,dict) else 0
+          +            if now-start>=1800:
+          +                start=now;count=0
+          +            count+=1
+          +            next_gap={'window_start':start,'resync_count':count,'last_gap_ts':now,
+          +                      'missed_history':True,'paused_until':now+1800 if count>=3 else 0}
+          +            self.store.put(gap_key,next_gap)
+          +            if count>=3:
+          +                self.log('COPIER','PAUSED','wallet_activity_exceeds_safe_polling_capacity',
+          +                         {'wallet':wallet,'paused_until':next_gap['paused_until']})
+          +                raise DataUnavailable('wallet activity exceeds safe polling capacity; temporarily paused') from exc
+          +            latest=self.helius.latest_signature(wallet)
+          +            if not isinstance(latest,str) or not latest or latest==cursor:
+          +                raise
+          +            self.store.put(key,{'initialized':True,'signature':latest,
+          +                                'bootstrap_ts':now,'resynced_after_gap':True,
+          +                                'missed_history':True,
+          +                                **self._wallet_transport_metadata()})
+          +            self.log('COPIER','RESYNC','unverified_wallet_history_discarded',
+          +                     {'wallet':wallet,'copied_positions_open':False})
+          +            raise DataUnavailable('wallet history resynchronized; unverified trades discarded') from exc
+                   events=parse_helius_swaps(txs,wallet,now,self.cfg.max_signal_age_seconds)
+                   # In the video many wallets sell after 2-4 seconds. Polling every
+                   # 60s must NOT copy an already reversed trade (buy high, sell low).
+                   newest_sells={}
+          @@ -400,9 +449,11 @@
+                               # makes already completed trades safe to revisit.
+                               raise DataUnavailable('source_wallet_sale_not_confirmed_replay_required')
+                       else:self.log('COPIER','SKIP','sell_without_copied_position',{'wallet':wallet},ev.event_id)
+                   # Persist cursor only after processing all events. If crash occurs earlier, event dedup works.
+          -        self.store.put(key,{'initialized':True,'signature':newest,'bootstrap_ts':bootstrap_ts})
+          +        self.store.put(key,{'initialized':True,'signature':newest,
+          +                            'bootstrap_ts':bootstrap_ts,
+          +                            **self._wallet_transport_metadata()})
+                   return len(events)
+           
+               def _scout(self,now):
+                   if not self.cfg.scout_enabled:return
+          @@ -447,8 +498,9 @@
+                   report=self.store.report(self.state,self.marks if marks is None else marks,now,
+                                            liquidations=self.exit_values)
+                   report['scout_candidates']=self.scout_candidates
+                   report['brain_enabled']=self.cfg.brain_enabled
+          +        report['bot_release']='14.7.3'
+                   report['strategy_profile']=self.cfg.strategy_profile
+                   report['brain_latest_assessments']=self.brain_assessments
+                   report['executor_quote_audit']='Jupiter buy+sell quote with round-trip costs; never guaranteed fill'
+                   report['session_buy_entries']=sum(t.get('side')=='BUY' for t in self.state['trades'])
+          @@ -465,8 +517,14 @@
+                   report['scout_paused']=not self.entry_data_ready
+                   report['quote_data_ready']=self.quote_data_ready
+                   report['watching_wallets']=len(self.cfg.trader_wallets)
+                   report['wallet_feed_health']=dict(self.state.get('wallet_feed_health',{}))
+          +        report['wallet_gap_policy']={w:self.store.get('wallet_gap_policy:'+w,{})
+          +                                     for w in self.cfg.trader_wallets}
+          +        report['wallet_transport_by_source']={
+          +            w:(self.store.get('wallet_cursor:'+w,{}) or {}).get('transport','legacy')
+          +            for w in self.cfg.trader_wallets
+          +            if isinstance(self.store.get('wallet_cursor:'+w,{}),dict)}
+                   report['wallet_provider_diagnostics']=dict(getattr(self.helius,'diagnostics',{}))
+                   report['scout_provider']='GeckoTerminal new pools + DexScreener profiles, normalized on DexScreener'
+                   report['discovery_health']=getattr(self.discoverer,'last_health',{})
+                   report['execution_provider']='Jupiter V2; '+self.cfg.mode
+          --- /dev/null
+          +++ b/tests/test_v1472_http.py
+          @@ -0,0 +1,71 @@
+          +"""Regression tests for HTTP diagnostics and PAPER quote-only checks."""
+          +from __future__ import annotations
+          +import os
+          +import unittest
+          +from unittest.mock import patch
+          +from urllib.error import HTTPError, URLError
+          +from bot.providers import DataUnavailable, SolanaRPC, Jupiter, USDC, SOL, request_json, safe_endpoint
+          +
+          +
+          +class HTTPDiagnostics(unittest.TestCase):
+          +    def test_jupiter_non_retryable_403_includes_service_without_key(self):
+          +        url='https://api.jup.ag/swap/v2/order?inputMint=x&api-key=DO_NOT_PRINT'
+          +        def blocked(*a,**kw):raise HTTPError(url,403,'Forbidden',{},None)
+          +        with patch('bot.providers.urlopen',side_effect=blocked):
+          +            with self.assertRaises(DataUnavailable) as cm:request_json(url,attempts=3)
+          +        error=str(cm.exception)
+          +        self.assertIn('Jupiter /swap/v2/order HTTP 403',error)
+          +        self.assertNotIn('DO_NOT_PRINT',error)
+          +        self.assertNotIn('inputMint',error)
+          +
+          +    def test_rpc_429_final_error_is_precise_and_redacted(self):
+          +        url='https://mainnet.helius-rpc.com/?api-key=SECRET_KEY'
+          +        def throttled(*a,**kw):raise HTTPError(url,429,'Too Many Requests',{},None)
+          +        with patch('bot.providers.urlopen',side_effect=throttled), patch('bot.providers.time.sleep') as snooze:
+          +            with self.assertRaises(DataUnavailable) as cm:request_json(url,method='POST',data={'method':'getAccountInfo'},attempts=2)
+          +        error=str(cm.exception)
+          +        self.assertIn('Helius RPC /rpc HTTP 429 after 2 attempts',error)
+          +        self.assertNotIn('SECRET_KEY',error)
+          +        self.assertEqual(snooze.call_count,1)
+          +
+          +    def test_rpc_default_uses_existing_helius_key(self):
+          +        with patch.dict(os.environ,{'HELIUS_API_KEY':'NOT_REAL','SOLANA_RPC_URL':'','HELIUS_RPC_URL':''}):
+          +            rpc=SolanaRPC(fetch=lambda *a,**kw: {'result':{'value':5}})
+          +            self.assertEqual(safe_endpoint(rpc.url),'Helius RPC /rpc')
+          +            self.assertIn('api-key=NOT_REAL',rpc.url)
+          +            self.assertEqual(rpc.call('getBalance',['x']),{'value':5})
+          +
+          +    def test_explicit_rpc_config_wins(self):
+          +        with patch.dict(os.environ,{'HELIUS_API_KEY':'NOT_REAL','SOLANA_RPC_URL':'https://custom.example/rpc'}):
+          +            self.assertEqual(SolanaRPC(fetch=lambda *a,**k:None).url,'https://custom.example/rpc')
+          +
+          +    def test_no_key_uses_public_rpc_as_read_only_fallback(self):
+          +        with patch.dict(os.environ,{'HELIUS_API_KEY':'','SOLANA_RPC_URL':'','HELIUS_RPC_URL':''}):
+          +            self.assertEqual(SolanaRPC(fetch=lambda *a,**k:None).url,'https://api.mainnet-beta.solana.com')
+          +
+          +    def test_jupiter_quote_without_request_id_still_usable_in_paper(self):
+          +        def fetch(url,**kw):
+          +            return {'router':'metis','outAmount':'990000','feeBps':2,'transaction':None}
+          +        quote=Jupiter(key='test',fetch=fetch).order(USDC,SOL,1000000)
+          +        self.assertEqual(quote['outAmount'],'990000')
+          +        self.assertNotIn('requestId',quote)
+          +
+          +    def test_live_requires_valid_executable_order(self):
+          +        def fetch(url,**kw):
+          +            return {'router':'metis','outAmount':'990000','feeBps':2,'transaction':None}
+          +        with self.assertRaisesRegex(DataUnavailable,'requestId'):
+          +            Jupiter(key='test',fetch=fetch).order(USDC,SOL,1000000,taker='A'*40)
+          +
+          +    def test_non_json_errors_redact_url(self):
+          +        class BadResponse:
+          +            status=200
+          +            def __enter__(self):return self
+          +            def __exit__(self,*a):return False
+          +            def read(self,n):return b'<html>SECRET</html>'
+          +        with patch('bot.providers.urlopen',return_value=BadResponse()):
+          +            with self.assertRaises(DataUnavailable) as cm:
+          +                request_json('https://api.jup.ag/swap/v2/order?api-key=SECRET')
+          +        self.assertIn('invalid JSON',str(cm.exception))
+          +        self.assertNotIn('SECRET',str(cm.exception))
+          +
+          +if __name__=='__main__':unittest.main()
+          --- /dev/null
+          +++ b/tests/test_v1473_end_to_end.py
+          @@ -0,0 +1,45 @@
+          +"""Deterministic PAPER execution path; synthetic market fixtures, never live fills."""
+          +from __future__ import annotations
+          +from decimal import Decimal
+          +import json
+          +from pathlib import Path
+          +import unittest
+          +
+          +from test_v14 import Setup, MINT, USDC, D
+          +from bot.performance import summarize
+          +from bot.gh_session import write_performance
+          +
+          +class PaperEndToEnd(Setup):
+          +    def test_scout_enters_then_sells_and_persists_accounting(self):
+          +        self.bot.tick()
+          +        self.advance(130, price='1.06')
+          +        second = self.bot.tick()
+          +        buys=[t for t in self.bot.state['trades'] if t['side']=='BUY']
+          +        self.assertEqual(len(buys),1, second.get('event_stats'))
+          +        self.assertEqual(second['session_buy_entries'],1)
+          +        self.assertEqual(buys[0]['mode'],'PAPER')
+          +        self.assertIsNone(buys[0]['chain_tx_signature'])
+          +        self.assertTrue(self.bot.state['positions'])
+          +        self.assertLess(D(self.bot.state['cash_usdc']),D('50'))
+          +        # Crossing the synthetic paper take-profit threshold triggers a simulated exit.
+          +        self.advance(130, price='2.0')
+          +        third=self.bot.tick()
+          +        sells=[t for t in self.bot.state['trades'] if t['side']=='SELL']
+          +        self.assertTrue(sells, third.get('event_stats'))
+          +        self.assertEqual(sells[0]['mode'],'PAPER')
+          +        self.assertIsNone(sells[0]['chain_tx_signature'])
+          +        self.assertGreater(D(third['realized_pnl_usdc']),D('0'))
+          +        self.assertEqual(len(self.bot.state['positions']),0)
+          +        self.assertEqual(self.store.get('portfolio')['trades'],self.bot.state['trades'])
+          +
+          +    def test_failed_preflight_rejects_without_spending(self):
+          +        self.bot.tick()
+          +        self.advance(130,price='1.06')
+          +        self.jup.fail=True
+          +        report=self.bot.tick()
+          +        self.assertEqual(report['session_buy_entries'],0)
+          +        self.assertEqual(report['cash_usdc'],'50')
+          +        self.assertEqual(self.bot.state['positions'],{})
+          +        self.assertTrue(any(e['reason'].startswith('preflight_') for e in self.store.last_events()))
+          +
+          +if __name__=='__main__': unittest.main()
+          --- /dev/null
+          +++ b/tests/test_v1473_rate_limit.py
+          @@ -0,0 +1,22 @@
+          +"""Jupiter pacing is active for production HTTP, not fixture transports."""
+          +import unittest
+          +from unittest.mock import patch
+          +from bot.providers import Jupiter,USDC,SOL
+          +
+          +class Pacing(unittest.TestCase):
+          +    def test_keyed_requests_are_separated_by_1_1_seconds(self):
+          +        j=Jupiter(key='secret',fetch=lambda *args,**kwargs:{'outAmount':'123','feeBps':0})
+          +        j._pace_network_requests=True  # Simulate network transport without using it
+          +        with patch('bot.providers.time.monotonic',side_effect=[100,100,100,100,100,100]), \
+          +             patch('bot.providers.time.sleep') as pause:
+          +            j.order(USDC,SOL,1000000)
+          +            j.order(SOL,USDC,123)
+          +        self.assertEqual(pause.call_count,1)
+          +        self.assertAlmostEqual(pause.call_args.args[0],1.1)
+          +
+          +    def test_paper_fixture_calls_do_not_sleep(self):
+          +        j=Jupiter(key='',fetch=lambda *args,**kwargs:{'outAmount':'123','feeBps':0})
+          +        with patch('bot.providers.time.sleep') as pause:
+          +            j.order(USDC,SOL,1000000)
+          +            j.order(SOL,USDC,123)
+          +        pause.assert_not_called()
+          --- /dev/null
+          +++ b/tests/test_v1473_rpc_recovery.py
+          @@ -0,0 +1,142 @@
+          +"""Integration regressions for safe RPC paging and source quarantine.
+          +All signatures and swaps are controlled fixtures, not blockchain observations.
+          +"""
+          +from __future__ import annotations
+          +import unittest
+          +from unittest.mock import patch
+          +from test_v14 import Setup, WALLET, MINT
+          +from bot.providers import Helius,DataUnavailable
+          +
+          +class Pagination(unittest.TestCase):
+          +    def test_pagination_searches_full_1000_signature_page(self):
+          +        h=Helius(key='fixture');h.transport='rpc'
+          +        first=[{'signature':f'sig-{n}','err':None,'blockTime':100} for n in range(2000,1000,-1)]
+          +        second=[{'signature':'sig-1000','err':None,'blockTime':99},
+          +                {'signature':'old-cursor','err':None,'blockTime':98}]
+          +        calls=[]
+          +        def rpc(method,params):
+          +            calls.append((method,params))
+          +            if method=='getSignaturesForAddress':
+          +                return first if not params[1].get('before') else second
+          +            if method=='getTransaction':return {'meta':{}}
+          +            raise AssertionError('unexpected RPC method '+method)
+          +        h._rpc_call=rpc
+          +        with patch.object(Helius,'_rpc_swap',return_value=None):
+          +            events,newest=h.since(WALLET,'old-cursor')
+          +        self.assertEqual(newest,'sig-1063')  # newest of 64 oldest unread signatures
+          +        self.assertEqual(len(events),64)
+          +        self.assertEqual(h.diagnostics['rpc_backlog_signatures'],1001)
+          +        self.assertEqual(h.diagnostics['rpc_decode_limited_cycles'],1)
+          +        self.assertEqual(len([m for m,_ in calls if m=='getTransaction']),64)
+          +        pages=[args for method,args in calls if method=='getSignaturesForAddress']
+          +        self.assertEqual(len(pages),2)
+          +        self.assertEqual(pages[0][1]['limit'],1000)
+          +        self.assertEqual(pages[1][1]['before'],'sig-1001')
+          +
+          +    def test_short_page_does_not_hide_cursor_on_following_page(self):
+          +        h=Helius(key='fixture');h.transport='rpc'
+          +        calls=[]
+          +        def rpc(method,args):
+          +            if method=='getTransaction': return {'meta':{}}
+          +            calls.append(args[1].get('before'))
+          +            if len(calls)==1:return [{'signature':'newer','err':None,'blockTime':100}]
+          +            if len(calls)==2:return [{'signature':'old-cursor','err':None,'blockTime':99}]
+          +            return []
+          +        h._rpc_call=rpc
+          +        with patch.object(Helius,'_rpc_swap',return_value=None):
+          +            events,newest=h.since(WALLET,'old-cursor')
+          +        self.assertEqual(calls,[None,'newer'])
+          +        self.assertEqual(newest,'newer')
+          +        self.assertEqual(len(events),1)
+          +
+          +    def test_missing_rpc_cursor_is_rejected_without_advancing(self):
+          +        h=Helius(key='fixture');h.transport='rpc'
+          +        h._rpc_call=lambda method,args: ([{'signature':'new1','err':None,'blockTime':100}]
+          +                                          if not args[1].get('before') else [])
+          +        with self.assertRaisesRegex(DataUnavailable,'cursor not found'):
+          +            h.since(WALLET,'not-there')
+          +
+          +class SourceCooldown(Setup):
+          +    def setUp(self):
+          +        super().setUp()
+          +        self.cfg.trader_wallets=[WALLET]
+          +        self.cfg.scout_enabled=False
+          +        self.bot.cfg=self.cfg
+          +        self.store.put('wallet_cursor:'+WALLET,{'initialized':True,'signature':'old','bootstrap_ts':self.clock.now-300})
+          +        class TooBusy:
+          +            key='fixture'
+          +            def __init__(self):self.calls=0;self.boots=0
+          +            def since(self,w,c):
+          +                self.calls+=1
+          +                raise DataUnavailable('wallet history gap: RPC cursor not found; fail closed')
+          +            def latest_signature(self,w):
+          +                self.boots+=1
+          +                return 'resync'+str(self.boots)
+          +        self.h=TooBusy();self.bot.helius=self.h
+          +    def test_repeated_cursor_gaps_pause_for_30_minutes(self):
+          +        for _ in range(2):
+          +            with self.assertRaisesRegex(DataUnavailable,'resynchronized'):
+          +                self.bot._copy_wallet(self.clock.now,WALLET)
+          +            self.clock.now+=60
+          +        with self.assertRaisesRegex(DataUnavailable,'temporarily paused'):
+          +            self.bot._copy_wallet(self.clock.now,WALLET)
+          +        self.assertEqual(self.h.boots,2)
+          +        self.assertEqual(self.h.calls,3)
+          +        policy=self.store.get('wallet_gap_policy:'+WALLET)
+          +        self.assertEqual(policy['resync_count'],3)
+          +        self.assertGreater(policy['paused_until'],self.clock.now)
+          +        with self.assertRaisesRegex(DataUnavailable,'temporarily paused'):
+          +            self.bot._copy_wallet(self.clock.now+60,WALLET)
+          +        self.assertEqual(self.h.calls,3)
+          +    def test_open_copied_position_blocks_resync(self):
+          +        self.bot.state['positions'][MINT]={'source_wallet':WALLET}
+          +        with self.assertRaisesRegex(DataUnavailable,'cursor not found'):
+          +            self.bot._copy_wallet(self.clock.now,WALLET)
+          +        self.assertEqual(self.h.boots,0)
+          +        self.assertEqual(self.store.get('wallet_cursor:'+WALLET)['signature'],'old')
+          +    def test_other_wallet_failure_does_not_advance_its_cursor(self):
+          +        # The state is persisted; missing history cannot be faked as a success.
+          +        with self.assertRaises(DataUnavailable): self.bot._copy_wallet(self.clock.now,WALLET)
+          +        self.assertTrue(self.store.get('wallet_gap_policy:'+WALLET)['missed_history'])
+          +        self.assertEqual(self.store.get('wallet_cursor:'+WALLET)['signature'],'resync1')
+          +
+          +
+          +class RestartTransport(Setup):
+          +    def setUp(self):
+          +        super().setUp()
+          +        class Restarted:
+          +            key='fixture'
+          +            transport='enhanced'
+          +            def __init__(self):self.seen=[]
+          +            def since(self,wallet,cursor):
+          +                self.seen.append((wallet,self.transport,cursor))
+          +                return [],cursor
+          +            def latest_signature(self,wallet):return 'latest'
+          +        self.h=Restarted();self.bot.helius=self.h
+          +
+          +    def test_rpc_cursor_uses_rpc_after_new_process_started_as_enhanced(self):
+          +        self.store.put('wallet_cursor:'+WALLET,{'initialized':True,
+          +                       'signature':'rpc-signature','bootstrap_ts':self.clock.now-60,'transport':'rpc'})
+          +        self.assertEqual(self.bot._copy_wallet(self.clock.now,WALLET),0)
+          +        self.assertEqual(self.h.seen,[(WALLET,'rpc','rpc-signature')])
+          +        self.assertEqual(self.store.get('wallet_cursor:'+WALLET)['transport'],'rpc')
+          +
+          +    def test_each_wallet_restores_its_own_transport(self):
+          +        second='C'*43
+          +        self.store.put('wallet_cursor:'+WALLET,{'initialized':True,'signature':'r1','transport':'rpc'})
+          +        self.store.put('wallet_cursor:'+second,{'initialized':True,'signature':'e1','transport':'enhanced'})
+          +        self.bot._copy_wallet(self.clock.now,WALLET)
+          +        self.bot._copy_wallet(self.clock.now,second)
+          +        self.assertEqual(self.h.seen,[(WALLET,'rpc','r1'),(second,'enhanced','e1')])
+          +
+          +    def test_legacy_checkpoint_migrates_to_rpc_without_replaying_history(self):
+          +        self.store.put('wallet_cursor:'+WALLET,{'initialized':True,'signature':'old'})
+          +        self.bot._copy_wallet(self.clock.now,WALLET)
+          +        self.assertEqual(self.h.seen,[(WALLET,'rpc','old')])
+          +        self.assertEqual(self.store.get('wallet_cursor:'+WALLET)['transport'],'rpc')
+          +
+          +    def test_new_bootstrap_records_provider_transport(self):
+          +        self.bot._copy_wallet(self.clock.now,WALLET)
+          +        self.assertEqual(self.store.get('wallet_cursor:'+WALLET)['transport'],'enhanced')
+          +
+          +if __name__=='__main__':unittest.main()
+          --- /dev/null
+          +++ b/tests/test_v1473_security.py
+          @@ -0,0 +1,15 @@
+          +"""No credentials appear in diagnostics for custom RPC URLs."""
+          +import unittest
+          +from unittest.mock import patch
+          +from urllib.error import HTTPError
+          +from bot.providers import request_json,DataUnavailable
+          +
+          +class SecretRedaction(unittest.TestCase):
+          +    def test_custom_rpc_path_and_query_are_redacted(self):
+          +        url="https://rpc.example.test/private/SECRET_PART?api-key=SECOND_SECRET"
+          +        with patch("bot.providers.urlopen",side_effect=HTTPError(url,403,"no",{},None)):
+          +            with self.assertRaises(DataUnavailable) as cm:
+          +                request_json(url,method="POST",data={"jsonrpc":"2.0"})
+          +        self.assertIn("HTTP 403",str(cm.exception))
+          +        self.assertNotIn("SECRET_PART",str(cm.exception))
+          +        self.assertNotIn("SECOND_SECRET",str(cm.exception))
+          __COPYTRADING_1473_PATCH__
+          patch -p1 --fuzz=0 < /tmp/copytrading-v1473.patch
+          python -c 'from bot import __version__; assert __version__ == "14.7.3"'
+      - name: "174 tests de régression + compilation"
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -q
+          python -m compileall -q bot
+          python -c 'from bot.settings import Config; assert Config.load("config.json").mode == "PAPER"'
+      - name: "Diagnostic Helius et Jupiter (lecture seule, aucun ordre)"
+        shell: bash
+        env:
+          HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+          JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+        run: |
+          python - <<'PY'
+          from bot.providers import SolanaRPC,Jupiter,USDC,SOL,DataUnavailable
+          import os
+          if not os.getenv('HELIUS_API_KEY'):
+              raise SystemExit('DIAGNOSTIC : HELIUS_API_KEY absente (Secret GitHub)')
+          try:
+              r=SolanaRPC().call('getAccountInfo',[USDC,{'encoding':'jsonParsed'}])
+              if not isinstance(r,dict) or not isinstance(r.get('value'),dict):
+                  raise DataUnavailable('Réponse mint USDC vide')
+              print('DIAGNOSTIC : RPC Helius répond correctement')
+          except DataUnavailable as exc:
+              raise SystemExit('DIAGNOSTIC : Helius : '+str(exc)) from None
+          try:
+              j=Jupiter()
+              buy=j.order(USDC,SOL,5_000_000)
+              sell=j.order(SOL,USDC,int(buy['outAmount']))
+              if int(sell['outAmount'])<=0:
+                  raise DataUnavailable('Cotation retour vide')
+              print('DIAGNOSTIC : Jupiter USDC/SOL aller-retour répond (cotations uniquement)')
+          except DataUnavailable as exc:
+              raise SystemExit('DIAGNOSTIC : Jupiter : '+str(exc)) from None
+          PY
+      - name: "Partager le code auditable avec la simulation"
+        uses: actions/upload-artifact@v4
+        with:
+          name: v1473-sources-lisibles
+          path: |
+            bot/
+            tests/
+            config.json
+            docs/
+            README_V14.7.3.md
+          retention-days: 7
+          if-no-files-found: error
+
+  stage1:
+    name: "Étape 1/3 — Scanner et simuler"
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v1473-sources-lisibles
+          path: .
+      - name: "Exécuter le bot PAPER avec protections"
+        run: python -m bot.gh_session --session "${{ inputs.session }}" --stage 1
+      - name: "Générer le tableau de bord hors ligne"
+        if: always()
+        run: python -m bot.snapshot
+      - name: "Enregistrer la base SQLite et les résultats"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-v1473-stage-1
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 7
+          if-no-files-found: warn
+  stage2:
+    name: "Étape 2/3 — Reprendre le portefeuille"
+    if: ${{ inputs.session != '2min' }}
+    needs: stage1
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v1473-sources-lisibles
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-v1473-stage-1
+          path: .
+      - name: "Exécuter le bot PAPER avec protections"
+        run: python -m bot.gh_session --session "${{ inputs.session }}" --stage 2
+      - name: "Générer le tableau de bord hors ligne"
+        if: always()
+        run: python -m bot.snapshot
+      - name: "Enregistrer la base SQLite et les résultats"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-v1473-stage-2
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 7
+          if-no-files-found: warn
+  stage3:
+    name: "Étape 3/3 — Bilan final"
+    if: ${{ inputs.session != '2min' }}
+    needs: stage2
+    runs-on: ubuntu-latest
+    timeout-minutes: 265
+    env:
+      HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+      JUPITER_API_KEY: ${{ secrets.JUPITER_API_KEY }}
+      SIM_WALLETS_JSON: ${{ vars.SIM_WALLETS_JSON }}
+      PAPER_PROFILE: ${{ inputs.profil }}
+      PAPER_CAPITAL: ${{ inputs.capital }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          name: v1473-sources-lisibles
+          path: .
+      - uses: actions/download-artifact@v4
+        with:
+          name: checkpoint-v1473-stage-2
+          path: .
+      - name: "Exécuter le bot PAPER avec protections"
+        run: python -m bot.gh_session --session "${{ inputs.session }}" --stage 3
+      - name: "Générer le tableau de bord hors ligne"
+        if: always()
+        run: python -m bot.snapshot
+      - name: "Enregistrer la base SQLite et les résultats"
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-v1473-stage-3-final
+          path: |
+            runtime/github-session.sqlite
+            docs/status.json
+            docs/performance.json
+            docs/trades.csv
+            docs/resultats.html
+          retention-days: 14
+          if-no-files-found: warn
